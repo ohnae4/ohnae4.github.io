@@ -59,49 +59,6 @@
 		    </div>
 	    </div>
     </div>
-    <div class="layerReservation" data-ng-show="layerReservation.active">
-		<form id="formReservation" name="formReservation" ng-submit="layerReservation.submit()">
-			<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" ng-model="ROOM_RESERVATION.ROOM_NUMBER" required="required" />
-			<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" ng-model="ROOM_RESERVATION.ROOM_STATUS_CODE" required="required" />
-			<table>
-				<tr>
-					<th class="required">예약일</th>
-					<td><input readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" ng-model="ROOM_RESERVATION.RESERVATION_DATE" required="required" /></td>
-				</tr>
-				<tr>
-					<th class="required">예약자명</th>
-					<td><input type="text" maxlength="15" minlength="2" name="MEMBER_NAME" ng-model="ROOM_RESERVATION.MEMBER_NAME" required="required" /></td>
-				</tr>
-				<tr>
-					<th class="required">예약자 휴대폰번호</th>
-					<td><input data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" ng-model="ROOM_RESERVATION.MEMBER_PHONE" required="required" /></td>
-				</tr>
-				<tr>
-					<th>숙박일</th>
-					<td><input data-only-number="true" type="text" maxlength="1" style="width:50px;" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER" required="required" /> 박</td>
-				</tr>
-				<tr>
-					<th class="required">인원</th>
-					<td><input data-only-number="true" type="text" maxlength="2" style="width:50px;" name="PERSONNEL_1" ng-model="ROOM_RESERVATION.PERSONNEL_1" required="required" /> 명</td>
-				</tr>
-				<tr>
-					<th class="required">비밀번호</th>
-					<td><input maxlength="10" type="password" name="PASSWORD" ng-model="ROOM_RESERVATION.PASSWORD" required="required" /></td>
-				</tr>
-				<tr>
-					<th class="required">요청사항</th>
-					<td>
-						<textarea maxlength="100" type="text" name="DESCRIPTION" ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
-						0 / 100 자
-					</td>
-				</tr>
-			</table>
-			<div class="btnWrap">
-				<button type="submit">확인</button>
-				<button type="button" data-ng-click="layerReservation.close();">취소</button>
-			</div>
-		</form>
-	</div>
     <div class="reservationList">
 	    <table>
 	    	<colgroup>
@@ -151,6 +108,49 @@
 		    </tr>
 	    </table>
     </div>
+</div>
+<div class="layerReservation" data-ng-show="layerReservation.active">
+	<form id="formReservation" name="formReservation" ng-submit="layerReservation.submit()">
+		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" ng-model="ROOM_RESERVATION.ROOM_NUMBER" required="required" />
+		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" ng-model="ROOM_RESERVATION.ROOM_STATUS_CODE" required="required" />
+		<table>
+			<tr>
+				<th class="required">예약일</th>
+				<td><input readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" ng-model="ROOM_RESERVATION.RESERVATION_DATE" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">예약자명</th>
+				<td><input type="text" maxlength="15" minlength="2" name="MEMBER_NAME" ng-model="ROOM_RESERVATION.MEMBER_NAME" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">예약자 휴대폰번호</th>
+				<td><input data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" ng-model="ROOM_RESERVATION.MEMBER_PHONE" required="required" /></td>
+			</tr>
+			<tr>
+				<th>숙박일</th>
+				<td><input data-only-number="true" type="text" maxlength="1" style="width:50px;" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER" required="required" /> 박</td>
+			</tr>
+			<tr>
+				<th class="required">인원</th>
+				<td><input data-only-number="true" type="text" maxlength="2" style="width:50px;" name="PERSONNEL_1" ng-model="ROOM_RESERVATION.PERSONNEL_1" required="required" /> 명</td>
+			</tr>
+			<tr>
+				<th class="required">비밀번호</th>
+				<td><input maxlength="10" type="password" name="PASSWORD" ng-model="ROOM_RESERVATION.PASSWORD" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">요청사항</th>
+				<td>
+					<textarea maxlength="100" type="text" name="DESCRIPTION" ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
+					0 / 100 자
+				</td>
+			</tr>
+		</table>
+		<div class="btnWrap">
+			<button type="submit">확인</button>
+			<button type="button" data-ng-click="layerReservation.close();">취소</button>
+		</div>
+	</form>
 </div>
 <div data-kaisa-footer="true"></div> 
 </body>

@@ -6,6 +6,7 @@
 		var apiUrl = location.protocol + '//' + 'admin.mobydic.co.kr',
 			ext = constant.extension.api;
 		
+		this.getLogin = apiUrl + '/api/user/getLogin.php' + ext;
 		this.getRoomList = apiUrl + '/api/riverhill/getRoomList.php' + ext;
 		this.setRoom = apiUrl + '/api/riverhill/setRoom.php' + ext;
 		

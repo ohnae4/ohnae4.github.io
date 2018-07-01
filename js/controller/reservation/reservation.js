@@ -109,7 +109,6 @@
     	$scope.getReservationList = function(){
     		$scope.loading.active = true;
 			$http.jsonp(kaisaApi.getReservationList + $scope.jsonpParam({ searchDateYear : $filter('date')($scope.rvCalendar.start.date,'yyyy') , searchDateMonth : $filter('date')($scope.rvCalendar.start.date,'MM') })).success(function(data){
-				console.log(data);
 				$scope.reservationList = data.items;
 				$scope.rvCalendar.start.date = new Date(data.date);
 				$scope.rvCalendar.start.now = new Date(data.now);
@@ -122,7 +121,6 @@
 					}
 				}
 				$scope.loading.active = false
-				$scope.dimmed.active = false;
 		    }).error(function(data){
 		    	$scope.alert.open({message : '객실 예약정보 조회 실패.'});
 		    	$scope.loading.active = false;
@@ -130,7 +128,6 @@
     	};
     	$scope.getReservationList();
     	$scope.reservationChange = function(no,code){
-    		console.log(no,code);
     		/*$http.jsonp(kaisaApi.reservationChange + $scope.jsonpParam({ RESERVATION_NUMBER : no , ROOM_STATUS_CODE : code })).success(function(data){
 				
 				$scope.loading.active = false

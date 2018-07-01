@@ -182,9 +182,6 @@
 				return true;
 			}
 		};
-		$scope.dimmed = {
-			active : false
-		};
 		/**
 		 * popup : 레이어 팝업 (option extend)
 		 * TODO param 처리
@@ -212,6 +209,35 @@
 				this.option = this.optionDefault;
 				this.active = false;
 			}
+		};
+		/*
+		 * 딤처리
+		 * */
+		$scope.dimmed = {
+			active : false,
+			mask : false,
+			open : function(o){
+				this.mask = (o.mask) ? o.mask : false;
+				this.callback = (o.callback) ? o.callback : false;
+				this.active = true;
+			},
+			click : function(){
+				if(this.mask){
+					this.close();
+				}
+				if(this.callback){
+					this.callback();
+				}
+			},
+			close : function(){
+				this.mask = false;
+				if(this.callback){
+					this.callback();
+				}
+				this.callback = false;
+				this.active = false;
+			},
+			callback : false
 		};
 		/**
 		 * alert 경고 메세지 레이어 (option extend)
@@ -357,6 +383,27 @@
 		}else{
 			if($scope.constant.version != $scope.roomList.version){ //sessionStorage refresh
 				$scope.getRoomList();
+			}
+		}
+		/**
+		 * 관리자 로그인
+		 */
+		$scope.admin = {
+			password : null,
+			submit : function(){
+				$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({ password : this.password })).success(function(data){
+					console.log(data);
+			    }).error(function(data){
+			    	$scope.alert.open({message : '객실조회 실패.'});
+			    	$scope.loading.active = false;
+			    });
+			},
+			layer : {
+				open : function(){
+					this.active = true;
+					$scope.dimmed.open({mask : true, callback : function(){ $scope.admin.layer.active = false; }});
+				},
+				active : false
 			}
 		}
 		/**

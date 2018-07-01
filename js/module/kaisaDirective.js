@@ -51,7 +51,10 @@
 						'<li></li>'+
 					'</ul>'+
 				'</div>'+
-				'<div id="dimmed" ng-class="{on : dimmed.active}" ng-click="dimmed.close()"></div>'+
+				'<div id="login" ng-if="admin.layer.active">'+
+					'<h3>관리자 로그인</h3><input type="password" autocapitalize="off" autocomplete="off" maxlength="10" required="required" ng-model="admin.password" /> <button type="button" ng-click="admin.submit()">로그인</button>'+
+				'</div>'+
+				'<div id="dimmed" ng-class="{on : dimmed.active}" ng-click="dimmed.click()"></div>'+
 			'</div>',
 			replace: true,
 			link: function($scope, el, attrs){
@@ -99,7 +102,7 @@
 			template: '<div id="footer">'+
 				'<p>상호 : 리버힐 펜션 , 주소 : 경기도 가평읍 금대리 306 , 전화 : 070-9482-2070 / 070-4882-2803 <br />'+
 				'사업자번호 : 132-25-97858  통신판매신고번호 : 제 2009-경기가평-16호  <br />'+
-				'copyright (c) 2018 Rever Hill. all right reserved<a href="/member/login.html">.</a></p>'+
+				'copyright (c) 2018 Rever Hill. all right reserved<span ng-click="admin.layer.open()">.</span></p>'+
 			'</div>',
 			replace: true,
 			link: function($scope, el, attrs){
