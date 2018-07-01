@@ -1,0 +1,51 @@
+/*?callback=angular.callbacks._0&searchDateMonth=07&searchDateYear=2018&*/
+angular.callbacks._0 (
+{
+	"date": "2018-07-01",
+	"now": "2018",
+	"items": [
+		{
+			"RESERVATION_NUMBER": "1",
+			"RESERVATION_DATE": "2018-07-11",
+			"ROOM_NUMBER": "1",
+			"ROOM_STATUS_CODE": "2",
+			"MEMBER_NAME": "최재호",
+			"MEMBER_PHONE": "01055555552",
+			"DESCRIPTION": "",
+			"DATE_NUMBER": "1",
+			"PERSONNEL_1": "1",
+			"PERSONNEL_2": "0",
+			"CREATE_DATE": "2018-07-01 10:36:03",
+			"UPDATE_DATE": "2018-07-01 10:36:03"
+		},
+		{
+			"RESERVATION_NUMBER": "2",
+			"RESERVATION_DATE": "2018-07-17",
+			"ROOM_NUMBER": "3",
+			"ROOM_STATUS_CODE": "2",
+			"MEMBER_NAME": "최재호",
+			"MEMBER_PHONE": "01055555552",
+			"DESCRIPTION": "",
+			"DATE_NUMBER": "1",
+			"PERSONNEL_1": "1",
+			"PERSONNEL_2": "0",
+			"CREATE_DATE": "2018-07-01 10:36:06",
+			"UPDATE_DATE": "2018-07-01 10:36:06"
+		},
+		{
+			"RESERVATION_NUMBER": "4",
+			"RESERVATION_DATE": "2018-07-26",
+			"ROOM_NUMBER": "2",
+			"ROOM_STATUS_CODE": "2",
+			"MEMBER_NAME": "최재호",
+			"MEMBER_PHONE": "01055555552",
+			"DESCRIPTION": "",
+			"DATE_NUMBER": "1",
+			"PERSONNEL_1": "1",
+			"PERSONNEL_2": "0",
+			"CREATE_DATE": "2018-07-01 12:17:37",
+			"UPDATE_DATE": "2018-07-01 12:17:37"
+		}
+	]
+}
+)

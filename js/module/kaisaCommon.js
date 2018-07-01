@@ -84,7 +84,7 @@
 	                          function($rootScope ,  commonParam  , $window , $scope , $location , $compile , $http , $timeout , kaisaUrl , kaisaParam , constant , kaisaApi , kaisaStorage , $httpParamSerializerJQLike , $filter){
 		
 		if(location.protocol == 'https:'){
-			location.href = 'http://' + location.hostname + location.pathname + location.search; //ssl 사용페이지 없음
+			//location.href = 'http://' + location.hostname + location.pathname + location.search; //ssl 사용페이지 없음
 		}
 		
 		/**
