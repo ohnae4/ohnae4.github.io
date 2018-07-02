@@ -52,7 +52,7 @@
 					'</ul>'+
 				'</div>'+
 				'<div id="login" ng-if="admin.layer.active">'+
-					'<h3>관리자 로그인</h3><input type="password" autocapitalize="off" autocomplete="off" maxlength="10" required="required" ng-model="admin.password" /> <button type="button" ng-click="admin.submit()">로그인</button>'+
+					'<h3>관리자 로그인</h3><input type="password" autocapitalize="off" autocomplete="off" maxlength="10" required="required" ng-model="admin.sec" /> <button type="button" ng-click="admin.submit()">로그인</button>'+
 				'</div>'+
 				'<div id="dimmed" ng-class="{on : dimmed.active}" ng-click="dimmed.click()"></div>'+
 			'</div>',

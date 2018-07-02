@@ -62,8 +62,9 @@
 		this.setCookie = function(c_name, c_value, expire_date_num, domain) {
 			var now_date = new Date(), expire_date = new Date(now_date.getFullYear(), now_date.getMonth(), now_date.getDate() + expire_date_num), cookies = c_name
 					+ '=' + escape(c_value) + '; path=/ ';
-			if (typeof expire_date_num != 'undefined')
+			if (typeof expire_date_num != 'undefined'){
 				cookies += ';expires=' + expire_date.toGMTString() + ';';
+			}
 			document.cookie = cookies;
 		};
 		this.getCookie = function(c_name) {

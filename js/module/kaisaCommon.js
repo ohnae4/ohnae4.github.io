@@ -385,18 +385,29 @@
 				$scope.getRoomList();
 			}
 		}
+		
+		kaisaStorage.removeCookie('test');
+		kaisaStorage.setCookie('test', 'test1', '1', 'admin.mobydic.co.kr');
+		
 		/**
 		 * 관리자 로그인
 		 */
 		$scope.admin = {
-			password : null,
+			sec : null,
 			submit : function(){
-				$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({ password : this.password })).success(function(data){
-					console.log(data);
-			    }).error(function(data){
-			    	$scope.alert.open({message : '객실조회 실패.'});
-			    	$scope.loading.active = false;
-			    });
+				kaisaStorage.setCookie('sec', this.sec, '1', 'admin.mobydic.co.kr');
+				
+				$timeout(function(){
+					$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({})).success(function(data){
+						console.log(data);
+						kaisaStorage.removeCookie('sec');
+						
+				    }).error(function(data){
+				    	$scope.alert.open({message : '객실조회 실패.'});
+				    	$scope.loading.active = false;
+						kaisaStorage.removeCookie('sec');
+				    });
+				},1000);
 			},
 			layer : {
 				open : function(){
