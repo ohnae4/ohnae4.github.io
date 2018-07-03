@@ -59,7 +59,7 @@
 		    </div>
 	    </div>
     </div>
-    <div class="reservationList">
+    <div class="reservationList" ng-if="!admin.user">
 	    <table>
 	    	<colgroup>
 	    		<col width="80" />
@@ -83,13 +83,53 @@
 	    		<th>숙박일</th>
 	    		<th>인원</th>
 	    		<th>접수일시</th>
+	    	</tr>
+		    <tr data-ng-repeat="(idx , i) in reservationList">
+		    	<td>{{i.RESERVATION_NUMBER}}</td>
+		    	<td>{{i.RESERVATION_DATE}}</td>
+				<td>{{i.ROOM_NUMBER | roomNameCode}}</td>
+				<td>{{i.MEMBER_NAME + '*'}}</td>
+				<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
+				<td>{{i.ROOM_STATUS_CODE | roomStatusCode}}</td>
+				<td>{{i.DATE_NUMBER}}박</td>
+				<td>{{i.PERSONNEL_1}}명</td>
+				<td>{{i.CREATE_DATE}}</td>
+		    </tr>
+	    </table>
+    </div>
+    <div class="reservationList" ng-if="admin.user">
+	    <table>
+	    	<colgroup>
+	    		<col width="80" />
+	    		<col width="80" />
+	    		<col width="80" />
+	    		<col width="60" />
+	    		<col width="100" />
+	    		<col width="150" />
+	    		<col width="60" />
+	    		<col width="60" />
+	    		<col width="100" />
+				<col width="100" />
+	    		<col width="*" />
+	    	</colgroup>
+	    	<tr>
+	    		<th>예약번호</th>
+	    		<th>예약일</th>
+	    		<th>객실</th>
+	    		<th>예약자명</th>
+	    		<th>예약자전화번호</th>
+	    		<th>예약상태</th>
+	    		<th>숙박일</th>
+	    		<th>인원</th>
+	    		<th>접수일시</th>
+	    		<th>수정일시</th>
 	    		<th>설명</th>
 	    	</tr>
 		    <tr data-ng-repeat="(idx , i) in reservationList">
 		    	<td>{{i.RESERVATION_NUMBER}}</td>
 		    	<td>{{i.RESERVATION_DATE}}</td>
 				<td>{{i.ROOM_NUMBER | roomNameCode}}</td>
-				<td>{{i.MEMBER_NAME | maskName}}</td>
+				<td>{{i.MEMBER_NAME}}</td>
 				<td>{{i.MEMBER_PHONE | maskPhone}}</td>
 				<td>
 					<!-- {{i.ROOM_STATUS_CODE | roomStatusCode}} -->
@@ -99,11 +139,12 @@
 						<option value="3">예약완료</option>
 						<option value="4">취소</option>
 					</select>
-					<button type="button" data-ng-click="reservationChange(i.RESERVATION_NUMBER,i.ROOM_STATUS_CODE)">변경</button>
+					<button type="button" ng-disabled="i.ROOM_STATUS_CODE == i.ROOM_STATUS_CODE_ORIGIN" data-ng-click="updateReservation(i.RESERVATION_NUMBER,i.ROOM_STATUS_CODE)">변경</button>
 				</td>
 				<td>{{i.DATE_NUMBER}}박</td>
 				<td>{{i.PERSONNEL_1}}명</td>
 				<td>{{i.CREATE_DATE}}</td>
+				<td>{{i.UPDATE_DATE}}</td>
 				<td>{{i.DESCRIPTION}}</td>
 		    </tr>
 	    </table>
@@ -141,7 +182,7 @@
 			<tr>
 				<th class="required">요청사항</th>
 				<td>
-					<textarea maxlength="100" type="text" name="DESCRIPTION" ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
+					<textarea maxlength="100" type="text" name="DESCRIPTION" ng-model="ROOM_RESERVATION.DESCRIPTION" required="required"></textarea>
 					0 / 100 자
 				</td>
 			</tr>

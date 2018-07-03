@@ -114,6 +114,7 @@
 				$scope.rvCalendar.start.now = new Date(data.now);
 				$scope.rvCalendar.init();
 				for(var i in $scope.reservationList){
+					$scope.reservationList[i].ROOM_STATUS_CODE_ORIGIN = $scope.reservationList[i].ROOM_STATUS_CODE;
 					for(var j in $scope.rvCalendar.start.day){
 						if($scope.reservationList[i].RESERVATION_DATE.substring(8,10) == $scope.rvCalendar.start.day[j].date){
 							$scope.rvCalendar.start.day[j].reservation.push($scope.reservationList[i]);
@@ -127,16 +128,14 @@
 		    });
     	};
     	$scope.getReservationList();
-    	$scope.reservationChange = function(no,code){
-    		/*$http.jsonp(kaisaApi.reservationChange + $scope.jsonpParam({ RESERVATION_NUMBER : no , ROOM_STATUS_CODE : code })).success(function(data){
-				
+    	$scope.updateReservation = function(no,code){
+    		$http.jsonp(kaisaApi.updateReservation + $scope.jsonpParam({ RESERVATION_NUMBER : no , ROOM_STATUS_CODE : code })).success(function(data){
+    			location.reload();
 				$scope.loading.active = false
 		    }).error(function(data){
-		    	
+		    	console.log('update error');
 		    	$scope.loading.active = false;
-		    });*/
+		    });
     	};
-    	
-    	
 	}]);
 })(window,window.angular);

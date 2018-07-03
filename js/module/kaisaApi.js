@@ -15,6 +15,7 @@
 		
 		this.getReservationList = apiUrl + '/api/riverhill/getReservationList.php' + ext;
 		this.setReservation = apiUrl + '/api/riverhill/setReservation.php' + ext;
+		this.updateReservation = apiUrl + '/api/riverhill/updateReservation.php' + ext;
 		
     }]);
 })(window, window.angular);
