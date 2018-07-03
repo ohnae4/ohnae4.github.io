@@ -385,29 +385,60 @@
 				$scope.getRoomList();
 			}
 		}
-		
-		kaisaStorage.removeCookie('test');
-		kaisaStorage.setCookie('test', 'test1', '1', 'admin.mobydic.co.kr');
-		
 		/**
 		 * 관리자 로그인
 		 */
 		$scope.admin = {
-			sec : null,
+			si : null,
+			sp : null,
+			active : false,
+			user : false,
+			count : 0,
 			submit : function(){
-				kaisaStorage.setCookie('sec', this.sec, '1', 'admin.mobydic.co.kr');
-				
-				$timeout(function(){
-					$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({})).success(function(data){
-						console.log(data);
-						kaisaStorage.removeCookie('sec');
-						
-				    }).error(function(data){
-				    	$scope.alert.open({message : '객실조회 실패.'});
-				    	$scope.loading.active = false;
-						kaisaStorage.removeCookie('sec');
-				    });
-				},1000);
+				if(this.active){
+					$scope.alert.open({message : '처리중입니다.'});
+					return;
+				};
+				this.active = true;
+				$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({si : $scope.admin.si , sp : $scope.admin.sp , cnt : $scope.admin.count })).success(function(data){
+					if(data.success){
+						kaisaStorage.setCookie('session', data.id, 10, '');
+						location.reload();
+					}else{
+						$scope.admin.count++;
+						if($scope.admin.count >= 5){
+							location.reload();
+						}
+						$scope.alert.open({message : $scope.admin.count + '회 실패, 회원정보가 다릅니다.'});
+						$scope.admin.active = false;
+					}
+			    }).error(function(data){
+			    	$scope.alert.open({message : '로그인 실패'});
+					kaisaStorage.removeCookie('session');
+			    	$scope.loading.active = false;
+			    	$scope.admin.active = false;
+			    });
+			},
+			check : function(){
+				$http.jsonp(kaisaApi.getLoginCheck + $scope.jsonpParam({session : kaisaStorage.getCookie('session') })).success(function(data){
+					if(data.success){
+						$scope.admin.user = true;
+					}else{
+						kaisaStorage.removeCookie('session');
+					}
+			    }).error(function(data){
+			    	kaisaStorage.removeCookie('session');
+			    	console.log('login check error!');
+			    });
+			},
+			logout : function(){
+				$http.jsonp(kaisaApi.getLogout + $scope.jsonpParam({session : kaisaStorage.getCookie('session') })).success(function(data){
+					console.log('logout');
+					kaisaStorage.removeCookie('session');
+					location.reload();
+			    }).error(function(data){
+			    	console.log('logout error!');
+			    });
 			},
 			layer : {
 				open : function(){
@@ -416,7 +447,10 @@
 				},
 				active : false
 			}
-		}
+		};
+		if(kaisaStorage.getCookie('session')){
+			$scope.admin.check();
+		};
 		/**
 		 * 공통 이벤트 관리
 		 */

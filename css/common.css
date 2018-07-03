@@ -44,8 +44,9 @@ body {background:#fff;}
 #content {width:1280px; min-height:300px; margin:0 auto; position:relative; z-index:1;}
 #content h2 {padding:20px 0 10px 0; color:#333;}
 
-#footer {width:1280px; background:url(/img/common/mask.png) repeat rgba(0,0,0,0.5); height:98px; margin:50px auto; position:relative; z-index:2; padding:25px 0; text-align:center; clear:both;}
-#footer p {font-size:12px; color:#fff; line-height:16px;}
+#footer {width:1280px; background:url(/img/common/mask.png) repeat rgba(0,0,0,0.5); margin:50px auto; position:relative; z-index:2; padding:30px 0; text-align:center; clear:both;}
+#footer p {font-size:12px; color:#fff; line-height:16px; padding:5px 0;}
+#footer p span {cursor:pointer;}
 
 #visual {width:100%; overflow:hidden; clear:both;}
 #visual img {width:100%;}
@@ -90,7 +91,7 @@ ul.loading li:nth-child(2),ul.loading li:nth-child(4){animation-delay: .3s;}
 ul.loading li:nth-child(3) {animation-delay: .2s;}
 @keyframes move{0%{transform: scale(1.2);opacity:1;} 100%{transform: scale(0.7);opacity:0.1;}}
 
-#login {position:fixed;text-align:center; padding:50px; z-index:10000; width:300px; height:230px; border:1px solid #ccc; left:50%; top:50%; margin:-115px 0 0 -150px; background:#eee;}
+#login {position:fixed;text-align:center; padding:30px 50px; z-index:500; width:300px; height:230px; border:1px solid #ccc; left:50%; top:50%; margin:-115px 0 0 -150px; background:#eee;}
 #login h3 {font-size:20px; line-height:30px; padding:10px 0;}
-#login input {}
+#login input {margin-bottom:5px;}
 #login button {display:inlin-block; margin-top:10px;}

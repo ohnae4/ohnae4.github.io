@@ -7,6 +7,9 @@
 			ext = constant.extension.api;
 		
 		this.getLogin = apiUrl + '/api/user/getLogin.php' + ext;
+		this.getLogout = apiUrl + '/api/user/getLogout.php' + ext;
+		this.getLoginCheck = apiUrl + '/api/user/getLoginCheck.php' + ext;
+		
 		this.getRoomList = apiUrl + '/api/riverhill/getRoomList.php' + ext;
 		this.setRoom = apiUrl + '/api/riverhill/setRoom.php' + ext;
 		
