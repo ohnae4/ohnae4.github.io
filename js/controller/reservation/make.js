@@ -142,6 +142,7 @@
 		$scope.setRoom = function() {
 			$http.jsonp(kaisaApi.setRoom + $scope.jsonpParam($scope.ROOM_BASE)).success(function(data){
 		        console.log(data);
+		        $scope.loading.active = false;
 		    }).error(function(data){
 		    	$scope.alert.open({message : '객실추가 실패.'});
 		    	$scope.loading.active = false;

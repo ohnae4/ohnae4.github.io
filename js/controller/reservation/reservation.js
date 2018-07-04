@@ -130,7 +130,11 @@
     	$scope.getReservationList();
     	$scope.updateReservation = function(no,code){
     		$http.jsonp(kaisaApi.updateReservation + $scope.jsonpParam({ RESERVATION_NUMBER : no , ROOM_STATUS_CODE : code })).success(function(data){
-    			location.reload();
+    			if(data.success){
+    				location.reload();
+    			}else{
+    				$scope.alert.open({message : data.message});
+    			}
 				$scope.loading.active = false
 		    }).error(function(data){
 		    	console.log('update error');
