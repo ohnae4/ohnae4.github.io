@@ -1,8 +1,6 @@
 (function(window, angular, undefined){
 	'use strict';
 	var app = angular.module('directive',['common']);
-	
-	
 	app.directive('kaisaHeader',[function(){
 		return {
 			template: '<div id="header">'+
@@ -13,7 +11,6 @@
 			}
 		}
 	}]);
-	
 	app.directive('kaisaMenu',[function(){
 		return {
 			template: '<div>'+
@@ -64,7 +61,6 @@
 			}
 		}
 	}]);
-	
 	app.directive('kaisaMap',[function(){
 		return {
 			template: '<div id="contactUs">'+
@@ -99,7 +95,6 @@
 			}
 		}
 	}]);
-
 	app.directive('kaisaFooter',[function(){
 		return {
 			template: '<div id="footer">'+
@@ -113,7 +108,6 @@
 			}
 		}
 	}]);
-	
 	app.directive('onlyNumber',['kaisaRegex',function(kaisaRegex){ //only-number="false" => '.-'
 	    return {
 	    	require: 'ngModel',
@@ -222,11 +216,11 @@
 	    };
 	}]);
 	app.directive('myEnter', function () {
-	    return function (scope, el, attrs) {
+	    return function ($scope, el, attrs) {
 	    	el.on('keydown keypress', function (event) {
 	            if(event.which === 13) {
-	                scope.$apply(function (){
-	                    scope.$eval(attrs.myEnter);
+	                $scope.$apply(function (){
+	                    $scope.$eval(attrs.myEnter);
 	                });
 	                el.blur();
 	                event.preventDefault();
@@ -234,4 +228,37 @@
 	        });
 	    };
 	});
+	
+	app.directive('myDir', ['$parse', function ($parse) {
+	    return {
+	        restrict: 'EA',
+	        scope: true,
+	        link: function (scope, elem, attrs) {
+	           
+	        }
+	    };
+	}]);
+	
+	app.directive('kaisaCaptcha',['$parse',function($parse){
+		return {
+			link : function($scope, el, attrs, ctrl) {
+				if(!attrs.ngModel) {return;}
+				$scope[attrs.ngModel] = {
+					code : null,
+					refresh : function(){
+						var a = Math.floor((Math.random() * 10)),
+							b = Math.floor((Math.random() * 10)),
+							c = Math.floor((Math.random() * 10)),
+							d = Math.floor((Math.random() * 10)),
+							e = Math.floor((Math.random() * 10)),
+							f = Math.floor((Math.random() * 10));
+						var html = '<div class="through" style="transform:rotate('+a+'deg);"></div><div class="through" style="transform:rotate(-'+c+'deg);"></div><ol><li class="lan'+a+'">'+a+'</li><li class="lan'+b+'">'+b+'</li><li class="lan'+c+'">'+c+'</li class="lan'+d+'"><li>'+d+'</li><li class="lan'+e+'">'+e+'</li><li class="lan'+f+'">'+f+'</li></ol>';
+						this.code = ''+a+''+b+''+c+''+d+''+e+''+f;
+						el.html('').html(html);
+					}
+				};
+				$scope[attrs.ngModel].refresh();
+			}
+		};
+	}]);
 })(window, window.angular);

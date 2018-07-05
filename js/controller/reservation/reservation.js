@@ -85,7 +85,8 @@
 			DESCRIPTION : '',
 			DATE_NUMBER : 1,
 			PERSONNEL_1 : 1,
-			PERSONNEL_2 : 0
+			PERSONNEL_2 : 0,
+			CAPTCHA_CODE : ''
 		};
 		
     	$scope.layerReservation = {
