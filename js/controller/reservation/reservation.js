@@ -132,7 +132,8 @@
     	$scope.updateReservation = function(no,code){
     		$http.jsonp(kaisaApi.updateReservation + $scope.jsonpParam({ RESERVATION_NUMBER : no , ROOM_STATUS_CODE : code })).success(function(data){
     			if(data.success){
-    				location.reload();
+    				$scope.alert.open({message : data.message});
+    				$scope.getReservationList();
     			}else{
     				$scope.alert.open({message : data.message});
     			}
@@ -141,6 +142,25 @@
 		    	console.log('update error');
 		    	$scope.loading.active = false;
 		    });
+    	};
+    	
+    	
+    	$scope.deleteReservation = {
+    		no : null,
+    		callback : function(){
+    			$http.jsonp(kaisaApi.deleteReservation + $scope.jsonpParam({ RESERVATION_NUMBER : $scope.deleteReservation.no })).success(function(data){
+    				$scope.alert.open({message : data.message});
+    				$scope.getReservationList();
+    				$scope.loading.active = false
+    		    }).error(function(data){
+    		    	console.log('update error');
+    		    	$scope.loading.active = false;
+    		    });
+    		},
+    		click : function(no){
+    			this.no = no;
+    			$scope.alert.open({message : '정말 삭제하시겠습니까?' , confirm : true, callback : $scope.deleteReservation.callback});
+    		}
     	};
 	}]);
 })(window,window.angular);
