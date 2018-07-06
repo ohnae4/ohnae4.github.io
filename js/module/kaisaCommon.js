@@ -369,7 +369,7 @@
 			$http.jsonp(kaisaApi.getRoomList + $scope.jsonpParam({})).success(function(data){
 				$scope.roomList = {
 					version : $scope.constant.version,
-					items : data
+					items : data.items
 				};
 				kaisaStorage.setSessionStorage('roomList',$scope.roomList,'json');
 				console.log($scope.roomList);

@@ -18,21 +18,21 @@
 		        this.start.selectIdx = this.start.today();
 		        return this;
 		    },
-		    clickRoom : function(n,i){
+		    clickRoom : function(n,i,price){
 		    	this.start.pick(i);
 		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = n;
 		    	$scope.ROOM_RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-dd');
+		    	$scope.ROOM_RESERVATION.PRICE = price;
 		    	$scope.layerReservation.active = true;
 		    },
     		start : {
     			date : new Date(),
     			now : null,
+    			peakCode : null, //1:준성수기, 2:성수기, 3:극성수기
     			today : function(){
     				return this.now.getDate()
     			},
-    			month : function(){
-    				return this.date.getMonth()
-    			},
+    			month : null,
     			firstDay  : function(){
     				return new Date(this.date.getFullYear(),this.date.getMonth()).getDay();
     			},
@@ -61,10 +61,46 @@
     			makeDays : function(){
 	                this.day = [];
 	                for (var i = 0 ; i < this.firstDay() ; i++) {
-	                	this.day.push({idx : 0-i, date : getAddZero(0-i), list : $scope.roomList.items, reservation : []});
+	                	this.day.push({peakCode : null, dayCode : null, idx : 0-i, date : getAddZero(0-i), list : [], reservation : []});
 	                }                
 	                for (var i = 0 ; i < this.lastDay() ; i++) {
-	                	this.day.push({idx : i+1, date : getAddZero(i+1), list : $scope.roomList.items, reservation : []});
+	                	var date = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM') + '-' + getAddZero(i+1);
+	                	var dayCode = new Date(date).getDay();
+	                	var peakCode = 0;
+	                	var priceCode = 0;
+	                	if(date >= '2018-07-14' && date <= '2018-07-20'){
+	                		peakCode = 1; //준성수기
+	                	}else if(date >= '2018-07-21' && date <= '2018-08-14'){
+	                		peakCode = 2; //성수기
+	                	}else if(date >= '2018-08-15' && date <= '2018-08-18'){
+	                		peakCode = 3; //극성수기
+	                	}
+	                	if(peakCode == 0){
+	                		if(dayCode == 5){
+	                			priceCode = 2;
+	                		}else if(dayCode == 6){
+	                			priceCode = 3;
+	                		}else{
+	                			priceCode = 1;
+	                		}
+	                	}else if(peakCode == 1){
+	                		if(dayCode == 5){
+	                			priceCode = 5;
+	                		}else if(dayCode == 6){
+	                			priceCode = 6;
+	                		}else{
+	                			priceCode = 4;
+	                		}
+	                	}else if(peakCode == 2 || peakCode == 3){
+	                		if(dayCode == 5){
+	                			priceCode = 8;
+	                		}else if(dayCode == 6){
+	                			priceCode = 9;
+	                		}else{
+	                			priceCode = 7;
+	                		}
+	                	}
+	                	this.day.push({priceCode : priceCode, peakCode : peakCode, dayCode : dayCode, idx : i+1, date : getAddZero(i+1), list : $scope.roomList.items, reservation : []});
 	                }
 	            },
 	            selectDate : function(i){
@@ -86,9 +122,9 @@
 			DATE_NUMBER : 1,
 			PERSONNEL_1 : 1,
 			PERSONNEL_2 : 0,
+			PRICE : 0,
 			CAPTCHA_CODE : ''
 		};
-		
     	$scope.layerReservation = {
     		active : false,
     		close : function(){
@@ -114,6 +150,7 @@
 				$scope.rvCalendar.start.date = new Date(data.date);
 				$scope.rvCalendar.start.now = new Date(data.now);
 				$scope.rvCalendar.init();
+				$scope.rvCalendar.start.month = $filter('date')($scope.rvCalendar.start.date,'MM');
 				for(var i in $scope.reservationList){
 					$scope.reservationList[i].ROOM_STATUS_CODE_ORIGIN = $scope.reservationList[i].ROOM_STATUS_CODE;
 					for(var j in $scope.rvCalendar.start.day){
@@ -143,8 +180,6 @@
 		    	$scope.loading.active = false;
 		    });
     	};
-    	
-    	
     	$scope.deleteReservation = {
     		no : null,
     		callback : function(){
