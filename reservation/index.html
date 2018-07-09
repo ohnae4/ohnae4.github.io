@@ -99,6 +99,7 @@
 	    		<th>예약상태</th>
 	    		<th>숙박일</th>
 	    		<th>인원</th>
+	    		<th>입금금액</th>
 	    		<th>접수일시</th>
 	    	</tr>
 		    <tr data-ng-repeat="(idx , i) in reservationList">
@@ -110,6 +111,7 @@
 				<td>{{i.ROOM_STATUS_CODE | roomStatusCode}}</td>
 				<td>{{i.DATE_NUMBER}}박</td>
 				<td>{{i.PERSONNEL_1}}명</td>
+				<td>{{i.PRICE}}만원</td>
 				<td>{{i.CREATE_DATE}}</td>
 		    </tr>
 	    </table>
@@ -139,6 +141,7 @@
 	    		<th>예약상태</th>
 	    		<th>숙박일</th>
 	    		<th>인원</th>
+	    		<th>입금금액</th>
 	    		<th>접수일시</th>
 	    		<th>수정일시</th>
 	    		<th>설명</th>
@@ -162,6 +165,7 @@
 				</td>
 				<td>{{i.DATE_NUMBER}}박</td>
 				<td>{{i.PERSONNEL_1}}명</td>
+				<td>{{i.PRICE}}만원</td>
 				<td>{{i.CREATE_DATE}}</td>
 				<td>{{i.UPDATE_DATE}}</td>
 				<td>{{i.DESCRIPTION}}</td>
@@ -192,7 +196,7 @@
 				<td>
 					<select  required="required" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER">
 						<option ng-value="1" selected="selected">1</option>
-						<option ng-value="2">2</option>
+						<option ng-value="2" ng-if="rvCalendar.tomorrowYn">2</option>
 					</select> 
 					박
 				</td>

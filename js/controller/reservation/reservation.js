@@ -21,10 +21,19 @@
 		    selectDay : {},
 		    selectRoom : {},
 		    selectRoomOption : [],
+		    tomorrowYn : false,
 		    clickRoom : function(room,day){
 		    	this.start.pick(day.idx);
 		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = room.ROOM_NUMBER;
 		    	$scope.ROOM_RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-dd');
+		    	var tomorrow = new Date($scope.ROOM_RESERVATION.RESERVATION_DATE);
+		    	tomorrow = tomorrow.setDate(tomorrow.getDate() + 1);
+		    	$scope.rvCalendar.tomorrowYn = true;
+		    	for(var i in $scope.reservationList){
+		    		if($scope.reservationList[i].RESERVATION_DATE == $filter('date')(tomorrow,'yyyy-MM-dd') && $scope.reservationList[i].ROOM_NUMBER == room.ROOM_NUMBER){
+		    			$scope.rvCalendar.tomorrowYn = false;
+		    		}
+		    	}
 		    	$scope.ROOM_RESERVATION.PRICE = room['PRICE_'+day.priceCode];
 		    	$scope.layerReservation.active = true;
 		    	this.selectRoom = room;
@@ -159,9 +168,12 @@
     		},
     		submit : function(){
 				$http.jsonp(kaisaApi.setReservation + $scope.jsonpParam($scope.ROOM_RESERVATION)).success(function(data){
-			        //location.reload();
-					$scope.getReservationList();
-					$scope.layerReservation.close();
+					if(data.success){
+						$scope.getReservationList();
+						$scope.layerReservation.close();
+					}else{
+						$scope.alert.open({message : data.message});
+					}
 			    }).error(function(data){
 			    	$scope.alert.open({message : '예약할 수 없는 날짜 입니다.'});
 			    	$scope.loading.active = false;
