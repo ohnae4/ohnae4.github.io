@@ -479,3 +479,4 @@
 		});
 	}]);
 })(window,window.angular);
+window.getScope = function(){return angular.element(document.body).scope().$$childHead;}
