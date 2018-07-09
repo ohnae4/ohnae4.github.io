@@ -51,21 +51,21 @@
 	    
 	    <div class="calendar">
 		    <div class="week" data-ng-repeat="val in rvCalendar.start.dateHead" data-ng-class="{sun:($index == 0)}">{{val}}</div>
-		    <div data-ng-class="{off:i.idx <= 0}" class="day" data-ng-repeat="i in rvCalendar.start.day">
+		    <div data-ng-class="{off:day.idx <= 0}" class="day" data-ng-repeat="day in rvCalendar.start.day">
 		    	<span>
-			    	<strong data-ng-bind="(i.idx > 0) ? i.idx : ''"></strong>
-			    	<b data-ng-if="i.peakCode == 0">비수기</b>
-			    	<b data-ng-if="i.peakCode == 1">준성수기</b>
-			    	<b data-ng-if="i.peakCode == 2">성수기</b>
-			    	<b data-ng-if="i.peakCode == 3">극성수기</b>
+			    	<strong data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+			    	<b data-ng-if="day.peakCode == 0">비수기</b>
+			    	<b data-ng-if="day.peakCode == 1">준성수기</b>
+			    	<b data-ng-if="day.peakCode == 2">성수기</b>
+			    	<b data-ng-if="day.peakCode == 3">극성수기</b>
 		    	</span>
-		    	<p data-ng-repeat="(ridx , r) in i.list">
-		    		<strong><span data-ng-click="rvCalendar.clickRoom(r.ROOM_NUMBER,i.idx,r['PRICE_' + i.priceCode])">{{r.ROOM_NAME}}</span></strong>
-		    		{{r['PRICE_' + i.priceCode]}}만원
-		    		<b data-ng-repeat="(vidx , v) in i.reservation" data-ng-if="r.ROOM_NUMBER == v.ROOM_NUMBER">
-			    		<span class="ico_2" ng-if="v.ROOM_STATUS_CODE == 2">예약중</span>
-			    		<span class="ico_3" ng-if="v.ROOM_STATUS_CODE == 3">완료</span>
-			    		<span class="dim" ng-show="v.ROOM_STATUS_CODE == 2 || v.ROOM_STATUS_CODE == 3"></span>
+		    	<p data-ng-repeat="(ridx , room) in day.list">
+		    		<strong><span data-ng-click="rvCalendar.clickRoom(room,day)">{{room.ROOM_NAME}}</span></strong>
+		    		{{room['PRICE_' + day.priceCode]}}만원
+		    		<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
+			    		<span class="ico_2" ng-if="rv.ROOM_STATUS_CODE == 2">예약중</span>
+			    		<span class="ico_3" ng-if="rv.ROOM_STATUS_CODE == 3">완료</span>
+			    		<span class="dim" ng-show="rv.ROOM_STATUS_CODE == 2 || rv.ROOM_STATUS_CODE == 3"></span>
 		    		</b>
 		    	</p>
 		    </div>
@@ -189,11 +189,22 @@
 			</tr>
 			<tr>
 				<th>숙박일</th>
-				<td><input data-only-number="true" type="text" maxlength="1" style="width:50px;" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER" required="required" /> 박</td>
+				<td>
+					<select  required="required" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER">
+						<option ng-value="1" selected="selected">1</option>
+						<option ng-value="2">2</option>
+					</select> 
+					박
+				</td>
 			</tr>
 			<tr>
 				<th class="required">인원</th>
-				<td><input data-only-number="true" type="text" maxlength="2" style="width:50px;" name="PERSONNEL_1" ng-model="ROOM_RESERVATION.PERSONNEL_1" required="required" /> 명</td>
+				<td>
+					<select  required="required" name="PERSONNEL_1" ng-model="ROOM_RESERVATION.PERSONNEL_1">
+						<option ng-repeat="i in rvCalendar.selectRoomOption" ng-value="i.personnel" ng-selected="i.personnel == rvCalendar.selectRoomOption[0].personnel">{{i.personnel}}</option>
+					</select>
+					명
+				</td>
 			</tr>
 			<tr>
 				<th class="required">입금금액</th>

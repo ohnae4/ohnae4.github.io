@@ -18,12 +18,22 @@
 		        this.start.selectIdx = this.start.today();
 		        return this;
 		    },
-		    clickRoom : function(n,i,price){
-		    	this.start.pick(i);
-		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = n;
+		    selectDay : {},
+		    selectRoom : {},
+		    selectRoomOption : [],
+		    clickRoom : function(room,day){
+		    	this.start.pick(day.idx);
+		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = room.ROOM_NUMBER;
 		    	$scope.ROOM_RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-dd');
-		    	$scope.ROOM_RESERVATION.PRICE = price;
+		    	$scope.ROOM_RESERVATION.PRICE = room['PRICE_'+day.priceCode];
 		    	$scope.layerReservation.active = true;
+		    	this.selectRoom = room;
+		    	this.selectDay = day;
+		    	this.selectRoomOption = [];
+		    	for(var i=room.MIN_PERSONNEL; i <= room.MAX_PERSONNEL; i++){
+		    		this.selectRoomOption.push({personnel : i});
+		    	}
+		    	$scope.ROOM_RESERVATION.PERSONNEL_1 = this.selectRoomOption[0].personnel;
 		    },
     		start : {
     			date : new Date(),
@@ -119,12 +129,29 @@
 			PASSWORD : '111',
 			ROOM_STATUS_CODE : 2,
 			DESCRIPTION : '',
-			DATE_NUMBER : 1,
-			PERSONNEL_1 : 1,
+			DATE_NUMBER : '1',
+			PERSONNEL_1 : null,
 			PERSONNEL_2 : 0,
 			PRICE : 0,
 			CAPTCHA_CODE : ''
 		};
+    	
+    	$scope.$watch('ROOM_RESERVATION.PERSONNEL_1', function(val){
+    		if(val){
+    			var int = parseInt(val) - parseInt($scope.rvCalendar.selectRoom.MIN_PERSONNEL);
+    			var price = parseInt($scope.rvCalendar.selectRoom['PRICE_'+ $scope.rvCalendar.selectDay.priceCode]);
+    			$scope.ROOM_RESERVATION.PRICE = price + int;
+    		}
+        },true);
+    	
+    	$scope.$watch('ROOM_RESERVATION.DATE_NUMBER', function(val){
+    		if(val){
+    			var int = parseInt($scope.ROOM_RESERVATION.PERSONNEL_1) - parseInt($scope.rvCalendar.selectRoom.MIN_PERSONNEL);
+    			var price = parseInt($scope.rvCalendar.selectRoom['PRICE_'+ $scope.rvCalendar.selectDay.priceCode]);
+    			$scope.ROOM_RESERVATION.PRICE = (price + int) * parseInt(val);
+    		}
+        },true);
+    	
     	$scope.layerReservation = {
     		active : false,
     		close : function(){
