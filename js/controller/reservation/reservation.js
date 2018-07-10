@@ -180,6 +180,33 @@
 			    });
     		}
     	};
+    	//paging
+    	$scope.paging = {
+	    	orderBy: null,
+			search: {
+				ROOM_NUMBER : '',
+				RESERVATION_DATE : '',
+				RESERVATION_NUMBER : ''
+			},
+			reset : function(){
+				$scope.paging.search.ROOM_NUMBER = '';
+				$scope.paging.search.RESERVATION_DATE = '';
+				$scope.paging.search.RESERVATION_NUMBER = '';
+				$scope.paging.currentPage = 0;
+			},
+			sorting: function(key){
+				if(this.orderBy == key){
+					this.orderBy = '-' + key;
+					return;
+				}
+				this.orderBy = '' + key;
+			},
+			currentPage : 0,
+			pageSize : 10,
+			numberOfPages : function(){
+				return Math.ceil($scope.reservationList.length / this.pageSize);
+			}
+    	};
 		//객실 예약정보
     	$scope.reservationList = {};
     	$scope.getReservationList = function(){

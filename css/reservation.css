@@ -1,14 +1,20 @@
 @charset "utf-8";
 
+.searchForm {width:100%; clear:both;}
+.searchForm table {width:100%; border-top:2px solid #666;}
+.searchForm table th {width:100px; padding:5px 10px; border:1px solid #ddd; background:#f2f2f2;}
+.searchForm table td {padding:5px 10px; border:1px solid #ddd;}
+.searchForm table td select,
+.searchForm table td input {width:150px;}
 /* 달력 */
 .rvCalendar {width:100%; clear:both; white-space:nowrap;}
-.rvCalendar h2 {font-size:30px; height:80px; text-align:center; line-height:40px; color:#333;}
+#content .rvCalendar h2 {font-size:30px; height:80px; text-align:center; line-height:40px; color:#333;}
 .rvCalendar h2 .prev,
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
 .rvCalendar .calendar {width:100%; clear:both; overflow:hidden; background:#f9f9f9;}
-.rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0;}
+.rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0; border-top:2px solid #666;}
 .rvCalendar .day {width:14%; background:#fff; padding:5px; float:left; height:180px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
 .rvCalendar .week:nth-child(7n),
 .rvCalendar .day:nth-child(7n) {width:16%; border-right:1px solid #ccc;}
@@ -34,10 +40,11 @@
 
 /* 객실목록 */
 .reservationList {clear:both; width:100%; overflow:hidden;}
-.reservationList table {width:100%; line-height:28px; white-space:nowrap;}
-.reservationList table th {text-align:center; border:1px solid #ddd; padding:5px; background:#f9f9f9;}
+.reservationList table {width:100%; line-height:28px; white-space:nowrap; border-top:2px solid #666;}
+.reservationList table th {text-align:center; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
 .reservationList table td {border:1px solid #ddd; padding:5px;}
 .reservationList .none {text-align:center; padding:30px 0; width:100%; clear:both; border:1px solid #eee;}
+
 /* 객실생성 */
 #roomBase table {width:100%;}
 #roomBase table th {width:210px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
