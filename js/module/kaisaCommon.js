@@ -381,7 +381,7 @@
 		if(!$scope.roomList){ //TODO || $scope.roomList 삭제  evict
 			$scope.getRoomList();
 		}else{
-			if($scope.constant.version != $scope.roomList.version){ //sessionStorage refresh
+			if($scope.roomList.items.length == 0 || $scope.constant.version != $scope.roomList.version){ //sessionStorage refresh
 				$scope.getRoomList();
 			}
 		}

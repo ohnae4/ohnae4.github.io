@@ -15,27 +15,37 @@
 .rvCalendar h2 .next {background-position:-40px -40px;}
 .rvCalendar .calendar {width:100%; clear:both; overflow:hidden; background:#f9f9f9;}
 .rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0; border-top:2px solid #666;}
-.rvCalendar .day {width:14%; background:#fff; padding:5px; float:left; height:180px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
+.rvCalendar .day {width:14%; position:relative; background:#fff; padding:5px; float:left; height:180px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
 .rvCalendar .week:nth-child(7n),
 .rvCalendar .day:nth-child(7n) {width:16%; border-right:1px solid #ccc;}
 .rvCalendar .day:last-child {padding-right:1px; border-right:1px solid #ccc;}
-.rvCalendar .off {background:#f9f9f9;}
+.rvCalendar .day strong.dayNo {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#757a96; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
+.rvCalendar .day .peakCode {position:absolute; padding:2px 5px; border:1px solid #d7dae8; right:5px; top:5px; font-size:11px; color:#8b8fa5; font-weight:normal;}
+
+.rvCalendar .done {background:#f9f9f9;}
+.rvCalendar .day.done span,
+.rvCalendar .day.done p {display:none}
+
+.rvCalendar .off:before {background:url(/img/common/mask_white.png) repeat; content:''; width:100%; height:100%; position:absolute; left:0; top:0; z-index:3;}
 .rvCalendar .day.off span,
-.rvCalendar .day.off p {display:none}
+.rvCalendar .day.off p {}
+
 .rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:23px;}
 .rvCalendar .day p .dim {position:absolute; left:0; top:0; width:100%; height:100%; display:block; padding:0; margin:0; background:rgba(255,255,255,0.5)}
-.rvCalendar .day p strong {width:63px; cursor:pointer; font-size:11px; font-weight:normal; display:inline-block;}
-.rvCalendar .day p strong span {color:#333;}
+.rvCalendar .day p strong.roomName {width:63px; cursor:pointer; font-size:11px; font-weight:normal; display:inline-block;}
+.rvCalendar .day p strong.roomName span {color:#333;}
+.rvCalendar .day p strong.price {width:41px; font-size:11px; font-weight:normal; display:inline-block; color:#999;}
+
 .rvCalendar .day p span {font-size:11px; line-height:17px; font-weight:normal; display:inline-block; padding:0 3px; border-radius:2px; color:#fff;}
 .rvCalendar .day p span.ico_1 {background:green;}
 .rvCalendar .day p span.ico_2 {background:#ff5500;}
 .rvCalendar .day p span.ico_3 {background:red;}
 
 /* 예약팝업 */
-.layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:1000; background:url(/img/common/mask.png) repeat;}
+.layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
 .layerReservation form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
 .layerReservation table {width:100%;}
-.layerReservation table th {width:110px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+.layerReservation table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
 .layerReservation table td {border:1px solid #ddd; padding:5px;}
 
 /* 객실목록 */

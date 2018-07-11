@@ -4,7 +4,7 @@
 	app.factory('constant', ['$http','$filter',function($http,$filter) {
 		return {
 			dateVersion : $filter('date')(new Date(),'yyyyMMddHHmm'), //10분단위로 클라이언트 캐시 삭제
-			version : '0.0.1', //version 업데이트시 sessionStorage 캐시 삭제
+			version : '0.0.2', //version 업데이트시 sessionStorage 캐시 삭제
 			host : '',
 			dev : (location.host == 'kaisa.co.kr') ? false : true,
 			title     : 'kaisa',

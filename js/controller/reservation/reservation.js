@@ -26,6 +26,7 @@
 		    	this.start.pick(day.idx);
 		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = room.ROOM_NUMBER;
 		    	$scope.ROOM_RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-dd');
+		    	
 		    	var tomorrow = new Date($scope.ROOM_RESERVATION.RESERVATION_DATE);
 		    	tomorrow = tomorrow.setDate(tomorrow.getDate() + 1);
 		    	$scope.rvCalendar.tomorrowYn = true;
@@ -34,6 +35,7 @@
 		    			$scope.rvCalendar.tomorrowYn = false;
 		    		}
 		    	}
+		    	
 		    	$scope.ROOM_RESERVATION.PRICE = room['PRICE_'+day.priceCode];
 		    	$scope.layerReservation.active = true;
 		    	this.selectRoom = room;
@@ -83,6 +85,12 @@
 	                	this.day.push({peakCode : null, dayCode : null, idx : 0-i, date : getAddZero(0-i), list : [], reservation : []});
 	                }                
 	                for (var i = 0 ; i < this.lastDay() ; i++) {
+	                	var nowInt = parseInt($filter('date')($scope.rvCalendar.start.now,'yyyyMMdd'));
+	                	var dateInt = parseInt($filter('date')($scope.rvCalendar.start.date,'yyyyMM') + getAddZero(i+1))
+	                	var off = false;
+	                	if(nowInt > dateInt){
+	                		off = true;
+	                	}
 	                	var date = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM') + '-' + getAddZero(i+1);
 	                	var dayCode = new Date(date).getDay();
 	                	var peakCode = 0;
@@ -119,7 +127,7 @@
 	                			priceCode = 7;
 	                		}
 	                	}
-	                	this.day.push({priceCode : priceCode, peakCode : peakCode, dayCode : dayCode, idx : i+1, date : getAddZero(i+1), list : $scope.roomList.items, reservation : []});
+	                	this.day.push({off : off, priceCode : priceCode, peakCode : peakCode, dayCode : dayCode, idx : i+1, date : getAddZero(i+1), list : $scope.roomList.items, reservation : []});
 	                }
 	            },
 	            selectDate : function(i){
@@ -135,6 +143,7 @@
 			ROOM_NUMBER : null,
 			MEMBER_NAME : '최재호',
 			MEMBER_PHONE : '01055555552',
+			MEMBER_EMAIL : '232@email.com',
 			PASSWORD : '111',
 			ROOM_STATUS_CODE : 2,
 			DESCRIPTION : '',
@@ -186,12 +195,14 @@
 			search: {
 				ROOM_NUMBER : '',
 				RESERVATION_DATE : '',
-				RESERVATION_NUMBER : ''
+				RESERVATION_NUMBER : '',
+				ROOM_STATUS_CODE : ''
 			},
 			reset : function(){
 				$scope.paging.search.ROOM_NUMBER = '';
 				$scope.paging.search.RESERVATION_DATE = '';
 				$scope.paging.search.RESERVATION_NUMBER = '';
+				$scope.paging.search.ROOM_STATUS_CODE = '';
 				$scope.paging.currentPage = 0;
 			},
 			sorting: function(key){
@@ -246,7 +257,7 @@
 		    	$scope.loading.active = false;
 		    });
     	};
-    	$scope.deleteReservation = {
+    	$scope.deleteReservation = { //<!-- <button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button> -->
     		no : null,
     		callback : function(){
     			$http.jsonp(kaisaApi.deleteReservation + $scope.jsonpParam({ RESERVATION_NUMBER : $scope.deleteReservation.no })).success(function(data){

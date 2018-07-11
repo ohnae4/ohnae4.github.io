@@ -128,13 +128,16 @@
     		replace : true,
     		link: function($scope, el, attrs){
     			el.on('mouseover',function(e){
-    				$scope.help.active = true;
-    				$scope.help.html = el.find('.html').html();
-    				$scope.help.style = {
-    					left : e.pageX,
-    					top : e.pageY
-    				};
-    				$scope.$apply();
+    				if(el.find('.layer') && el.find('.layer').text().length > 10){
+    					$scope.help.html = el.find('.layer').html();
+        				$scope.help.active = true;
+        				$scope.help.html = el.find('.layer').html();
+        				$scope.help.style = {
+        					left : e.pageX,
+        					top : e.pageY
+        				};
+        				$scope.$apply();
+    				}
     			});
     			el.on('mouseout',function(e){
     				$scope.help.active = false;
