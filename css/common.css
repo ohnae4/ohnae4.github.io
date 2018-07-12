@@ -125,4 +125,9 @@ table th.required:after {content:'*'; display:inline-block; color:#ff0000; paddi
 .txtGuide {color:#ff5500; font-size:11px; position:relative; padding-bottom:3px;}
 .txtGuide:before {content:'*'; display:inline-block; padding:0 5px;}
 
-
+.searchForm {width:100%; clear:both;}
+.searchForm table {width:100%; border-top:2px solid #666;}
+.searchForm table th {width:100px; padding:5px 10px; border:1px solid #ddd; background:#f2f2f2;}
+.searchForm table td {padding:5px 10px; border:1px solid #ddd;}
+.searchForm table td select,
+.searchForm table td input {width:150px;}
