@@ -1,2 +1,7 @@
 @charset "utf-8";
 
+.layerQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerQna table {width:100%;}
+.layerQna table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+.layerQna table td {border:1px solid #ddd; padding:5px;}
