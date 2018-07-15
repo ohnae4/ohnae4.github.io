@@ -35,13 +35,17 @@
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content">
-	
-	<h2>1:1문의</h2>
+	<h2>
+		1:1문의
+		<span class="btnArea">
+			<button type="button" class="on" data-ng-click="layerQna.active = true">문의하기</button> 
+		</span>
+	</h2>
 	<form class="searchForm">
 		<table>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" data-ng-model="paging.search.RESERVATION_NUMBER" /></td>
+				<td><input type="text" data-ng-model="paging.search.SUBJECT" /></td>
 			</tr>
 		</table>
 		<div class="btnWrap">
@@ -53,16 +57,16 @@
     	<p class="none">예약목록이 없습니다.</p>
     </div>
 	
-    <div class="qnaList" ng-if="!admin.user && qnaList.length > 0">
+    <div class="qnaList" ng-if="qnaList.length > 0">
 	    <table>
 	    	<colgroup>
 	    		<col width="100" />
-	    		<col width="100" />
-	    		<col width="100" />
 	    		<col width="80" />
-	    		<col width="100" />
-	    		<col width="100" />
+	    		<col width="200" />
+	    		<col width="200" />
+	    		<col width="200" />
 	    		<col width="*" />
+	    		<col width="150" />
 	    	</colgroup>
 	    	<tr>
 	    		<th>문의번호</th>
@@ -75,23 +79,27 @@
 	    	</tr>
 		    <tr data-ng-show="idx < paging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: paging.search | startFrom: paging.currentPage * paging.pageSize | orderBy:paging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
 		    	<td class="tc">{{i.QNA_NUMBER}}</td>
-				<td>{{i.ROOM_NUMBER | roomNameCode}}</td>
 				<td>{{i.MEMBER_NAME + '*'}}</td>
 				<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
 				<td>{{i.MEMBER_EMAIL + '*********'}}</td>
-				<td>{{i.SUBJECT}}</td>
-				<td>{{i.CREATE_DATE}} <button type="button" class="normal" data-ng-click="deleteQna.click(i.QNA_NUMBER)">삭제</button></td>
+				<td><u ng-click="qnaView()">{{i.SUBJECT}}</u></td>
+				<td>{{i.CONTENT}}</td>
+				<td>{{i.CREATE_DATE}}</td>
 		    </tr>
 	    </table>
-	    
     </div>
-	
-</div>	
+    <div class="paginator" ng-if="qnaList.length > 0">
+		<button type="button" data-ng-disabled="paging.currentPage == 0" data-ng-click="paging.currentPage=paging.currentPage-1">Prev</button>
+	    <span><strong>{{paging.currentPage+1}}</strong>/{{paging.numberOfPages()}}</span>
+	    <button type="button" data-ng-disabled="paging.currentPage >= qnaList.length/paging.pageSize - 1" data-ng-click="paging.currentPage=paging.currentPage+1;">Next</button>
+	</div>
+</div>
+<div class="layerQna" data-ng-show="layerQnaView.active">
 
-    
+</div>
 <div class="layerQna" data-ng-show="layerQna.active">
 	<form id="formQna" name="formQna" ng-submit="layerQna.submit()">
-		<p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p>
+		<!-- <p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p> -->
 		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" ng-model="QNA.ROOM_NUMBER" required="required" />
 		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" ng-model="QNA.ROOM_STATUS_CODE" required="required" />
 		<table>

@@ -8,7 +8,6 @@
 		};
 		//rvQna
     	$scope.rvQna = {};
-		
     	//QNA
     	$scope.QNA = {
     		QNA_NUMBER : null,
@@ -19,10 +18,9 @@
 			SUBJECT : '제목',
 			CONTENT : '내용'
 		};
-    	
     	//문의하기
     	$scope.layerQna = {
-    		active : true,
+    		active : false,
     		close : function(){
     			this.active = false;
     		},
@@ -40,15 +38,16 @@
 			    });
     		}
     	};
-    	
     	//paging
     	$scope.paging = {
 	    	orderBy: null,
 			search: {
-				SUBJECT : ''
+				SUBJECT : '',
+				CONTENT : ''
 			},
 			reset : function(){
 				$scope.paging.SUBJECT = '';
+				$scope.paging.CONTENT = '';
 				$scope.paging.currentPage = 0;
 			},
 			sorting: function(key){
@@ -82,6 +81,7 @@
     		no : null,
     		callback : function(){
     			$http.jsonp(kaisaApi.deleteQna + $scope.jsonpParam({ QNA_NUMBER : $scope.deleteQna.no })).success(function(data){
+					console.log(data);
     				$scope.alert.open({message : data.message});
     				$scope.getQnaList();
     				$scope.loading.active = false
@@ -91,7 +91,8 @@
     		    });
     		},
     		click : function(no){
-    			this.no = no;
+				this.no = no;
+				debugger;
     			$scope.alert.open({message : '정말 삭제하시겠습니까?' , confirm : true, callback : $scope.deleteQna.callback});
     		}
     	};
