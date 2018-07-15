@@ -21,8 +21,6 @@
 .rvCalendar .day.done p {display:none}
 
 .rvCalendar .off:before {background:url(/img/common/mask_white.png) repeat; content:''; width:100%; height:100%; position:absolute; left:0; top:0; z-index:3;}
-.rvCalendar .day.off span,
-.rvCalendar .day.off p {}
 
 .rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:23px;}
 .rvCalendar .day p .dim {position:absolute; left:0; top:0; width:100%; height:100%; display:block; padding:0; margin:0; background:rgba(255,255,255,0.5)}
