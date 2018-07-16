@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kor" ng-app="KaisaApp" ng-controller="KaisaController">
+<html lang="kor" data-ng-app="KaisaApp" data-ng-controller="KaisaController">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,89 +37,89 @@
 <div id="content">
 	
 	<h2>객실 생성</h2>
-	<form id="roomBase" name="roomBase" ng-submit="setRoom()">
+	<form id="roomBase" name="roomBase" data-ng-submit="setRoom()">
 		<ul class="btnSelect">
-			<li data-ng-repeat="(idx,i) in roomArray" ng-class="{on : ROOM_BASE_IDX == idx}" data-ng-click="roomArraySelect(idx)">{{i.ROOM_NAME}}</li>
+			<li data-ng-repeat="(idx,i) in roomArray" data-ng-class="{on : ROOM_BASE_IDX == idx}" data-ng-click="roomArraySelect(idx)">{{i.ROOM_NAME}}</li>
 		</ul>
 		<table>
 			<tr>
 				<th>객실번호</th>
-				<td><input type="text" name="ROOM_NAME" ng-model="ROOM_BASE.ROOM_NUMBER" required="required" /></td>
+				<td><input type="text" name="ROOM_NAME" data-ng-model="ROOM_BASE.ROOM_NUMBER" required="required" /></td>
 			</tr>
 			<tr>
 				<th>객실명</th>
-				<td><input type="text" name="ROOM_NAME" ng-model="ROOM_BASE.ROOM_NAME" required="required" /></td>
+				<td><input type="text" name="ROOM_NAME" data-ng-model="ROOM_BASE.ROOM_NAME" required="required" /></td>
 			</tr>
 			<tr>
 				<th>유형</th>
-				<td><input type="text" data-only-number="true" name="ROOM_TYPE_CODE" ng-model="ROOM_BASE.ROOM_TYPE_CODE" required="required" style="width:100px;" /> 1: 원룸(침실) 2: 방1+거실+화1 3: 원룸(온돌)</td>
+				<td><input type="text" data-only-number="true" name="ROOM_TYPE_CODE" data-ng-model="ROOM_BASE.ROOM_TYPE_CODE" required="required" style="width:100px;" /> 1: 원룸(침실) 2: 방1+거실+화1 3: 원룸(온돌)</td>
 			</tr>
 			<tr>
 				<th>평수</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="ROOM_M2" ng-model="ROOM_BASE.ROOM_M2" required="required" style="width:50px;" /> 평</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="ROOM_M2" data-ng-model="ROOM_BASE.ROOM_M2" required="required" style="width:50px;" /> 평</td>
 			</tr>
 			<tr>
 				<th>객실 기준 인원</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="MIN_PERSONNEL" ng-model="ROOM_BASE.MIN_PERSONNEL" style="width:50px;" required="required" /> 명</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="MIN_PERSONNEL" data-ng-model="ROOM_BASE.MIN_PERSONNEL" style="width:50px;" required="required" /> 명</td>
 			</tr>
 			<tr>
 				<th>객실 최대 인원</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="MAX_PERSONNEL" ng-model="ROOM_BASE.MAX_PERSONNEL" style="width:50px;" required="required" /> 명</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="MAX_PERSONNEL" data-ng-model="ROOM_BASE.MAX_PERSONNEL" style="width:50px;" required="required" /> 명</td>
 			</tr>
 			<tr>
 				<th>비수기 주중 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_1" ng-model="ROOM_BASE.PRICE_1" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_1" data-ng-model="ROOM_BASE.PRICE_1" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>비수기 금요일 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_2" ng-model="ROOM_BASE.PRICE_2" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_2" data-ng-model="ROOM_BASE.PRICE_2" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>비수기 주말 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_3" ng-model="ROOM_BASE.PRICE_3" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_3" data-ng-model="ROOM_BASE.PRICE_3" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>준성수기 주중 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_4" ng-model="ROOM_BASE.PRICE_4" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_4" data-ng-model="ROOM_BASE.PRICE_4" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>준성수기 금요일 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_5" ng-model="ROOM_BASE.PRICE_5" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_5" data-ng-model="ROOM_BASE.PRICE_5" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>준성수기 주말 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_6" ng-model="ROOM_BASE.PRICE_6" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_6" data-ng-model="ROOM_BASE.PRICE_6" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>성수기 주중 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_7" ng-model="ROOM_BASE.PRICE_7" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_7" data-ng-model="ROOM_BASE.PRICE_7" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>성수기 금요일 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_8" ng-model="ROOM_BASE.PRICE_8" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_8" data-ng-model="ROOM_BASE.PRICE_8" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>성수기 주말 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_9" ng-model="ROOM_BASE.PRICE_9" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_9" data-ng-model="ROOM_BASE.PRICE_9" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>기준 인원 초과시 1인당 추가 요금</th>
-				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_ADD" ng-model="ROOM_BASE.PRICE_ADD" style="width:50px;" required="required" /> 만원</td>
+				<td><input type="text" maxlength="3" data-only-number="true" name="PRICE_ADD" data-ng-model="ROOM_BASE.PRICE_ADD" style="width:50px;" required="required" /> 만원</td>
 			</tr>
 			<tr>
 				<th>노출우선순위</th>
-				<td><input type="text" maxlength="2" data-only-number="true" name="PRIORITY" ng-model="ROOM_BASE.PRIORITY" style="width:50px;" /></td>
+				<td><input type="text" maxlength="2" data-only-number="true" name="PRIORITY" data-ng-model="ROOM_BASE.PRIORITY" style="width:50px;" /></td>
 			</tr>
 			<tr>
 				<th>설명</th>
-				<td><input type="text" maxlength="100" name="DESCRIPTION" ng-model="ROOM_BASE.DESCRIPTION" /></td>
+				<td><input type="text" maxlength="100" name="DESCRIPTION" data-ng-model="ROOM_BASE.DESCRIPTION" /></td>
 			</tr>
 		</table>
 		<ul class="btnSelect">
-			<li data-ng-repeat="(idx,i) in roomArray" ng-class="{on : ROOM_BASE_IDX == idx}"  data-ng-click="roomArraySelect(idx)">{{i.ROOM_NAME}}</li>
+			<li data-ng-repeat="(idx,i) in roomArray" data-ng-class="{on : ROOM_BASE_IDX == idx}"  data-ng-click="roomArraySelect(idx)">{{i.ROOM_NAME}}</li>
 		</ul>
 		<div class="btnWrap">
-			<button type="submit" tabindex="8" ng-disabled="!(ROOM_BASE.ROOM_NAME
+			<button type="submit" tabindex="8" data-ng-disabled="!(ROOM_BASE.ROOM_NAME
 						&& ROOM_BASE.ROOM_NUMBER
 						&& ROOM_BASE.ROOM_TYPE_CODE
 						&& ROOM_BASE.ROOM_M2

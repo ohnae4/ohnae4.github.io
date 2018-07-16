@@ -58,16 +58,16 @@
 		    		<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{room.ROOM_NAME}}</span></strong>
 		    		<strong class="price">{{room['PRICE_' + day.priceCode]}}만원</strong>
 		    		<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
-			    		<span class="ico_2" ng-if="rv.ROOM_STATUS_CODE == 2">예약중</span>
-			    		<span class="ico_3" ng-if="rv.ROOM_STATUS_CODE == 3">완료</span>
-			    		<span class="dim" ng-show="rv.ROOM_STATUS_CODE == 2 || rv.ROOM_STATUS_CODE == 3"></span>
+			    		<span class="ico_2" data-ng-if="rv.ROOM_STATUS_CODE == 2">예약중</span>
+			    		<span class="ico_3" data-ng-if="rv.ROOM_STATUS_CODE == 3">완료</span>
+			    		<span class="dim" data-ng-show="rv.ROOM_STATUS_CODE == 2 || rv.ROOM_STATUS_CODE == 3"></span>
 		    		</b>
 		    	</p>
 		    </div>
 	    </div>
     </div>
     
-    <div ng-show="!loading.active">
+    <div data-ng-show="!loading.active">
 	    <h2>예약목록 조회<span>(총 <b>{{reservationList.length}}</b>건)</span></h2>
 	    
 	    <!-- <span class="sorting" data-ng-click="paging.sorting('RESERVATION_NUMBER')">sorting</span> -->
@@ -89,7 +89,7 @@
 					<td>
 						<!-- i.ROOM_NUMBER as i.ROOM_NAME for i in roomList.items track by i.ROOM_NUMBER -->
 						<select data-ng-model="paging.search.ROOM_NUMBER">
-							<option value="" ng-selected="paging.search.ROOM_NUMBER == ''">전체</option>
+							<option value="" data-ng-selected="paging.search.ROOM_NUMBER == ''">전체</option>
 							<option data-ng-repeat="i in roomList.items" data-ng-value="i.ROOM_NUMBER">{{i.ROOM_NAME}}</option>
 						</select>
 					</td>
@@ -106,15 +106,15 @@
 				</tr>
 			</table>
 			<div class="btnWrap">
-				<button type="reset" ng-click="paging.reset()">초기화</button>
+				<button type="reset" data-ng-click="paging.reset()">초기화</button>
 			</div>
 		</form>
 		
-		<div class="reservationList" ng-if="reservationList.length <= 0">
+		<div class="reservationList" data-ng-if="reservationList.length <= 0">
 	    	<p class="none">예약목록이 없습니다.</p>
 	    </div>
 		
-	    <div class="reservationList" ng-if="!admin.user && reservationList.length > 0">
+	    <div class="reservationList" data-ng-if="!admin.user && reservationList.length > 0">
 		    <table>
 		    	<colgroup>
 		    		<col width="100" />
@@ -158,7 +158,7 @@
 		    </table>
 		    
 	    </div>
-	    <div class="reservationList" ng-if="admin.user && reservationList.length > 0">
+	    <div class="reservationList" data-ng-if="admin.user && reservationList.length > 0">
 		    <table>
 		    	<colgroup>
 		    		<col width="80" />
@@ -207,19 +207,19 @@
 							<option value="3">예약완료</option>
 							<option value="4">취소</option>
 						</select>
-						<button type="button" ng-disabled="i.ROOM_STATUS_CODE == i.ROOM_STATUS_CODE_ORIGIN" data-ng-click="updateReservation(i.RESERVATION_NUMBER,i.ROOM_STATUS_CODE)">변경</button>
+						<button type="button" data-ng-disabled="i.ROOM_STATUS_CODE == i.ROOM_STATUS_CODE_ORIGIN" data-ng-click="updateReservation(i.RESERVATION_NUMBER,i.ROOM_STATUS_CODE)">변경</button>
 					</td>
 					<td>{{i.DATE_NUMBER}}박</td>
 					<td>{{i.PERSONNEL_1}}명</td>
 					<td>{{i.PRICE}}만원</td>
 					<td>{{i.CREATE_DATE}}</td>
 					<td>{{i.UPDATE_DATE}}</td>
-					<td>{{i.DESCRIPTION | cutString : 10 }}<span ng-if="i.DESCRIPTION.length > 10" class="icoHelp" data-ico-help="true">[보기]<span class="layer">{{i.DESCRIPTION}}</span></span></td>
+					<td>{{i.DESCRIPTION | cutString : 10 }}<span data-ng-if="i.DESCRIPTION.length > 10" class="icoHelp" data-ico-help="true">[보기]<span class="layer">{{i.DESCRIPTION}}</span></span></td>
 					<!-- <td><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td> -->
 			    </tr>
 		    </table>
 	    </div>
-	    <div class="paginator" ng-if="reservationList.length > 0">
+	    <div class="paginator" data-ng-if="reservationList.length > 0">
 			<button type="button" data-ng-disabled="paging.currentPage == 0" data-ng-click="paging.currentPage=paging.currentPage-1">Prev</button>
 		    <span><strong>{{paging.currentPage+1}}</strong>/{{paging.numberOfPages()}}</span>
 		    <button type="button" data-ng-disabled="paging.currentPage >= reservationList.length/paging.pageSize - 1" data-ng-click="paging.currentPage=paging.currentPage+1;">Next</button>
@@ -227,65 +227,65 @@
     </div>
 </div>
 <div class="layerReservation" data-ng-show="layerReservation.active">
-	<form id="formReservation" name="formReservation" ng-submit="layerReservation.submit()">
+	<form id="formReservation" name="formReservation" data-ng-submit="layerReservation.submit()">
 		<p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p>
-		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" ng-model="ROOM_RESERVATION.ROOM_NUMBER" required="required" />
-		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" ng-model="ROOM_RESERVATION.ROOM_STATUS_CODE" required="required" />
+		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" data-ng-model="ROOM_RESERVATION.ROOM_NUMBER" required="required" />
+		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" data-ng-model="ROOM_RESERVATION.ROOM_STATUS_CODE" required="required" />
 		<table>
 			<tr>
 				<th class="required">예약일</th>
-				<td><input readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" ng-model="ROOM_RESERVATION.RESERVATION_DATE" required="required" /></td>
+				<td><input readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" data-ng-model="ROOM_RESERVATION.RESERVATION_DATE" required="required" /></td>
 			</tr>
 			<tr>
 				<th class="required">예약자명</th>
-				<td><input type="text" maxlength="15" minlength="2" name="MEMBER_NAME" ng-model="ROOM_RESERVATION.MEMBER_NAME" required="required" /></td>
+				<td><input type="text" maxlength="15" minlength="2" name="MEMBER_NAME" data-ng-model="ROOM_RESERVATION.MEMBER_NAME" required="required" /></td>
 			</tr>
 			<tr>
 				<th class="required">예약자 휴대폰번호</th>
-				<td><input data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" ng-model="ROOM_RESERVATION.MEMBER_PHONE" required="required" /></td>
+				<td><input data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" data-ng-model="ROOM_RESERVATION.MEMBER_PHONE" required="required" /></td>
 			</tr>
 			<tr>
 				<th class="required">예약자 이메일</th>
-				<td><input data-only-number="false" type="text" maxlength="30" name="MEMBER_EMAIL" ng-model="ROOM_RESERVATION.MEMBER_EMAIL" required="required" /></td>
+				<td><input data-only-number="false" type="text" maxlength="30" name="MEMBER_EMAIL" data-ng-model="ROOM_RESERVATION.MEMBER_EMAIL" required="required" /></td>
 			</tr>
 			<tr>
 				<th>인원/숙박일/금액</th>
 				<td>
-					<select  required="required" name="PERSONNEL_1" ng-model="ROOM_RESERVATION.PERSONNEL_1">
-						<option ng-repeat="i in rvCalendar.selectRoomOption" ng-value="i.personnel" ng-selected="i.personnel == rvCalendar.selectRoomOption[0].personnel">{{i.personnel}}</option>
+					<select  required="required" name="PERSONNEL_1" data-ng-model="ROOM_RESERVATION.PERSONNEL_1">
+						<option data-ng-repeat="i in rvCalendar.selectRoomOption" data-ng-value="i.personnel" data-ng-selected="i.personnel == rvCalendar.selectRoomOption[0].personnel">{{i.personnel}}</option>
 					</select>
 					명
-					<select  required="required" name="DATE_NUMBER" ng-model="ROOM_RESERVATION.DATE_NUMBER">
-						<option ng-value="1" selected="selected">1</option>
-						<option ng-value="2" ng-if="rvCalendar.tomorrowYn">2</option>
+					<select  required="required" name="DATE_NUMBER" data-ng-model="ROOM_RESERVATION.DATE_NUMBER">
+						<option data-ng-value="1" selected="selected">1</option>
+						<option data-ng-value="2" data-ng-if="rvCalendar.tomorrowYn">2</option>
 					</select> 
 					박
-					<input data-only-number="true" type="text" readonly="readonly" maxlength="2" style="width:50px;" name="PRICE" ng-model="ROOM_RESERVATION.PRICE" required="required" />
+					<input data-only-number="true" type="text" readonly="readonly" maxlength="2" style="width:50px;" name="PRICE" data-ng-model="ROOM_RESERVATION.PRICE" required="required" />
 					만원
 				</td>
 			</tr>
 			<tr>
 				<th class="required">비밀번호</th>
-				<td><input maxlength="10" type="password" name="PASSWORD" ng-model="ROOM_RESERVATION.PASSWORD" required="required" /></td>
+				<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="ROOM_RESERVATION.PASSWORD" required="required" /></td>
 			</tr>
 			<tr>
 				<th class="required">요청사항</th>
 				<td>
-					<textarea maxlength="80" type="text" name="DESCRIPTION" ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
+					<textarea maxlength="80" type="text" name="DESCRIPTION" data-ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
 					{{ROOM_RESERVATION.DESCRIPTION.length}} / 80 자
 				</td>
 			</tr>
 			<tr>
 				<th class="required">자동등록방지</th>
 				<td>
-					<div class="captcha" data-kaisa-captcha="true" ng-model="captcha"></div>
-					<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" ng-model="ROOM_RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
-					<button type="button" class="normal" ng-click="captcha.refresh()">새로고침</button>
+					<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
+					<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="ROOM_RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
+					<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
 				</td>
 			</tr>
 		</table>
 		<div class="btnWrap">
-			<button type="submit" ng-disabled="!(ROOM_RESERVATION.RESERVATION_DATE
+			<button type="submit" data-ng-disabled="!(ROOM_RESERVATION.RESERVATION_DATE
 				&& ROOM_RESERVATION.ROOM_NUMBER
 				&& ROOM_RESERVATION.MEMBER_NAME
 				&& ROOM_RESERVATION.MEMBER_PHONE

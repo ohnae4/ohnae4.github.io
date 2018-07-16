@@ -16,7 +16,7 @@
 			template: '<div>'+
 				'<div id="menu">'+
 					'<ul>'+
-						'<li data-ng-repeat="(idx, i) in roomList.items"><a ng-href="/pension/room{{idx + 1}}">{{i.ROOM_NAME}}</a></li>'+
+						'<li data-ng-repeat="(idx, i) in roomList.items"><a data-ng-href="/pension/room{{idx + 1}}">{{i.ROOM_NAME}}</a></li>'+
 					'</ul>'+
 					'<ol>'+
 						'<li><a href="/reservation/">예약하기</a></li>'+
@@ -25,21 +25,21 @@
 						'<li><a href="/near/">주변여행지</a></li>'+
 					'</ol>'+
 				'</div>'+
-				'<div id="alert" ng-if="alert.active" ng-class="{on:alert.active}">'+
-					'<div class="wrap" ng-style="alert.option.style">'+
-						'<h5 ng-show="alert.option.title">{{alert.option.title}}</h5>'+
-						'<p ng-if="alert.option.type==\'text\'">{{alert.option.message}}</p>'+
-						'<p ng-if="alert.option.type==\'html\'" ng-bind-html="alert.option.message | trustHtml"></p>'+
-						'<div class="btn_wrap" ng-if="alert.option.confirm">'+
-							'<span class="button"><button type="button" ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" ng-show="! alert.option.cancelCallback"><button type="button" ng-click="alert.close()">{{alert.option.button.cancel}}</button></span> <span class="button" ng-show="alert.option.cancelCallback"><button type="button" ng-click="alert.option.cancelCallback();alert.close()">{{alert.option.button.cancel}}</button></span>'+
+				'<div id="alert" data-ng-if="alert.active" data-ng-class="{on:alert.active}">'+
+					'<div class="wrap" data-ng-style="alert.option.style">'+
+						'<h5 data-ng-show="alert.option.title">{{alert.option.title}}</h5>'+
+						'<p data-ng-if="alert.option.type==\'text\'">{{alert.option.message}}</p>'+
+						'<p data-ng-if="alert.option.type==\'html\'" data-ng-bind-html="alert.option.message | trustHtml"></p>'+
+						'<div class="btn_wrap" data-ng-if="alert.option.confirm">'+
+							'<span class="button"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="! alert.option.cancelCallback"><button type="button" data-ng-click="alert.close()">{{alert.option.button.cancel}}</button></span> <span class="button" data-ng-show="alert.option.cancelCallback"><button type="button" data-ng-click="alert.option.cancelCallback();alert.close()">{{alert.option.button.cancel}}</button></span>'+
 						'</div>'+
-						'<div class="btn_wrap" ng-if="! alert.option.confirm">'+
-							'<span class="button" ng-show="! alert.option.callback"><button type="button" ng-click="alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" ng-show="alert.option.callback"><button type="button" ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span>'+
+						'<div class="btn_wrap" data-ng-if="! alert.option.confirm">'+
+							'<span class="button" data-ng-show="! alert.option.callback"><button type="button" data-ng-click="alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="alert.option.callback"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span>'+
 						'</div>'+
 					'</div>'+
 				'</div>'+
-				'<div id="help" ng-if="help.active" ng-class="{on:help.active}" ng-style="help.style" ng-bind-html="help.html | trustHtml"></div>'+
-				'<div id="loading" ng-if="loading.active" ng-class="{on:loading.active}">'+
+				'<div id="help" data-ng-if="help.active" data-ng-class="{on:help.active}" data-ng-style="help.style" data-ng-bind-html="help.html | trustHtml"></div>'+
+				'<div id="loading" data-ng-if="loading.active" data-ng-class="{on:loading.active}">'+
 					'<ul class="loading">'+
 						'<li></li>'+
 						'<li></li>'+
@@ -48,13 +48,13 @@
 						'<li></li>'+
 					'</ul>'+
 				'</div>'+
-				'<div id="login" ng-if="admin.layer.active">'+
+				'<div id="login" data-ng-if="admin.layer.active">'+
 					'<h3>로그인</h3>'+
-					'<input autocapitalize="off" autocomplete="off" type="text" maxlength="10" required="required" ng-model="admin.si" />'+
-					'<input autocapitalize="off" autocomplete="off" type="password" maxlength="10" required="required" ng-model="admin.sp" />'+
-					'<button type="button" ng-click="admin.submit()">로그인</button>'+
+					'<input autocapitalize="off" autocomplete="off" type="text" maxlength="10" required="required" data-ng-model="admin.si" />'+
+					'<input autocapitalize="off" autocomplete="off" type="password" maxlength="10" required="required" data-ng-model="admin.sp" />'+
+					'<button type="button" data-ng-click="admin.submit()">로그인</button>'+
 				'</div>'+
-				'<div id="dimmed" ng-class="{on : dimmed.active}" ng-click="dimmed.click()"></div>'+
+				'<div id="dimmed" data-ng-class="{on : dimmed.active}" data-ng-click="dimmed.click()"></div>'+
 			'</div>',
 			replace: true,
 			link: function($scope, el, attrs){
@@ -100,8 +100,8 @@
 			template: '<div id="footer">'+
 				'<p>상호 : 리버힐 펜션 , 주소 : 경기도 가평읍 금대리 306 , 전화 : 070-9482-2070 / 070-4882-2803 <br />'+
 				'사업자번호 : 132-25-97858  통신판매신고번호 : 제 2009-경기가평-16호 <br />'+
-				'copyright (c) 2018 Rever Hill. all right reserved<b ng-click="admin.layer.open()">..</b></p>'+
-				'<p ng-if="admin.user" class="admin"><span ng-click="admin.logout()">관리자 로그아웃</span></p>'+
+				'copyright (c) 2018 Rever Hill. all right reserved<b data-ng-click="admin.layer.open()">..</b></p>'+
+				'<p data-ng-if="admin.user" class="admin"><span data-ng-click="admin.logout()">관리자 로그아웃</span></p>'+
 			'</div>',
 			replace: true,
 			link: function($scope, el, attrs){
