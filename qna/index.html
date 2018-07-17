@@ -36,7 +36,7 @@
 <div data-kaisa-menu="true"></div>
 <div id="content">
 	<h2>
-		1:1문의
+		문의목록
 		<span class="btnArea">
 			<button type="button" class="on" data-ng-click="layerQna.active = true">문의하기</button> 
 		</span>
@@ -82,7 +82,7 @@
 				<td>{{i.MEMBER_NAME + '*'}}</td>
 				<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
 				<td>{{i.MEMBER_EMAIL + '*********'}}</td>
-				<td><span class="underline" data-ng-click="qnaView()">{{i.SUBJECT}}</span></td>
+				<td><span class="underline pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT}}</span></td>
 				<td>{{i.CONTENT}}</td>
 				<td>{{i.CREATE_DATE}}</td>
 		    </tr>
@@ -93,12 +93,72 @@
 	    <span><strong>{{paging.currentPage+1}}</strong>/{{paging.numberOfPages()}}</span>
 	    <button type="button" data-ng-disabled="paging.currentPage >= qnaList.length/paging.pageSize - 1" data-ng-click="paging.currentPage=paging.currentPage+1;">Next</button>
 	</div>
+	
+	<h2>문의내용</h2>
+	<div class="qna">
+		<table>
+			<tr>
+				<th>문의일시</th>
+				<td>{{qna.CREATE_DATE}}</td>
+			</tr>
+			<tr>
+				<th>문의자명</th>
+				<td>{{qna.MEMBER_NAME}}</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>{{qna.MEMBER_PHONE}}</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>{{qna.MEMBER_EMAIL}}</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>{{qna.SUBJECT}}</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>{{qna.CONTENT}}</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="replyList">
+		<h2>댓글목록</h2>
+		<table>
+			<tr>
+				<th>최재호</th>
+				<td>232323232323</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div class="replyWrite">
+		<h2>댓글작성</h2>
+		<table>
+			<tr>
+				<th>{{qna.MEMBER_NAME}}</th>
+				<td><textarea>댓글</textarea></td>
+				<td><button type="button" data-ng-click="reply.write()">작성</button></td>
+			</tr>
+		</table>
+	</div>
+	
 </div>
-<div class="layerQna" data-ng-show="layerQnaView.active">
-
+<div class="layerPwd" data-ng-show="layerPwd.active">
+	<form id="formLayerPwd" name="formLayerPwd" data-ng-submit="layerPwd.submit()">
+		<input type="hidden" readonly="readonly" name="QNA_NUMBER" data-ng-model="layerPwd.model.QNA_NUMBER" required="required" />
+		<h3>비밀번호 <span data-ng-if="layerPwd.failCount != 0">{{layerPwd.failCount}}회 실패하셨습니다.</span></h3>
+		<input data-only-number="false" type="password" maxlength="30" name="PASSWORD" data-ng-model="layerPwd.model.PASSWORD" required="required" />
+		<div class="btnWrap">
+			<button type="submit" data-ng-disabled="!(layerPwd.model.QNA_NUMBER && layerPwd.model.PASSWORD)">확인</button>
+			<button type="button" data-ng-click="layerPwd.close();">취소</button>
+		</div>
+	</form>
 </div>
 <div class="layerQna" data-ng-show="layerQna.active">
-	<form id="formQna" name="formQna" data-ng-submit="layerQna.submit()">
+	<form id="formLayerQna" name="formLayerQna" data-ng-submit="layerQna.submit()">
 		<!-- <p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p> -->
 		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" data-ng-model="QNA.ROOM_NUMBER" required="required" />
 		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" data-ng-model="QNA.ROOM_STATUS_CODE" required="required" />
@@ -122,7 +182,7 @@
 			<tr>
 				<th class="required">제목</th>
 				<td>
-					<textarea maxlength="80" name="SUBJECT" data-ng-model="QNA.SUBJECT"></textarea>
+					<input maxlength="80" type="text" name="SUBJECT" data-ng-model="QNA.SUBJECT" required="required" />
 				</td>
 			</tr>
 			<tr>

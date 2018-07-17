@@ -6,10 +6,35 @@
 .layerQna table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
 .layerQna table td {border:1px solid #ddd; padding:5px;}
 
+.layerPwd {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerPwd form {padding:30px 20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:200px; position:fixed; left:50%; margin:-100px 0 0 -100px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerPwd h3 {font-size:16px; line-height:30px; color:#333;}
+.layerPwd h3 span {font-size:11px; font-weight:normal; color:#ff5500; line-height:15px;}
+.layerPwd input {border:2px solid #999;}
+.layerPwd .btnWrap {padding-top:20px;}
+
 .qnaList {clear:both; width:100%; overflow:hidden;}
 .qnaList table {width:100%; line-height:28px; white-space:nowrap; border-top:2px solid #666;}
 .qnaList table th {text-align:center; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
 .qnaList table td {border:1px solid #ddd; padding:5px;}
 .qnaList .none {text-align:center; padding:30px 0; width:100%; clear:both; border:1px solid #eee;}
 
-.underline {text-decoration:underline;}
+.qna {clear:both; width:100%; overflow:hidden;}
+.qna table {width:100%; line-height:28px; white-space:nowrap; border-top:2px solid #666;}
+.qna table th {text-align:left; width:120px; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+.qna table td {border:1px solid #ddd; padding:5px;}
+
+.replyList {width:100%; clear:both;}
+.replyList table {width:100%;}
+.replyList table th {width:120px; text-align:center;}
+.replyList table td {}
+
+
+
+.replyWrite textarea {height:60px;}
+.replyWrite button {height:60px; width:60px; line-height:50px; text-align:center; background:#ff5500; color:#fff;}
+.replyWrite table {width:100%;}
+.replyWrite table th {width:120px; text-align:center;}
+.replyWrite table td:nth-child(3) {width:70px; text-align:right;}
+
+

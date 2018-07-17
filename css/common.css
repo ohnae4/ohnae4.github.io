@@ -63,6 +63,9 @@ body {background:#fff;}
 .tr {text-align:right;}
 .btnWrap {padding:10px 0 20px 0; text-align:center;}
 
+.pointer {cursor:pointer;}
+.underline {text-decoration:underline;}
+
 #dimmed {width:100%; display:none; height:100%; position:fixed; left:0; top:0; background:rgba(0,0,0,0.6); z-index:100;}
 #dimmed.on {display:block;}
 
@@ -80,7 +83,7 @@ body {background:#fff;}
 #help.on {display:block;}
 
 button[type="button"].on,
-button[type="submit"] {padding:5px 10px; background:#ff5500; color:#fff; border-radius:3px;}
+button[type="submit"] {padding:5px 10px; background:#ff5500; color:#fff; border-radius:3px; white-space:nowrap;}
 button[type="button"] {padding:5px 10px; background:#888; color:#fff; border-radius:3px;}
 button[disabled="disabled"] {padding:5px 10px; background:#eee; color:#555; border-radius:3px;}
 button[type="button"].normal {border:1px solid #ccc; padding:5px 10px; background:#fff; color:#555; border-radius:3px;}
