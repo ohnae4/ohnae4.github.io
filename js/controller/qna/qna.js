@@ -3,7 +3,9 @@
 	var app = angular.module('KaisaApp',['common']);
 	
 	app.controller('BodyController',['$scope','$window','$timeout','$interval','$http','kaisaApi','$filter',function($scope,$window,$timeout,$interval,$http,kaisaApi,$filter){
-    	//QNA
+    	/**
+    	 * QNA
+    	 */
     	$scope.QNA = {
     		QNA_NUMBER : null,
 			MEMBER_NAME : '최재호',
@@ -33,17 +35,17 @@
 			    });
     		}
     	};
-    	//paging
-    	$scope.paging = {
+    	//qnaPaging
+    	$scope.qnaPaging = {
 	    	orderBy: null,
 			search: {
 				SUBJECT : '',
 				CONTENT : ''
 			},
 			reset : function(){
-				$scope.paging.SUBJECT = '';
-				$scope.paging.CONTENT = '';
-				$scope.paging.currentPage = 0;
+				$scope.qnaPaging.SUBJECT = '';
+				$scope.qnaPaging.CONTENT = '';
+				$scope.qnaPaging.currentPage = 0;
 			},
 			sorting : function(key){
 				if(this.orderBy == key){
@@ -98,7 +100,6 @@
     		},
     		click : function(no){
 				this.no = no;
-				debugger;
     			$scope.alert.open({message : '정말 삭제하시겠습니까?' , confirm : true, callback : $scope.deleteQna.callback});
     		}
     	};
@@ -159,7 +160,7 @@
 						$scope.REPLY.MEMBER_NAME = $scope.qna.MEMBER_NAME;
 						$scope.getQnaReplyList();
 						$timeout(function(){
-							$(window).scrollTop(angular.element('.qna').position().top);
+							$(window).scrollTop(angular.element('.qna').offset().top - 50);
 						},100);
 					}else{
 						$scope.layerPwd.failCount++;
@@ -173,6 +174,93 @@
 			    	$scope.loading.active = false;
 			    });
     		}
+    	};
+    	/**
+    	 * FAQ
+    	 */
+    	$scope.FAQ = {
+    		FAQ_NUMBER : null,
+			QUESTION : '1aa2312313123',
+			ANSWER : '132132df',
+			PRIORITY : 999,
+			CREATE_DATE : '',
+			UPDATE_DATE : ''
+		};
+    	//자주찾는질문 리스트
+    	$scope.faqList = {};
+    	$scope.getFaqList = function(){
+    		$scope.loading.active = true;
+			$http.jsonp(kaisaApi.getFaqList + $scope.jsonpParam({  })).success(function(data){
+				$scope.faqList = data.items;
+				$scope.loading.active = false
+		    }).error(function(data){
+		    	$scope.alert.open({message : '문의리스트 조회 실패.'});
+		    	$scope.loading.active = false;
+		    });
+    	};
+    	$scope.getFaqList();
+    	//자주찾는질문등록
+    	$scope.layerFaq = {
+    		active : false,
+    		close : function(){
+    			this.active = false;
+    		},
+    		submit : function(){
+				$http.jsonp(kaisaApi.setFaq + $scope.jsonpParam($scope.FAQ)).success(function(data){
+					if(data.success){
+						$scope.getFaqList();
+						$scope.layerFaq.close();
+					}else{
+						$scope.alert.open({message : data.message});
+					}
+			    }).error(function(data){
+			    	$scope.alert.open({message : '예약할 수 없는 날짜 입니다.'});
+			    	$scope.loading.active = false;
+			    });
+    		}
+    	};
+    	//faq 삭제
+    	$scope.deleteFaq = { //<!-- <button type="button" class="normal" data-ng-click="deleteFaq.click(i.QNA_NUMBER)">삭제</button> -->
+    		no : null,
+    		callback : function(){
+    			$http.jsonp(kaisaApi.deleteFaq + $scope.jsonpParam({ FAQ_NUMBER : $scope.deleteFaq.no })).success(function(data){
+    				$scope.alert.open({message : data.message});
+    				$scope.getFaqList();
+    				$scope.loading.active = false
+    		    }).error(function(data){
+    		    	console.log('update error');
+    		    	$scope.loading.active = false;
+    		    });
+    		},
+    		click : function(no){
+				this.no = no;
+    			$scope.alert.open({message : '정말 삭제하시겠습니까?' , confirm : true, callback : $scope.deleteFaq.callback});
+    		}
+    	};
+    	//faqPaging
+    	$scope.faqPaging = {
+	    	orderBy: null,
+			search: {
+				QUESTION : '',
+				ANSWER : ''
+			},
+			reset : function(){
+				$scope.qnaPaging.QUESTION = '';
+				$scope.qnaPaging.ANSWER = '';
+				$scope.qnaPaging.currentPage = 0;
+			},
+			sorting : function(key){
+				if(this.orderBy == key){
+					this.orderBy = '-' + key;
+					return;
+				}
+				this.orderBy = '' + key;
+			},
+			currentPage : 0,
+			pageSize : 10,
+			numberOfPages : function(){
+				return Math.ceil($scope.faqList.length / this.pageSize);
+			}
     	};
 	}]);
 })(window,window.angular);

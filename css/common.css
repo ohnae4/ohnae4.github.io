@@ -39,7 +39,7 @@ body {background:#fff;}
 #menu ol li {display:inline-block; padding:0 10px;}
 #menu ol li:last-child {padding-right:20px;}
 
-#content {width:1280px; min-height:300px; margin:0 auto; position:relative; z-index:1;}
+#content {width:1280px; min-height:300px; margin:0 auto; position:relative; z-index:1; overflow:hidden; padding-bottom:30px;}
 #content h2 {padding:20px 0 10px 0; font-size:14px; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}

@@ -26,5 +26,9 @@
 		this.setQnaReply = apiUrl + '/api/controller/riverhill/qna/setQnaReply.php' + ext;
 		this.getQnaReplyList = apiUrl + '/api/controller/riverhill/qna/getQnaReplyList.php' + ext;
 		
+		this.getFaqList = apiUrl + '/api/controller/riverhill/faq/getFaqList.php' + ext;
+		this.setFaq = apiUrl + '/api/controller/riverhill/faq/setFaq.php' + ext;
+		this.deleteFaq = apiUrl + '/api/controller/riverhill/faq/deleteFaq.php' + ext;
+		
     }]);
 })(window, window.angular);

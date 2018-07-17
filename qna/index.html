@@ -35,113 +35,152 @@
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content">
-	<h2>
-		문의목록
-		<span class="btnArea">
-			<button type="button" class="on" data-ng-click="layerQna.active = true">문의하기</button> 
-		</span>
-	</h2>
-	<form class="searchForm">
-		<table>
-			<tr>
-				<th>제목</th>
-				<td><input type="text" data-ng-model="paging.search.SUBJECT" /></td>
-			</tr>
-		</table>
-		<div class="btnWrap">
-			<button type="reset" data-ng-click="paging.reset()">초기화</button>
-		</div>
-	</form>
-	<div class="qnaList" data-ng-if="qnaList.length <= 0">
-    	<p class="none">예약목록이 없습니다.</p>
-    </div>
-    <div class="qnaList" data-ng-if="qnaList.length > 0">
-	    <table>
-	    	<colgroup>
-	    		<col width="100" />
-	    		<col width="80" />
-	    		<col width="200" />
-	    		<col width="200" />
-	    		<col width="200" />
-	    		<col width="*" />
-	    		<col width="150" />
-	    	</colgroup>
-	    	<tr>
-	    		<th>문의번호</th>
-	    		<th>문의자명</th>
-	    		<th>문의자전화번호</th>
-	    		<th>문의자이메일</th>
-	    		<th>제목</th>
-	    		<th>내용</th>
-	    		<th>등록일시</th>
-	    	</tr>
-		    <tr data-ng-show="idx < paging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: paging.search | startFrom: paging.currentPage * paging.pageSize | orderBy:paging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
-		    	<td class="tc">{{i.QNA_NUMBER}}</td>
-				<td>{{i.MEMBER_NAME + '*'}}</td>
-				<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
-				<td>{{i.MEMBER_EMAIL + '*********'}}</td>
-				<td><span class="underline pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT}}</span></td>
-				<td>{{i.CONTENT}}</td>
-				<td>{{i.CREATE_DATE}}</td>
-		    </tr>
-	    </table>
-    </div>
-    <div class="paginator" data-ng-if="qnaList.length > 0">
-		<button type="button" data-ng-disabled="paging.currentPage == 0" data-ng-click="paging.currentPage=paging.currentPage-1">Prev</button>
-	    <span><strong>{{paging.currentPage+1}}</strong>/{{paging.numberOfPages()}}</span>
-	    <button type="button" data-ng-disabled="paging.currentPage >= qnaList.length/paging.pageSize - 1" data-ng-click="paging.currentPage=paging.currentPage+1;">Next</button>
-	</div>
-	<div data-ng-if="qna">
-		<h2>문의내용</h2>
-		<div class="qna">
+	<div id="qna">
+		<h2>
+			문의목록
+			<span class="btnArea">
+				<button type="button" class="on" data-ng-click="layerQna.active = true">문의하기</button> 
+			</span>
+		</h2>
+		<form class="searchForm">
 			<table>
-				<tr>
-					<th>문의일시</th>
-					<td>{{qna.CREATE_DATE}}</td>
-				</tr>
-				<tr>
-					<th>문의자명</th>
-					<td>{{qna.MEMBER_NAME}}</td>
-				</tr>
-				<tr>
-					<th>전화번호</th>
-					<td>{{qna.MEMBER_PHONE}}</td>
-				</tr>
-				<tr>
-					<th>이메일</th>
-					<td>{{qna.MEMBER_EMAIL}}</td>
-				</tr>
 				<tr>
 					<th>제목</th>
-					<td>{{qna.SUBJECT}}</td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td>{{qna.CONTENT}}</td>
+					<td><input type="text" data-ng-model="qnaPaging.search.SUBJECT" /></td>
 				</tr>
 			</table>
-		</div>
-		<div class="replyList">
-			<h2>댓글목록</h2>
-			<table>
-				<tr data-ng-repeat="(idx , i) in replyList">
-					<th>{{i.MEMBER_NAME}} {{i.CREATE_DATE}}</th>
+			<div class="btnWrap">
+				<button type="reset" data-ng-click="qnaPaging.reset()">초기화</button>
+			</div>
+		</form>
+		<div class="qnaList" data-ng-if="qnaList.length <= 0">
+	    	<p class="none">문의가 없습니다.</p>
+	    </div>
+	    <div class="qnaList" data-ng-if="qnaList.length > 0">
+		    <table>
+		    	<colgroup>
+		    		<col width="100" />
+		    		<col width="80" />
+		    		<col width="200" />
+		    		<col width="200" />
+		    		<col width="200" />
+		    		<col width="*" />
+		    		<col width="150" />
+		    	</colgroup>
+		    	<tr>
+		    		<th>문의번호</th>
+		    		<th>문의자명</th>
+		    		<th>문의자전화번호</th>
+		    		<th>문의자이메일</th>
+		    		<th>제목</th>
+		    		<th>내용</th>
+		    		<th>등록일시</th>
+		    	</tr>
+			    <tr data-ng-show="idx < qnaPaging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: qnaPaging.search | startFrom: qnaPaging.currentPage * qnaPaging.pageSize | orderBy:qnaPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+			    	<td class="tc">{{i.QNA_NUMBER}}</td>
+					<td>{{i.MEMBER_NAME + '*'}}</td>
+					<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
+					<td>{{i.MEMBER_EMAIL + '*********'}}</td>
+					<td><span class="underline pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT}}</span></td>
 					<td>{{i.CONTENT}}</td>
-				</tr>
-			</table>
+					<td>{{i.CREATE_DATE}}</td>
+			    </tr>
+		    </table>
+	    </div>
+	    <div class="paginator" data-ng-if="qnaList.length > 0">
+			<button type="button" data-ng-disabled="qnaPaging.currentPage == 0" data-ng-click="qnaPaging.currentPage=qnaPaging.currentPage-1">Prev</button>
+		    <span><strong>{{qnaPaging.currentPage+1}}</strong>/{{qnaPaging.numberOfPages()}}</span>
+		    <button type="button" data-ng-disabled="qnaPaging.currentPage >= qnaList.length/qnaPaging.pageSize - 1" data-ng-click="qnaPaging.currentPage=qnaPaging.currentPage+1;">Next</button>
 		</div>
-		<div class="replyWrite">
-			<h2>댓글작성</h2>
+		<div data-ng-if="qna">
+			<h2>문의내용</h2>
+			<div class="qna">
+				<table>
+					<tr>
+						<th>문의일시</th>
+						<td>{{qna.CREATE_DATE}}</td>
+					</tr>
+					<tr>
+						<th>문의자명</th>
+						<td>{{qna.MEMBER_NAME}}</td>
+					</tr>
+					<tr>
+						<th>전화번호</th>
+						<td>{{qna.MEMBER_PHONE}}</td>
+					</tr>
+					<tr>
+						<th>이메일</th>
+						<td>{{qna.MEMBER_EMAIL}}</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td>{{qna.SUBJECT}}</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>{{qna.CONTENT}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="replyList">
+				<h2>댓글목록</h2>
+				<table>
+					<tr data-ng-repeat="(idx , i) in replyList">
+						<th>{{i.MEMBER_NAME}} {{i.CREATE_DATE}}</th>
+						<td>{{i.CONTENT}}</td>
+					</tr>
+				</table>
+			</div>
+			<div class="replyWrite">
+				<h2>댓글작성</h2>
+				<table>
+					<tr>
+						<th>{{REPLY.MEMBER_NAME}} , {{REPLY.QNA_NUMBER}}</th>
+						<td>
+							<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
+							<button type="button" data-ng-click="setQnaReply()">작성</button>
+							<p>{{REPLY.CONTENT.length}} / 80 자</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="faq">
+		<h2>
+			자주찾는 질문
+			<span class="btnArea">
+				<button type="button" class="on" data-ng-click="layerFaq.active = true">등록하기</button> 
+			</span>
+		</h2>
+		<form class="searchForm">
 			<table>
 				<tr>
-					<th>{{REPLY.MEMBER_NAME}} , {{REPLY.QNA_NUMBER}}</th>
-					<td>
-						<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
-						<button type="button" data-ng-click="setQnaReply()">작성</button>
-						<p>{{REPLY.CONTENT.length}} / 80 자</p>
-					</td>
+					<th>질문</th>
+					<td><input type="text" data-ng-model="faqPaging.search.QUESTION" /></td>
+				</tr>
+				<tr>
+					<th>답변</th>
+					<td><input type="text" data-ng-model="faqPaging.search.ANSWER" /></td>
 				</tr>
 			</table>
+			<div class="btnWrap">
+				<button type="reset" data-ng-click="faqPaging.reset()">초기화</button>
+			</div>
+		</form>
+		<div class="faqList" data-ng-if="faqList.length <= 0">
+	    	<p class="none">자주찾는 질문이 없습니다.</p>
+	    </div>
+	    <div class="faqList" data-ng-if="faqList.length > 0">
+		    <dl data-ng-show="idx < faqPaging.pageSize" data-ng-repeat="(idx,i) in faqList | filter: faqPaging.search | startFrom: faqPaging.currentPage * faqPaging.pageSize | orderBy:faqPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+		    	<dt>{{i.QUESTION}}</td>
+				<dd>{{i.ANSWER}} <button type="button" class="normal" data-ng-click="deleteFaq.click(i.FAQ_NUMBER)">삭제</button></td>
+		    </dl>
+	    </div>
+	    <div class="paginator" data-ng-if="faqList.length > 0">
+			<button type="button" data-ng-disabled="faqPaging.currentPage == 0" data-ng-click="faqPaging.currentPage=faqPaging.currentPage-1">Prev</button>
+		    <span><strong>{{faqPaging.currentPage+1}}</strong>/{{faqPaging.numberOfPages()}}</span>
+		    <button type="button" data-ng-disabled="faqPaging.currentPage >= faqList.length/faqPaging.pageSize - 1" data-ng-click="faqPaging.currentPage=faqPaging.currentPage+1;">Next</button>
 		</div>
 	</div>
 </div>
@@ -207,6 +246,36 @@
 				&& QNA.PASSWORD
 				&& QNA.CAPTCHA_CODE == captcha.code)">확인</button>
 			<button type="button" data-ng-click="layerQna.close();">취소</button>
+		</div>
+	</form>
+</div>
+<div class="layerFaq" data-ng-show="layerFaq.active">
+	<form id="formLayerFaq" name="formLayerFaq" data-ng-submit="layerFaq.submit()">
+		<table>
+			<tr>
+				<th class="required">질문</th>
+				<td>
+					<input maxlength="80" type="text" name="QUESTION" data-ng-model="FAQ.QUESTION" required="required" />
+				</td>
+			</tr>
+			<tr>
+				<th class="required">내용</th>
+				<td>
+					<textarea maxlength="80" name="ANSWER" data-ng-model="QNA.ANSWER"></textarea>
+					{{QNA.ANSWER.length}} / 80 자
+				</td>
+			</tr>
+			<tr>
+				<th>우선순위</th>
+				<td>
+					<input maxlength="3" data-only-number="true" type="text" name="PRIORITY" data-ng-model="FAQ.PRIORITY" required="required" />
+				</td>
+			</tr>
+		</table>
+		<div class="btnWrap">
+			<button type="submit" data-ng-disabled="!(FAQ.QUESTION
+				&& FAQ.ANSWER)">확인</button>
+			<button type="button" data-ng-click="layerFaq.close();">취소</button>
 		</div>
 	</form>
 </div>
