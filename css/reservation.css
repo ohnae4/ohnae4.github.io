@@ -9,7 +9,7 @@
 .rvCalendar h2 .next {background-position:-40px -40px;}
 .rvCalendar .calendar {width:100%; clear:both; overflow:hidden; background:#f9f9f9;}
 .rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0; border-top:2px solid #666;}
-.rvCalendar .day {width:14%; position:relative; background:#fff; padding:5px; float:left; height:180px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
+.rvCalendar .day {width:14%; position:relative; background:#fff; padding:5px; float:left; height:185px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
 .rvCalendar .week:nth-child(7n),
 .rvCalendar .day:nth-child(7n) {width:16%; border-right:1px solid #ccc;}
 .rvCalendar .day:last-child {padding-right:1px; border-right:1px solid #ccc;}

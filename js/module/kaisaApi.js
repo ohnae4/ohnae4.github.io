@@ -19,10 +19,12 @@
 		this.deleteReservation = apiUrl + '/api/controller/riverhill/reservation/deleteReservation.php' + ext;
 		
 		this.getQnaList = apiUrl + '/api/controller/riverhill/qna/getQnaList.php' + ext;
-		this.setQna= apiUrl + '/api/controller/riverhill/qna/setQna.php' + ext;
-		this.updateQna = apiUrl + '/api/controller/riverhill/qna/updateQna.php' + ext;
 		this.getQnaPwdCheck = apiUrl + '/api/controller/riverhill/qna/getQnaPwdCheck.php' + ext;
+		this.setQna= apiUrl + '/api/controller/riverhill/qna/setQna.php' + ext;
 		this.deleteQna = apiUrl + '/api/controller/riverhill/qna/deleteQna.php' + ext;
+		
+		this.setQnaReply = apiUrl + '/api/controller/riverhill/qna/setQnaReply.php' + ext;
+		this.getQnaReplyList = apiUrl + '/api/controller/riverhill/qna/getQnaReplyList.php' + ext;
 		
     }]);
 })(window, window.angular);

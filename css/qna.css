@@ -29,12 +29,13 @@
 .replyList table th {width:120px; text-align:center;}
 .replyList table td {}
 
-
-
 .replyWrite textarea {height:60px;}
 .replyWrite button {height:60px; width:60px; line-height:50px; text-align:center; background:#ff5500; color:#fff;}
 .replyWrite table {width:100%;}
-.replyWrite table th {width:120px; text-align:center;}
-.replyWrite table td:nth-child(3) {width:70px; text-align:right;}
+.replyWrite table th {width:120px; vertical-align:top; padding-top:20px;}
+.replyWrite table td {vertical-align:top;}
+.replyWrite table td textarea {width:380px;}
+.replyWrite table td textarea,
+.replyWrite table td button {display:inline-block; margin-right:5px;}
 
 

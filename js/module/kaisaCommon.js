@@ -210,6 +210,9 @@
 				this.active = false;
 			}
 		};
+    	$scope.reload = function(){
+    		location.reload();
+    	};
 		/*
 		 * 딤처리
 		 * */
@@ -403,11 +406,11 @@
 				$http.jsonp(kaisaApi.getLogin + $scope.jsonpParam({si : $scope.admin.si , sp : $scope.admin.sp , cnt : $scope.admin.count })).success(function(data){
 					if(data.success){
 						kaisaStorage.setCookie('session', data.id, 10, '');
-						location.reload();
+						$scope.reload();
 					}else{
 						$scope.admin.count++;
 						if($scope.admin.count >= 5){
-							location.reload();
+							$scope.reload();
 						}
 						$scope.alert.open({message : $scope.admin.count + '회 실패, 회원정보가 다릅니다.'});
 						$scope.admin.active = false;
@@ -433,9 +436,8 @@
 			},
 			logout : function(){
 				$http.jsonp(kaisaApi.getLogout + $scope.jsonpParam({session : kaisaStorage.getCookie('session') })).success(function(data){
-					console.log('logout');
 					kaisaStorage.removeCookie('session');
-					location.reload();
+					$scope.reload();
 			    }).error(function(data){
 			    	console.log('logout error!');
 			    });

@@ -9,7 +9,7 @@
 			MEMBER_NAME : '최재호',
 			MEMBER_PHONE : '01055555552',
 			MEMBER_EMAIL : '232@email.com',
-			PASSWORD : '111',
+			PASSWORD : '111999',
 			SUBJECT : '제목',
 			CONTENT : '내용'
 		};
@@ -59,7 +59,7 @@
 			}
     	};
     	//문의보기
-    	$scope.qna = {};
+    	$scope.qna = null;
     	$scope.getQna = function(){
     		$scope.loading.active = true;
 			$http.jsonp(kaisaApi.getQna + $scope.jsonpParam({ QNA_NUMBER : $scope.QNA.QNA_NUMBER })).success(function(data){
@@ -88,7 +88,6 @@
     		no : null,
     		callback : function(){
     			$http.jsonp(kaisaApi.deleteQna + $scope.jsonpParam({ QNA_NUMBER : $scope.deleteQna.no })).success(function(data){
-					console.log(data);
     				$scope.alert.open({message : data.message});
     				$scope.getQnaList();
     				$scope.loading.active = false
@@ -103,20 +102,49 @@
     			$scope.alert.open({message : '정말 삭제하시겠습니까?' , confirm : true, callback : $scope.deleteQna.callback});
     		}
     	};
-    	$scope.test = function(n){
-    		console.log(n);
-    	}
+    	//댓글
+    	$scope.REPLY = {
+	    	QNA_REPLY_NUMBER : '',
+	    	QNA_NUMBER : '',
+	    	MEMBER_NAME : '',
+	    	CONTENT : '',
+	    	CREATE_DATE : '',
+	    	UPDATE_DATE : ''
+    	};
+    	$scope.replyList = {};
+    	$scope.getQnaReplyList = function(){
+    		$scope.loading.active = true;
+			$http.jsonp(kaisaApi.getQnaReplyList + $scope.jsonpParam({ QNA_NUMBER : $scope.REPLY.QNA_NUMBER })).success(function(data){
+				console.log(data);
+				$scope.replyList = data.items;
+				$scope.loading.active = false;
+		    }).error(function(data){
+		    	$scope.alert.open({message : '댓글 조회 실패.'});
+		    	$scope.loading.active = false;
+		    });
+    	};
+    	$scope.setQnaReply = function(){
+    		$scope.loading.active = true;
+			$http.jsonp(kaisaApi.setQnaReply + $scope.jsonpParam({ QNA_NUMBER : $scope.REPLY.QNA_NUMBER , MEMBER_NAME : $scope.REPLY.MEMBER_NAME , CONTENT : $scope.REPLY.CONTENT })).success(function(data){
+				$scope.loading.active = false;
+				$scope.getQnaReplyList();
+				
+		    }).error(function(data){
+		    	$scope.alert.open({message : '댓글 입력 실패.'});
+		    	$scope.loading.active = false;
+		    });
+    	};
     	//비밀번호 확인
     	$scope.layerPwd = {
     		failCount : 0,
     		active : false,
     		model : {
     			QNA_NUMBER : null,
-    			PASSWORD : null
+    			PASSWORD : '111999'
     		},
     		open : function(n){
     			this.model.QNA_NUMBER = n;
-    			this.model.PASSWORD = '';
+    			this.model.PASSWORD = '111999';
     			this.active = true;
     		},
     		close : function(n){
@@ -127,19 +155,19 @@
 					if(data.success){
 						$scope.qna = data.items[0];
 						$scope.layerPwd.active = false;
+						$scope.REPLY.QNA_NUMBER = $scope.qna.QNA_NUMBER;
+						$scope.REPLY.MEMBER_NAME = $scope.qna.MEMBER_NAME;
+						$scope.getQnaReplyList();
+						$timeout(function(){
+							$(window).scrollTop(angular.element('.qna').position().top);
+						},100);
 					}else{
 						$scope.layerPwd.failCount++;
-						$scope.layerPwd.model.PASSWORD = '';
+						$scope.layerPwd.model.PASSWORD = '111999';
 					}
-					if($scope.layerPwd.failCount > 4){
-						location.reload();
+					if($scope.layerPwd.failCount > 2){
+						$scope.alert.open({message : '총 3회 실패하셨습니다.', callback : $scope.reload});
 					}
-					/*if(data.success){
-						$scope.getQna();
-						$scope.layerQna.close();
-					}else{
-						$scope.alert.open({message : data.message});
-					}*/
 			    }).error(function(data){
 			    	$scope.alert.open({message : '문의 조회를 실패하였습니다.'});
 			    	$scope.loading.active = false;
