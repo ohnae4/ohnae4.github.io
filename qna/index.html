@@ -45,13 +45,14 @@
 		<form class="searchForm">
 			<table>
 				<tr>
+					<th>문의번호</th>
+					<td><input type="text" data-ng-model="qnaPaging.search.QNA_NUMBER" /></td>
+				</tr>
+				<tr>
 					<th>제목</th>
-					<td><input type="text" data-ng-model="qnaPaging.search.SUBJECT" /></td>
+					<td><input type="text" data-ng-model="qnaPaging.search.SUBJECT" /> <!-- <button type="reset" data-ng-click="qnaPaging.reset()">초기화</button> --></td>
 				</tr>
 			</table>
-			<div class="btnWrap">
-				<button type="reset" data-ng-click="qnaPaging.reset()">초기화</button>
-			</div>
 		</form>
 		<div class="qnaList" data-ng-if="qnaList.length <= 0">
 	    	<p class="none">문의가 없습니다.</p>
@@ -61,11 +62,11 @@
 		    	<colgroup>
 		    		<col width="100" />
 		    		<col width="80" />
-		    		<col width="200" />
-		    		<col width="200" />
-		    		<col width="200" />
+		    		<col width="100" />
+		    		<col width="100" />
 		    		<col width="*" />
 		    		<col width="150" />
+		    		<col width="50" data-ng-if="admin.user" />
 		    	</colgroup>
 		    	<tr>
 		    		<th>문의번호</th>
@@ -73,17 +74,17 @@
 		    		<th>문의자전화번호</th>
 		    		<th>문의자이메일</th>
 		    		<th>제목</th>
-		    		<th>내용</th>
 		    		<th>등록일시</th>
+		    		<th data-ng-if="admin.user">삭제</th>
 		    	</tr>
-			    <tr data-ng-show="idx < qnaPaging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: qnaPaging.search | startFrom: qnaPaging.currentPage * qnaPaging.pageSize | orderBy:qnaPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+			    <tr class="pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)" data-ng-show="idx < qnaPaging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: qnaPaging.search | startFrom: qnaPaging.currentPage * qnaPaging.pageSize | orderBy:qnaPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
 			    	<td class="tc">{{i.QNA_NUMBER}}</td>
 					<td>{{i.MEMBER_NAME + '*'}}</td>
 					<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
 					<td>{{i.MEMBER_EMAIL + '*********'}}</td>
-					<td><span class="underline pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT}}</span></td>
-					<td>{{i.CONTENT}}</td>
+					<td><p>{{i.SUBJECT | cutString : 15}} <span data-ng-show="i.CNT != 0">({{i.CNT}})</span></p></td>
 					<td>{{i.CREATE_DATE}}</td>
+					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteQna.click(i.QNA_NUMBER)">삭제</button></td>
 			    </tr>
 		    </table>
 	    </div>
@@ -122,20 +123,18 @@
 					</tr>
 				</table>
 			</div>
-			<div class="replyList">
+			<div class="replyList" data-ng-if="replyList.length != 0">
 				<h2>댓글목록</h2>
-				<table>
-					<tr data-ng-repeat="(idx , i) in replyList">
-						<th>{{i.MEMBER_NAME}} {{i.CREATE_DATE}}</th>
-						<td>{{i.CONTENT}}</td>
-					</tr>
-				</table>
+				<dl data-ng-repeat="(idx , i) in replyList" data-ng-class="{admin : i.MEMBER_NAME == '관리자'}">
+					<dt>{{i.MEMBER_NAME}} <span>{{i.CREATE_DATE}}</span> <button type="button" class="small" data-ng-if="admin.user" data-ng-click="deleteQnaReply.click(i.QNA_REPLY_NUMBER)">X</button></dt>
+					<dd data-ng-bind-html="i.CONTENT | trustHtml"></dd>
+				</dl>
 			</div>
 			<div class="replyWrite">
 				<h2>댓글작성</h2>
 				<table>
 					<tr>
-						<th>{{REPLY.MEMBER_NAME}} , {{REPLY.QNA_NUMBER}}</th>
+						<!-- <th>{{REPLY.MEMBER_NAME}}</th> -->
 						<td>
 							<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
 							<button type="button" data-ng-click="setQnaReply()">작성</button>
@@ -145,11 +144,15 @@
 				</table>
 			</div>
 		</div>
+		<div class="btnWrap">
+			<button type="button" class="normal" data-ng-click="window.goTop();reload();">목록</button>
+		</div>
 	</div>
-	<div id="faq">
+	
+	<div id="faq" data-ng-class="{fixed : window.scrollTop > 200}"> <!--  data-ng-style="{top : (window.scrollTop > 200) ? window.scrollTop - 200 + 'px' : '0' }" -->
 		<h2>
 			자주찾는 질문
-			<span class="btnArea">
+			<span class="btnArea" data-ng-if="admin.user">
 				<button type="button" class="on" data-ng-click="layerFaq.active = true">등록하기</button> 
 			</span>
 		</h2>
@@ -161,20 +164,17 @@
 				</tr>
 				<tr>
 					<th>답변</th>
-					<td><input type="text" data-ng-model="faqPaging.search.ANSWER" /></td>
+					<td><input type="text" data-ng-model="faqPaging.search.ANSWER" /> <!-- <button type="reset" data-ng-click="faqPaging.reset()">초기화</button> --></td>
 				</tr>
 			</table>
-			<div class="btnWrap">
-				<button type="reset" data-ng-click="faqPaging.reset()">초기화</button>
-			</div>
 		</form>
 		<div class="faqList" data-ng-if="faqList.length <= 0">
 	    	<p class="none">자주찾는 질문이 없습니다.</p>
 	    </div>
 	    <div class="faqList" data-ng-if="faqList.length > 0">
 		    <dl data-ng-show="idx < faqPaging.pageSize" data-ng-repeat="(idx,i) in faqList | filter: faqPaging.search | startFrom: faqPaging.currentPage * faqPaging.pageSize | orderBy:faqPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
-		    	<dt>{{i.QUESTION}}</td>
-				<dd>{{i.ANSWER}} <button type="button" class="normal" data-ng-click="deleteFaq.click(i.FAQ_NUMBER)">삭제</button></td>
+		    	<dt data-ng-click="faqPaging.click(idx)">{{i.QUESTION}}  <button type="button" class="small" data-ng-if="admin.user" data-ng-click="deleteFaq.click(i.FAQ_NUMBER)">X</button></td>
+				<dd data-ng-class="{on : idx == faqPaging.idx}" data-ng-bind-html="i.ANSWER | trustHtml"></td>
 		    </dl>
 	    </div>
 	    <div class="paginator" data-ng-if="faqList.length > 0">
@@ -220,7 +220,7 @@
 			<tr>
 				<th class="required">제목</th>
 				<td>
-					<input maxlength="80" type="text" name="SUBJECT" data-ng-model="QNA.SUBJECT" required="required" />
+					<input maxlength="50" type="text" name="SUBJECT" data-ng-model="QNA.SUBJECT" required="required" />
 				</td>
 			</tr>
 			<tr>
@@ -261,8 +261,8 @@
 			<tr>
 				<th class="required">내용</th>
 				<td>
-					<textarea maxlength="80" name="ANSWER" data-ng-model="QNA.ANSWER"></textarea>
-					{{QNA.ANSWER.length}} / 80 자
+					<textarea maxlength="80" name="ANSWER" data-ng-model="FAQ.ANSWER"></textarea>
+					{{FAQ.ANSWER.length}} / 80 자
 				</td>
 			</tr>
 			<tr>

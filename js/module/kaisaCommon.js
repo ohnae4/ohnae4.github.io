@@ -457,6 +457,9 @@
 		 * 공통 이벤트 관리
 		 */
 		$scope.window = {
+			goTop : function(){
+				angular.element($window).scrollTop(0);
+			},
 			width : angular.element($window).width(),
 			height : angular.element($window).height(),
 			scrollTop : angular.element($window).scrollTop(),

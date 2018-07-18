@@ -31,10 +31,10 @@
 						'<p data-ng-if="alert.option.type==\'text\'">{{alert.option.message}}</p>'+
 						'<p data-ng-if="alert.option.type==\'html\'" data-ng-bind-html="alert.option.message | trustHtml"></p>'+
 						'<div class="btn_wrap" data-ng-if="alert.option.confirm">'+
-							'<span class="button"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="! alert.option.cancelCallback"><button type="button" data-ng-click="alert.close()">{{alert.option.button.cancel}}</button></span> <span class="button" data-ng-show="alert.option.cancelCallback"><button type="button" data-ng-click="alert.option.cancelCallback();alert.close()">{{alert.option.button.cancel}}</button></span>'+
+							'<span class="button"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="! alert.option.cancelCallback"><button type="button" class="normal" data-ng-click="alert.close()">{{alert.option.button.cancel}}</button></span> <span class="button" data-ng-show="alert.option.cancelCallback"><button type="button" class="normal" data-ng-click="alert.option.cancelCallback();alert.close()">{{alert.option.button.cancel}}</button></span>'+
 						'</div>'+
 						'<div class="btn_wrap" data-ng-if="! alert.option.confirm">'+
-							'<span class="button" data-ng-show="! alert.option.callback"><button type="button" data-ng-click="alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="alert.option.callback"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span>'+
+							'<span class="button" data-ng-show="! alert.option.callback"><button type="button" class="normal" data-ng-click="alert.close()">{{alert.option.button.ok}}</button></span> <span class="button" data-ng-show="alert.option.callback"><button type="button" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button></span>'+
 						'</div>'+
 					'</div>'+
 				'</div>'+

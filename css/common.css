@@ -22,7 +22,7 @@ h1,h2,h3,h4,h5,h6 {font-size:12px; color:#666;}
 th {font-weight:normal; text-align:left;}
 input[type='month'],input[type='url'],input[type='tel'],input[type='color'],input[type='datetime'],input[type='datetime-local'],
 input[type='text'],input[type='number'],input[type='password'],input[type='date'],input[type='email'] {border:1px solid #ccc; height:26px; width:100%; padding:0 5px; line-height:26px; vertical-align:middle;}
-textarea {width:100%; padding:0 5px; border:1px solid #aaa; line-height:26px; height:52px; white-space:pre-line;}
+textarea {width:100%; padding:0 5px; border:1px solid #aaa; line-height:16px; height:52px; white-space:pre-line;}
 select {line-height:40px; border:1px solid #ccc; height:26px; padding:0 5px; margin:0; box-sizing:border-box; vertical-align:middle; box-sizing:border-box;}
 input[readonly='readonly'] {background-color:#eee;}
 div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,textarea {box-sizing:border-box; } /* transition:0.3s all linear; transition:all 0.3s linear 0.9s; */
@@ -86,6 +86,9 @@ button[type="button"] {padding:5px 10px; background:#888; color:#fff; border-rad
 button[disabled="disabled"] {padding:5px 10px; background:#eee; color:#555; border-radius:3px;}
 button[type="button"].normal {border:1px solid #ccc; padding:5px 10px; background:#fff; color:#555; border-radius:3px;}
 button[type="reset"] {border:1px solid #888; padding:5px 10px; background:#f9f9f9; color:#555; border-radius:3px;}
+button[type="button"].small {padding:0 4px 0 3px; margin:-2px 0 0 3px; line-height:12px; font-size:10px; height:14px; background:#999; color:#fff; border-radius:3px; white-space:nopwrap;}
+
+p.none {text-align:center; padding:30px 0; width:100%; clear:both; border:1px solid #eee;}
 
 .dimmed {width:100%; display:none; height:100%; z-index:100; position:fixed; left:0; top:0; background:rgba(0,0,0,0.3);}
 .dimmed.on {display:block;}
@@ -126,7 +129,7 @@ table th.required:after {content:'*'; display:inline-block; color:#ff0000; paddi
 .txtGuide {color:#ff5500; font-size:11px; position:relative; padding-bottom:3px;}
 .txtGuide:before {content:'*'; display:inline-block; padding:0 5px;}
 
-.searchForm {width:100%; clear:both;}
+.searchForm {width:100%; clear:both; padding-bottom:5px;}
 .searchForm table {width:100%; border-top:2px solid #666;}
 .searchForm table th {width:100px; padding:5px 10px; border:1px solid #ddd; background:#f2f2f2;}
 .searchForm table td {padding:5px 10px; border:1px solid #ddd;}
