@@ -139,15 +139,36 @@
 			$scope.ROOM_BASE = $scope.roomArray[n];
 		};
 		//객실추가
+		$scope.setRoomAuto = function() {
+			for(var i in $scope.roomArray){
+				$scope.ROOM_BASE = $scope.roomArray[i];
+				$http.jsonp(kaisaApi.setRoom + $scope.jsonpParam($scope.ROOM_BASE)).success(function(data){
+			        if(data.success){
+			        	console.log(data);
+			        }else{
+			        	console.log(data.message);
+			        }
+			        $scope.loading.active = false;
+			    }).error(function(data){
+			    	$scope.alert.open({message : '객실추가 실패.'});
+			    	$scope.loading.active = false;
+			    });
+			}
+		};
 		$scope.setRoom = function() {
 			$http.jsonp(kaisaApi.setRoom + $scope.jsonpParam($scope.ROOM_BASE)).success(function(data){
-		        console.log(data);
+		        if(data.success){
+		        	console.log(data);
+		        }else{
+		        	console.log(data.message);
+		        }
 		        $scope.loading.active = false;
 		    }).error(function(data){
 		    	$scope.alert.open({message : '객실추가 실패.'});
 		    	$scope.loading.active = false;
 		    });
 		};
-		
+		$scope.ROOM_BASE_IDX = 0;
+		$scope.ROOM_BASE = $scope.roomArray[0];
 	}]);
 })(window,window.angular);

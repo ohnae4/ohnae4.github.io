@@ -119,7 +119,8 @@
 			<li data-ng-repeat="(idx,i) in roomArray" data-ng-class="{on : ROOM_BASE_IDX == idx}"  data-ng-click="roomArraySelect(idx)">{{i.ROOM_NAME}}</li>
 		</ul>
 		<div class="btnWrap">
-			<button type="submit" tabindex="8" data-ng-disabled="!(ROOM_BASE.ROOM_NAME
+			<button type="button" data-ng-click="setRoomAuto()" class="on">자동생성</button>
+			<button type="submit" class="normal" data-ng-disabled="!(ROOM_BASE.ROOM_NAME
 						&& ROOM_BASE.ROOM_NUMBER
 						&& ROOM_BASE.ROOM_TYPE_CODE
 						&& ROOM_BASE.ROOM_M2
@@ -134,7 +135,9 @@
 						&& ROOM_BASE.PRICE_6
 						&& ROOM_BASE.PRICE_7
 						&& ROOM_BASE.PRICE_8
-						&& ROOM_BASE.PRICE_9)">생성하기</button>
+						&& ROOM_BASE.PRICE_9)">생성</button>
+						
+						
 		</div>
 	</form>
 </div>
