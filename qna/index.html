@@ -77,12 +77,12 @@
 		    		<th>등록일시</th>
 		    		<th data-ng-if="admin.user">삭제</th>
 		    	</tr>
-			    <tr class="pointer" data-ng-click="layerPwd.open(i.QNA_NUMBER)" data-ng-show="idx < qnaPaging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: qnaPaging.search | startFrom: qnaPaging.currentPage * qnaPaging.pageSize | orderBy:qnaPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+			    <tr data-ng-show="idx < qnaPaging.pageSize" data-ng-repeat="(idx,i) in qnaList | filter: qnaPaging.search | startFrom: qnaPaging.currentPage * qnaPaging.pageSize | orderBy:qnaPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
 			    	<td class="tc">{{i.QNA_NUMBER}}</td>
 					<td>{{i.MEMBER_NAME + '*'}}</td>
 					<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
 					<td>{{i.MEMBER_EMAIL + '*********'}}</td>
-					<td><p>{{i.SUBJECT | cutString : 15}} <span data-ng-show="i.CNT != 0">({{i.CNT}})</span></p></td>
+					<td><p><span class="pointer underline" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT | cutString : 15}}</span> <span class="ctn" data-ng-show="i.CNT != 0">({{i.CNT}})</span></p></td>
 					<td>{{i.CREATE_DATE}}</td>
 					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteQna.click(i.QNA_NUMBER)">삭제</button></td>
 			    </tr>

@@ -145,13 +145,12 @@
 		$scope.jsonpParam = function(param){
 			return '?callback=JSON_CALLBACK&' + $httpParamSerializerJQLike(param); //jsonp 는 param 을  object 로 담을 수 없다
 		};		
-		$scope.menu = [
-			{title:'모비딕', url:'main'},
+		$scope.menuList = [
 			{title:'예약게시판', url:'reservation'},
 			{title:'1:1문의', url:'qna'},
-			{title:'요금안내', url:'info'},
-			{title:'펜션안내', url:'pension'},
-			{title:'근처펜션', url:'nearPension'}
+			{title:'공지사항', url:'notice'},
+			{title:'이용정보', url:'info'},
+			{title:'주변여행지', url:'near'}
 		];
 		/**
 		 * @param param : {

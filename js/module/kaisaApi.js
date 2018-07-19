@@ -31,6 +31,11 @@
 		this.getFaqList = apiUrl + '/api/controller/riverhill/faq/getFaqList.php' + ext;
 		this.setFaq = apiUrl + '/api/controller/riverhill/faq/setFaq.php' + ext; //admin
 		this.deleteFaq = apiUrl + '/api/controller/riverhill/faq/deleteFaq.php' + ext; //admin
+
+		this.setNotice = apiUrl + '/api/controller/riverhill/notice/setNotice.php' + ext;
+		this.getNotice = apiUrl + '/api/controller/riverhill/notice/getNotice.php' + ext;
+		this.getNoticeList = apiUrl + '/api/controller/riverhill/notice/getNoticeList.php' + ext;
+		this.deleteNotice = apiUrl + '/api/controller/riverhill/notice/deleteNotice.php' + ext; //admin
 		
     }]);
 })(window, window.angular);

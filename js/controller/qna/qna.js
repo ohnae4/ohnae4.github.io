@@ -98,7 +98,6 @@
     		no : null,
     		callback : function(){
     			$http.jsonp(kaisaApi.deleteQna + $scope.jsonpParam({ QNA_NUMBER : $scope.deleteQna.no })).success(function(data){
-    				$scope.alert.open({message : data.message});
     				$scope.getQnaList();
     				$scope.loading.active = false
     		    }).error(function(data){
@@ -274,7 +273,7 @@
     	};
     	//faqPaging
     	$scope.faqPaging = {
-    		idx : -1,
+    		idx : 0,
     		click : function(idx){
     			if(idx == this.idx){
     				this.idx = -1;

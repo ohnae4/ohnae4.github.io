@@ -19,10 +19,7 @@
 						'<li data-ng-repeat="(idx, i) in roomList.items"><a data-ng-href="/pension/room{{idx + 1}}">{{i.ROOM_NAME}}</a></li>'+
 					'</ul>'+
 					'<ol>'+
-						'<li><a href="/reservation/">예약하기</a></li>'+
-						'<li><a href="/qna/">1:1문의</a></li>'+
-						'<li><a href="/info/">펜션소개</a></li>'+
-						'<li><a href="/near/">주변여행지</a></li>'+
+						'<li data-ng-repeat="(idx, i) in menuList"><a data-ng-href="/{{i.url}}">{{i.title}}</a></li>'+
 					'</ol>'+
 				'</div>'+
 				'<div id="alert" data-ng-if="alert.active" data-ng-class="{on:alert.active}">'+
