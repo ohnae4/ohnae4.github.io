@@ -30,8 +30,8 @@
 	    		    '</div>'+
 	    		    '<div class="calendar">'+
 		    		    '<div class="week" data-ng-repeat="val in '+model.start+'.dateHead" data-ng-class="{sun:($index == 0)}">{{val}}</div>'+
-		    		    '<div data-ng-class="{day:i > 0}" data-ng-repeat="i in '+model.start+'.day">'+
-		    		    	'<span data-ng-class="{on:(i == '+model.start+'.selectIdx),off:(('+model.start+'.date | date:\'yyyyMM\')+getAddZero(i) < (20180312))}" data-ng-click="'+model.start+'.pick(i,'+model.start+'.date,'+model.end+'.date)" data-ng-if="i > 0"><strong>{{i}}</strong></span>'+
+		    		    '<div data-ng-class="{day:i.idx > 0}" data-ng-repeat="i in '+model.start+'.day">'+
+		    		    	'<span data-ng-class="{on:(i.idx == '+model.start+'.selectIdx),off:(('+model.start+'.date | date:\'yyyyMM\')+getAddZero(i) < (20180312))}" data-ng-click="'+model.start+'.pick(i.idx,'+model.start+'.date,'+model.end+'.date)" data-ng-if="i.idx > 0"><strong>{{i.idx}}</strong></span>'+
 		    		    '</div>'+
 	    		    '</div>'+
     		    '</div>';
@@ -78,9 +78,6 @@
 	        			today : function(){
 	        				return this.now.getDate()
 	        			},
-	        			month : function(){
-	        				return this.now.getMonth()
-	        			},
 	        			firstDay  : function(){
 	        				return this.getFirstDay(this.date.getFullYear(),this.date.getMonth());
 	        			},
@@ -122,10 +119,10 @@
 	        			makeDays : function(){
 	    	                this.day = [];
 	    	                for (var i = 0 ; i < this.firstDay() ; i++) {
-	    	                	this.day.push(0-i);
+	    	                	this.day.push({idx : 0 - i});
 	    	                }                
 	    	                for (var i = 0 ; i < this.lastDay() ; i++) {
-	    	                	this.day.push(i + 1);
+	    	                	this.day.push({idx : i + 1});
 	    	                }
 	    	            },
 	    	            selectDate : function(i){

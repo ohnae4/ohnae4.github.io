@@ -11,7 +11,7 @@
 			SUBJECT : '공지사항제목입니다.',
 			CONTENT : '공지사항내용입니다공지사항내용입니다공지사항내용입니다공지사항내용입니다공지사항내용입니다'
 		};
-    	//공지사항하기
+    	//공지사항등록
     	$scope.layerNotice = {
     		active : false,
     		close : function(){

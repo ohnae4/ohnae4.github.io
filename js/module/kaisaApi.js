@@ -37,5 +37,11 @@
 		this.getNoticeList = apiUrl + '/api/controller/riverhill/notice/getNoticeList.php' + ext;
 		this.deleteNotice = apiUrl + '/api/controller/riverhill/notice/deleteNotice.php' + ext; //admin
 		
+		this.getMobydicReservationList = apiUrl + '/api/controller/mobydic/reservation/getReservationList.php' + ext;
+		this.setMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/setReservation.php' + ext;
+		this.updateMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/updateReservation.php' + ext; //admin
+		this.deleteMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/deleteReservation.php' + ext; //admin
+		
+		
     }]);
 })(window, window.angular);
