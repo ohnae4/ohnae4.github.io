@@ -119,7 +119,7 @@
 	    	CREATE_DATE : '',
 	    	UPDATE_DATE : ''
     	};
-    	$scope.replyList = {};
+    	$scope.replyList = [];
     	$scope.getQnaReplyList = function(){
     		$scope.loading.active = true;
 			$http.jsonp(kaisaApi.getQnaReplyList + $scope.jsonpParam({ QNA_NUMBER : $scope.REPLY.QNA_NUMBER })).success(function(data){
@@ -134,7 +134,6 @@
     		no : null,
     		callback : function(){
     			$http.jsonp(kaisaApi.deleteQnaReply + $scope.jsonpParam({ QNA_REPLY_NUMBER : $scope.deleteQnaReply.no })).success(function(data){
-    				console.log(data);
     				if(data.success){
     					$scope.getQnaReplyList();
     				}else{
@@ -142,7 +141,7 @@
     				}
     				$scope.loading.active = false
     		    }).error(function(data){
-    		    	console.log('update error');
+    		    	console.log('delete error');
     		    	$scope.loading.active = false;
     		    });
     		},
@@ -262,7 +261,7 @@
     				$scope.getFaqList();
     				$scope.loading.active = false
     		    }).error(function(data){
-    		    	console.log('update error');
+    		    	console.log('delete error');
     		    	$scope.loading.active = false;
     		    });
     		},

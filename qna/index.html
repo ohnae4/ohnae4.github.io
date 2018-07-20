@@ -136,9 +136,11 @@
 					<tr>
 						<!-- <th>{{REPLY.MEMBER_NAME}}</th> -->
 						<td>
-							<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
-							<button type="button" data-ng-click="setQnaReply()">작성</button>
-							<p>{{REPLY.CONTENT.length}} / 80 자</p>
+							<form name="replyWriteForm" id="replyWriteForm" data-ng-submit="setQnaReply()">
+								<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
+								<button type="submit">작성</button>
+								<p>{{REPLY.CONTENT.length}} / 80 자</p>
+							</form>
 						</td>
 					</tr>
 				</table>

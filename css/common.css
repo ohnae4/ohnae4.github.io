@@ -85,9 +85,9 @@ body {background:#fff;}
 .button.large, button.large {line-height:30px; height:32px; padding:0 20px;}
 .button.on, button.on,
 button[type="submit"] {background:#ff5500; color:#fff; border:1px solid #ff5500;}
-button[disabled="disabled"] {background:#eee; color:#999;}
+button[disabled="disabled"] {border:1px solid #aaa; background:#eee; color:#999;}
 button[type="submit"].normal,
-button[type="button"].normal {border:1px solid #ccc; background:#fff;}
+button[type="button"].normal {border:1px solid #ccc; background:#fff; color:#999;}
 button[type="reset"] {border:1px solid #888; background:#f9f9f9;}
 
 p.none {text-align:center; padding:30px 0; width:100%; clear:both; border:1px solid #eee;}

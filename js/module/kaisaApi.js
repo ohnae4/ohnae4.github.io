@@ -23,8 +23,8 @@
 		this.getQnaPwdCheck = apiUrl + '/api/controller/riverhill/qna/getQnaPwdCheck.php' + ext;
 		this.setQna = apiUrl + '/api/controller/riverhill/qna/setQna.php' + ext;
 		this.deleteQna = apiUrl + '/api/controller/riverhill/qna/deleteQna.php' + ext; //admin
-		this.deleteQnaReply = apiUrl + '/api/controller/riverhill/qna/deleteQnaReply.php' + ext; //admin
 		
+		this.deleteQnaReply = apiUrl + '/api/controller/riverhill/qna/deleteQnaReply.php' + ext; //admin
 		this.setQnaReply = apiUrl + '/api/controller/riverhill/qna/setQnaReply.php' + ext;
 		this.getQnaReplyList = apiUrl + '/api/controller/riverhill/qna/getQnaReplyList.php' + ext;
 		
@@ -38,10 +38,15 @@
 		this.deleteNotice = apiUrl + '/api/controller/riverhill/notice/deleteNotice.php' + ext; //admin
 		
 		this.getMobydicReservationList = apiUrl + '/api/controller/mobydic/reservation/getReservationList.php' + ext;
+		this.getMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/getReservation.php' + ext;
 		this.setMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/setReservation.php' + ext;
 		this.updateMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/updateReservation.php' + ext; //admin
 		this.deleteMobydicReservation = apiUrl + '/api/controller/mobydic/reservation/deleteReservation.php' + ext; //admin
+		this.getReservationPwdCheck = apiUrl + '/api/controller/mobydic/reservation/getReservationPwdCheck.php' + ext; //admin
 		
+		this.deleteReservationReply = apiUrl + '/api/controller/mobydic/reservation/deleteReservationReply.php' + ext; //admin
+		this.setReservationReply = apiUrl + '/api/controller/mobydic/reservation/setReservationReply.php' + ext;
+		this.getReservationReplyList = apiUrl + '/api/controller/mobydic/reservation/getReservationReplyList.php' + ext;
 		
     }]);
 })(window, window.angular);

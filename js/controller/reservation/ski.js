@@ -4,18 +4,10 @@
 
 	app.controller('BodyController',['$scope','$window','$timeout','$interval','$http','kaisaApi','$filter',function($scope,$window,$timeout,$interval,$http,kaisaApi,$filter){
 		
-		
-		/*
-		 * date
-		 * */
 		$scope.date = {
 			start : null,
 			end : null
 		}
-		
-		/*
-		 * TEST date
-		 * */
 		$scope.option = {
 			time : [
 				{id: '7', name: '7시'},
@@ -32,7 +24,6 @@
 				{id: '18', name: '18시'}
 		    ]
 		};
-		
 		//model
 		$scope.RESERVATION = {
 			MEMBER_NAME: '최재호',
@@ -49,9 +40,7 @@
 			PAY_STATUS_CODE : '1',
 			CAPTCHA_CODE : ''
 		};
-
 		$scope.date.startDate = $filter('date')(new Date(),'yyyy-MM-dd')
-		
 		//예약 날짜
 		$scope.$watch('reservationDate.start.date', function(val){
 			if(val){
@@ -59,12 +48,14 @@
 				$scope.RESERVATION.VISIT_DATE = $filter('date')(val,'yyyy-MM-dd');
 			}
         },true);
-		
 		//예약하기
+		$scope.goList = function(){
+			location.href = '/reservation/skiList.html';
+		}
 		$scope.setMobydicReservation = function() {
 			$http.jsonp(kaisaApi.setMobydicReservation + $scope.jsonpParam($scope.RESERVATION)).success(function(data){
 				if(data.success){
-					console.log(data);
+					$scope.alert.open({message : data.message , callback : $scope.goList });
 				}else{
 					$scope.alert.open({message : data.message});
 				}
@@ -73,6 +64,5 @@
 		    	$scope.loading.active = false;
 		    });
 		};
-		
 	}]);
 })(window,window.angular);

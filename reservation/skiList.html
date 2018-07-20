@@ -46,7 +46,7 @@
 		<h2>
 			예약목록
 			<span class="btnArea">
-				<a class="button on" href="/ski.html">예약하기</a> 
+				<a class="button on" href="/reservation/ski.html">예약하기</a> 
 			</span>
 		</h2>
 		<form class="searchForm">
@@ -67,9 +67,18 @@
 	    <div class="reservationList" data-ng-if="reservationList.length > 0">
 		    <table>
 		    	<colgroup>
-		    		<col width="100" />
-		    		<col width="*" />
+		    		<col width="50" />
 		    		<col width="80" />
+		    		<col width="50" />
+		    		<col width="50" />
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="*" />
+		    		<col width="70" />
+		    		<col width="50" />
+		    		<col width="50" />
+		    		<col width="140" />
 		    		<col width="50" data-ng-if="admin.user" />
 		    	</colgroup>
 		    	<tr>
@@ -85,22 +94,22 @@
 		    		<th>요청사항</th>
 		    		<th>인원</th>
 		    		<th>등록일시</th>
-		    		<th>삭제</th>
+		    		<th data-ng-if="admin.user">삭제</th>
 		    	</tr>
 			    <tr data-ng-show="idx < reservationPaging.pageSize" data-ng-repeat="(idx,i) in reservationList | filter: reservationPaging.search | startFrom: reservationPaging.currentPage * reservationPaging.pageSize | orderBy:reservationPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
 					<td>{{i.RESERVATION_NUMBER}}</td>
-					<td><p><span class="pointer underline" data-ng-click="getReservation(i.RESERVATION_NUMBER)">{{i.VISIT_DATE}}</span></p></td>
+					<td>{{i.VISIT_DATE}}</td>
 					<td>{{i.VISIT_TIME}}</td>
-					<td>{{i.MEMBER_NAME}}</td>
-					<td>{{i.MEMBER_PHONE}}</td>
-					<td>{{i.MEMBER_EMAIL}}</td>
+					<td class="tl">{{i.MEMBER_NAME}}</td>
+					<td class="tl">{{i.MEMBER_PHONE}}</td>
+					<td class="tl">{{i.MEMBER_EMAIL}}</td>
 					<td>{{i.PICK_YN}}</td>
-					<td>{{i.PACKAGE_CODE}}</td>
-					<td>{{i.PAY_STATUS_CODE}}</td>
+					<td class="tl"><p><span class="pointer underline" data-ng-click="layerPwd.open(i.RESERVATION_NUMBER)">{{i.PACKAGE_CODE}}</td></span></p>
+					<td class="tl">{{i.PAY_STATUS_CODE}}</td>
 					<td>{{i.PERSONNEL}}</td>
 					<td>{{i.CREATE_DATE}}</td>
 					<td>{{i.UPDATE_DATE}}</td>
-					<td><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td>
+					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td>
 			    </tr>
 		    </table>
 	    </div>
@@ -163,9 +172,41 @@
 					</tr>
 				</table>
 			</div>
+			<div class="replyList" data-ng-if="replyList.length != 0">
+				<h2>댓글목록</h2>
+				<dl data-ng-repeat="(idx , i) in replyList" data-ng-class="{admin : i.MEMBER_NAME == '관리자'}">
+					<dt>{{i.MEMBER_NAME}} <span>{{i.CREATE_DATE}}</span> <button type="button" class="small" data-ng-if="admin.user" data-ng-click="deleteReservationReply.click(i.RESERVATION_REPLY_NUMBER)">X</button></dt>
+					<dd data-ng-bind-html="i.CONTENT | trustHtml"></dd>
+				</dl>
+			</div>
+			<div class="replyWrite">
+				<h2>댓글작성</h2>
+				<table>
+					<tr>
+						<!-- <th>{{REPLY.MEMBER_NAME}}</th> -->
+						<td>
+							<form name="replyWriteForm" id="replyWriteForm" data-ng-submit="setReservationReply()">
+								<textarea maxlength="80" name="CONTENT" data-ng-model="REPLY.CONTENT">댓글</textarea>
+								<button type="submit">작성</button>
+								<p>{{REPLY.CONTENT.length}} / 80 자</p>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-			
 	</div>
+</div>
+<div class="layerPwd" data-ng-show="layerPwd.active">
+	<form id="formLayerPwd" name="formLayerPwd" data-ng-submit="layerPwd.submit()">
+		<input type="hidden" readonly="readonly" name="RESERVATION_NUMBER" data-ng-model="layerPwd.model.RESERVATION_NUMBER" required="required" />
+		<h3>비밀번호 <span data-ng-if="layerPwd.failCount != 0">{{layerPwd.failCount}}회 실패하셨습니다.</span></h3>
+		<input data-only-number="false" autocapitalize="off" autocomplete="new-password" type="password" maxlength="30" name="PASSWORD" data-ng-model="layerPwd.model.PASSWORD" required="required" />
+		<div class="btnWrap">
+			<button type="submit" data-ng-disabled="!(layerPwd.model.RESERVATION_NUMBER && layerPwd.model.PASSWORD)">확인</button>
+			<button type="button" data-ng-click="layerPwd.close();">취소</button>
+		</div>
+	</form>
 </div>
 <div data-kaisa-footer="true"></div> 
 </body>
