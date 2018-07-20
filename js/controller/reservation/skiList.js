@@ -71,6 +71,7 @@
 		$scope.reservationList = null;
 		$scope.getReservationList = function() {
 			$http.jsonp(kaisaApi.getMobydicReservationList + $scope.jsonpParam($scope.RESERVATION)).success(function(data){
+				console.log(data);
 				if(data.success){
 					$scope.reservationList = data.items;
 				}else{
