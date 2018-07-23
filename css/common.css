@@ -29,7 +29,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 body {background:#fff;}
 
 #header {width:1280px; height:150px; margin:0 auto; position:relative; z-index:2;}
-#header h1 {padding:50px 0 30px 0; text-align:center;}
+#header h1 {padding:50px 0 30px 0; text-align:center; display:none;}
 
 #menu {width:1280px; color:#fff; height:50px; line-height:50px; background:url(/img/common/mask.png) repeat; margin:0 auto; position:relative; z-index:2;}
 #menu a {color:#fff; display:block; padding:0 10px;}
