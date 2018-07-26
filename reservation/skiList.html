@@ -91,7 +91,6 @@
 		    		<th>픽업여부</th>
 		    		<th>패키지명</th>
 		    		<th>결제상태</th>
-		    		<th>요청사항</th>
 		    		<th>인원</th>
 		    		<th>등록일시</th>
 		    		<th data-ng-if="admin.user">삭제</th>
@@ -100,16 +99,15 @@
 					<td>{{i.RESERVATION_NUMBER}}</td>
 					<td>{{i.VISIT_DATE}}</td>
 					<td>{{i.VISIT_TIME}}</td>
-					<td class="tl">{{i.MEMBER_NAME}}</td>
-					<td class="tl">{{i.MEMBER_PHONE}}</td>
-					<td class="tl">{{i.MEMBER_EMAIL}}</td>
-					<td>{{i.PICK_YN}}</td>
-					<td class="tl"><p><span class="pointer underline" data-ng-click="layerPwd.open(i.RESERVATION_NUMBER)">{{i.PACKAGE_CODE}}</td></span></p>
+					<td class="tl">{{i.MEMBER_NAME}}<span data-ng-if="!admin.user">*</span></td>
+					<td class="tl"><span data-ng-if="!admin.user">*********</span>{{i.MEMBER_PHONE}}</td>
+					<td class="tl">{{i.MEMBER_EMAIL}}<span data-ng-if="!admin.user">**********</span></td>
+					<td>{{i.PICK_YN | ynCode}}</td>
+					<td class="tl"><p><span class="pointer underline" data-ng-click="layerPwd.open(i.RESERVATION_NUMBER)">{{i.PACKAGE_CODE}} : {{getPackageCode(i.PACKAGE_CODE)}}</td></span></p>
 					<td class="tl">{{i.PAY_STATUS_CODE}}</td>
 					<td>{{i.PERSONNEL}}</td>
 					<td>{{i.CREATE_DATE}}</td>
-					<td>{{i.UPDATE_DATE}}</td>
-					<td ><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td>
+					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td>
 			    </tr>
 		    </table>
 	    </div>

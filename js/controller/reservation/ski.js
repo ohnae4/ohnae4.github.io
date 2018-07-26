@@ -36,7 +36,7 @@
 			DESCRIPTION: '안녕하세요',
 			PASSWORD: '111999',
 			PASSWORD2: '111999',
-			PACKAGE_CODE : '3',
+			PACKAGE_CODE : $scope.packageCode[1].val,
 			PAY_STATUS_CODE : '1',
 			CAPTCHA_CODE : ''
 		};

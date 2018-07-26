@@ -86,7 +86,28 @@
 		if(location.protocol == 'https:'){
 			//location.href = 'http://' + location.hostname + location.pathname + location.search; //ssl 사용페이지 없음
 		}
-		
+
+		$scope.packageCode = [
+			{val : "1" , type: "1", name : "물놀이기구 2종 + 제트보트", price: "35000"},
+			{val : "2" , type: "1", name : "물놀이기구 3종", price: "29000"},
+			{val : "3" , type: "1", name : "물놀이기구 3종 + 제트보트", price: "45000"},
+			{val : "4" , type: "1", name : "물놀이기구 5종", price: "45000"},
+			{val : "5" , type: "1", name : "물놀이기구 5종 + 제트보트", price: "59000"},
+			{val : "11" , type: "1", name : "물놀이기구 무제한놀이기구", price: "60000"},
+			{val : "12" , type: "1", name : "무제한놀이기구 + 제트보트", price: "70000"},
+			{val : "6" , type: "2", name : "제트보트 남이섬 일주", price: "25000", personnel : true},
+			{val : "7" , type: "2", name : "제트보트 남이섬 + 자라섬 일주", price: "45000", personnel : true},
+			{val : "8" , type: "3", name : "모터보트 남이섬 일주", price: "50000"},
+			{val : "9" , type: "3", name : "모터보트 남이섬 + 자라섬 일주", price: "70000"},
+			{val : "10" , type: "4", name : "기타", price: ""}
+		];
+		$scope.getPackageCode = function(val){
+			for(var i in $scope.packageCode){
+				if($scope.packageCode[i].val == val){
+					return $scope.packageCode[i].name;
+				}
+			}
+		};
 		/**
 		 * for 어드민
 		 */

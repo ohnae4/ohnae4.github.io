@@ -100,20 +100,8 @@
 					<tr>
 						<th class="required">패키지</th>
 						<td>
-							<select name="PACKAGE_CODE" data-ng-model="RESERVATION.PACKAGE_CODE" style="width:196px;">
-								<option value="1">물놀이기구 2종 + 제트보트</option>
-								<option value="2">물놀이기구 3종</option>
-								<option value="3">물놀이기구 3종 + 제트보트</option>
-								<option value="4">물놀이기구 5종</option>
-								<option value="5">물놀이기구 5종 + 제트보트</option>
-								<option value="11">물놀이기구 무제한놀이기구</option>
-								<option value="12">무제한놀이기구 + 제트보트</option>
-								<option value="6">제트보트 남이섬 일주</option>
-								<option value="7">제트보트 남이섬 + 자라섬 일주</option>
-								<option value="8">모터보트 남이섬 일주</option>
-								<option value="9">모터보트 남이섬 + 자라섬 일주</option>
-								<option value="10">기타</option>
-							</select>
+							<select data-ng-options="o.val as o.name for o in packageCode" data-ng-model="RESERVATION.PACKAGE_CODE" style="width:196px;"></select>
+							{{packageCode[RESERVATION.PACKAGE_CODE]}}
 						</td>
 					</tr>
 					<tr>
@@ -142,7 +130,7 @@
 						<th class="required">자동등록방지</th>
 						<td>
 							<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
-							<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
+							<input maxlength="6" data-only-number="true" type="text" data-ng-value="{{captcha.code}}" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
 							<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
 						</td>
 					</tr>

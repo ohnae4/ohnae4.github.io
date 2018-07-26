@@ -254,6 +254,16 @@
 			return str;
 		}
 	});
+	app.filter('ynCode', function() {
+		return function(str) {
+			if(!str){ return str; }
+			switch (str) {
+				case 'Y': str = '예'; break;
+				default: str = '아니요'; break;
+			}
+			return str;
+		}
+	});
 	app.filter('roomStatusCode', function() {
 		return function(str) {
 			if(!str){ return str; }
