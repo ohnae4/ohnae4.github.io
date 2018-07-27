@@ -104,7 +104,7 @@
 		$scope.getPackageCode = function(val){
 			for(var i in $scope.packageCode){
 				if($scope.packageCode[i].val == val){
-					return $scope.packageCode[i].name;
+					return $scope.packageCode[i];
 				}
 			}
 		};

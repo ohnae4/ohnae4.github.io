@@ -74,7 +74,7 @@
 		var currencyFilter = filter('currency');
 		var formats = locale.NUMBER_FORMATS;
 		return function(amount, num, symbol){
-			var value = currencyFilter(amount,'',2);
+			var value = currencyFilter(amount,'',0) + '원';
 			return value;
 		};
 	}]);
@@ -239,6 +239,18 @@
 			}
 		}
 	}]);
+	app.filter('payCode', function() {
+		return function(str) {
+			if(!str){ return str; }
+			switch (str) {
+			case '1': str = '예약중'; break;
+			case '2': str = '결제확인'; break;
+			case '3': str = '취소'; break;
+			default: break;
+			}
+			return str;
+		}
+	});
 	app.filter('roomNameCode', function() {
 		return function(str) {
 			if(!str){ return str; }

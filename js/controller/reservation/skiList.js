@@ -1,8 +1,16 @@
 (function(window, angular, undefined){
 	'use strict';
-	var app = angular.module('KaisaApp',['common','datePicker']);
+	var app = angular.module('KaisaApp',['common','layerDatePicker']);
 
 	app.controller('BodyController',['$scope','$window','$timeout','$interval','$http','kaisaApi','$filter',function($scope,$window,$timeout,$interval,$http,kaisaApi,$filter){
+		$scope.option = {
+		    pay : [
+		    	{val : '1', name : '예약중'},
+		    	{val : '2', name : '결제완료'},
+		    	{val : '3', name : '취소'}
+		    ]
+		};
+		
 		//reservationPaging
     	$scope.reservationPaging = {
 	    	orderBy: null,
@@ -27,13 +35,13 @@
 			}
     	};
     	//예약보기
-    	$scope.reservation = null;
+    	$scope.RESERVATION = null;
     	$scope.getReservation = function(n){
     		$http.jsonp(kaisaApi.getMobydicReservation + $scope.jsonpParam({RESERVATION_NUMBER : n})).success(function(data){
 				if(data.success){
-					$scope.reservation = data.items[0];
-					$scope.REPLY.RESERVATION_NUMBER = $scope.reservation.RESERVATION_NUMBER;
-					$scope.REPLY.MEMBER_NAME = $scope.reservation.MEMBER_NAME;
+					$scope.RESERVATION = data.items[0];
+					$scope.REPLY.RESERVATION_NUMBER = $scope.RESERVATION.RESERVATION_NUMBER;
+					$scope.REPLY.MEMBER_NAME = $scope.RESERVATION.MEMBER_NAME;
 					$scope.getReservationReplyList();
 					$timeout(function(){
 						$(window).scrollTop(angular.element('.reservation').offset().top - 50);
@@ -45,6 +53,24 @@
 		    	$scope.alert.open({message : '예약목록 조회를 실패하였습니다.'});
 		    	$scope.loading.active = false;
 		    });
+    	};
+    	$scope.updatePayStatusCode = {
+    		callback : function(){
+    			$http.jsonp(kaisaApi.updatePayStatusCode + $scope.jsonpParam({PAY_STATUS_CODE : $scope.RESERVATION.PAY_STATUS_CODE, RESERVATION_NUMBER : $scope.RESERVATION.RESERVATION_NUMBER})).success(function(data){
+    				if(data.success){
+    					$scope.alert.open({message : data.message });
+    					$scope.reload();
+    				}
+    		    }).error(function(data){
+    		    	$scope.alert.open({message : '예약상태 변경을 실패하였습니다.'});
+    		    	$scope.loading.active = false;
+    		    });
+    		},
+    		click : function(no){
+    			if($scope.RESERVATION.PAY_STATUS_CODE){
+    				$scope.alert.open({message : '예약상태를 변경하시겠습니까?' , confirm : true, callback : $scope.updatePayStatusCode.callback});
+    			}
+    		}
     	};
     	//예약목록삭제
     	$scope.deleteReservation = { //<!-- <button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button> -->
@@ -71,7 +97,6 @@
 		$scope.reservationList = null;
 		$scope.getReservationList = function() {
 			$http.jsonp(kaisaApi.getMobydicReservationList + $scope.jsonpParam($scope.RESERVATION)).success(function(data){
-				console.log(data);
 				if(data.success){
 					$scope.reservationList = data.items;
 				}else{
@@ -106,18 +131,18 @@
     		submit : function(){
 				$http.jsonp(kaisaApi.getReservationPwdCheck + $scope.jsonpParam({RESERVATION_NUMBER : $scope.layerPwd.model.RESERVATION_NUMBER, PASSWORD : $scope.layerPwd.model.PASSWORD})).success(function(data){
 					if(data.success){
-						$scope.reservation = data.items[0];
+						$scope.RESERVATION = data.items[0];
 						$scope.layerPwd.active = false;
-						$scope.REPLY.RESERVATION_NUMBER = $scope.reservation.RESERVATION_NUMBER;
-						$scope.REPLY.MEMBER_NAME = $scope.reservation.MEMBER_NAME;
+						$scope.REPLY.RESERVATION_NUMBER = $scope.RESERVATION.RESERVATION_NUMBER;
+						$scope.REPLY.MEMBER_NAME = $scope.RESERVATION.MEMBER_NAME;
 						$scope.getReservationReplyList();
 						$timeout(function(){
 							$(window).scrollTop(angular.element('.reservation').offset().top - 50);
 						},100);
 					}else{
 						$scope.layerPwd.failCount++;
-						$scope.layerPwd.model.PASSWORD = '111999';
 					}
+					$scope.layerPwd.model.PASSWORD = '';
 					if($scope.layerPwd.failCount > 2){
 						$scope.alert.open({message : '총 3회 실패하셨습니다.', callback : $scope.reload});
 					}

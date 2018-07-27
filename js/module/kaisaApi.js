@@ -47,6 +47,7 @@
 		this.deleteReservationReply = apiUrl + '/api/controller/mobydic/reservation/deleteReservationReply.php' + ext; //admin
 		this.setReservationReply = apiUrl + '/api/controller/mobydic/reservation/setReservationReply.php' + ext;
 		this.getReservationReplyList = apiUrl + '/api/controller/mobydic/reservation/getReservationReplyList.php' + ext;
+		this.updatePayStatusCode = apiUrl + '/api/controller/mobydic/reservation/updatePayStatusCode.php' + ext;
 		
     }]);
 })(window, window.angular);

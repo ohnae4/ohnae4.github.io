@@ -37,11 +37,24 @@
 			PASSWORD: '111999',
 			PASSWORD2: '111999',
 			PACKAGE_CODE : $scope.packageCode[1].val,
+			PRICE : '',
 			PAY_STATUS_CODE : '1',
-			CAPTCHA_CODE : ''
+			CAPTCHA_CODE : '',
+			
 		};
-		$scope.date.startDate = $filter('date')(new Date(),'yyyy-MM-dd')
+		//입금금액
+		$scope.$watch('RESERVATION.PACKAGE_CODE', function(val){
+			if(val){
+				$scope.RESERVATION.PRICE = ($scope.getPackageCode(val).personnel) ? $scope.getPackageCode(val).price * $scope.RESERVATION.PERSONNEL : $scope.getPackageCode(val).price;
+			}
+        },true);
+		$scope.$watch('RESERVATION.PERSONNEL', function(val){
+			if(val){
+				$scope.RESERVATION.PRICE = ($scope.getPackageCode($scope.RESERVATION.PACKAGE_CODE).personnel) ? $scope.getPackageCode($scope.RESERVATION.PACKAGE_CODE).price * val : $scope.getPackageCode($scope.RESERVATION.PACKAGE_CODE).price;
+			}
+        },true);
 		//예약 날짜
+		$scope.date.startDate = $filter('date')(new Date(),'yyyy-MM-dd')
 		$scope.$watch('reservationDate.start.date', function(val){
 			if(val){
 				$scope.date.startDate = $filter('date')(val,'yyyy-MM-dd');

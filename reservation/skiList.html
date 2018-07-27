@@ -19,7 +19,7 @@
 <meta name="viewport" content="user-scalable=yes">
 <link rel="shortcut icon" href="/img/favicon.ico?ver=0.1" type="image/x-icon">
 <link rel="stylesheet" href="/css/common.css" type="text/css">
-<link rel="stylesheet" href="/css/datepicker.css" type="text/css">
+<link rel="stylesheet" href="/css/layerDatepicker.css" type="text/css">
 <link rel="stylesheet" href="/css/skiList.css" type="text/css">
 <!--[if lt IE 10]>
 <link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
@@ -30,7 +30,7 @@
 <script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
 <script src="/js/lib/angular/angular.min.js"></script>
 <script src="/js/min/kaisa.js"></script>
-<script src="/js/module/kaisaDatepicker.js"></script>
+<script src="/js/module/kaisaLayerDatepicker.js"></script>
 <script src="/js/controller/reservation/skiList.js"></script>
 </head>
 <body data-ng-controller="BodyController">
@@ -38,11 +38,6 @@
 <div data-kaisa-menu="true"></div>
 <div id="content">
 	<div class="wrap">
-		<!-- 
-		<p style="padding:150px 0 0 0; font-size:26px; color:#333; line-height:40px; text-align:center;">페이지 준비중입니다!</p>
-		<p style="padding:0 0 150px 0; font-size:16px; line-height:40px; text-align:center;">곧 오픈예정입니다.</p>
-		 -->
-			
 		<h2>
 			예약목록
 			<span class="btnArea">
@@ -57,12 +52,14 @@
 				</tr>
 				<tr>
 					<th>예약날짜</th>
-					<td></td>
+					<td>
+						
+					</td>
 				</tr>
 			</table>
 		</form>
 		<div class="reservationList" data-ng-if="reservationList.length <= 0">
-	    	<p class="none">문의가 없습니다.</p>
+	    	<p class="none">예약이 없습니다.</p>
 	    </div>
 	    <div class="reservationList" data-ng-if="reservationList.length > 0">
 		    <table>
@@ -90,6 +87,7 @@
 		    		<th>이메일</th>
 		    		<th>픽업여부</th>
 		    		<th>패키지명</th>
+		    		<th>금액</th>
 		    		<th>결제상태</th>
 		    		<th>인원</th>
 		    		<th>등록일시</th>
@@ -98,14 +96,15 @@
 			    <tr data-ng-show="idx < reservationPaging.pageSize" data-ng-repeat="(idx,i) in reservationList | filter: reservationPaging.search | startFrom: reservationPaging.currentPage * reservationPaging.pageSize | orderBy:reservationPaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
 					<td>{{i.RESERVATION_NUMBER}}</td>
 					<td>{{i.VISIT_DATE}}</td>
-					<td>{{i.VISIT_TIME}}</td>
+					<td>{{i.VISIT_TIME}} 시</td>
 					<td class="tl">{{i.MEMBER_NAME}}<span data-ng-if="!admin.user">*</span></td>
 					<td class="tl"><span data-ng-if="!admin.user">*********</span>{{i.MEMBER_PHONE}}</td>
 					<td class="tl">{{i.MEMBER_EMAIL}}<span data-ng-if="!admin.user">**********</span></td>
 					<td>{{i.PICK_YN | ynCode}}</td>
-					<td class="tl"><p><span class="pointer underline" data-ng-click="layerPwd.open(i.RESERVATION_NUMBER)">{{i.PACKAGE_CODE}} : {{getPackageCode(i.PACKAGE_CODE)}}</td></span></p>
-					<td class="tl">{{i.PAY_STATUS_CODE}}</td>
-					<td>{{i.PERSONNEL}}</td>
+					<td class="tl"><p><span class="pointer underline" data-ng-click="layerPwd.open(i.RESERVATION_NUMBER)">{{getPackageCode(i.PACKAGE_CODE).name}}</span></p></td>
+					<td class="tr">{{i.PRICE | toCurrency}}</td>
+					<td class="tl">{{i.PAY_STATUS_CODE | payCode}}</td>
+					<td>{{i.PERSONNEL}} 명</td>
 					<td>{{i.CREATE_DATE}}</td>
 					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td>
 			    </tr>
@@ -116,57 +115,67 @@
 		    <span><strong>{{reservationPaging.currentPage+1}}</strong>/{{reservationPaging.numberOfPages()}}</span>
 		    <button type="button" data-ng-disabled="reservationPaging.currentPage >= reservationList.length/reservationPaging.pageSize - 1" data-ng-click="reservationPaging.currentPage=reservationPaging.currentPage+1;">Next</button>
 		</div>
-		<div data-ng-if="reservation">
+		<div data-ng-if="RESERVATION">
 			<h2>문의내용</h2>
 			<div class="reservation">
 				<table>
 					<tr>
 						<th>번호</th>
-						<td>{{reservation.RESERVATION_NUMBER}}</td>
+						<td>{{RESERVATION.RESERVATION_NUMBER}}</td>
 					</tr>
 					<tr>
 						<th>방문일</th>
-						<td>{{reservation.VISIT_DATE}}</td>
+						<td>{{RESERVATION.VISIT_DATE}}</td>
 					</tr>
 					<tr>
 						<th>방문시간</th>
-						<td>{{reservation.VISIT_TIME}}</td>
+						<td>{{RESERVATION.VISIT_TIME}} 시</td>
 					</tr>
 					<tr>
 						<th>예약자명</th>
-						<td>{{reservation.MEMBER_NAME}}</td>
+						<td>{{RESERVATION.MEMBER_NAME}}</td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
-						<td>{{reservation.MEMBER_PHONE}}</td>
+						<td>{{RESERVATION.MEMBER_PHONE}}</td>
 					</tr>
 					<tr>
 						<th>이메일</th>
-						<td>{{reservation.MEMBER_EMAIL}}</td>
+						<td>{{RESERVATION.MEMBER_EMAIL}}</td>
 					</tr>
 					<tr>
 						<th>픽업여부</th>
-						<td>{{reservation.PICK_YN}}</td>
+						<td>{{RESERVATION.PICK_YN | ynCode}}</td>
 					</tr>
 					<tr>
 						<th>패키지</th>
-						<td>{{reservation.PACKAGE_CODE}}</td>
+						<td>{{getPackageCode(RESERVATION.PACKAGE_CODE).name}}</td>
+					</tr>
+					<tr>
+						<th>금액</th>
+						<td>{{RESERVATION.PRICE | toCurrency}}</td>
 					</tr>
 					<tr>
 						<th>예약상태</th>
-						<td>{{reservation.PAY_STATUS_CODE}}</td>
+						<td>
+							<span data-ng-if="!admin.user">{{RESERVATION.PAY_STATUS_CODE | payCode}}</span>
+							<span data-ng-if="admin.user">
+								<select data-ng-options="o.val as o.name for o in option.pay" data-ng-model="RESERVATION.PAY_STATUS_CODE"></select>
+								<button type="button" data-ng-click="updatePayStatusCode.click()">변경</button>
+							</span>
+						</td>
 					</tr>
 					<tr>
 						<th>인원</th>
-						<td>{{reservation.PERSONNEL}}</td>
+						<td>{{RESERVATION.PERSONNEL}} 명</td>
 					</tr>
 					<tr>
 						<th>등록일시</th>
-						<td>{{reservation.CREATE_DATE}}</td>
+						<td>{{RESERVATION.CREATE_DATE}}</td>
 					</tr>
 					<tr>
 						<th>수정일시</th>
-						<td>{{reservation.UPDATE_DATE}}</td>
+						<td>{{RESERVATION.UPDATE_DATE}}</td>
 					</tr>
 				</table>
 			</div>
@@ -192,6 +201,9 @@
 					</tr>
 				</table>
 			</div>
+			<div class="btnWrap">
+				<a class="button large" href="skiList.html" class="large">목록</a> 
+			</div>
 		</div>
 	</div>
 </div>
@@ -207,5 +219,8 @@
 	</form>
 </div>
 <div data-kaisa-footer="true"></div> 
+<div class="layerDatePicker" data-layer-date-picker="true" model="reservationDate">
+	<div data-layer-date-picker-calendar="true" model-start="reservationDate.start"></div>
+</div>
 </body>
 </html>

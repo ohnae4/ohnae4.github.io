@@ -101,7 +101,13 @@
 						<th class="required">패키지</th>
 						<td>
 							<select data-ng-options="o.val as o.name for o in packageCode" data-ng-model="RESERVATION.PACKAGE_CODE" style="width:196px;"></select>
-							{{packageCode[RESERVATION.PACKAGE_CODE]}}
+						</td>
+					</tr>
+					<tr>
+						<th class="required">금액</th>
+						<td>
+							<input readonly="readonly" autocomplete="off" type="text" name="PRICE" data-ng-model="RESERVATION.PRICE" required="required" style="width:140px;" />
+							<span data-ng-if="getPackageCode(RESERVATION.PACKAGE_CODE).personnel">인당 : {{getPackageCode(RESERVATION.PACKAGE_CODE).price | toCurrency}}</span>
 						</td>
 					</tr>
 					<tr>
@@ -142,10 +148,12 @@
 						&& RESERVATION.PERSONNEL
 						&& RESERVATION.MEMBER_EMAIL
 						&& RESERVATION.MEMBER_PHONE
+						&& RESERVATION.PACKAGE_CODE
+						&& RESERVATION.PRICE
 						&& RESERVATION.PASSWORD
 						&& RESERVATION.PASSWORD2
 						&& RESERVATION.PASSWORD == RESERVATION.PASSWORD2
-						&& RESERVATION.CAPTCHA_CODE == captcha.code)">
+						)"><!-- && RESERVATION.CAPTCHA_CODE == captcha.code -->
 						예약하기
 					</button>
 					<a class="button large" href="skiList.html" class="large">목록</a> 
