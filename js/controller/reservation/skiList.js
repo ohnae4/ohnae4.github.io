@@ -10,15 +10,35 @@
 		    	{val : '3', name : '취소'}
 		    ]
 		};
-		
 		//reservationPaging
+		
+		
+		/*<!-- data-ng-value="reservationDate.start.selectDate | date : 'yyyy-MM-dd'" -->
+		$rootScope.$watch('reservationDate.start.selectDate', function(val){
+			$scope.loading = loading;
+			if(loading.status == 419){ // session error
+        		$scope.commonLink('login',{returnURL : location.href},'move');
+        		$scope.loading.active = false;
+        	}
+			if(loading.status != 200){
+        		console.debug('error : ' + loading.status);
+        		$scope.loading.active = false;
+        	}			
+			if(loading.first){
+				$scope.historyChecker();
+			}
+        },true);*/
+		
+		
     	$scope.reservationPaging = {
 	    	orderBy: null,
 			search: {
-				RESERVATION_NUMBER : ''
+				RESERVATION_NUMBER : '',
+				VISIT_DATE : ''
 			},
 			reset : function(){
 				$scope.reservationPaging.RESERVATION_NUMBER = '';
+				$scope.reservationPaging.VISIT_DATE = '';
 				$scope.reservationPaging.currentPage = 0;
 			},
 			sorting : function(key){
@@ -95,8 +115,8 @@
     	};
 		//예약목록조회
 		$scope.reservationList = null;
-		$scope.getReservationList = function() {
-			$http.jsonp(kaisaApi.getMobydicReservationList + $scope.jsonpParam($scope.RESERVATION)).success(function(data){
+		$scope.getReservationList = function(searchDate) {
+			$http.jsonp(kaisaApi.getMobydicReservationList + $scope.jsonpParam({VISIT_DATE : (searchDate) ? searchDate : ''})).success(function(data){
 				if(data.success){
 					$scope.reservationList = data.items;
 				}else{
@@ -208,6 +228,5 @@
 		    	$scope.loading.active = false;
 		    });
     	};
-    	
 	}]);
 })(window,window.angular);

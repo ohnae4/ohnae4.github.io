@@ -4,9 +4,9 @@
 .layerDatePicker span,
 .layerDatePicker strong {transition:0s all linear;} 
 
-.layerDatePicker {width:200px; position:absolute; top:50%; overflow:hidden; z-index:10;}
+.layerDatePicker {width:260px; position:absolute; top:50%; overflow:hidden; z-index:10;}
 .layerDatePicker .wrap {width:100%; padding:15px; border:1px solid #ddd; background:#fff;}
-.layerDatePicker .btnWrap {display:none;}
+.layerDatePicker .btnWrap button {margin:0 2px;}
 .layerDatePicker .close{position:absolute;top:15px;right:30px; display:block;height:12px;background-size:12px;}
 .layerDatePicker .box{border:1px solid #999;background:#fff}
 .layerDatePicker .head{position:relative; height:44px;margin:0 auto;padding-top:0; text-align:center; font-weight:bold;font-size:17px;line-height:44px}

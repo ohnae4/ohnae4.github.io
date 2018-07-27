@@ -53,10 +53,12 @@
 				<tr>
 					<th>예약날짜</th>
 					<td>
-						
+						<input type="text" readonly="readonly" data-ng-model="reservationPaging.search.VISIT_DATE" />
+						<button type="button" data-ng-click="reservationDate.toggle($event)">달력</button>
 					</td>
 				</tr>
 			</table>
+			
 		</form>
 		<div class="reservationList" data-ng-if="reservationList.length <= 0">
 	    	<p class="none">예약이 없습니다.</p>
@@ -219,8 +221,8 @@
 	</form>
 </div>
 <div data-kaisa-footer="true"></div> 
-<div class="layerDatePicker" data-layer-date-picker="true" model="reservationDate">
-	<div data-layer-date-picker-calendar="true" model-start="reservationDate.start"></div>
+<div class="layerDatePicker" data-layer-date-picker="true" data-ng-style="reservationDate.style" data-model="reservationDate" data-ng-show="reservationDate.active">
+	<div data-layer-date-picker-calendar="true"></div>
 </div>
 </body>
 </html>

@@ -6,30 +6,21 @@
     	return {
     		replace : true,
     		link: function($scope, el, attrs){
-    			$scope.getAddZero = function(n){
-    				return n < 10 ? '0' + n : n;
-    			}
-    			var model = {
-    				start : attrs.modelStart,
-    				end : attrs.modelEnd,
-    				todayYear : $filter('date')(new Date(),'yyyy'),
-    				todayMonth : $filter('date')(new Date(),'MM'),
-    				todayDay : $filter('date')(new Date(),'dd')
-    			},
-    			strHtml = ''+
+    			var model = el.parent().attr('data-model'),
+    				strHtml = ''+
     		    '<div class="wrap">'+
 	    			'<div class="head">'+
-		    		    '<span class="prev" data-ng-click="'+model.start+'.datePrev()" data-ng-show="('+model.start+'.date | date:\'MM\') > ('+model.todayMonth +')">Prev</span>'+
-		    		    '<span class="next" data-ng-click="'+model.start+'.dateNext()" data-ng-hide="('+model.start+'.date | date:\'MM\') == (12)">Next</span>'+
+		    		    '<span class="prev" data-ng-click="'+model+'.start.dateMove(-1)">Prev</span>'+
+		    		    '<span class="next" data-ng-click="'+model+'.start.dateMove(+1)">Next</span>'+
 		    		    '<h5>'+
-			    		    '<strong data-ng-bind="'+model.start+'.date | date:\'yyyy\'"></strong> 년 '+
-			    		    '<strong data-ng-bind="'+model.start+'.date | date:\'MM\'"></strong> 월'+
+			    		    '<strong data-ng-bind="'+model+'.start.date | date:\'yyyy\'"></strong> 년 '+
+			    		    '<strong data-ng-bind="'+model+'.start.date | date:\'MM\'"></strong> 월'+
 		    		    '</h5>'+
 	    		    '</div>'+
 	    		    '<div class="calendar">'+
-		    		    '<div class="week" data-ng-repeat="val in '+model.start+'.dateHead" data-ng-class="{sun:($index == 0)}">{{val}}</div>'+
-		    		    '<div data-ng-class="{day:i.idx > 0}" data-ng-repeat="i in '+model.start+'.day">'+
-		    		    	'<span data-ng-class="{on:(i.idx == '+model.start+'.selectIdx),off:(('+model.start+'.date | date:\'yyyyMM\')+getAddZero(i) < (20180312))}" data-ng-click="'+model.start+'.pick(i.idx,'+model.start+'.date,'+model.end+'.date)" data-ng-if="i.idx > 0"><strong>{{i.idx}}</strong></span>'+
+		    		    '<div class="week" data-ng-repeat="val in '+model+'.start.dateHead" data-ng-class="{sun:($index == 0)}">{{val}}</div>'+
+		    		    '<div data-ng-class="{day:i.idx > 0}" data-ng-repeat="i in '+model+'.start.day">'+
+		    		    	'<span data-ng-class="{on:(i.idx == '+model+'.start.selectIdx && ('+model+'.start.date | date:\'yyyyMM\') == ('+model+'.start.selectDate | date:\'yyyyMM\'))}" data-ng-click="'+model+'.start.pick(i.idx)" data-ng-if="i.idx > 0"><strong>{{i.idx}}</strong></span>'+
 		    		    '</div>'+
 	    		    '</div>'+
     		    '</div>';
@@ -45,9 +36,18 @@
 	        	model : '=',
 	        },
 	        link : function($scope, el, attrs){
-	        	
-	        	//modelStart
+	            var addZero = function(n) {
+	            	return n < 10 ? "0" + n : n;
+	            };
 	        	$scope.model = {
+	        		active : false,
+	        		toggle : function(e){
+	        			(this.active) ? this.active = false : this.active = true;
+	        			$scope.model.style = {
+	        				top : $(e.currentTarget).prev().offset().top + 25,
+	        				left : $(e.currentTarget).prev().offset().left
+	        			}
+	        		},
         			init : function(){
         		        for (var i in this) {
         		            if (typeof this[i] == 'object') {
@@ -56,9 +56,7 @@
         		        }
         		        this.start.selectIdx = this.start.today();
         		        this.start.makeDays();
-        		        this.start.date.setMonth(new Date().getMonth()-1);
-        		        
-        		        this.start.setStart(1); //최초 조회는 이전달로 셋팅
+        		        this.start.date.setMonth(new Date().getMonth());
         		        return this;
         		    },
 	        		start : {
@@ -68,52 +66,36 @@
 			        	getLastDay : function(year, month) { //마지막날짜
 			                return new Date(year, month + 1, 0).getDate();
 			            },
-			            addZero : function(n) {
-			            	return n < 10 ? "0" + n : n;
-			            },
+			            selectDate : '',
 	        			date : new Date(),
 	        			now : new Date(),
 	        			today : function(){
 	        				return this.now.getDate()
 	        			},
-	        			firstDay  : function(){
-	        				return this.getFirstDay(this.date.getFullYear(),this.date.getMonth());
-	        			},
-	        			lastDay  : function(){
-	        				return this.getLastDay(this.date.getFullYear(),this.date.getMonth());
-	        			},
 	        			dateHead : ['일','월','화','수','목','금','토'],
-	        			setStart : function(idx){
-	        				this.date = new Date();
-	        				this.firstDay();
-	    	                this.lastDay();
-	    	                this.makeDays();
-	    	            },
-	    	            datePrev : function(){
-	    	                this.date.setMonth(this.date.getMonth() - 1);                                
-	    	                this.firstDay();
-	    	                this.lastDay();
-	    	                this.makeDays();
-	    	            },
-	    	            dateNext : function(){
-	    	            	this.date.setMonth(this.date.getMonth() + 1);
-	    	            	this.firstDay();
-	    	            	this.lastDay();
-	    	            	this.makeDays();
-	    	            },
-	    	            pick : function(i,s,e){
-	    	            	var a = parseInt($filter('date')(s,'yyyyMM'+this.addZero(i))),
-	    	            		b = parseInt($filter('date')(e,'yyyyMMdd'));
-	    	            	if(a < b){
-	    	            		return;
-	    	            	}
+	        			dateMove : function(n){
+	        				var date = Math.min(this.date.getDate(), this.getLastDay(this.date.getFullYear(), this.date.getMonth() + n));
+	        			    this.date.setMonth(this.date.getMonth() + n, date);
+	        			    this.makeDays();
+	        			},
+	    	            pick : function(i){
 	    	            	this.date.setDate(i);
 	    	            	this.selectIdx = i;
+	    	            	this.selectDate = new Date();
+	    	            	this.selectDate.setFullYear(this.date.getFullYear());
+	    	            	this.selectDate.setMonth(this.date.getMonth());
+	    	            	this.selectDate.setDate(i);
 	    	            	if(this.parent.startCallback){
 	    	            		this.parent.startCallback();
 	    	            	}
 	    	            },
 	    	            day : [],
+	    	            firstDay  : function(){
+	        				return this.getFirstDay(this.date.getFullYear(),this.date.getMonth());
+	        			},
+	        			lastDay  : function(){
+	        				return this.getLastDay(this.date.getFullYear(),this.date.getMonth());
+	        			},
 	        			makeDays : function(){
 	    	                this.day = [];
 	    	                for (var i = 0 ; i < this.firstDay() ; i++) {
@@ -123,9 +105,6 @@
 	    	                	this.day.push({idx : i + 1});
 	    	                }
 	    	            },
-	    	            selectDate : function(i){
-	        				return this.date.getYear() + this.date.getMonth() + this.date.getDate(i);
-	        			},
 	        			selectIdx : null
 	        		}
 	        	}.init();       	
