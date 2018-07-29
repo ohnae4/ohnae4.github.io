@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {font-size:12px; color:#666; overflow-y:scroll; line-height:19px; font-family:'Malgun Gothic',-apple-system,'dotum','sans-serif';}
-body,html {height:100%; width:100%;}
+body,html {height:100%; width:100%;} 
 li {list-style:none;}
 fieldset,ul,li,h1,h2,h3,h4,h5,ol,dl,dt,dd,p,body,input {margin:0; padding:0;}
 fieldset {border:0;}
