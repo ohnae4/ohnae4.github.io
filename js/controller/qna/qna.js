@@ -216,7 +216,7 @@
     		FAQ_NUMBER : null,
 			QUESTION : '홈페이지 예약은 어떻게 할 수있나요 ?',
 			ANSWER : '홈페이지에 들어가셔서 <br>홈페이지 예약은 어떻게 할 수있나요',
-			PRIORITY : 999,
+			PRIORITY : 255, //1~255
 			CREATE_DATE : '',
 			UPDATE_DATE : ''
 		};
