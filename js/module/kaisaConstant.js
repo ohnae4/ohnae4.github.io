@@ -22,7 +22,7 @@
 				S : '_90'
 			},
 			extension : {
-				api : '', //.api
+				api : '.php',
 				data : '.data',
 				link : ''
 			},
