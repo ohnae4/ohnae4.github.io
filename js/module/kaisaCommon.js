@@ -383,7 +383,6 @@
 			}
 			kaisaStorage.setSessionStorage('pageInfo',$scope.pageInfoSession,'json');
 		});
-		
 		/**
 		 * 객실정보
 		 */
@@ -407,7 +406,7 @@
 			if($scope.roomList.items.length == 0 || $scope.constant.version != $scope.roomList.version){ //sessionStorage refresh
 				$scope.getRoomList();
 			}
-		}
+		};
 		/**
 		 * 관리자 로그인
 		 */
