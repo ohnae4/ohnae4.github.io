@@ -157,15 +157,15 @@
 		$scope.searchParam = {
 			params : {}
 		};
-		$scope.xhrConfig = {
+		$scope.postConfig = {
 			headers: {
 			    'Content-Type': 'application/x-www-form-urlencoded'
 			  //'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;' //(post form-data not works)
 			}
-        };		
+        };
 		$scope.jsonpParam = function(param){
 			return '?callback=JSON_CALLBACK&' + $httpParamSerializerJQLike(param); //jsonp 는 param 을  object 로 담을 수 없다
-		};		
+		};	
 		$scope.menuList = [
 			{title:'예약게시판', url:'reservation'},
 			{title:'1:1문의', url:'qna'},
