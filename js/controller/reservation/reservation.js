@@ -23,19 +23,17 @@
 		    selectRoomOption : [],
 		    tomorrowYn : false,
 		    clickRoom : function(room,day){
-		    	this.start.pick(day.idx);
 		    	$scope.ROOM_RESERVATION.ROOM_NUMBER = room.ROOM_NUMBER;
 		    	$scope.ROOM_RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-dd');
-		    	
+		    	this.start.pick(day.idx);
 		    	var tomorrow = new Date($scope.ROOM_RESERVATION.RESERVATION_DATE);
 		    	tomorrow = tomorrow.setDate(tomorrow.getDate() + 1);
-		    	$scope.rvCalendar.tomorrowYn = true;
+		    	//$scope.rvCalendar.tomorrowYn = true;
 		    	for(var i in $scope.reservationList){
 		    		if($scope.reservationList[i].RESERVATION_DATE == $filter('date')(tomorrow,'yyyy-MM-dd') && $scope.reservationList[i].ROOM_NUMBER == room.ROOM_NUMBER){
 		    			$scope.rvCalendar.tomorrowYn = false;
 		    		}
 		    	}
-		    	
 		    	$scope.ROOM_RESERVATION.PRICE = room['PRICE_'+day.priceCode];
 		    	$scope.layerReservation.active = true;
 		    	this.selectRoom = room;
@@ -62,7 +60,7 @@
     			},
     			dateHead : ['일','월','화','수','목','금','토'],
 	            datePrev : function(){
-	                this.date.setMonth(this.date.getMonth() - 1);                                
+	                this.date.setMonth(this.date.getMonth() - 1);
 	                this.makeDays();
 	                $scope.getReservationList();
 	            },
@@ -83,7 +81,7 @@
 	                this.day = [];
 	                for (var i = 0 ; i < this.firstDay() ; i++) {
 	                	this.day.push({peakCode : null, dayCode : null, idx : 0-i, date : getAddZero(0-i), list : [], reservation : []});
-	                }                
+	                }
 	                for (var i = 0 ; i < this.lastDay() ; i++) {
 	                	var nowInt = parseInt($filter('date')($scope.rvCalendar.start.now,'yyyyMMdd'));
 	                	var dateInt = parseInt($filter('date')($scope.rvCalendar.start.date,'yyyyMM') + getAddZero(i+1))
@@ -136,7 +134,7 @@
     			selectIdx : null
     		}
     	};
-		
+
     	$scope.ROOM_RESERVATION = {
     		RESERVATION_NUMBER : null,
 			RESERVATION_DATE : null,
@@ -153,7 +151,7 @@
 			PRICE : 0,
 			CAPTCHA_CODE : ''
 		};
-    	
+
     	$scope.$watch('ROOM_RESERVATION.PERSONNEL_1', function(val){
     		if(val){
     			var int = parseInt(val) - parseInt($scope.rvCalendar.selectRoom.MIN_PERSONNEL);
@@ -161,7 +159,7 @@
     			$scope.ROOM_RESERVATION.PRICE = price + int;
     		}
         },true);
-    	
+
     	$scope.$watch('ROOM_RESERVATION.DATE_NUMBER', function(val){
     		if(val){
     			var int = parseInt($scope.ROOM_RESERVATION.PERSONNEL_1) - parseInt($scope.rvCalendar.selectRoom.MIN_PERSONNEL);
@@ -169,7 +167,7 @@
     			$scope.ROOM_RESERVATION.PRICE = (price + int) * parseInt(val);
     		}
         },true);
-    	
+
     	$scope.layerReservation = {
     		active : false,
     		close : function(){
