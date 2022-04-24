@@ -1,0 +1,56 @@
+@charset "utf-8";
+
+/* 달력 */
+.rvCalendar {width:100%; clear:both; white-space:nowrap;}
+#content .rvCalendar h2 {font-size:30px; height:80px; text-align:center; line-height:40px; color:#333;}
+.rvCalendar h2 .prev,
+.rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
+.rvCalendar h2 .prev {background-position:0 -40px;}
+.rvCalendar h2 .next {background-position:-40px -40px;}
+.rvCalendar .calendar {width:100%; clear:both; overflow:hidden; background:#f9f9f9;}
+.rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0; border-top:2px solid #666;}
+.rvCalendar .day {width:14%; position:relative; background:#fff; padding:5px; float:left; height:185px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
+.rvCalendar .week:nth-child(7n),
+.rvCalendar .day:nth-child(7n) {width:16%; border-right:1px solid #ccc;}
+.rvCalendar .day:last-child {padding-right:1px; border-right:1px solid #ccc;}
+.rvCalendar .day strong.dayNo {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#757a96; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
+.rvCalendar .day .peakCode {position:absolute; padding:2px 5px; border:1px solid #d7dae8; right:5px; top:5px; font-size:11px; color:#8b8fa5; font-weight:normal;}
+
+.rvCalendar .done {background:#f9f9f9;}
+.rvCalendar .day.done span,
+.rvCalendar .day.done p {display:none}
+
+.rvCalendar .off:before {background:url(/img/common/mask_white.png) repeat; content:''; width:100%; height:100%; position:absolute; left:0; top:0; z-index:3;}
+
+.rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:23px;}
+.rvCalendar .day p .dim {position:absolute; left:0; top:0; width:100%; height:100%; display:block; padding:0; margin:0; background:rgba(255,255,255,0.5)}
+.rvCalendar .day p strong.roomName {width:63px; cursor:pointer; font-size:11px; font-weight:normal; display:inline-block;}
+.rvCalendar .day p strong.roomName span {color:#333;}
+.rvCalendar .day p strong.price {width:41px; font-size:11px; font-weight:normal; display:inline-block; color:#999;}
+
+.rvCalendar .day p span {font-size:11px; line-height:17px; font-weight:normal; display:inline-block; padding:0 3px; border-radius:2px; color:#fff;}
+.rvCalendar .day p span.ico_1 {background:green;}
+.rvCalendar .day p span.ico_2 {background:#ff5500;}
+.rvCalendar .day p span.ico_3 {background:red;}
+
+/* 예약팝업 */
+.layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerReservation form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerReservation table {width:100%;}
+.layerReservation table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+.layerReservation table td {border:1px solid #ddd; padding:5px;}
+
+/* 객실목록 */
+.reservationList {clear:both; width:100%; overflow:hidden;}
+.reservationList table {width:100%; line-height:28px; white-space:nowrap; border-top:2px solid #666;}
+.reservationList table th {text-align:center; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+.reservationList table td {border:1px solid #ddd; padding:5px;}
+.reservationList .none {text-align:center; padding:30px 0; width:100%; clear:both; border:1px solid #eee;}
+
+/* 객실생성 */
+#roomBase table {width:100%;}
+#roomBase table th {width:210px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+#roomBase table td {border:1px solid #ddd; padding:5px;}
+#roomBase .btnSelect {width:100%; clear:both; padding:10px 0;}
+#roomBase .btnSelect li {display:inline-block; padding:5px; margin-right:5px; cursor:pointer; border:1px solid #eee; font-weight:bold;}
+#roomBase .btnSelect li.on {background:#999; color:#fff;}

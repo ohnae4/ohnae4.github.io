@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="kor" data-ng-app="KaisaApp" data-ng-controller="KaisaController">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="robots" content="noindex,nofollow">
+<title>TEST</title>
+<meta name="keywords" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta name="description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로리스">
+<meta property="og:description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:image" content="http://chloris.kr/img/common/logo.png">
+<meta property="og:url" content="mobydi.co.kr">
+<meta name="fragment" content="!">
+<meta name="viewport" content="user-scalable=yes">
+<link rel="shortcut icon" href="/img/favicon.ico?ver=0.1" type="image/x-icon">
+<link rel="stylesheet" href="/css/common.css" type="text/css">
+<link rel="stylesheet" href="/css/notice.css" type="text/css">
+<!--[if lt IE 10]>
+<link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<script src="/js/lib/es/es5-shim.min.js"></script>
+<![endif]-->
+<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
+<script src="/js/lib/angular/angular.min.js"></script>
+
+<!-- <script src="/js/min/kaisa.js"></script> -->
+<script src="/js/module/kaisaConstant.js"></script>
+<script src="/js/module/kaisaCode.js"></script>
+<script src="/js/module/kaisaDirective.js"></script>
+<script src="/js/module/kaisaFilter.js"></script>
+<script src="/js/module/kaisaStorage.js"></script>
+<script src="/js/module/kaisaUrl.js"></script>
+<script src="/js/module/kaisaUtil.js"></script>
+<script src="/js/module/kaisaApi.js"></script>
+<script src="/js/module/kaisaCommon.js"></script>
+
+<script src="/js/controller/notice/notice.js"></script>
+</head>
+<body data-ng-controller="BodyController">
+<div data-kaisa-header="true"></div>
+<div data-kaisa-menu="true"></div>
+<div id="content">
+	<div id="notice">
+		<h2>
+			공지사항
+			<span class="btnArea" data-ng-if="admin.user">
+				<button type="button" class="on" data-ng-click="layerNotice.active = true">등록</button> 
+			</span>
+		</h2>
+		<form class="searchForm">
+			<table>
+				<tr>
+					<th>공지사항 번호</th>
+					<td><input type="text" data-ng-model="noticePaging.search.NOTICE_NUMBER" /></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td><input type="text" data-ng-model="noticePaging.search.SUBJECT" /> <!-- <button type="reset" data-ng-click="noticePaging.reset()">초기화</button> --></td>
+				</tr>
+			</table>
+		</form>
+		<div class="noticeList" data-ng-if="noticeList.length <= 0">
+	    	<p class="none">문의가 없습니다.</p>
+	    </div>
+	    <div class="noticeList" data-ng-if="noticeList.length > 0">
+		    <table>
+		    	<colgroup>
+		    		<col width="100" />
+		    		<col width="*" />
+		    		<col width="80" />
+		    		<col width="50" data-ng-if="admin.user" />
+		    	</colgroup>
+		    	<tr>
+		    		<th>번호</th>
+		    		<th>제목</th>
+		    		<th>등록일시</th>
+		    		<th data-ng-if="admin.user">삭제</th>
+		    	</tr>
+			    <tr data-ng-show="idx < noticePaging.pageSize" data-ng-repeat="(idx,i) in noticeList | filter: noticePaging.search | startFrom: noticePaging.currentPage * noticePaging.pageSize | orderBy:noticePaging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+					<td>{{i.NOTICE_NUMBER}}</td>
+					<td><p><span class="pointer underline" data-ng-click="getNotice(i.NOTICE_NUMBER)">{{i.SUBJECT | cutString : 15}}</span></p></td>
+					<td>{{i.CREATE_DATE}}</td>
+					<td data-ng-if="admin.user"><button type="button" class="normal" data-ng-click="deleteNotice.click(i.NOTICE_NUMBER)">삭제</button></td>
+			    </tr>
+		    </table>
+	    </div>
+	    <div class="paginator" data-ng-if="noticeList.length > 0">
+			<button type="button" data-ng-disabled="noticePaging.currentPage == 0" data-ng-click="noticePaging.currentPage=noticePaging.currentPage-1">Prev</button>
+		    <span><strong>{{noticePaging.currentPage+1}}</strong>/{{noticePaging.numberOfPages()}}</span>
+		    <button type="button" data-ng-disabled="noticePaging.currentPage >= noticeList.length/noticePaging.pageSize - 1" data-ng-click="noticePaging.currentPage=noticePaging.currentPage+1;">Next</button>
+		</div>
+		<div data-ng-if="notice">
+			<h2>문의내용</h2>
+			<div class="notice">
+				<table>
+					<tr>
+						<th>번호</th>
+						<td>{{notice.NOTICE_NUMBER}}</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td>{{notice.SUBJECT}}</td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td>{{notice.CONTENT}}</td>
+					</tr>
+					<tr>
+						<th>등록일시</th>
+						<td>{{notice.CREATE_DATE}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layerNotice" data-ng-show="layerNotice.active">
+	<form id="formLayerNotice" name="formLayerNotice" data-ng-submit="layerNotice.submit()">
+		<!-- <p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p> -->
+		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" data-ng-model="NOTICE.ROOM_NUMBER" required="required" />
+		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" data-ng-model="NOTICE.ROOM_STATUS_CODE" required="required" />
+		<table>
+			<tr>
+				<th class="required">제목</th>
+				<td>
+					<input maxlength="50" type="text" name="SUBJECT" data-ng-model="NOTICE.SUBJECT" required="required" />
+				</td>
+			</tr>
+			<tr>
+				<th class="required">내용</th>
+				<td>
+					<textarea maxlength="80" name="CONTENT" data-ng-model="NOTICE.CONTENT"></textarea>
+					{{NOTICE.CONTENT.length}} / 80 자
+				</td>
+			</tr>
+		</table>
+		<div class="btnWrap">
+			<button type="submit" data-ng-disabled="!(NOTICE.SUBJECT
+				&& NOTICE.CONTENT)">확인</button>
+			<button type="button" data-ng-click="layerNotice.close();">취소</button>
+		</div>
+	</form>
+</div>
+<div data-kaisa-footer="true"></div>
+</body>
+</html>

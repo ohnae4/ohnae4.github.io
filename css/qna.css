@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+#qna {width:800px;}
+#faq {width:470px; position:absolute; top:0; right:0;}
+@media screen and (min-width:1280px) {
+	#faq.fixed {position:fixed; left:50%; top:0; margin-left:170px;}
+}
+
+.layerQna {display:none; position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerQna table {width:100%;}
+.layerQna table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+.layerQna table td {border:1px solid #ddd; padding:5px;}
+
+.layerPwd {display:none; position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerPwd form {padding:30px 20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:200px; position:fixed; left:50%; margin:-100px 0 0 -100px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerPwd h3 {font-size:16px; line-height:30px; color:#333;}
+.layerPwd h3 span {font-size:11px; font-weight:normal; color:#ff5500; line-height:15px;}
+.layerPwd input {border:2px solid #999;}
+.layerPwd .btnWrap {padding-top:20px;}
+
+.qnaList {clear:both; width:100%; overflow:hidden;}
+.qnaList table {width:100%; line-height:28px; white-space:nowrap; border-top:2px solid #666;}
+.qnaList table th {text-align:center; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+.qnaList table td {border:1px solid #ddd; padding:5px;}
+
+.qna {clear:both; width:100%; overflow:hidden;}
+.qna table {width:100%; white-space:nowrap; border-top:2px solid #666;}
+.qna table th {text-align:left; width:120px; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+.qna table td {border:1px solid #ddd; padding:5px; word-break:break-all; white-space:normal;}
+
+.replyList {width:100%; clear:both;}
+.replyList dl {width:100%; padding:10px 10px 10px 50px; border-bottom:1px solid #ddd; position:relative;}
+.replyList dl:before {content:'R'; position:absolute; display:block; width:30px; top:10px; left:10px; height:30px; text-align:center; font-weight:bold; background:#ddd; color:#fff; line-height:30px; border-radius:100%;}
+.replyList dl dt {width:100%; font-weight:bold; color:#333;}
+.replyList dl dt span {font-weight:normal; color:#999; font-size:11px; display:inline-block; padding-left:10px;}
+.replyList dl dd {width:100%; clear:both; color:#999; padding:5px 0;}
+.replyList dl.admin:before {content:'A'; background:#ccc;}
+.replyList dl.admin dt {color:#ff5500;}
+
+.replyWrite textarea {height:60px;}
+.replyWrite button {height:60px; width:60px; line-height:50px; text-align:center; background:#ff5500; color:#fff;}
+.replyWrite table {width:100%;}
+.replyWrite table th {width:120px; vertical-align:top; padding-top:20px; text-align:center;}
+.replyWrite table td {vertical-align:top; position:relative;}
+.replyWrite table td textarea {width:100%; padding-right:70px;}
+.replyWrite table td button {position:absolute; right:0; top:0; border-radius:0;}
+
+.layerFaq {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerFaq form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerFaq table {width:100%;}
+.layerFaq table th {width:120px; background:#f2f2f2; padding:5px; border:1px solid #ddd;}
+.layerFaq table td {border:1px solid #ddd; padding:5px;}
+
+.faqList {clear:both; width:100%; overflow:hidden; border:1px solid #ccc; padding:10px 15px 15px 15px;}
+.faqList dl {width:100%;}
+.faqList dl dt {lihe-height:50px; cursor:pointer; font-weight:bold; position:relative; padding:0 5px 0 40px; height:50px; line-height:50px; white-space:nowrap;}
+.faqList dl dd {display:none; padding:0 0 0 40px; color:#888; position:relative;}
+.faqList dl dd.on {display:block;}
+.faqList dl dt:before {content:'Q'; font-weight:bold; position:absolute; left:0; top:10px; height:30px; width:30px; line-height:30px; text-align:center; color:#fff; background:#aaa; border-radius:100%;}
+.faqList dl dd:before {content:'A'; font-weight:bold; position:absolute; left:10px; top:0; height:20px; width:20px; line-height:20px; text-align:center; color:#fff; background:#ccc; border-radius:100%;}

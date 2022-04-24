@@ -1,0 +1,37 @@
+<div class="datePickerLayer" id="gridDatepicker" data-ng-show="gridDatepicker.active" data-ng-style="gridDatepicker.style">
+	<span class="prev" data-ng-click="gridDatepicker.prev(gridDatepicker.start)">Prev</span>
+	<span class="next" data-ng-click="gridDatepicker.next(gridDatepicker.start)">Next</span>
+	<h5>
+		<strong data-ng-bind="gridDatepicker.start.date | date:'yyyy'"></strong> 년 
+		<strong data-ng-bind="gridDatepicker.start.date | date:'MM'"></strong> 월
+	</h5>
+	<ol>
+		<li>일</li>
+		<li>월</li>
+		<li>화</li>
+		<li>수</li>
+		<li>목</li>
+		<li>금</li>
+		<li>토</li>
+	</ol>
+	<ul>
+		<li data-ng-class="{day:i > 0,on:(i == gridDatepicker.start.idx)}" data-ng-repeat="i in gridDatepicker.start.dayArray" data-ng-click="gridDatepicker.start.pick(i)" data-ng-bind="(i > 0) ? i : ''"></li>
+	</ul>
+	<div class="timeWrap">
+		<select data-ng-model="gridDatepicker.start.hour">
+			<option data-ng-repeat="i in gridDatepicker.hourArray" value="{{i}}" data-ng-selected="gridDatepicker.hour == i.value">{{i}}</option>
+		</select>
+		:
+		<select data-ng-model="gridDatepicker.start.min">
+			<option data-ng-repeat="i in gridDatepicker.minArray" value="{{i}}" data-ng-selected="gridDatepicker.min == i.value">{{i}}</option>
+		</select>
+		:
+		<select data-ng-model="gridDatepicker.start.sec">
+			<option data-ng-repeat="i in gridDatepicker.secArray" value="{{i}}" data-ng-selected="gridDatepicker.sec == i.value">{{i}}</option>
+		</select>
+	</div>
+	<div class="btnWrap">
+		<button type="button" class="on" data-ng-click="gridDatepicker.confirm()">확인</button>
+		<button type="button" data-ng-click="gridDatepicker.close()">닫기</button>
+	</div>
+</div>

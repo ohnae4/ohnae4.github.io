@@ -1,0 +1,9 @@
+<span data-ng-show="model.total > 0">
+	<select data-ng-change="model.currentChange()" data-ng-model="model.searchParam.currentPage">
+		<option data-ng-repeat="i in model.currentPageArray" value="{{i.value}}" data-ng-selected="model.searchParam.currentPage == i.value">{{i.value}}</option>
+	</select>
+	/
+	<select data-ng-change="model.limitChange()" data-ng-model="model.searchParam.limitPage">
+		<option data-ng-repeat="i in model.limitPageArray" value="{{i.value}}" data-ng-selected="model.searchParam.limitPage == i.value">{{i.value}}</option>
+	</select>
+</span>

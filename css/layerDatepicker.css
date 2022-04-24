@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+/* datePicker */
+.layerDatePicker span,
+.layerDatePicker strong {transition:0s all linear;} 
+
+.layerDatePicker {width:260px; position:absolute; top:50%; overflow:hidden; z-index:10;}
+.layerDatePicker .wrap {width:100%; padding:15px; border:1px solid #ddd; background:#fff;}
+.layerDatePicker .btnWrap button {margin:0 2px;}
+.layerDatePicker .close{position:absolute;top:15px;right:30px; display:block;height:12px;background-size:12px;}
+.layerDatePicker .box{border:1px solid #999;background:#fff}
+.layerDatePicker .head{position:relative; height:44px;margin:0 auto;padding-top:0; text-align:center; font-weight:bold;font-size:17px;line-height:44px}
+.layerDatePicker .head span{position:absolute;width:40px;height:40px;top:2px; background:url(/img/common/sp.png) no-repeat; overflow:hidden; text-indent:-9999px;}
+.layerDatePicker .head span.prev {left:0; background-position:-80px 0; cursor:pointer;}
+.layerDatePicker .head span.next {right:0; background-position:-120px 0; cursor:pointer;}
+.layerDatePicker .head h5 {display:inline-block; text-align:center; font-size:15px; padding:0; line-height:20px;}
+.layerDatePicker .calendar {width:100%; margin:0 auto; clear:both; height:210px; overflow:hidden;}
+.layerDatePicker .calendar div.week {background:#f9f9f9; height:29px; line-height:29px; font-size:12px; border-right:2px solid #fff;}
+.layerDatePicker .calendar div {width:14.2%; cursor:pointer; float:left; height:30px; line-height:30px; text-align:center;}
+.layerDatePicker .calendar div span {display:block; width:30px; height:30px; line-height:30px; margin:5px auto;}
+.layerDatePicker .calendar div span:hover {background-color:#eee;}
+.layerDatePicker .calendar div span.today {background-color:#cfe2f9; color:#fff;}
+.layerDatePicker .calendar div span strong {font-weight:normal;}
+.layerDatePicker .calendar div span.off {color:#ccc;}
+.layerDatePicker .calendar div span.off:hover {background-color:#fff;}
+.layerDatePicker .calendar div span.on {font-weight:bold; background-color:#777; color:#fff; border-radius:100%;}
+.layerDatePicker .calendar div span.on:hover {background-color:#777;}
+.layerDatePicker .calendar div:nth-child(7n) {color:blue;}
+.layerDatePicker .calendar div:nth-child(7n + 1) {color:red;}

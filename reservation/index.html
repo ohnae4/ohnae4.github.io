@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="kor" data-ng-app="KaisaApp" data-ng-controller="KaisaController">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="robots" content="index,follow">
+<title>TEST</title>
+<meta name="keywords" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta name="description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로리스">
+<meta property="og:description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:image" content="http://chloris.kr/img/common/logo.png">
+<meta property="og:url" content="mobydi.co.kr">
+<meta name="fragment" content="!">
+<meta name="viewport" content="user-scalable=yes">
+<link rel="shortcut icon" href="/img/favicon.ico?ver=0.1" type="image/x-icon">
+<link rel="stylesheet" href="/css/common.css" type="text/css">
+<link rel="stylesheet" href="/css/reservation.css" type="text/css">
+<!--[if lt IE 10]>
+<link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<script src="/js/lib/es/es5-shim.min.js"></script>
+<![endif]-->
+<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
+<script src="/js/lib/angular/angular.min.js"></script>
+
+<!-- <script src="/js/min/kaisa.js"></script> -->
+<script src="/js/module/kaisaConstant.js"></script>
+<script src="/js/module/kaisaCode.js"></script>
+<script src="/js/module/kaisaDirective.js"></script>
+<script src="/js/module/kaisaFilter.js"></script>
+<script src="/js/module/kaisaStorage.js"></script>
+<script src="/js/module/kaisaUrl.js"></script>
+<script src="/js/module/kaisaUtil.js"></script>
+<script src="/js/module/kaisaApi.js"></script>
+<script src="/js/module/kaisaCommon.js"></script>
+
+<script src="/js/controller/reservation/reservation.js"></script>
+</head>
+<body data-ng-controller="BodyController">
+<div data-kaisa-header="true"></div>
+<div data-kaisa-menu="true"></div>
+<div id="content">
+	<div class="rvCalendar">
+		<div class="head">
+		    <h2>
+		    	<span class="prev" data-ng-show="!loading.active" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
+	 		    <strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
+	 		    <strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
+	 		    <span class="next" data-ng-show="!loading.active" data-ng-click="rvCalendar.start.dateNext()">Next</span>
+		    </h2>
+	    </div>
+	    <div class="calendar">
+		    <div class="week" data-ng-repeat="val in rvCalendar.start.dateHead" data-ng-class="{sun:($index == 0)}">{{val}}</div>
+		    <div data-ng-class="{done:day.idx <= 0, off: day.off}" class="day" data-ng-repeat="day in rvCalendar.start.day">
+		    	<span>
+			    	<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+			    	<b class="peakCode" data-ng-if="day.peakCode == 0">비수기</b>
+			    	<b class="peakCode" data-ng-if="day.peakCode == 1">준성수기</b>
+			    	<b class="peakCode" data-ng-if="day.peakCode == 2">성수기</b>
+			    	<b class="peakCode" data-ng-if="day.peakCode == 3">극성수기</b>
+		    	</span>
+		    	<p data-ng-repeat="(ridx , room) in day.list">
+		    		<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{room.ROOM_NAME}}</span></strong>
+		    		<strong class="price">{{room['PRICE_' + day.priceCode]}}만원</strong>
+		    		<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
+			    		<span class="ico_2" data-ng-if="rv.ROOM_STATUS_CODE == 2">예약중</span>
+			    		<span class="ico_3" data-ng-if="rv.ROOM_STATUS_CODE == 3">완료</span>
+			    		<span class="dim" data-ng-show="rv.ROOM_STATUS_CODE == 2 || rv.ROOM_STATUS_CODE == 3"></span>
+		    		</b>
+		    	</p>
+		    </div>
+	    </div>
+    </div>
+
+    <div data-ng-show="!loading.active">
+	    <h2>예약목록 조회<span>(총 <b>{{reservationList.length}}</b>건)</span></h2>
+
+	    <!-- <span class="sorting" data-ng-click="paging.sorting('RESERVATION_NUMBER')">sorting</span> -->
+		<form class="searchForm">
+			<table>
+				<tr>
+					<th>예약일</th>
+					<td>
+						<select data-ng-model="paging.search.RESERVATION_DATE">
+							<option value="">전체</option>
+							<option data-ng-repeat="i in rvCalendar.start.day" data-ng-value="rvCalendar.start.date | date:'yyyy-MM-'+i.date">{{rvCalendar.start.date | date:'yyyy-MM-'}}{{i.date}}</option>
+						</select>
+					</td>
+					<th>예약번호</th>
+					<td><input type="text" data-ng-model="paging.search.RESERVATION_NUMBER" /></td>
+				</tr>
+				<tr>
+					<th>객실</th>
+					<td>
+						<!-- i.ROOM_NUMBER as i.ROOM_NAME for i in roomList.items track by i.ROOM_NUMBER -->
+						<select data-ng-model="paging.search.ROOM_NUMBER">
+							<option value="" data-ng-selected="paging.search.ROOM_NUMBER == ''">전체</option>
+							<option data-ng-repeat="i in roomList.items" data-ng-value="i.ROOM_NUMBER">{{i.ROOM_NAME}}</option>
+						</select>
+					</td>
+					<th>예약상태</th>
+					<td>
+						<select data-ng-model="paging.search.ROOM_STATUS_CODE">
+							<option value="" selected="selected">전체</option>
+							<!-- <option value="1">예약가능</option> -->
+							<option value="2">예약중</option>
+							<option value="3">예약완료</option>
+							<option value="4">취소</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<div class="btnWrap">
+				<button type="reset" data-ng-click="paging.reset()">초기화</button>
+			</div>
+		</form>
+
+		<div class="reservationList" data-ng-if="reservationList.length <= 0">
+	    	<p class="none">예약목록이 없습니다.</p>
+	    </div>
+
+	    <div class="reservationList" data-ng-if="!admin.user && reservationList.length > 0">
+		    <table>
+		    	<colgroup>
+		    		<col width="100" />
+		    		<col width="100" />
+		    		<col width="100" />
+		    		<col width="80" />
+		    		<col width="100" />
+		    		<col width="100" />
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="140" />
+		    		<col width="*" />
+		    	</colgroup>
+		    	<tr>
+		    		<th>예약번호</th>
+		    		<th>예약일</th>
+		    		<th>객실</th>
+		    		<th>예약자명</th>
+		    		<th>예약자전화번호</th>
+		    		<th>예약자이메일</th>
+		    		<th>예약상태</th>
+		    		<th>숙박일</th>
+		    		<th>인원</th>
+		    		<th>입금금액</th>
+		    		<th>접수일시</th>
+		    	</tr>
+			    <tr data-ng-show="idx < paging.pageSize" data-ng-repeat="(idx,i) in reservationList | filter: paging.search | startFrom: paging.currentPage * paging.pageSize | orderBy:paging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+			    	<td class="tc">{{i.RESERVATION_NUMBER}}</td>
+			    	<td>{{i.RESERVATION_DATE}}</td>
+					<td>{{i.ROOM_NUMBER | roomNameCode}}</td>
+					<td>{{i.MEMBER_NAME + '*'}}</td>
+					<td>{{'*********' + i.MEMBER_PHONE | maskPhone}}</td>
+					<td>{{i.MEMBER_EMAIL + '*********'}}</td>
+					<td>{{i.ROOM_STATUS_CODE | roomStatusCode}}</td>
+					<td>{{i.DATE_NUMBER}}박</td>
+					<td>{{i.PERSONNEL_1}}명</td>
+					<td>{{i.PRICE}}만원</td>
+					<td>{{i.CREATE_DATE}}</td>
+			    </tr>
+		    </table>
+
+	    </div>
+	    <div class="reservationList" data-ng-if="admin.user && reservationList.length > 0">
+		    <table>
+		    	<colgroup>
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="80" />
+		    		<col width="60" />
+		    		<col width="100" />
+		    		<col width="150" />
+		    		<col width="60" />
+		    		<col width="60" />
+		    		<col width="60" />
+		    		<col width="60" />
+		    		<col width="100" />
+					<col width="100" />
+		    		<col width="*" />
+		    		<!-- <col width="60" /> -->
+		    	</colgroup>
+		    	<tr>
+		    		<th>예약번호</th>
+		    		<th>예약일</th>
+		    		<th>객실</th>
+		    		<th>예약자명</th>
+		    		<th>예약자전화번호</th>
+		    		<th>예약자이메일</th>
+		    		<th>예약상태</th>
+		    		<th>숙박일</th>
+		    		<th>인원</th>
+		    		<th>입금금액</th>
+		    		<th>접수일시</th>
+		    		<th>수정일시</th>
+		    		<th>설명</th>
+		    		<!-- <th>삭제</th> -->
+		    	</tr>
+			    <tr data-ng-show="idx < paging.pageSize" data-ng-repeat="(idx,i) in reservationList | filter: paging.search | startFrom: paging.currentPage * paging.pageSize | orderBy:paging.orderBy"><!--  | unique:'RESERVATION_NUMBER' -->
+			    	<td class="tc">{{i.RESERVATION_NUMBER}}</td>
+			    	<td>{{i.RESERVATION_DATE}}</td>
+					<td>{{i.ROOM_NUMBER | roomNameCode}}</td>
+					<td>{{i.MEMBER_NAME}}</td>
+					<td>{{i.MEMBER_PHONE | maskPhone}}</td>
+					<td><input type="text" readonly="readonly" value="{{i.MEMBER_EMAIL}}" /></td>
+					<td>
+						<!-- {{i.ROOM_STATUS_CODE | roomStatusCode}} -->
+						<select data-ng-model="i.ROOM_STATUS_CODE">
+							<!-- <option value="1">예약가능</option> -->
+							<option value="2">예약중</option>
+							<option value="3">예약완료</option>
+							<option value="4">취소</option>
+						</select>
+						<button type="button" data-ng-disabled="i.ROOM_STATUS_CODE == i.ROOM_STATUS_CODE_ORIGIN" data-ng-click="updateReservation(i.RESERVATION_NUMBER,i.ROOM_STATUS_CODE)">변경</button>
+					</td>
+					<td>{{i.DATE_NUMBER}}박</td>
+					<td>{{i.PERSONNEL_1}}명</td>
+					<td>{{i.PRICE}}만원</td>
+					<td>{{i.CREATE_DATE}}</td>
+					<td>{{i.UPDATE_DATE}}</td>
+					<td>{{i.DESCRIPTION | cutString : 10 }}<span data-ng-if="i.DESCRIPTION.length > 10" class="icoHelp" data-ico-help="true">[보기]<span class="layer">{{i.DESCRIPTION}}</span></span></td>
+					<!-- <td><button type="button" class="normal" data-ng-click="deleteReservation.click(i.RESERVATION_NUMBER)">삭제</button></td> -->
+			    </tr>
+		    </table>
+	    </div>
+	    <div class="paginator" data-ng-if="reservationList.length > 0">
+			<button type="button" data-ng-disabled="paging.currentPage == 0" data-ng-click="paging.currentPage=paging.currentPage-1">Prev</button>
+		    <span><strong>{{paging.currentPage+1}}</strong>/{{paging.numberOfPages()}}</span>
+		    <button type="button" data-ng-disabled="paging.currentPage >= reservationList.length/paging.pageSize - 1" data-ng-click="paging.currentPage=paging.currentPage+1;">Next</button>
+		</div>
+    </div>
+</div>
+<div class="layerReservation" data-ng-show="layerReservation.active">
+	<form id="formReservation" name="formReservation" data-ng-submit="layerReservation.submit()">
+		<p class="txtGuide">6시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p>
+		<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" data-ng-model="ROOM_RESERVATION.ROOM_NUMBER" required="required" />
+		<input type="hidden" readonly="readonly" maxlength="2" name="ROOM_STATUS_CODE" data-ng-model="ROOM_RESERVATION.ROOM_STATUS_CODE" required="required" />
+		<table>
+			<tr>
+				<th class="required">예약일</th>
+				<td><input readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" data-ng-model="ROOM_RESERVATION.RESERVATION_DATE" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">예약자명</th>
+				<td><input type="text" maxlength="15" minlength="2" name="MEMBER_NAME" data-ng-model="ROOM_RESERVATION.MEMBER_NAME" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">예약자 휴대폰번호</th>
+				<td><input data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" data-ng-model="ROOM_RESERVATION.MEMBER_PHONE" required="required" /></td>
+			</tr>
+			<tr>
+				<th class="required">예약자 이메일</th>
+				<td><input data-only-number="false" type="text" maxlength="30" name="MEMBER_EMAIL" data-ng-model="ROOM_RESERVATION.MEMBER_EMAIL" required="required" /></td>
+			</tr>
+			<tr>
+				<th>인원/숙박일/금액</th>
+				<td>
+					<select  required="required" name="PERSONNEL_1" data-ng-model="ROOM_RESERVATION.PERSONNEL_1">
+						<option data-ng-repeat="i in rvCalendar.selectRoomOption" data-ng-value="i.personnel" data-ng-selected="i.personnel == rvCalendar.selectRoomOption[0].personnel">{{i.personnel}}</option>
+					</select>
+					명
+					<select  required="required" name="DATE_NUMBER" data-ng-model="ROOM_RESERVATION.DATE_NUMBER">
+						<option data-ng-value="1" selected="selected">1</option>
+						<option data-ng-value="2" data-ng-if="rvCalendar.tomorrowYn">2</option>
+					</select>
+					박
+					<input data-only-number="true" type="text" readonly="readonly" maxlength="2" style="width:50px;" name="PRICE" data-ng-model="ROOM_RESERVATION.PRICE" required="required" />
+					만원
+				</td>
+			</tr>
+			<tr>
+				<th class="required">비밀번호</th>
+				<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="ROOM_RESERVATION.PASSWORD" required="required" /></td>
+			</tr>
+			<tr>
+				<th>기타 요청사항</th>
+				<td>
+					<textarea maxlength="80" type="text" name="DESCRIPTION" data-ng-model="ROOM_RESERVATION.DESCRIPTION"></textarea>
+					{{ROOM_RESERVATION.DESCRIPTION.length}} / 80 자
+				</td>
+			</tr>
+			<tr>
+				<th class="required">자동등록방지</th>
+				<td>
+					<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
+					<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="ROOM_RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
+					<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
+				</td>
+			</tr>
+		</table>
+		<div class="btnWrap">
+			<button type="submit" data-ng-disabled="!(ROOM_RESERVATION.RESERVATION_DATE
+				&& ROOM_RESERVATION.ROOM_NUMBER
+				&& ROOM_RESERVATION.MEMBER_NAME
+				&& ROOM_RESERVATION.MEMBER_PHONE
+				&& ROOM_RESERVATION.MEMBER_EMAIL
+				&& ROOM_RESERVATION.PASSWORD
+				&& ROOM_RESERVATION.CAPTCHA_CODE == captcha.code)">확인</button>
+			<button type="button" data-ng-click="layerReservation.close();">취소</button>
+		</div>
+	</form>
+</div>
+<div data-kaisa-footer="true"></div>
+</body>
+</html>

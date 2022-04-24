@@ -1,0 +1,48 @@
+<div>
+	<!-- @popup -->
+	<div id="popup" data-ng-class="{on : popup.active, dim : popup.option.dim}" class="{{popup.option.target}}">
+		<div data-ng-if="popup.option.target == 'popupTest1'" popup-test1></div>
+		<div data-ng-if="popup.option.target == 'popupTest2'" popup-test2></div>
+		<div data-ng-if="popup.option.target == 'popupColumn'" popup-column></div>
+		<div class="dim" data-ng-click="popup.close({target : 'dim'});"></div>
+	</div>
+	<!-- @alert -->
+	<div id="alert" data-ng-if="alert.active" data-ng-class="{on:alert.active}">
+		<div class="wrap" data-ng-style="alert.option.style">
+			<h5 data-ng-show="alert.option.title">{{alert.option.title}}</h5>
+			<p data-ng-if="alert.option.type=='text'">{{alert.option.message}}</p>
+			<p data-ng-if="alert.option.type=='html'" data-ng-bind-html="alert.option.message | trustHtml"></p>
+			<div class="btn_wrap" data-ng-if="alert.option.confirm">
+				<button type="button" class="on" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button>
+				<button type="button" data-ng-show="! alert.option.cancelCallback" data-ng-click="alert.close()">{{alert.option.button.cancel}}</button>
+				<button type="button" data-ng-show="alert.option.cancelCallback" data-ng-click="alert.option.cancelCallback();alert.close()">{{alert.option.button.cancel}}</button>
+			</div>
+			<div class="btn_wrap" data-ng-if="! alert.option.confirm">
+				<button type="button" class="on" data-ng-show="! alert.option.callback" data-ng-click="alert.close()">{{alert.option.button.ok}}</button>
+				<button type="button" data-ng-show="alert.option.callback" data-ng-click="alert.option.callback();alert.close()">{{alert.option.button.ok}}</button>
+			</div>
+		</div>
+	</div>
+	<!-- @help -->
+	<div id="help" data-ng-if="help.active" data-ng-class="{on:help.active}" data-ng-style="help.style" data-ng-bind-html="help.html | trustHtml"></div>
+	<!-- @loading -->
+	<div id="loading" data-ng-if="loading.active" data-ng-class="{on:loading.active}">
+		<ul class="loading">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- @dimmed -->
+	<div id="dimmed" data-ng-class="{on : dimmed.active}" data-ng-click="dimmed.close()"></div>
+	<!-- @datepicker -->
+	<div grid-datepicker></div>
+	<form id="login" data-ng-submit="admin.submit()" data-ng-if="admin.layer.active">
+		<h3>로그인</h3>
+		<input autocapitalize="off" autocomplete="off" type="text" maxlength="20" required="required" data-ng-model="admin.id" />
+		<input autocapitalize="off" autocomplete="off" type="password" maxlength="20" required="required" data-ng-model="admin.password" />
+		<button type="submit">로그인</button>
+	</form>
+</div>

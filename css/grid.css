@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* drag 되는 부분을 제어함 */
+span,div,img,body {
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+[ng-drag] {-moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none;}
+[ng-drag].dragging {opacity:0.8 !important;}
+[ng-drag].drag-over {outline:1px solid #aaa;}
+[ng-drop].drag-enter {opacity:0.3; outline:1px solid #aaa;}
+
+
+/*검색영역*/
+form.search {width:100%; clear:both;}
+form.search fieldset {width:100%; clear:both; overflow:hidden; border:1px solid #eee; border-top-color:#ccc; background:#fdfdfd; padding:10px 0;}
+form.search table {width:100%;}
+form.search table th {width:100px; padding:5px 20px;}
+form.search table th.required:before {content:''; position:absolute; width:2px; height:2px; background:#ff0000; display:block; margin:7px 0 0 -10px;}
+form.search table td {padding:5px 10px;}
+form.search .term{width:100%;}
+form.search .term:after{content:""; display:block; clear:both}
+form.search .term li{position:relative; float:left; margin-left:-1px; z-index:1}
+form.search .term li:first-child{margin-left:0}
+form.search .term li a{display:block; min-width:65px; height:28px; line-height:28px; text-align:center; border:1px solid #bfbfbf; background:#fff; }
+form.search .term li.on{z-index:2}
+form.search .term li.on a{color:#d40e32; border:1px solid #d31032;}
+form.search input{width:200px;}
+form.search .btnSearch{display:inline-block; margin-left:27px; min-width:65px; height:30px; line-height:30px; color:#fff; text-align:center; background:#616164; vertical-align:top}
+
+/* 그리드 버튼 영역 */
+.gridBtnWrap {z-index:1; background:#f9f9f9; border:1px solid #ddd; margin-bottom:-1px; padding:3px; height:38px; width:100%; position:relative;}
+.gridBtnWrap .btnArea {position:absolute; right:3px; top:3px;}
+.gridBtnWrap .btnArea select {width:auto;}
+/* 그리드 타이틀 영역 */
+.titleWrap h4 {color:#444; padding:0;} #container .titleWrap h4 {padding:0;}
+.titleWrap h4 span {font-weight:normal; font-size:11px; color:#777;}
+.titleWrap h4 span strong {color:#ff5500;}
+.titleWrap .btnArea {position:absolute; right:5px; top:-2px;}
+.titleWrap .pickerArea {position:absolute; left:120px; top:-2px; color:#666;}
+/*
+select 되는 부분을 제어함
+.gridWrap th ::selection {background:transparent;}
+.gridWrap th ::-moz-selection {background:transparent;}
+.gridWrap td ::selection  {background:transparent;}
+.gridWrap td ::-moz-selection {background:transparent;}
+.gridWrap td label ::selection {background:#ff5500; color:#fff;}
+.gridWrap td label ::-moz-selection {background:#ff5500; color:#fff;}
+*/
+.gridWrap {width:100%; width:100%; overflow:auto; height:100%; border:1px solid #ddd; background:#fcfcfc; position:relative;}
+.gridWrap input[type="text"],
+.gridWrap input[type="password"],
+.gridWrap input[type="mail"],
+.gridWrap input[type="number"] {display:block; width:100%; margin:0; outline:0; border:0; background:#fff; height:22px; line-height:22px; color:#666; vertical-align:middle;}
+.gridWrap input[type="checkbox"] {display:inline-block;}
+.gridWrap .tc select,
+.gridWrap .tc input {text-align:center;}
+.gridWrap .tr select,
+.gridWrap .tr input {text-align:right;}
+.gridWrap select {width:100%; position:absolute; left:0; top:0; border:0; height:22px; line-height:22px;}
+.gridWrap .layerSelected {display:none; position:absolute; border:2px solid #4285f4; z-index:100; transition:0.1s all linear;}
+
+/* theme */
+.gridT .thead .th {background:#eee; background:linear-gradient(#ddd,#eee); border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.gridT .tbody .td {background:#fefefe; background:linear-gradient(#fefefe,#f2f2f2); border-right:1px solid #ccc; border-bottom:1px solid #ccc;}
+.gridT .tbody .td.selected .switch {border:1px solid #4285f4;}
+.gridT .tbody .tr.new .td {background:#fff;}/*C background:#fcffee;*/
+.gridT .tbody .tr.on .td {background:#fff;}/*U background:#fcffee;*/
+.gridT .tbody .tr.delete .td {background:#ffeeee; text-decoration:line-through; color:#ff0000;}/*D*/
+
+/* size */
+.gridT {padding-top:26px}
+.gridT .thead .tr,
+.gridT .tbody .tr {width:100%; clear:both; position:relative; z-index:1; height:25px;}
+.gridT .thead .th,
+.gridT .tbody .td {line-height:25px;}
+.gridT .tbody .td .switch {height:25px;}
+.gridT .tbody .td label .buttonDate {right:2px; top:2px;}
+.gridT .tbody .td label {height:25px; padding:0 5px 0 5px; }
+.gridT .tbody .tr.on .td.Date label input[disabled="disabled"] {padding-right:5px;}
+.gridT .tbody .tr.on .td.Date label input {padding-right:25px;}
+.gridT .tbody .tr.on .td label,
+.gridT .tbody .tr.new .td label {padding:1px 0 0 0;}
+
+.dragBox {position:absolute; border:1px solid red; z-index:10000;}
+
+/* grid */
+.gridT {width:100%;}
+.gridT .thead {width:100%; clear:both; position:absolute; z-index:10; top:0;}
+.gridT .thead .th {width:100px; position:absolute; top:0; height:100%; color:#555; white-space:nowrap; text-align:center;}
+.gridT .thead .th div.colWidth {height:1px; width:100%; overflow:hidden;}
+.gridT .thead .th em.colResize,
+.gridT .thead .td em.colResize {background-color:transparent; cursor:e-resize; width:10px; height:100%; position:absolute; right:-5px; top:0px; z-index:2;}
+.gridT .thead .th .sorting {opacity:0.6; cursor:pointer; width:16px; height:16px; border-radius:2px; background:linear-gradient(#eee,#ddd); box-shadow:inset 1px 1px 1px #eee; display:block; position:absolute; right:4px; z-index:2; top:4px; outline:1px solid #cfcfcf;}
+.gridT .thead .th .sorting:hover {opacity:1;}
+.gridT .thead .th .sorting:before {content:''; width:8px; height:2px; background:#ccc; display:block; margin-top:7px; margin-left:4px;}
+.gridT .thead .th.up,
+.gridT .thead .th.down {background:linear-gradient(#d8d8d8,#e8e8e8);}
+.gridT .thead .th.up .sorting:before,
+.gridT .thead .th.down .sorting:before {width:0; height:0; margin-top:6px; border-top:4px solid #555; background:none; border-bottom:4px solid transparent; border-left:4px solid transparent; border-right:4px solid transparent;}
+.gridT .thead .th.up .sorting:before {border-top:4px solid transparent; border-bottom:4px solid #555; margin-top:2px;}
+.gridT .thead .th.required:before {width:0; height:0; content:''; left:3px; top:3px; display:block; position:absolute; border-bottom:3px solid transparent; border-right:3px solid transparent; border-left:3px solid #ff0000; border-top:3px solid #ff0000;}
+.gridT .thead .th.row,
+.gridT .thead .td.row {width:50px; font-size:12px; text-align:center;}
+.gridT .thead .td.row {cursor:pointer;}
+
+.gridT .tbody {position:relative; z-index:2;}
+.gridT .tbody .tr.delete label {text-decoration:line-through; color:#ff0000;}
+.gridT .tbody .tr.delete [data-ng-switch-when="CRUD"] label {text-decoration:none;}
+.gridT .tbody .td {padding:0; position:absolute; width:100px; top:0; height:100%; z-index:1;}
+
+.gridT .tbody .td .switch-none {width:100%; position:absolute; left:0; top:0;  overflow:hidden;}
+.gridT .tbody .td .switch {width:100%; position:absolute; left:0; top:0;  overflow:hidden;}
+.gridT .tbody .td .switch .when {height:100%;}
+.gridT .tbody .td.selected {z-index:2;}
+.gridT .tbody .td label {width:100%; position:relative; font-size:12px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; display:block;}
+.gridT .tbody .td label .buttonDate {position:absolute; display:block; width:20px; height:21px; cursor:pointer; background:url(/img/common/grid.png) no-repeat -190px -61px;}
+.gridT .tbody .td label .buttonDate:hover {background-position:-190px -93px;}
+
+.gridT .tbody .td.noData {text-align:center; position:inherit; width:100%; background:none; border:0;}
+
+.excelFrame {display:none; width:0; height:0;}
+.txt_grid_message {text-align:right; border:1px solid #ddd; border-top:0; background:#eee; font-size:11px; color:#888; padding:4px 10px; height:30px;}
