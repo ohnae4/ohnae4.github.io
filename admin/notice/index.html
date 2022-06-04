@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="kor" data-ng-app="KaisaApp" data-ng-controller="KaisaController">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="robots" content="noindex,nofollow">
+<title>chloris</title>
+<meta name="keywords" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta name="description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로리스">
+<meta property="og:description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:image" content="http://chloris.kr/img/common/logo.png">
+<meta property="og:url" content="mobydi.co.kr">
+<meta name="fragment" content="!">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="shortcut icon" href="/img/favicon.ico?ver=0.1" type="image/x-icon">
+<link rel="stylesheet" href="/css/common.css" type="text/css">
+<link rel="stylesheet" href="/css/admin.css" type="text/css">
+<link rel="stylesheet" href="/css/grid.css" type="text/css">
+<!--[if lt IE 10]>
+<link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<script src="/js/lib/es/es5-shim.min.js"></script>
+<![endif]-->
+<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
+<script src="/js/lib/angular/angular.min.js"></script>
+
+<!-- <script src="/js/min/kaisa.js"></script> -->
+<script src="/js/module/kaisaConstant.js"></script>
+<script src="/js/module/kaisaCode.js"></script>
+<script src="/js/module/kaisaGridDatepicker.js"></script>
+<script src="/js/module/kaisaGrid.js"></script>
+<script src="/js/module/kaisaDirective.js"></script>
+<script src="/js/module/kaisaFilter.js"></script>
+<script src="/js/module/kaisaStorage.js"></script>
+<script src="/js/module/kaisaUrl.js"></script>
+<script src="/js/module/kaisaUtil.js"></script>
+<script src="/js/module/kaisaApi.js"></script>
+<script src="/js/module/kaisaPopup.js"></script>
+<script src="/js/module/kaisaCommon.js"></script>
+
+
+<script src="/js/controller/admin/adminNotice.js"></script>
+</head>
+<body data-ng-controller="BodyController">
+<div data-kaisa-admin-header="true"></div>
+<div data-kaisa-admin-menu="true"></div>
+<div id="adminContent">
+	<div id="notice">
+		<h2>
+			공지사항
+		</h2>
+		<!-- search form -->
+		<form class="search" name="noticeForm" data-ng-submit="noticeGrid.search()">
+			<fieldset>
+				<legend>section</legend>
+				<table>
+					<tbody>
+						<tr>
+							<th class="required">검색조건없음</th> <!-- class="required" -->
+						</tr>
+					</tbody>
+				</table>
+			</fieldset>
+			<div class="btnWrap">
+				<button type="submit">검색</button>
+				<button type="reset" data-ng-click="noticeGrid.searchReset()">초기화</button>
+			</div>
+		</form>
+		<!-- search list -->
+		<div class="titleWrap">
+			<h4>공지사항 <span>(총 <strong>{{noticeGrid.total}}</strong>건)</span></h4>
+		</div>
+		<div class="gridBtnWrap">
+			<button type="button" data-ng-click="noticeGrid.add()">추가</button>
+			<button type="button" data-ng-click="noticeGrid.remove()">삭제</button>
+			<button type="reset" data-ng-click="noticeGrid.reset()">변경취소</button>
+			<button type="submit" data-ng-click="noticeGrid.save()">저장</button>
+			<div class="btnArea">
+				<div kaisa-grid-paging="true" model="noticeGrid"></div>
+				<button type="button" class="excel" data-ng-click="noticeGrid.excelExport()">Excel download</button>
+			</div>
+		</div>
+		<!-- grid -->
+		<div kaisa-grid model="noticeGrid"></div>
+		<!--// grid -->
+	</div>
+</div>
+<div data-kaisa-footer="true"></div>
+</body>
+</html>

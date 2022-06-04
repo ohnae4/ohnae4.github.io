@@ -1,0 +1,16 @@
+<div class="popup" style="height:450px">
+	<h2>답변하기</h2>
+	<div class="popup_wrap">
+		<form data-ng-submit="setQnaReply()">
+			<input type="hidden" data-ng-model="popup.data.QNA_NUMBER" />
+			<table class="rowT">
+				<tr><th>질문내용</th><td><textarea style="height:150px; border:0;" readonly data-ng-model="popup.param.CONTENT" /></td></tr><!--  v-model="item.REPLY_CONTENT" -->
+				<tr><th>답변내용</th><td><textarea style="height:150px;" data-ng-model="popup.param.REPLY_CONTENT" /></td></tr><!--  v-model="item.REPLY_CONTENT" -->
+			</table>
+			<div class="btnWrap">
+				<button type="submit">답변</button>
+				<button type="button" data-ng-click="popup.close({target:'popupQna'})">취소</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+#header {width:100%; margin:0 auto; clear:both;}
+#header h1 {width:1100px; margin:0 auto;}
+#header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
+
+#menu {width:1100px; padding:30px 0; margin:0 auto; clear:both; overflow:hidden; line-height:40px; text-align:center;}
+#menu a {color:#333; background-color:#fff; display:block; padding:0 20px; border:1px solid #ddd; margin-left:-1px;}
+#menu a:hover {background:#333; color:#fff;}
+#menu ul li {display:inline-block; }
+#menu ul li:first-child {padding-left:10px;}
+#menu ol {position:absolute; right:0; top:0;}
+#menu ol li {display:inline-block; padding:0 10px;}
+#menu ol li:last-child {padding-right:20px;}
+
+#content {min-height:300px; width:1100px; margin:0 auto; clear:both; padding:20px; background-color:#fff;}
+#content h2 {padding:20px 0 10px 0; font-size:14px; color:#333; clear:both; position:relative;}
+#content h2 span {font-size:12px; font-weight:normal; color:#999;}
+#content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
+
+#content h3 {padding:20px 0 10px 0; font-size:14px; color:#333; clear:both; position:relative;}
+#content h2 span {font-size:12px; font-weight:normal; color:#999;}
+
+#footer {width:1100px; margin:0 auto; clear:both; padding:30px 0; text-align:center;}
+#footer p {font-size:12px; line-height:16px; padding:5px 0;}
+#footer p span {cursor:pointer;}
+#footer p.admin {color:#ff5500;}
+
+#login {position:fixed;text-align:center; padding:30px 50px; z-index:500; width:300px; height:230px; border:1px solid #ccc; left:50%; top:50%; margin:-115px 0 0 -150px; background:#eee;}
+#login h3 {font-size:20px; line-height:30px; padding:10px 0;}
+#login input {margin-bottom:5px;}
+#login button {display:inlin-block; margin-top:10px;}
+
+#visual {width:100%;}
+
+table.listT {width:100%; line-height:28px; white-space:nowrap; border-top:1px solid #666;}
+table.listT th {text-align:center; border-bottom:1px solid #eee; padding:3px 10px; background:#f2f2f2;}
+table.listT td {border-bottom:1px solid #eee; padding:3px 10px;}
+table.listT tr:nth-child(2n) {background:#fafafa;}
+
+table.readT {width:100%; white-space:nowrap; border-top:2px solid #666;}
+table.readT th {text-align:left; width:120px; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+table.readT th.required::after {content:'*'; padding-left:3px; display:inline-block; font-size:11px; color:#ff5500;}
+table.readT td {border:1px solid #ddd; padding:5px; word-break:break-all; white-space:normal;}
+
+
+table.roomT {width:100%; white-space:nowrap; border-top:2px solid #666;}
+table.roomT th {text-align:center; border:1px solid #ddd; padding:5px; background:#f2f2f2;}
+table.roomT td {text-align:center; border:1px solid #ddd; padding:5px; word-break:break-all; white-space:normal;}
+
+ul.guide {padding:0 10px; font-size:11px; padding-bottom:20px;}
+.paginator {padding:10px 0; text-align: center;}
+
+.txtGuide {font-size:11px; color:#ff5500;}
+
+/*Qna*/
+.layerQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerMyQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerMyQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-240px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
+
+.readBox {width:100%; height:100px; padding:5px; border:1px solid #eee; overflow: auto;}
+
+.layerPwd {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerPwd form {padding:30px 20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:200px; position:fixed; left:50%; margin:-100px 0 0 -100px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerPwd h3 {font-size:16px; line-height:30px; color:#333;}
+.layerPwd h3 span {font-size:11px; font-weight:normal; color:#ff5500; line-height:15px;}
+.layerPwd input {border:1px solid #999;}
+.layerPwd .btnWrap {padding-top:20px;}
+
+.qna {clear:both; width:100%; overflow:hidden;}
+
+/*reservation*/
+/* 달력 */
+.rvCalendar {width:100%; clear:both; white-space:nowrap;}
+#content .rvCalendar h2 {font-size:30px; height:80px; text-align:center; line-height:40px; color:#333;}
+.rvCalendar h2 .prev,
+.rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
+.rvCalendar h2 .prev {background-position:0 -40px;}
+.rvCalendar h2 .next {background-position:-40px -40px;}
+.rvCalendar .calendar {width:100%; clear:both; overflow:hidden; background:#f9f9f9;}
+.rvCalendar .week {width:14%; float:left; height:50px; line-height:50px; text-align:center; background:#eee; border:1px solid #ccc; border-right:0; border-top:2px solid #666;}
+.rvCalendar .day {width:14%; position:relative; background:#fff; padding:5px; float:left; height:140px; overflow:hidden; border:1px solid #ccc; border-right:0; border-top:0;}
+.rvCalendar .week:nth-child(7n),
+.rvCalendar .day:nth-child(7n) {width:16%; border-right:1px solid #ccc;}
+.rvCalendar .day:last-child {padding-right:1px; border-right:1px solid #ccc;}
+.rvCalendar .day strong.dayNo {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#757a96; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
+.rvCalendar .day .holiday {color:#ff0000; position:absolute; left:38px; top:11px; font-size:11px;}
+.rvCalendar .day .peakCode {position:absolute; right:3px; top:3px; font-size:11px; color:#ddd; font-weight:normal;}
+
+.rvCalendar .done {background:#f9f9f9;}
+.rvCalendar .day.done span,
+.rvCalendar .day.done p {display:none}
+
+.rvCalendar .off:before {background:url(/img/common/mask_white.png) repeat; content:''; width:100%; height:100%; position:absolute; left:0; top:0; z-index:3;}
+
+.rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:23px;}
+.rvCalendar .day p .dim {position:absolute; left:0; top:0; width:100%; height:100%; display:block; padding:0; margin:0; background:rgba(255,255,255,0.5)}
+.rvCalendar .day p strong.roomName {cursor:pointer; font-size:11px; font-weight:normal; display:inline-block;}
+.rvCalendar .day p strong.roomName span {color:#333;}
+.rvCalendar .day p strong.price {font-size:11px; font-weight:normal; display:inline-block; color:#999;}
+
+.rvCalendar .day p span {font-size:11px; line-height:17px; font-weight:normal; display:inline-block; padding:0 3px; border-radius:2px; color:#fff;}
+.rvCalendar .day p span.ico_1 {background:green;}
+.rvCalendar .day p span.ico_2 {background:#ff5500;}
+.rvCalendar .day p span.ico_3 {background:red;}
+
+/* 예약팝업 */
+.layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerReservation form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-300px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
+
+/* 객실목록 */
+.reservationList {clear:both; width:100%; overflow:hidden;}
+
+/* 메인 */
+#main {width:100%; overflow:auto; height:100%; background:url(/img/visual/bg.png) no-repeat; background-size:100% auto; background-position:0 100PX;}

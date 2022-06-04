@@ -1,0 +1,102 @@
+<div>
+	<iframe class="excelFrame" id="{{model.name + 'ExcelFrame'}}"></iframe>
+	<!-- input이 아닌 태그에 keydown 쓰려면 tabindex 필요 -->
+	<div class="dragBox" data-ng-style="model.drag" data-ng-show="model.drag.active"></div>
+	<div class="gridWrap {{model.name}}"
+		 data-ng-style="{height : model.height + 100}"
+		 data-ng-click="model.gridClick($event)"
+		 data-ng-mousedown="model.gridMousedown($event)"
+		 data-ng-mousemove="model.gridMouseMove($event)"
+		 data-ng-mouseup="model.gridMouseUp($event)"
+		 data-ng-mouseleave="model.gridMouseLeave($event)"
+		 data-ng-keyup="model.gridKeyup($event)"
+		 data-kaisa-grid-wrap
+		 tabindex="0">
+		<div class="gridT {{model.name}}">
+			<!-- chead -->
+			<div class="thead">
+				<div class="tr">
+					<div class="th" data-ng-repeat="(idx, chead) in model.header"
+						 data-ng-if="chead.visible"
+						 data-ng-class="{required : chead.required , down : model.orderBy == chead.key , up : model.orderBy == '-' + chead.key}"
+						 ng-style="{width:chead.width, left:chead.left}">
+						<label data-ng-if="chead.key == 'SELECTED'"><input type="checkbox" data-ng-model="model.allCheck" data-ng-change="model.colAllCheck()"></label>
+						<span data-ng-if="chead.key != 'SELECTED'" data-ng-bind-html="chead.name | trustHtml"></span>
+						<span data-ng-if="model.total != 0 && chead.sort" class="sorting" data-ng-click=" model.sorting(chead.key)"></span>
+						<div class="colWidth" data-ng-style="{width: chead.width}"></div>
+						<em class="colResize" data-ng-dblclick="model.colResizeDblclick($event,chead)" data-ng-mousedown="model.colResizeMousedown($event,chead)"></em>
+					</div>
+				</div>
+			</div>
+			<!-- data -->
+			<div class="tbody" data-ng-if="!loading.active && model.data.length == 0">
+				<div class="tr">
+					<div class="td noData" data-ng-style="{height:model.height}"><p style="position:absolute; left:50%; top:50%; width:400px; margin:0 0 0 -200px;">검색 된 데이터가 없습니다.</p></div><!-- colspan="{{model.header.length}}"-->
+				</div>
+			</div>
+			<!-- data -->
+			<div class="tbody" data-ng-if="model.data.length != 0">
+				<div class="tr" data-grid-row="{{rowIdx}}"
+					 data-ng-repeat="(rowIdx,cdata) in model.data | orderBy:model.orderBy"
+					 data-ng-class="{select : model.selectedKey == 'ROW' && model.selectedRow == cdata.originIndex, on : cdata.CRUD == 'U' && cdata.SELECTED, delete :cdata.CRUD == 'D', new : cdata.CRUD == 'C'}">
+					<div class="td {{chead.type}}" data-ng-repeat="(colIdx, chead) in model.header"
+						 data-ng-class="{tc : chead.align == 'center',tr : chead.align == 'right', selected : model.selectedCol == colIdx && model.selectedRow == cdata.originIndex, disabled : chead.disabled }"
+						 data-ng-if="chead.visible"
+						 data-ng-click="model.colClick(chead.key, colIdx, cdata.originIndex)"
+						 data-ng-dblclick="model.colDoubleClick(cdata)"
+						 data-ng-mouseover="model.colMouseOver(chead.key, colIdx, cdata.originIndex)"
+						 data-ng-mouseout="model.colMouseOut()"
+						 data-ng-style="{width:(chead.width && chead.width > 50) ? chead.width : 50, left:chead.left}">
+
+						<div class="switch" data-ng-switch="chead.key">
+							<div class="when" data-ng-switch-when="ROW">
+								<label class="row" data-ng-click="model.colClick(chead.key, -1, cdata.originIndex)">{{rowIdx}}</label>
+							</div>
+							<div class="when" data-ng-switch-when="CRUD">
+								<label class="row">{{cdata[chead.key] | CRUD}}</label>
+							</div>
+							<div class="when" data-ng-switch-when="SELECTED">
+								<label><input type="checkbox" data-ng-model="cdata.SELECTED" data-ng-change="model.colCheck(cdata.originIndex, cdata.SELECTED)" data-ng-checked="cdata.SELECTED"></label>
+							</div>
+							<div class="when" data-ng-switch-default="true">
+			 					<span data-ng-if="(cdata.CRUD != 'U' && cdata.CRUD != 'C')" data-ng-switch="chead.type">
+				  					<label data-ng-switch-when="Combo">
+				  						<select data-ng-model="cdata[chead.key]" style="z-index:-10;" data-ng-value="cdata[chead.key]" data-ng-options="k.value as k.text for k in chead.options" data-ng-disabled="true"></select>
+				  					</label>
+				  					<label data-ng-switch-default="true">
+										<span data-ng-if="!chead.popup">
+				  							{{cdata[chead.key]}}
+										</span>
+										<u class="pointer" data-ng-if="chead.popup" data-ng-click="model.popup(chead,cdata)">
+											{{cdata[chead.key]}}
+										</u>
+				  					</label>
+								</span>
+								<span data-ng-if="(cdata.CRUD == 'U' || cdata.CRUD == 'C') && cdata.SELECTED" data-ng-switch="chead.type">
+				  					<label data-ng-switch-when="String">
+				  						<input data-ng-model="cdata[chead.key]" maxlength="{{chead.length}}" type="text" data-ng-disabled="chead.disabled">
+				  					</label>
+				  					<label data-ng-switch-when="Image">
+				  						<input data-ng-model="cdata[chead.key]" maxlength="{{chead.length}}" type="text" data-ng-disabled="chead.disabled">
+				  					</label>
+				  					<label data-ng-switch-when="Date">
+				  						<input data-ng-model="cdata[chead.key]" maxlength="{{chead.length}}" type="text" class="date" data-ng-disabled="chead.disabled">
+				  						<span class="buttonDate" data-ng-click="model.gridDatepicker(chead.key,cdata.originIndex,colIdx,$event)" ng-hide="chead.disabled"></span>
+				  					</label>
+				  					<label data-ng-switch-when="Number">
+				  						<input data-ng-model="cdata[chead.key]" maxlength="{{chead.length}}" data-max-number="{{chead.maxNumber}}" type="text" data-ng-disabled="chead.disabled">
+				  					</label>
+				  					<label data-ng-switch-when="Combo">
+				  						<!-- select -->
+				  						<select data-ng-model="cdata[chead.key]" data-ng-value="cdata[chead.key]" data-ng-options="k.value as k.text for k in chead.options" data-ng-disabled="chead.disabled"></select>
+				  					</label>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="txt_grid_message" data-ng-bind-html="model.message | trustHtml"></p>
+</div>

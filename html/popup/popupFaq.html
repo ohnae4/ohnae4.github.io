@@ -1,0 +1,16 @@
+<div class="popup" style="height:450px">
+	<h2>FAQ</h2>
+	<div class="popup_wrap">
+    <form data-ng-submit="setFaq()">
+      <input type="hidden" data-ng-model="popup.data.FAQ_NUMBER" />
+      <table class="rowT">
+        <tr><th>질문</th><td><textarea style="height:150px;" data-ng-model="popup.param.QUESTION" /></td></tr><!--  v-model="item.REPLY_CONTENT" -->
+        <tr><th>답변</th><td><textarea style="height:150px;" data-ng-model="popup.param.ANSWER" /></td></tr><!--  v-model="item.REPLY_CONTENT" -->
+      </table>
+      <div class="btnWrap">
+        <button type="submit">저장</button>
+        <button type="button" data-ng-click="popup.close({target:'popupFaq'})">취소</button>
+      </div>
+      </form>
+	</div>
+</div>

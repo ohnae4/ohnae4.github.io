@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="kor" data-ng-app="KaisaApp" data-ng-controller="KaisaController">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta name="robots" content="noindex,nofollow">
+<title>chloris</title>
+<meta name="keywords" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta name="description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로리스">
+<meta property="og:description" content="클로리스,가평펜션,가평풀빌라,풀빌라">
+<meta property="og:image" content="http://chloris.kr/img/common/logo.png">
+<meta property="og:url" content="mobydi.co.kr">
+<meta name="fragment" content="!">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="shortcut icon" href="/img/favicon.ico?ver=0.1" type="image/x-icon">
+<link rel="stylesheet" href="/css/common.css" type="text/css">
+<link rel="stylesheet" href="/css/admin.css" type="text/css">
+<!--[if lt IE 10]>
+<link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
+<![endif]-->
+<!--[if IE 8]>
+<script src="/js/lib/es/es5-shim.min.js"></script>
+<![endif]-->
+<script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
+<script src="/js/lib/angular/angular.min.js"></script>
+
+<!-- <script src="/js/min/kaisa.js"></script> -->
+<script src="/js/module/kaisaConstant.js"></script>
+<script src="/js/module/kaisaCode.js"></script>
+<script src="/js/module/kaisaDirective.js"></script>
+<script src="/js/module/kaisaFilter.js"></script>
+<script src="/js/module/kaisaStorage.js"></script>
+<script src="/js/module/kaisaUrl.js"></script>
+<script src="/js/module/kaisaUtil.js"></script>
+<script src="/js/module/kaisaApi.js"></script>
+<script src="/js/module/kaisaPopup.js"></script>
+<script src="/js/module/kaisaCommon.js"></script>
+
+<!-- page module -->
+<script src="/js/controller/admin/adminLogin.js"></script>
+</head>
+<body data-ng-controller="BodyController">
+<div id="adminLogin">
+	<h2><router-link to="/">Admin Login</router-link></h2>
+    <form data-ng-submit="admin.submit()" method="POST">
+      <input type="text" autocomplete="false" data-ng-model="admin.id" required />
+      <input type="password" autocomplete="false" data-ng-model="admin.password" required />
+      <button type="submit">LOGIN</button>
+    </form>
+</div>
+</body>
+</html>

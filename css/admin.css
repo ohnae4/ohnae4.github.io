@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+#adminHeader {width:100%;  margin:0 auto; clear:both;}
+#adminHeader h1 {width:100%;}
+#adminHeader h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo_admin.png) no-repeat; width:400px; margin:0 auto; height:100px; text-align:center;}
+
+#adminMenu {width:100%; padding-top:30px;}
+#adminMenu ul {width:100%; padding:0 10px; text-align: center;}
+#adminMenu ul li {display:inline-block; line-height:20px;}
+#adminMenu ul li a {display:inline-block; border:1px solid #ddd; margin:0 0 5px -1px; padding:10px; font-size:14px; font-weight:bold; color:#666;}
+#adminMenu ul li a:hover {background:#333; color:#fff;}
+
+#adminContent {width:100%; padding:20px;}
+#adminContent h2 {font-size:20px; padding:10px 0; color:#000;}
+#adminContent h2 b {font-weight:normal; font-size:11px; color:#999;}
+
+#adminLogin {width:100%;}
+#adminLogin h2 {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo_admin.png) no-repeat; width:400px; margin:100px auto 30px auto; height:100px; text-align:center;}
+#adminLogin form {background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1); width:290px; margin:0 auto; position:relative; padding:30px; border:1px solid #ddd;}
+#adminLogin button {position:absolute; right:30px; top:40px; width:70px; height:70px; font-weight: bold; background:#ff5500; color:#fff;}
+#adminLogin input {width:200px; display:block; margin:10px; line-height:30px; height:30px;}
+
+#footer {width:100%; background:url(/img/common/mask.png) repeat rgba(0,0,0,0.5); margin:50px auto; position:relative; z-index:2; padding:30px 0; text-align:center; clear:both;}
+#footer p {font-size:12px; color:#fff; line-height:16px; padding:5px 0;}
+#footer p span {cursor:pointer;}
+#footer p.admin {color:#ff5500;}
