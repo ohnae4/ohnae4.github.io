@@ -47,7 +47,6 @@
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content" class="hide" data-ng-class="{on : initLoad}">
-
 	<div class="rvCalendar">
 		<div class="head">
 		    <h2>
@@ -57,71 +56,74 @@
 	 		    <span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span>
 		    </h2>
 	    </div>
-
-	    <div class="calendar">
-		    <div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
-		    <div data-ng-class="{done:day.idx <= 0, off: day.off, sat:(day.dayCode == '6') , sun:(day.dayCode == '0') || (day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1)}" class="day" data-ng-repeat="day in rvCalendar.start.day">
-				<div class="box">
-					<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
-						{{ day.holiday[0].HOLIDAY_NAME }}
-					</span>
-					<span>
-						<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
-						<b class="peakCode" data-ng-if="day.peakCode == 1">비수기</b>
-						<b class="peakCode" data-ng-if="day.peakCode == 2">준성수기</b>
-						<b class="peakCode" data-ng-if="day.peakCode == 3">성수기</b>
-						<b class="peakCode" data-ng-if="day.peakCode == 4">극성수기</b>
-					</span>
-					<p data-ng-repeat="(ridx , room) in day.list">
-						<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{ room.ROOM_NAME }}</span></strong>
-						<strong class="price" data-ng-if="(!day.price || day.price == '0')">{{ room['PRICE_' + day.priceCode] | toManwon }}</strong>
-						<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
-							<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약중</span>
-							<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
-							<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
-						</b>
-					</p>
+		<div class="scrollWrap">
+			<div class="calendar">
+				<div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
+				<div data-ng-class="{done:day.idx <= 0, off: day.off, sat:(day.dayCode == '6') , sun:(day.dayCode == '0') || (day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1)}" class="day" data-ng-repeat="day in rvCalendar.start.day">
+					<div class="box">
+						<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
+							{{ day.holiday[0].HOLIDAY_NAME }}
+						</span>
+						<span>
+							<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+							<b class="peakCode" data-ng-if="day.peakCode == 1">비수기</b>
+							<b class="peakCode" data-ng-if="day.peakCode == 2">준성수기</b>
+							<b class="peakCode" data-ng-if="day.peakCode == 3">성수기</b>
+							<b class="peakCode" data-ng-if="day.peakCode == 4">극성수기</b>
+						</span>
+						<p data-ng-repeat="(ridx , room) in day.list">
+							<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{ room.ROOM_NAME }}</span></strong>
+							<strong class="price" data-ng-if="(!day.price || day.price == '0')">{{ room['PRICE_' + day.priceCode] | toManwon }}</strong>
+							<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
+								<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약중</span>
+								<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
+								<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
+							</b>
+						</p>
+					</div>
 				</div>
-		    </div>
-	    </div>
+			</div>
+		</div>
     </div>
 
 	<h3>객실정보</h3>
-	<table class="roomT">
-		<tr>
-			<th rowspan="2">객실명</th>
-			<th rowspan="2">기준인원</th>
-			<th rowspan="2">최대인원</th>
-			<th colspan="3">비수기</th>
-			<th colspan="3">준성수기</th>
-			<th colspan="3">성수기</th>
-		</tr>
-		<tr>
-			<th>주중</th>
-			<th>금요일</th>
-			<th>주말</th>
-			<th>주중</th>
-			<th>금요일</th>
-			<th>주말</th>
-			<th>주중</th>
-			<th>금요일</th>
-			<th>주말</th>
-		</tr>
-		<tr data-ng-repeat="i in roomList">
-			<td>{{ i.ROOM_NAME }}</td>
-			<td>{{ i.MIN_PERSONNEL }}명</td>
-			<td>{{ i.MAX_PERSONNEL }}명</td>
-			<td>{{ i.PRICE_1 | toManwon }}</td>
-			<td>{{ i.PRICE_2 | toManwon }}</td>
-			<td>{{ i.PRICE_3 | toManwon }}</td>
-			<td>{{ i.PRICE_4 | toManwon }}</td>
-			<td>{{ i.PRICE_5 | toManwon }}</td>
-			<td>{{ i.PRICE_6 | toManwon }}</td>
-			<td>{{ i.PRICE_7 | toManwon }}</td>
-			<td>{{ i.PRICE_8 | toManwon }}</td>
-			<td>{{ i.PRICE_9 | toManwon }}</td>
-		</tr>
-	</table>
+	<div class="scrollWrap">
+		<table class="roomT">
+			<tr>
+				<th rowspan="2">객실명</th>
+				<th rowspan="2">기준인원</th>
+				<th rowspan="2">최대인원</th>
+				<th colspan="3">비수기</th>
+				<th colspan="3">준성수기</th>
+				<th colspan="3">성수기</th>
+			</tr>
+			<tr>
+				<th>주중</th>
+				<th>금요일</th>
+				<th>주말</th>
+				<th>주중</th>
+				<th>금요일</th>
+				<th>주말</th>
+				<th>주중</th>
+				<th>금요일</th>
+				<th>주말</th>
+			</tr>
+			<tr data-ng-repeat="i in roomList">
+				<td>{{ i.ROOM_NAME }}</td>
+				<td>{{ i.MIN_PERSONNEL }}명</td>
+				<td>{{ i.MAX_PERSONNEL }}명</td>
+				<td>{{ i.PRICE_1 | toManwon }}</td>
+				<td>{{ i.PRICE_2 | toManwon }}</td>
+				<td>{{ i.PRICE_3 | toManwon }}</td>
+				<td>{{ i.PRICE_4 | toManwon }}</td>
+				<td>{{ i.PRICE_5 | toManwon }}</td>
+				<td>{{ i.PRICE_6 | toManwon }}</td>
+				<td>{{ i.PRICE_7 | toManwon }}</td>
+				<td>{{ i.PRICE_8 | toManwon }}</td>
+				<td>{{ i.PRICE_9 | toManwon }}</td>
+			</tr>
+		</table>
+	</div>
 	<h3>객실이용시 확인사항</h3>
 	<ul class="guide">
 		<li>입실시간: 오후3시 퇴실시간: 오전 11시</li>
@@ -145,35 +147,36 @@
 		<li>아래 환불규정은 고객님과 펜션의 공정한 계약이므로 동의하신다면 진행하시기 바랍니다.</li>
 		<li>환불은 입금자명으로 되며, 입금 시 송금수수료는 제외한 후 입금됩니다.</li>
 	</ul>
-	<table class="roomT">
-		<tr>
-			<th>0일전</th>
-			<th>1일전</th>
-			<th>2일전</th>
-			<th>3일전</th>
-			<th>4일전</th>
-			<th>5일전</th>
-			<th>6일전</th>
-			<th>7일전</th>
-			<th>8일전</th>
-			<th>9일전</th>
-			<th>10일전</th>
-		</tr>
-		<tr>
-			<td>0%</td>
-			<td>0%</td>
-			<td>10%</td>
-			<td>20%</td>
-			<td>30%</td>
-			<td>40%</td>
-			<td>50%</td>
-			<td>60%</td>
-			<td>70%</td>
-			<td>80%</td>
-			<td>90%</td>
-		</tr>
-	</table>
-
+	<div class="scrollWrap">
+		<table class="roomT">
+			<tr>
+				<th>0일전</th>
+				<th>1일전</th>
+				<th>2일전</th>
+				<th>3일전</th>
+				<th>4일전</th>
+				<th>5일전</th>
+				<th>6일전</th>
+				<th>7일전</th>
+				<th>8일전</th>
+				<th>9일전</th>
+				<th>10일전</th>
+			</tr>
+			<tr>
+				<td>0%</td>
+				<td>0%</td>
+				<td>10%</td>
+				<td>20%</td>
+				<td>30%</td>
+				<td>40%</td>
+				<td>50%</td>
+				<td>60%</td>
+				<td>70%</td>
+				<td>80%</td>
+				<td>90%</td>
+			</tr>
+		</table>
+	</div>
 	<!-- 예약팝업 -->
 	<div class="layerReservation" data-ng-show="layerReservation.active">
 		<form id="formReservation" name="formReservation" data-ng-submit="layerReservation.submit()">
