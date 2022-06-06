@@ -398,14 +398,15 @@
 		
 		var themeIdx = 1;
 
-		setInterval(function() {
+		/* setInterval(function() {
 			themeIdx++;
 			if(themeIdx > 5) {
 				themeIdx = 1;
 			}
 			$scope.theme.click('theme' + themeIdx);
 		}, 1000);
-		
+		 */
+		$scope.theme.click('theme' + 5);
 
 		/**
 		 * 관리자 로그인

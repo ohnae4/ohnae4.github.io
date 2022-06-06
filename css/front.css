@@ -80,9 +80,9 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 .scrollWrap {width:100%; clear:both; overflow: auto; background:none right top;}
 
 #content {min-height:300px; width:1000px; margin:0 auto; clear:both; padding:20px 0; background-color:#fff;}
-#content h2 {font-size:16px; color:#333; clear:both; position:relative;}
+#content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
-#content h2 span.btnArea {position:absolute; right:0; bottom:20px;}
+#content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
 
 #content h3 {padding:30px 0 20px 0; font-size:16px; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:14px; font-weight:normal; color:#999;}
@@ -133,7 +133,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .layerPwd input {border:1px solid #999;}
 .layerPwd .btnWrap {padding-top:20px;}
 
-.qna {clear:both; width:100%; overflow:hidden;}
+#qna {clear:both; width:100%; overflow:hidden; padding-top:30px;}
 
 /*reservation*/
 /* 달력 */
