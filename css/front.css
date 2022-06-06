@@ -4,6 +4,8 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
     transition:0.3s all linear;
 } /* transition:0.3s all linear; transition:0s background linear; */
 
+body {background:url(/img/common/bg.png) repeat;} /*bg.jpg*/
+
 #header {width:100%; margin:0 auto; clear:both;}
 #header h1 {width:100%; margin:0 auto;}
 #header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
@@ -78,20 +80,22 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #visual {padding:20px 0;}
 
-#menu {width:100%; transition:none; z-index:100; padding:0; background:#fff; clear:both; overflow:hidden; line-height:50px; text-align:center;}
+#menu {width:100%; transition:none; z-index:100; clear:both; line-height:50px; text-align:center;}
 #menu a {color:#333; background-color:#fff; font-size:14px; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #menu a:hover {background:#333; color:#fff;}
-#menu ul.menu li {display:inline-block; }
+#menu ul.menu {transition:none; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
+#menu ul.menu li {display:inline-block;}
 #menu ul.menu li.on a {background:#333; color:#fff;}
 .menuWrap {width:100%; height:50px;}
-#menu.fixed {position:fixed; left:0; top:0; box-shadow: 0 0 10px rgb(0,0,0,0.3);}
+#menu.fixed {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
+#menu.fixed ul.menu {box-shadow:none;}
 
 .rvCalendar .head {background:#fff; width:100%; z-index:101;}
 .rvCalendar .head.fixed {position:fixed; left:0; top:50px; border-bottom:1px solid #ddd;}
 
 .scrollWrap {width:100%; clear:both; overflow: auto; background:none right top;}
 
-#content {min-height:300px; width:1000px; margin:0 auto; clear:both; padding:20px 0; background-color:#fff;}
+#content {min-height:300px; width:1000px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff;}
 #content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
@@ -100,16 +104,16 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 #content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
-#map {width:1000px; border:20px solid #fff; height:400px; margin:0 auto; clear:both; text-align:center;}
-#footer .cs {height:130px; border-bottom:1px solid #f2f2f2; width:100%;}
+#map {width:1000px; border:20px solid #fff; box-shadow:0 0 3px rgb(0,0,0,0.2); height:400px; margin:0 auto; clear:both; text-align:center;}
+#footer .cs {padding-top:20px; width:100%;}
 #footer .cs dl {width:100%;}
 #footer .cs dl dt {padding-bottom:5px;}
-#footer .info {height:130px; border-bottom:1px solid #f2f2f2; width:100%;}
+#footer .info {height:130px; width:100%;}
 #footer .info dl {width:100%; padding-top:30px;}
 #footer .info dl dt {padding-bottom:5px;}
 
-#footer .copy {width:100%; clear:both; padding:30px 0;}
-#footer .copy p {font-size:12px; padding:5px 0;}
+#footer .copy {width:100%; clear:both; padding:30px 0; color:#ccc; background: url(/img/common/bg_footer.jpg) repeat;}
+#footer .copy p {padding:5px 0;}
 #footer .copy p span {cursor:pointer;}
 #footer .copy p.admin {color:#ff5500;}
 
@@ -194,9 +198,9 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 
 /*Qna*/
 .layerQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
-.layerQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
 .layerMyQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
-.layerMyQna form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-240px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerMyQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-240px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
 
 
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
