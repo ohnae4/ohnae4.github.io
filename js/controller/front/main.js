@@ -37,10 +37,7 @@
 		$scope.initLoad = $scope.loadComplete();
 
 
-		$.stellar({
-			horizontalScrolling: false,
-			verticalOffset: 40
-		});
+		$('#main').stellar();
 		
 	}]);
 })(window,window.angular);

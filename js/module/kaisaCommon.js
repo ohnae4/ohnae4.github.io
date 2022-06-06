@@ -154,6 +154,7 @@
 			{title:'예약게시판', url:'reservation'},
 			{title:'1:1문의', url:'qna'}
 		];
+
 		$scope.adminMenuList = [
 			{title:'객실정보', url:'adminRoom'},
 			{title:'예약내역', url:'adminReservation'},
@@ -162,6 +163,7 @@
 			{title:'자주하는질문', url:'adminFaq'},
 			{title:'휴일설정', url:'adminHoliday'}
 		];
+		
 		/**
 		 * @param param: {
 		 *     url: kaisaUrl 에 있는 링크값과 매치해야 한다.
@@ -380,6 +382,19 @@
 			}
 			kaisaStorage.setSessionStorage('pageInfo',$scope.pageInfoSession,'json');
 		});
+
+		$scope.theme = {
+			name: null,
+			click : function(str) {
+				if(!str) {
+					return;
+				}
+				$scope.theme.name = str;
+				$('body').removeClass().addClass(str);
+				kaisaStorage.setCookie('theme',str);
+			}
+		};
+		$scope.theme.click(kaisaStorage.getCookie('theme'));
 		
 		/**
 		 * 관리자 로그인
@@ -456,7 +471,7 @@
 				$scope.window.height = angular.element($window).height();
 			});
 		});
-		angular.element($window).on('scroll',function(){
+		$($window).on('scroll',function(){
 			$scope.$apply(function(){
 				$scope.window.scrollTop = angular.element($window).scrollTop();
 			});

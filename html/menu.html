@@ -1,0 +1,12 @@
+<div id="menu">
+	<ul class="theme">
+		<li data-ng-click="theme.click('theme1')"></li>
+		<li data-ng-click="theme.click('theme2')"></li>
+		<li data-ng-click="theme.click('theme3')"></li>
+		<li data-ng-click="theme.click('theme4')"></li>
+		<li data-ng-click="theme.click('theme5')"></li>
+	</ul>
+	<ul class="menu">
+		<li data-ng-repeat="(idx, i)  in menuList"><a data-ng-href="{{commonLink({url:i.url,href:true})}}">{{i.title}}</a></li>
+	</ul>
+</div>

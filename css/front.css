@@ -1,19 +1,28 @@
 @charset "utf-8";
 
-#header {width:100%; margin:0 auto; clear:both;}
-#header h1 {width:1100px; margin:0 auto;}
-#header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
+div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,textarea,label,fieldset {
+    transition:0.3s all linear;
+} /* transition:0.3s all linear; transition:0s background linear; */
 
-#menu {width:1100px; padding:30px 0; margin:0 auto; clear:both; overflow:hidden; line-height:40px; text-align:center;}
+#header {width:100%; margin:0 auto; clear:both;}
+#header h1 {width:100%; margin:0 auto;}
+#header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
+#header.fixed {position:fixed; left:0; top:0;}
+
+ul.theme {width:100%; clear:both; text-align:center;}
+ul.theme li {cursor:pointer; border-radius:100%; display:inline-block; background-color:#fff; margin:0 1px; width:20px; height:20px; box-shadow:0 0 3px rgba(0,0,0,0.2);}
+ul.theme li:nth-child(1) {background-color:#111;}
+ul.theme li:nth-child(2) {background-color:#222;}
+ul.theme li:nth-child(3) {background-color:#333;}
+ul.theme li:nth-child(4) {background-color:#444;}
+ul.theme li:nth-child(5) {background-color:#555;}
+
+#menu {width:100%; padding:0; clear:both; overflow:hidden; line-height:40px; text-align:center;}
 #menu a {color:#333; background-color:#fff; display:block; padding:0 20px; border:1px solid #ddd; margin-left:-1px;}
 #menu a:hover {background:#333; color:#fff;}
-#menu ul li {display:inline-block; }
-#menu ul li:first-child {padding-left:10px;}
-#menu ol {position:absolute; right:0; top:0;}
-#menu ol li {display:inline-block; padding:0 10px;}
-#menu ol li:last-child {padding-right:20px;}
+#menu ul.menu li {display:inline-block; }
 
-#content {min-height:300px; width:1100px; margin:0 auto; clear:both; padding:20px; background-color:#fff;}
+#content {min-height:300px; width:100%; margin:0 auto; clear:both; padding:20px; background-color:#fff;}
 #content h2 {padding:20px 0 10px 0; font-size:14px; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
@@ -21,7 +30,7 @@
 #content h3 {padding:20px 0 10px 0; font-size:14px; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 
-#footer {width:1100px; margin:0 auto; clear:both; padding:30px 0; text-align:center;}
+#footer {width:100%; margin:0 auto; clear:both; padding:30px 0; text-align:center;}
 #footer p {font-size:12px; line-height:16px; padding:5px 0;}
 #footer p span {cursor:pointer;}
 #footer p.admin {color:#ff5500;}
@@ -107,10 +116,12 @@ ul.guide {padding:0 10px; font-size:11px; padding-bottom:20px;}
 
 /* 예약팝업 */
 .layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
-.layerReservation form {padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-300px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
+.layerReservation form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-300px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
 
 /* 객실목록 */
 .reservationList {clear:both; width:100%; overflow:hidden;}
 
-/* 메인 */
-#main {width:100%; overflow:auto; height:100%; background:url(/img/visual/bg.png) no-repeat; background-size:100% auto; background-position:0 100PX;}
+/* 메인  background:url(/img/visual/bg.png) no-repeat; */
+#main {width:100%; overflow:auto; height:100%; background-color:#fff; background-size:100% auto; background-position:0 100px;}
+
+

@@ -3,9 +3,7 @@
 	var app = angular.module('directive',['common']);
 	app.directive('kaisaHeader',[function(){
 		return {
-			template: '<div id="header">'+
-				'<h1><a href="/">Chloris</a></h1>'+
-			'</div>',
+			templateUrl: '/html/header.html',
 			replace: true,
 			link: function($scope, el, attrs){
 			}
@@ -35,13 +33,7 @@
 	}]);
 	app.directive('kaisaMenu',[function(){
 		return {
-			template: '<div>'+
-				'<div id="menu">'+
-					'<ul>'+
-						'<li data-ng-repeat="(idx, i)  in menuList"><a data-ng-href="{{commonLink({url:i.url,href:true})}}">{{i.title}}</a></li>'+
-					'</ul>'+
-				'</div>'+
-			'</div>',
+			templateUrl: '/html/menu.html',
 			replace: true,
 			link: function($scope, el, attrs){
 			}
