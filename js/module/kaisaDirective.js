@@ -75,14 +75,7 @@
 	}]);
 	app.directive('kaisaFooter',[function(){
 		return {
-			template: '<div>'+
-				'<div id="footer">'+
-					'<p>상호 : 클로리스 , 주소 : 경기도 가평군 가평읍 마장리 82, 전화 : 010-5366-1900 <br />'+
-					'copyright (c) 2022 chloris. all right reserved'+ // <span data-ng-click="admin.layer.open()">.</span>
-					// '<p data-ng-if="admin.user" class="admin"><span data-ng-click="admin.logout()">관리자 로그아웃</span></p>'+
-				'</div>'+
-				'<div kaisa-unit></div>'+
-			'</div>',
+			templateUrl: '/html/footer.html',
 			replace: true,
 			link: function($scope, el, attrs){
 			}

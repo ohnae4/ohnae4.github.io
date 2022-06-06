@@ -77,41 +77,43 @@
 			</div>
 		</form>
 
-		<table class="listT">
-			<colgroup>
-				<col width="100" />
-				<col width="80" />
-				<col width="100" />
-				<col width="100" />
-				<col width="*" />
-				<col width="150" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>문의번호</th>
-					<th>문의자명</th>
-					<th>문의자전화번호</th>
-					<th>문의자이메일</th>
-					<th>제목</th>
-					<th>등록일시</th>
-				</tr>
-			</thead>
-			<tbody data-ng-if="qnaList.length > 0">
-				<tr data-ng-repeat="(idx,i) in qnaList">
-					<td class="tc">{{i.QNA_NUMBER}}</td>
-					<td>{{i.MEMBER_NAME}}</td>
-					<td>{{i.MEMBER_PHONE | maskPhone}}</td>
-					<td>{{i.MEMBER_EMAIL}}</td>
-					<td><p><span class="pointer underline" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT | cutString : 15}}</span> <span class="ctn" data-ng-show="i.REPLY_YN == 'Y'">(1)</span></p></td>
-					<td>{{i.CREATE_DATE}}</td>
-				</tr>
-			</tbody>
-			<tbody data-ng-if="qnaList.length == 0">
-				<tr>
-					<td colspan="1000" style="text-align:center; padding:100px 0;">문의가 없습니다.</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="scrollWrap">
+			<table class="listT">
+				<colgroup>
+					<col width="100" />
+					<col width="80" />
+					<col width="100" />
+					<col width="100" />
+					<col width="*" />
+					<col width="150" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>문의번호</th>
+						<th>문의자명</th>
+						<th>문의자전화번호</th>
+						<th>문의자이메일</th>
+						<th>제목</th>
+						<th>등록일시</th>
+					</tr>
+				</thead>
+				<tbody data-ng-if="qnaList.length > 0">
+					<tr data-ng-repeat="(idx,i) in qnaList">
+						<td class="tc">{{i.QNA_NUMBER}}</td>
+						<td>{{i.MEMBER_NAME}}</td>
+						<td>{{i.MEMBER_PHONE | maskPhone}}</td>
+						<td>{{i.MEMBER_EMAIL}}</td>
+						<td><p><span class="pointer underline" data-ng-click="layerPwd.open(i.QNA_NUMBER)">{{i.SUBJECT | cutString : 15}}</span> <span class="ctn" data-ng-show="i.REPLY_YN == 'Y'">(1)</span></p></td>
+						<td>{{i.CREATE_DATE}}</td>
+					</tr>
+				</tbody>
+				<tbody data-ng-if="qnaList.length == 0">
+					<tr>
+						<td colspan="1000" style="text-align:center; padding:100px 0;">문의가 없습니다.</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 	<!-- 비밀번호 확인 팝업 -->

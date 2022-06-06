@@ -59,28 +59,29 @@
 	    </div>
 
 	    <div class="calendar">
-		    <div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}">{{o.text}}</div>
-		    <div data-ng-class="{done:day.idx <= 0, off: day.off}" class="day" data-ng-repeat="day in rvCalendar.start.day">
-				<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
-					{{ day.holiday[0].HOLIDAY_NAME }}
-				</span>
-		    	<span>
-			    	<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
-			    	<b class="peakCode" data-ng-if="day.peakCode == 1">비수기</b>
-			    	<b class="peakCode" data-ng-if="day.peakCode == 2">준성수기</b>
-			    	<b class="peakCode" data-ng-if="day.peakCode == 3">성수기</b>
-			    	<b class="peakCode" data-ng-if="day.peakCode == 4">극성수기</b>
-		    	</span>
-		    	<p data-ng-repeat="(ridx , room) in day.list">
-		    		<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{ room.ROOM_NAME }}</span></strong>
-		    		<strong class="price" data-ng-if="!day.price || day.price == '0'">{{ room['PRICE_' + day.priceCode] | toManwon }}</strong>
-		    		<strong class="price" data-ng-if="day.price && day.price != '0'">{{ day.price | toManwon }}원</strong>
-		    		<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
-			    		<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약중</span>
-			    		<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
-			    		<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
-		    		</b>
-		    	</p>
+		    <div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
+		    <div data-ng-class="{done:day.idx <= 0, off: day.off, sat:(day.dayCode == '6') , sun:(day.dayCode == '0') || (day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1)}" class="day" data-ng-repeat="day in rvCalendar.start.day">
+				<div class="box">
+					<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
+						{{ day.holiday[0].HOLIDAY_NAME }}
+					</span>
+					<span>
+						<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+						<b class="peakCode" data-ng-if="day.peakCode == 1">비수기</b>
+						<b class="peakCode" data-ng-if="day.peakCode == 2">준성수기</b>
+						<b class="peakCode" data-ng-if="day.peakCode == 3">성수기</b>
+						<b class="peakCode" data-ng-if="day.peakCode == 4">극성수기</b>
+					</span>
+					<p data-ng-repeat="(ridx , room) in day.list">
+						<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{ room.ROOM_NAME }}</span></strong>
+						<strong class="price" data-ng-if="(!day.price || day.price == '0')">{{ room['PRICE_' + day.priceCode] | toManwon }}</strong>
+						<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
+							<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약중</span>
+							<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
+							<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
+						</b>
+					</p>
+				</div>
 		    </div>
 	    </div>
     </div>
