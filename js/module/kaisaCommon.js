@@ -464,7 +464,7 @@
 		 */
 		$scope.window = {
 			menuPostion: 150,
-			calendarHeadPostion: 192,
+			calendarHeadPostion: 200,
 			goTop: function(){
 				angular.element($window).scrollTop(0);
 			},

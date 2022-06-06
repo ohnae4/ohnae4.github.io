@@ -7,14 +7,9 @@
 		$scope.page = {
 			idx : 0	
 		};
-		
-		/* 메인비주얼
 		$scope.visualList = [
-			{url : '/img/main/visual3.jpg'},
-			{url : '/img/main/visual4.jpg'},
-			{url : '/img/main/visual5.jpg'},
-			{url : '/img/main/visual2.jpg'}
-			
+			{url : '/img/visual/bg.png'},
+			{url : '/img/visual/bg.png'}
 		];
 		$scope.visual = {
 			idx : 0,
@@ -33,11 +28,8 @@
 			$interval.cancel($scope.visualInterval);
 		};
 		$scope.visualIntervalStart();
-		*/
+
 		$scope.initLoad = $scope.loadComplete();
-
-
-		$('#main').stellar();
-		
+		// $('#main').stellar();
 	}]);
 })(window,window.angular);
