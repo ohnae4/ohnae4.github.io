@@ -78,12 +78,13 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #visual {padding:20px 0;}
 
-#menu {width:100%; z-index:100; padding:0; background:#fff; clear:both; overflow:hidden; line-height:50px; text-align:center;}
+#menu {width:100%; transition:none; z-index:100; padding:0; background:#fff; clear:both; overflow:hidden; line-height:50px; text-align:center;}
 #menu a {color:#333; background-color:#fff; font-size:14px; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #menu a:hover {background:#333; color:#fff;}
 #menu ul.menu li {display:inline-block; }
+#menu ul.menu li.on a {background:#333; color:#fff;}
 .menuWrap {width:100%; height:50px;}
-#menu.fixed {position:fixed; left:0; top:0; border-bottom:1px solid #ddd;}
+#menu.fixed {position:fixed; left:0; top:0; box-shadow: 0 0 10px rgb(0,0,0,0.3);}
 
 .rvCalendar .head {background:#fff; width:100%; z-index:101;}
 .rvCalendar .head.fixed {position:fixed; left:0; top:50px; border-bottom:1px solid #ddd;}
@@ -100,8 +101,11 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
 #map {width:1000px; border:20px solid #fff; height:400px; margin:0 auto; clear:both; text-align:center;}
-#footer .info {padding:30px 0; border-top:1px solid #f2f2f2; border-bottom:1px solid #f2f2f2; width:100%; clear:both;}
-#footer .info dl {width:100%;}
+#footer .cs {height:130px; border-bottom:1px solid #f2f2f2; width:100%;}
+#footer .cs dl {width:100%;}
+#footer .cs dl dt {padding-bottom:5px;}
+#footer .info {height:130px; border-bottom:1px solid #f2f2f2; width:100%;}
+#footer .info dl {width:100%; padding-top:30px;}
 #footer .info dl dt {padding-bottom:5px;}
 
 #footer .copy {width:100%; clear:both; padding:30px 0;}

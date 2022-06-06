@@ -150,19 +150,34 @@
         };
 			
 		$scope.menuList = [
-			{title:'메인', url:'main'},
-			{title:'예약게시판', url:'reservation'},
-			{title:'1:1문의', url:'qna'}
+			{title:'메인', url:'main', active: false},
+			{title:'예약게시판', url:'reservation', active: false},
+			{title:'1:1문의', url:'qna', active: false}
 		];
+		for(var i in $scope.menuList) {
+			if(location.pathname.match($scope.menuList[i].url)){
+				$scope.menuList[i].active = true;
+				break;
+			}
+		}
+		if(location.pathname === '/') {
+			$scope.menuList[0].active = true; 
+		}
 
 		$scope.adminMenuList = [
-			{title:'객실정보', url:'adminRoom'},
-			{title:'예약내역', url:'adminReservation'},
-			{title:'문의내역', url:'adminQna'},
-			{title:'공지사항', url:'adminNotice'},
-			{title:'자주하는질문', url:'adminFaq'},
-			{title:'휴일설정', url:'adminHoliday'}
+			{title:'객실정보', url:'adminRoom', name:'room', active: false},
+			{title:'예약내역', url:'adminReservation', name:'reservation', active: false},
+			{title:'문의내역', url:'adminQna', name:'qna', active: false},
+			{title:'공지사항', url:'adminNotice', name:'notice', active: false},
+			{title:'자주하는질문', url:'adminFaq', name:'faq', active: false},
+			{title:'휴일설정', url:'adminHoliday', name:'holiday', active: false}
 		];
+		for(var i in $scope.adminMenuList) {
+			if(location.pathname.match($scope.adminMenuList[i].name)){
+				$scope.adminMenuList[i].active = true;
+				break;
+			}
+		}
 		
 		/**
 		 * @param param: {

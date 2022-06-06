@@ -1,0 +1,5 @@
+<div id="adminMenu">
+	<ul>
+		<li data-ng-repeat="(idx, i)  in adminMenuList" data-ng-class="{on:i.active}"><a data-ng-href="{{commonLink({url:i.url,href:true})}}">{{i.title}}</a></li>
+	</ul>
+</div>

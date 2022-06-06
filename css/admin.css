@@ -9,6 +9,7 @@
 #adminMenu ul li {display:inline-block; line-height:20px;}
 #adminMenu ul li a {display:inline-block; border:1px solid #ddd; margin:0 0 5px -1px; padding:10px; font-size:14px; font-weight:bold; color:#666;}
 #adminMenu ul li a:hover {background:#333; color:#fff;}
+#adminMenu ul li.on a {background:#333; color:#fff;}
 
 #adminContent {width:100%; padding:20px;}
 #adminContent h2 {font-size:20px; padding:10px 0; color:#000;}

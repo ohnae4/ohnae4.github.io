@@ -21,11 +21,7 @@
 	}]);
 	app.directive('kaisaAdminMenu',[function(){
 		return {
-			template: '<div id="adminMenu">'+
-				'<ul>'+
-					'<li data-ng-repeat="(idx, i)  in adminMenuList"><a data-ng-href="{{commonLink({url:i.url,href:true})}}">{{i.title}}</a></li>'+
-				'</ul>'+
-			'</div>',
+			templateUrl: '/html/adminMenu.html',
 			replace: true,
 			link: function($scope, el, attrs){
 			}
@@ -100,6 +96,14 @@
 					title: '경기 가평군 가평읍 마장리 83',
 					position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
 				});
+			}
+		}
+	}]);
+	app.directive('kaisaAdminFooter',[function(){
+		return {
+			templateUrl: '/html/adminFooter.html',
+			replace: true,
+			link: function($scope, el, attrs){
 			}
 		}
 	}]);
