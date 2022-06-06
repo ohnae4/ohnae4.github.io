@@ -31,5 +31,6 @@
 
 		$scope.initLoad = $scope.loadComplete();
 		// $('#main').stellar();
+
 	}]);
 })(window,window.angular);

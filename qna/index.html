@@ -28,6 +28,7 @@
 <![endif]-->
 <script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
 <script src="/js/lib/angular/angular.min.js"></script>
+<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=3322a4d2abce512425b96866d9844fd1"></script>
 
 <!-- <script src="/js/min/kaisa.js"></script> -->
 <script src="/js/module/kaisaConstant.js"></script>
@@ -174,7 +175,7 @@
 					<th class="required">자동등록방지</th>
 					<td>
 						<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
-						<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="QNA.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
+						<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="QNA.CAPTCHA_CODE" style="width:65px; display:inline-block;" required="required" />
 						<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
 					</td>
 				</tr>

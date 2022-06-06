@@ -96,9 +96,10 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
 
 #content h3 {padding:30px 0 20px 0; font-size:16px; color:#333; clear:both; position:relative;}
-#content h2 span {font-size:14px; font-weight:normal; color:#999;}
+#content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
+#map {width:1000px; border:20px solid #fff; height:400px; margin:0 auto; clear:both; text-align:center;}
 #footer .info {padding:30px 0; border-top:1px solid #f2f2f2; border-bottom:1px solid #f2f2f2; width:100%; clear:both;}
 #footer .info dl {width:100%;}
 #footer .info dl dt {padding-bottom:5px;}
@@ -155,7 +156,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
 .rvCalendar .calendar {width:1000px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
-.rvCalendar .headWrap {height:120px; width:100%;}
+.rvCalendar .headWrap {height:80px; width:100%;}
 
 .rvCalendar .week {display:none; width:14%; float:left; height:50px; line-height:50px; text-align:center;}
 .rvCalendar .day {width:14%; position:relative; padding:5px; background:#fff; float:left; height:120px; overflow:hidden;}
@@ -198,18 +199,19 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 
 @media (max-width: 480px) {
     .layerQna form,
-    .layerReservation form {width:100%; overflow:auto; padding-left:5px; padding-right:5px; left:0; margin-left:0;}
+    .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
 @media (max-width: 1000px) {
     .icoScroll {display:block;} 
     #content {width:100%; padding:20px;}
+    #map {width:100%;}
     .rvCalendar .day .holiday,
     .rvCalendar .day .peakCode {display:none;}
 }
 
 @media (max-height: 700px) {
     .layerQna form,
-    .layerReservation form {height:100%; overflow:auto; padding-top:5px; padding-bottom:0; top:0; margin-top:0;}
+    .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
 
 /* 객실목록 */

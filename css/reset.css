@@ -40,6 +40,6 @@ select { height:30px; padding:0 2px; border:1px solid #ccc; color:#555; backgrou
 select[disabled='disabled'],
 input[readonly='readonly'] {background:#eee;}
 
-div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,textarea,label,fieldset {
+div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,textarea,label,fieldset,form {
     box-sizing:border-box;
 }

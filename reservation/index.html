@@ -28,6 +28,7 @@
 <![endif]-->
 <script src="/js/lib/jquery/jquery-1.11.1.min.js"></script>
 <script src="/js/lib/angular/angular.min.js"></script>
+<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=3322a4d2abce512425b96866d9844fd1"></script>
 
 <!-- <script src="/js/min/kaisa.js"></script> -->
 <script src="/js/module/kaisaConstant.js"></script>
@@ -50,7 +51,8 @@
 
 	<div class="rvCalendar">
 		<div class="headWrap">
-			<div class="head" data-ng-class="{fixed : window.scrollTop > window.calendarHeadPostion}">
+			<!-- data-ng-class="{fixed : window.scrollTop > window.calendarHeadPostion}" -->
+			<div class="head">
 				<h2>
 					<span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
 					<strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
@@ -60,7 +62,9 @@
 			</div>
 		</div>
 
-		<div class="icoScroll"></div>
+		
+		<h3>예약하기 <span>좌우로 스크롤하여 해당 객실을 선택해주세요.</span></h3>
+		<!-- <div class="icoScroll"></div> -->
 		<div class="scrollWrap">
 			<div class="calendar">
 				<div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
@@ -224,7 +228,7 @@
 						<select data-ng-model="RESERVATION.ADD_COUNT_2">
 							<option data-ng-repeat="i in code.addCount2Arr" value="{{i.value}}">{{i.text}}</option>
 						</select>
-						/
+						<div style="height:5px; width:100%;"></div>
 						<select data-ng-model="RESERVATION.ADD_COUNT_3">
 							<option data-ng-repeat="i in code.addCount3Arr" value="{{i.value}}">{{i.text}}</option>
 						</select>
@@ -244,6 +248,7 @@
 					<th>기타 요청사항</th>
 					<td>
 						<textarea maxlength="80" type="text" name="DESCRIPTION" data-ng-model="RESERVATION.DESCRIPTION"></textarea>
+						<br>
 						{{RESERVATION.DESCRIPTION.length}} / 80 자
 					</td>
 				</tr>
@@ -251,7 +256,7 @@
 					<th class="required">자동등록방지</th>
 					<td>
 						<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
-						<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:140px; display:inline-block;" required="required" />
+						<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:65px; display:inline-block;" required="required" />
 						<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
 					</td>
 				</tr>
@@ -265,5 +270,6 @@
 </div>
 
 <div data-kaisa-footer="true"></div>
+
 </body>
 </html>

@@ -78,6 +78,28 @@
 			templateUrl: '/html/footer.html',
 			replace: true,
 			link: function($scope, el, attrs){
+				var container = document.getElementById('map');
+				var options = {
+					center: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688),
+					level: 3,
+					marker: {
+						position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
+					},
+					draggable: false,
+					// mapTypeId: kakao.maps.MapTypeId.HYBRID, // SKYVIEW,
+					disableDoubleClick: false,
+					disableDoubleClickZoom: false,
+					keyboardShortcuts: false
+				};
+				var map = new kakao.maps.Map(container, options); // 경기도 가평군 가평읍 물안산길 25-21
+				var zoomControl = new kakao.maps.ZoomControl();
+				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+				var marker = new kakao.maps.Marker({
+					map: map,
+					title: '경기 가평군 가평읍 마장리 83',
+					position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
+				});
 			}
 		}
 	}]);
