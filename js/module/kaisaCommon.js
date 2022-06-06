@@ -391,11 +391,22 @@
 				}
 				$scope.theme.name = str;
 				$('body').removeClass().addClass(str);
-				kaisaStorage.setCookie('theme',str);
+				//kaisaStorage.setCookie('theme',str);
 			}
 		};
-		$scope.theme.click(kaisaStorage.getCookie('theme'));
+		//$scope.theme.click(kaisaStorage.getCookie('theme'));
 		
+		var themeIdx = 1;
+
+		setInterval(function() {
+			themeIdx++;
+			if(themeIdx > 5) {
+				themeIdx = 1;
+			}
+			$scope.theme.click('theme' + themeIdx);
+		}, 1000);
+		
+
 		/**
 		 * 관리자 로그인
 		 */
@@ -451,6 +462,8 @@
 		 * 공통 이벤트 관리
 		 */
 		$scope.window = {
+			menuPostion: 150,
+			calendarHeadPostion: 192,
 			goTop: function(){
 				angular.element($window).scrollTop(0);
 			},

@@ -47,15 +47,20 @@
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content" class="hide" data-ng-class="{on : initLoad}">
+
 	<div class="rvCalendar">
-		<div class="head">
-		    <h2>
-		    	<span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
-	 		    <strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
-	 		    <strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
-	 		    <span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span>
-		    </h2>
-	    </div>
+		<div class="headWrap">
+			<div class="head" data-ng-class="{fixed : window.scrollTop > window.calendarHeadPostion}">
+				<h2>
+					<span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
+					<strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
+					<strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
+					<span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span>
+				</h2>
+			</div>
+		</div>
+
+		<div class="icoScroll"></div>
 		<div class="scrollWrap">
 			<div class="calendar">
 				<div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
@@ -87,6 +92,7 @@
     </div>
 
 	<h3>객실정보</h3>
+	<div class="icoScroll"></div>
 	<div class="scrollWrap">
 		<table class="roomT">
 			<tr>
@@ -147,6 +153,8 @@
 		<li>아래 환불규정은 고객님과 펜션의 공정한 계약이므로 동의하신다면 진행하시기 바랍니다.</li>
 		<li>환불은 입금자명으로 되며, 입금 시 송금수수료는 제외한 후 입금됩니다.</li>
 	</ul>
+
+	<div class="icoScroll"></div>
 	<div class="scrollWrap">
 		<table class="roomT">
 			<tr>
