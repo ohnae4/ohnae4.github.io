@@ -6,7 +6,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 
 body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/bg.png) repeat;*/
 
-#header {width:100%; margin:0 auto; clear:both;}
+#header {width:100%; margin:0 auto; clear:both; position:relative; z-index:2;}
 #header h1 {width:100%; margin:0 auto;}
 #header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
 
@@ -84,9 +84,9 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .slide .btn_prev:hover {background-position:0 -40px;}
 .slide .btn_next:hover {background-position:-40px -40px;}
 
-#visual {padding:20px 0;}
+#visual {position:absolute; left:0; top:0; z-index: 1;}
 
-#topMenu {width:100%; transition:none; height:50px; z-index:88; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
+#topMenu {width:100%; position:relative; height:50px; z-index:88; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
 #topMenu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #topMenu a:hover {background:#333; color:#fff;}
 #topMenu ul {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
@@ -110,12 +110,13 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 #btnMenu:hover ul li:nth-child(3) {transform: rotate(-45deg); width:20px; left:14px; top:15px;}
 .menuOpen #btnMenu ul li:nth-child(1) {transform: rotate(-45deg); width:20px; left:-4px; top:5px;}
 .menuOpen #btnMenu ul li:nth-child(3) {transform: rotate(45deg); width:20px; left:-4px; top:15px;}
-.menuOpen #btnMenu {left:290px;}
+.menuOpen #btnMenu {left:270px;}
 .menuOpen #leftMenu {left:0px;}
 .menuOpen #leftMenuCover {display:block;}
+.menuOpen #topMenu ul {display:none;} 
 #leftMenuCover {width:100%; height:100%; display:none; position:fixed; z-index:88; left:0; top:0; background:rgba(0,0,0,0.5)}
-#leftMenu {width:280px; height:100%; left:-300px; top:0; z-index:90; position:fixed; color:#fff;}
-#leftMenu .box {width:280px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
+#leftMenu {width:260px; height:100%; left:-260px; top:0; z-index:90; position:fixed; color:#fff;}
+#leftMenu .box {width:260px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 #leftMenu ul {width:100%;}
 #leftMenu ul li {width:100%; margin:0; display:block; height:50px; overflow:hidden;}
 #leftMenu ul li a {color:#aaa; display:block; height:50px; padding:0 20px;}
@@ -263,8 +264,12 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 
 
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
-
+@media (max-width: 360px) {
+    #topMenu ul {display:none;}
+}
 @media (max-width: 480px) {
+    #topMenu {padding-left:20px;}
+    #topMenu a {padding:0 10px;} 
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }

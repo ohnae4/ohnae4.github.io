@@ -7,10 +7,10 @@
 			return n < 10 ? '0' + n: ''+n;
 		};
 		
-		$scope.roomList = []; // 객실정보 
 		$scope.holidayList = []; // 휴일정보 
 		$scope.reservationList = []; // 객실 예약정보
 
+		$scope.roomList = []; // 객실정보 
 		 // 객실정보 ----------------------------
 		$http.post(kaisaApi.room.getRoomList, {}, $scope.postConfig).then(function(resp){
 			if(resp.data && resp.data.success){
@@ -23,7 +23,6 @@
 		}, function(e){
 			console.log(e);
 		});
-
 		
 		//객실 예약정보
     	$scope.getReservationList = function(){

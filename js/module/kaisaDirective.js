@@ -148,6 +148,14 @@
 			}
 		}
 	}]);
+	app.directive('kaisaRoomInfo',[function(){
+		return {
+			templateUrl: '/html/roomInfo.html',
+			replace: true,
+			link: function($scope, el, attrs){
+			}
+		}
+	}]);
 	app.directive('onlyNumber',['kaisaRegex',function(kaisaRegex){ //only-number="false" => '.-'
 	    return {
 	    	require: 'ngModel',

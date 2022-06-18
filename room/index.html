@@ -51,10 +51,21 @@
 	<div data-kaisa-menu="true"></div>
 	<div id="content" class="hide" data-ng-class="{on : initLoad}">
 		<div id="room">
-			<h2>
-				객실정보
-			</h2>
 			
+			<div class="tab">
+				<ul>
+					<li class="on">{{ roomList[0].ROOM_NAME }}</li>
+					<li>{{ roomList[1].ROOM_NAME }}</li>
+					<li>{{ roomList[2].ROOM_NAME }}</li>
+				</ul>
+			</div>
+			<div>
+				<img src="/img/visual/bg.png" alt="">
+			</div>
+
+			<!-- 객실정보 -->
+			<div data-kaisa-room-info></div>
+
 		</div>
 
 	</div>
