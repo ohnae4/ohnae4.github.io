@@ -80,13 +80,13 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #visual {padding:20px 0;}
 
-#menu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:50px; text-align:center;}
-#menu a {color:#333; height:50px; overflow:hidden; min-width:100px; background-color:#fff; font-size:14px; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
+#menu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
+#menu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #menu a:hover {background:#333; color:#fff;}
 #menu ul.menu {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
 #menu ul.menu li {display:inline-block;}
 #menu ul.menu li.on a {background:#333; color:#fff;}
-#menu ul.menu li span {display:block; height:50px;}
+#menu ul.menu li span {display:block; height:50px; line-height:50px; font-size:14px;}
 #menu ul.menu li a span.ko {margin-top:-50px;}
 #menu ul.menu li a:hover span.ko {margin-top:0;}
 #menu ul.menu li.on a span.ko {margin-top:0;}
@@ -95,7 +95,7 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 #kakao_ch h5 {padding-bottom:20px; font-size:16px;}
 
 #sns {width:100%; padding:50px 0; text-align: center;}
-#sns h5 {padding-bottom:20px; font-size:16px;}
+#sns h5 {padding-bottom:20px; font-size:16px; color:#333;}
 
 ul.sns {display:inline-block;}
 ul.sns li {display:inline-block; vertical-align:bottom; transform: scale(0.8); cursor: pointer; overflow:hidden; border-radius:5px; width:50px; height:50px; margin:0 5px; background-image: url(/img/common/ico_sns.png);}
@@ -134,6 +134,8 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 #footer .info {height:130px; width:100%;}
 #footer .info dl {width:100%; padding-top:30px;}
 #footer .info dl dt {padding-bottom:5px;}
+#footer .cs strong,
+#footer .info strong {font-size:16px; display:inline-block; padding:0 5px; color:#333;}
 
 #footer .copy {width:100%; clear:both; padding:30px 0; color:#ccc; background: url(/img/common/bg_footer.jpg) repeat;}
 #footer .copy p {padding:5px 0;}
