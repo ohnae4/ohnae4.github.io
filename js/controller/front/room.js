@@ -16,6 +16,14 @@
 		}, function(e){
 			console.log(e);
 		});
+
+		$scope.tab = {
+			idx: 0,
+			click: function(idx){
+				this.idx = idx;
+				angular.element('body,html').animate({scrollTop: 0});
+			}
+		}
 		
 		$scope.initLoad = $scope.loadComplete();
 	}]);

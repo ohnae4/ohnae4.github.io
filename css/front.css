@@ -114,6 +114,7 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .menuOpen #leftMenu {left:0px;}
 .menuOpen #leftMenuCover {display:block;}
 .menuOpen #topMenu ul {display:none;} 
+.menuOpen .tab.fixed {display:none;} 
 #leftMenuCover {width:100%; height:100%; display:none; position:fixed; z-index:88; left:0; top:0; background:rgba(0,0,0,0.5)}
 #leftMenu {width:260px; height:100%; left:-260px; top:0; z-index:90; position:fixed; color:#fff;}
 #leftMenu .box {width:260px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
@@ -122,7 +123,7 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 #leftMenu ul li a {color:#aaa; display:block; height:50px; padding:0 20px;}
 #leftMenu ul li a:hover {color:#fff;}
 #leftMenu ul li.on a {background:rgba(0,0,0,0.3); color:#ff5500;}
-#leftMenu ul li span {display:block; height:50px; line-height:50px; font-size:14px;}
+#leftMenu ul li span {transition:none; display:block; height:50px; line-height:50px; font-size:14px;}
 #leftMenu ul li a span.ko {margin-top:-50px;}
 #leftMenu ul li a:hover span.ko {margin-top:0;}
 #leftMenu ul li.on a span.ko {margin-top:0;}
@@ -150,7 +151,7 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 .scrollWrap {width:100%; clear:both; overflow: auto; background:none right top;}
 
-#content {min-height:300px; width:1000px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff;}
+#content {min-height:300px; width:1400px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff;}
 #content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
@@ -160,8 +161,8 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
 
-#mapCover {width:940px; position:absolute; left:50%; margin-left:-500px; height:350px; z-index:2;}
-#map {width:1000px; border:20px solid #fff; z-index:1; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
+#mapCover {width:1340px; position:absolute; left:50%; margin-left:-500px; height:350px; z-index:2;}
+#map {width:1400px; border:20px solid #fff; z-index:1; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
 
 #footer .cs {padding-top:20px; width:100%;}
 #footer .cs dl {width:100%;}
@@ -223,7 +224,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
-.rvCalendar .calendar {width:960px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
+.rvCalendar .calendar {width:1360px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
 .rvCalendar .headWrap {height:80px; width:100%;}
 
 .rvCalendar .week {display:none; width:14%; float:left; height:50px; line-height:50px; text-align:center;}
@@ -273,6 +274,13 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
+@media (max-width: 1400px) {
+    #map {width:1000px}
+    #content {width:1000px}
+    #mapCover {width:940px;}
+    .rvCalendar .calendar {width:960px;}
+}
+
 @media (max-width: 1000px) {
     .icoScroll {display:block;} 
     #content {width:100%; padding:20px;}
