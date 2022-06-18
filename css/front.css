@@ -86,7 +86,7 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 
 #visual {padding:20px 0;}
 
-#topMenu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
+#topMenu {width:100%; transition:none; height:50px; z-index:89; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
 #topMenu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #topMenu a:hover {background:#333; color:#fff;}
 #topMenu ul {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
@@ -99,13 +99,28 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .fixed #topMenu {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 .fixed #topMenu ul {box-shadow:none;}
 
-#leftMenu {width:280px; height:100%; left:0; top:0; z-index:1000; position:fixed; color:#fff; display:none;}
-#leftMenu .box {width:280px; height:100%; background:rgba(0,0,0,0.8); box-shadow:0 0 10px rgb(0,0,0,0.5);}
+#btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:10px; top:10px; cursor:pointer;}
+#btnMenu ul {width:30px; position:relative;}
+#btnMenu ul li {position:absolute; width:30px; height:6px; background:#111; margin-bottom:5px; border-radius:3px;}
+#btnMenu ul li:nth-child(1) {left:0; top:0;}
+#btnMenu ul li:nth-child(2) {left:0; top:10px;}
+#btnMenu ul li:nth-child(3) {left:0; top:20px;}
+#btnMenu:hover ul li {background:#ff5500;}
+#btnMenu:hover ul li:nth-child(1) {transform: rotate(45deg); width:20px; left:14px; top:5px;}
+#btnMenu:hover ul li:nth-child(3) {transform: rotate(-45deg); width:20px; left:14px; top:15px;}
+.menuOpen #btnMenu ul li:nth-child(1) {transform: rotate(-45deg); width:20px; left:-4px; top:5px;}
+.menuOpen #btnMenu ul li:nth-child(3) {transform: rotate(45deg); width:20px; left:-4px; top:15px;}
+.menuOpen #btnMenu {left:290px;}
+.menuOpen #leftMenu {left:0px;}
+.menuOpen #topMenu {display:none;}
+
+#leftMenu {width:280px; height:100%; left:-300px; top:0; z-index:90; position:fixed; color:#fff;}
+#leftMenu .box {width:280px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 #leftMenu ul {width:100%;}
 #leftMenu ul li {width:100%; margin:0; display:block; height:50px; overflow:hidden;}
 #leftMenu ul li a {color:#aaa; display:block; height:50px; padding:0 20px;}
 #leftMenu ul li a:hover {color:#fff;}
-#leftMenu ul li.on a {background:rgba(0,0,0,0.3); color:#fff;}
+#leftMenu ul li.on a {background:rgba(0,0,0,0.3); color:#ff5500;}
 #leftMenu ul li span {display:block; height:50px; line-height:50px; font-size:14px;}
 #leftMenu ul li a span.ko {margin-top:-50px;}
 #leftMenu ul li a:hover span.ko {margin-top:0;}
@@ -129,7 +144,6 @@ ul.sns li.twitter {background-position:-300px 0;}
 ul.sns li.instar {background-position:-350px 0;}
 ul.sns li.kakao_ch {background-position:-400px 0;}
 
-
 .rvCalendar .head {background:#fff; width:100%; z-index:101;}
 .rvCalendar .head.fixed {position:fixed; left:0; top:50px; border-bottom:1px solid #ddd;}
 
@@ -144,7 +158,10 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 #content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
-#map {width:1000px; border:20px solid #fff; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
+
+#mapCover {width:940px; position:absolute; left:50%; margin-left:-500px; height:350px; z-index:2;}
+#map {width:1000px; border:20px solid #fff; z-index:1; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
+
 #footer .cs {padding-top:20px; width:100%;}
 #footer .cs dl {width:100%;}
 #footer .cs dl dt {padding-bottom:5px;}
@@ -248,12 +265,14 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
 
 @media (max-width: 480px) {
+    #topMenu ul {display:none;}
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
 @media (max-width: 1000px) {
     .icoScroll {display:block;} 
     #content {width:100%; padding:20px;}
+    #mapCover {width:82%; left:0; margin:0;}
     #map {width:100%;}
     .rvCalendar .day .holiday,
     .rvCalendar .day .peakCode {display:none;}

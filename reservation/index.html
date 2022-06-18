@@ -46,7 +46,7 @@
 <script src="/js/controller/front/reservation.js"></script>
 </head>
 <body data-ng-controller="BodyController">
-<div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion}">
+<div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion, menuOpen : menu.open}">
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content" class="hide" data-ng-class="{on : initLoad}">

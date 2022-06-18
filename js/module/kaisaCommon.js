@@ -184,6 +184,13 @@
 				break;
 			}
 		}
+
+		$scope.menu = {
+			open: false,
+			toggle : function(){
+				this.open = !this.open;
+			}
+		};
 		
 		/**
 		 * @param param: {
