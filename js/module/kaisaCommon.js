@@ -155,10 +155,11 @@
         };
 			
 		$scope.menuList = [
-			{en:'Main', ko:'메인', url:'main', active: false},
-			{en:'Room', ko:'객실', url:'room', active: false},
-			{en:'Reservation', ko:'실시간예약', url:'reservation', active: false},
-			{en:'Qna', ko:'1:1문의', url:'qna', active: false}
+			{en:'Main', ko:'메인', url:'main', active: false, top: true},
+			{en:'Room', ko:'객실', url:'room', active: false, top: true},
+			{en:'Reservation', ko:'실시간예약', url:'reservation', active: false, top: true},
+			{en:'Qna', ko:'1:1문의', url:'qna', active: false, top: true},
+			{en:'Near', ko:'주변정보', url:'near', active: false, top: false}
 		];
 		for(var i in $scope.menuList) {
 			if(location.pathname.match($scope.menuList[i].url)){
@@ -189,8 +190,14 @@
 			open: false,
 			toggle : function(){
 				this.open = !this.open;
+				kaisaStorage.setCookie('isMenuOpen', this.open);
 			}
 		};
+
+		var isMenuOpen = kaisaStorage.getCookie('isMenuOpen');
+		if(isMenuOpen === 'true'){
+			$scope.menu.open = isMenuOpen;
+		}
 		
 		/**
 		 * @param param: {

@@ -2,7 +2,7 @@
 	<div class="menuWrap">
 		<div id="topMenu">
 			<ul>
-				<li data-ng-repeat="(idx, i) in menuList" data-ng-class="{on: i.active}">
+				<li data-ng-repeat="(idx, i) in menuList" data-ng-if="i.top" data-ng-class="{on: i.active}">
 					<a data-ng-href="{{commonLink({url:i.url,href:true})}}">
 						<span class="ko">{{i.ko}}</span>
 						<span class="en">{{i.en}}</span>
@@ -36,5 +36,6 @@
 				</ul>
 			</div>
 		</div>
+		<div id="leftMenuCover" data-ng-click="menu.toggle()">
 	</div>
 </div>

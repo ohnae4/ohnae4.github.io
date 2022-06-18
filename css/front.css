@@ -101,19 +101,19 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 
 #btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:10px; top:10px; cursor:pointer;}
 #btnMenu ul {width:30px; position:relative;}
-#btnMenu ul li {position:absolute; width:30px; height:6px; background:#111; margin-bottom:5px; border-radius:3px;}
+#btnMenu ul li {position:absolute; width:30px; height:6px; background:#333; margin-bottom:5px; border-radius:3px;}
 #btnMenu ul li:nth-child(1) {left:0; top:0;}
 #btnMenu ul li:nth-child(2) {left:0; top:10px;}
 #btnMenu ul li:nth-child(3) {left:0; top:20px;}
-#btnMenu:hover ul li {background:#ff5500;}
+#btnMenu:hover ul li {background:#000;}
 #btnMenu:hover ul li:nth-child(1) {transform: rotate(45deg); width:20px; left:14px; top:5px;}
 #btnMenu:hover ul li:nth-child(3) {transform: rotate(-45deg); width:20px; left:14px; top:15px;}
 .menuOpen #btnMenu ul li:nth-child(1) {transform: rotate(-45deg); width:20px; left:-4px; top:5px;}
 .menuOpen #btnMenu ul li:nth-child(3) {transform: rotate(45deg); width:20px; left:-4px; top:15px;}
 .menuOpen #btnMenu {left:290px;}
 .menuOpen #leftMenu {left:0px;}
-.menuOpen #topMenu {display:none;}
-
+.menuOpen #leftMenuCover {display:block;}
+#leftMenuCover {width:100%; height:100%; display:none; position:fixed; z-index:88; left:0; top:0; background:rgba(0,0,0,0.5)}
 #leftMenu {width:280px; height:100%; left:-300px; top:0; z-index:90; position:fixed; color:#fff;}
 #leftMenu .box {width:280px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 #leftMenu ul {width:100%;}
@@ -265,7 +265,6 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
 
 @media (max-width: 480px) {
-    #topMenu ul {display:none;}
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
