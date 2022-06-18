@@ -96,6 +96,39 @@
 					title: '경기 가평군 가평읍 마장리 83',
 					position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
 				});
+
+				$scope.sns = function(sns) {
+					const url = 'chloris.kr';
+					const text = '클로리스풀빌라';
+					switch(sns){
+						case 'kakao': 
+							Kakao.Link.sendCustom({
+								templateId: 78366, // 나의 앱 ID 작성
+							});
+						break;
+						case 'story': 
+							Kakao.Story.share({
+								url: url,
+								text: text
+							});
+						break;
+						case 'naver': 
+							window.open('http://blog.naver.com/openapi/share?url='+url);
+						break;
+						case 'band': 
+							window.open('http://www.band.us/plugin/share?body='+encodeURIComponent(text)+'&route='+encodeURIComponent(url), 'shareBand', 'width=400, height=500, resizable=yes');
+						break;
+						case 'facebook': 
+  							window.open('http://www.facebook.com/sharer/sharer.php?u='+url);
+						break;
+						case 'twitter': 
+							window.open('https://twitter.com/intent/tweet?text='+text+'&url='+url);
+						break;
+						case 'instar': break;
+						default: break;
+					}
+				}
+
 			}
 		}
 	}]);

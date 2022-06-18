@@ -10,6 +10,7 @@
 		this.main = protocol + '/' + ext;
 		this.reservation = protocol + '/reservation' + ext;
 		this.qna = protocol + '/qna' + ext;
+		this.room = protocol + '/room' + ext;
 
 		// admin
 		this.adminLogin = '/admin/';

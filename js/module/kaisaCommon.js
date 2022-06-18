@@ -94,6 +94,9 @@
 		if(location.protocol == 'https:'){
 			//location.href = 'http://' + location.hostname + location.pathname + location.search; //ssl 사용페이지 없음
 		}
+		
+		Kakao.init('3322a4d2abce512425b96866d9844fd1');
+
 		/**
 		 * for 어드민
 		 */
@@ -150,9 +153,10 @@
         };
 			
 		$scope.menuList = [
-			{title:'메인', url:'main', active: false},
-			{title:'예약게시판', url:'reservation', active: false},
-			{title:'1:1문의', url:'qna', active: false}
+			{en:'Main', ko:'메인', url:'main', active: false},
+			{en:'Room', ko:'객실', url:'room', active: false},
+			{en:'Reservation', ko:'실시간예약', url:'reservation', active: false},
+			{en:'Qna', ko:'1:1문의', url:'qna', active: false}
 		];
 		for(var i in $scope.menuList) {
 			if(location.pathname.match($scope.menuList[i].url)){

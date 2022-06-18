@@ -1,10 +1,10 @@
 @charset "utf-8";
 
 div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,textarea,label,fieldset {
-    transition:0.3s all linear;
+    transition:0.2s all linear;
 } /* transition:0.3s all linear; transition:0s background linear; */
 
-body {background:url(/img/common/bg.png) repeat;} /*bg.jpg*/
+body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/bg.png) repeat;*/
 
 #header {width:100%; margin:0 auto; clear:both;}
 #header h1 {width:100%; margin:0 auto;}
@@ -80,12 +80,35 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #visual {padding:20px 0;}
 
-#menu {width:100%; transition:none; z-index:100; clear:both; line-height:50px; text-align:center;}
-#menu a {color:#333; background-color:#fff; font-size:14px; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
+#menu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:50px; text-align:center;}
+#menu a {color:#333; height:50px; overflow:hidden; min-width:100px; background-color:#fff; font-size:14px; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
 #menu a:hover {background:#333; color:#fff;}
-#menu ul.menu {transition:none; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
+#menu ul.menu {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
 #menu ul.menu li {display:inline-block;}
 #menu ul.menu li.on a {background:#333; color:#fff;}
+#menu ul.menu li span {display:block; height:50px;}
+#menu ul.menu li a span.ko {margin-top:-50px;}
+#menu ul.menu li a:hover span.ko {margin-top:0;}
+#menu ul.menu li.on a span.ko {margin-top:0;}
+
+#kakao_ch {width:100%; padding:50px 0; text-align: center;}
+#kakao_ch h5 {padding-bottom:20px; font-size:16px;}
+
+#sns {width:100%; padding:50px 0; text-align: center;}
+#sns h5 {padding-bottom:20px; font-size:16px;}
+
+ul.sns {display:inline-block;}
+ul.sns li {display:inline-block; vertical-align:bottom; transform: scale(0.8); cursor: pointer; overflow:hidden; border-radius:5px; width:50px; height:50px; margin:0 5px; background-image: url(/img/common/ico_sns.png);}
+ul.sns li:hover {transform: scale(1);}
+ul.sns li.kakao {background-position:-50px 0;}
+ul.sns li.story {background-position:-100px 0;}
+ul.sns li.naver {background-position:-150px 0;}
+ul.sns li.band {background-position:-200px 0;}
+ul.sns li.facebook {background-position:-250px 0;}
+ul.sns li.twitter {background-position:-300px 0;}
+ul.sns li.instar {background-position:-350px 0;}
+ul.sns li.kakao_ch {background-position:-400px 0;}
+
 .menuWrap {width:100%; height:50px;}
 #menu.fixed {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 #menu.fixed ul.menu {box-shadow:none;}
@@ -104,7 +127,7 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 #content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
-#map {width:1000px; border:20px solid #fff; box-shadow:0 0 3px rgb(0,0,0,0.2); height:400px; margin:0 auto; clear:both; text-align:center;}
+#map {width:1000px; border:20px solid #fff; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
 #footer .cs {padding-top:20px; width:100%;}
 #footer .cs dl {width:100%;}
 #footer .cs dl dt {padding-bottom:5px;}
@@ -163,7 +186,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
-.rvCalendar .calendar {width:1000px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
+.rvCalendar .calendar {width:960px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
 .rvCalendar .headWrap {height:80px; width:100%;}
 
 .rvCalendar .week {display:none; width:14%; float:left; height:50px; line-height:50px; text-align:center;}
