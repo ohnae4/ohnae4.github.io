@@ -46,6 +46,7 @@
 <script src="/js/controller/front/reservation.js"></script>
 </head>
 <body data-ng-controller="BodyController">
+<div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion}">
 <div data-kaisa-header="true"></div>
 <div data-kaisa-menu="true"></div>
 <div id="content" class="hide" data-ng-class="{on : initLoad}">
@@ -235,42 +236,42 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
-					<th>금액</th>
-					<td>
-						{{ RESERVATION.PRICE_SUM }} 원
-					</td>
-				</tr>
-				<tr>
-					<th class="required">비밀번호</th>
-					<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="RESERVATION.PASSWORD" required="required" /></td>
-				</tr>
-				<tr>
-					<th>기타 요청사항</th>
-					<td>
-						<textarea maxlength="80" type="text" name="DESCRIPTION" data-ng-model="RESERVATION.DESCRIPTION"></textarea>
-						<br>
-						{{RESERVATION.DESCRIPTION.length}} / 80 자
-					</td>
-				</tr>
-				<tr>
-					<th class="required">자동등록방지</th>
-					<td>
-						<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
-						<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:65px; display:inline-block;" required="required" />
-						<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
-					</td>
-				</tr>
-			</table>
-			<div class="btnWrap">
-				<button type="submit">확인</button>
-				<button type="button" data-ng-click="layerReservation.close();">취소</button>
-			</div>
-		</form>
+					<tr>
+						<th>금액</th>
+						<td>
+							{{ RESERVATION.PRICE_SUM }} 원
+						</td>
+					</tr>
+					<tr>
+						<th class="required">비밀번호</th>
+						<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="RESERVATION.PASSWORD" required="required" /></td>
+					</tr>
+					<tr>
+						<th>기타 요청사항</th>
+						<td>
+							<textarea maxlength="80" type="text" name="DESCRIPTION" data-ng-model="RESERVATION.DESCRIPTION"></textarea>
+							<br>
+							{{RESERVATION.DESCRIPTION.length}} / 80 자
+						</td>
+					</tr>
+					<tr>
+						<th class="required">자동등록방지</th>
+						<td>
+							<div class="captcha" data-kaisa-captcha="true" data-ng-model="captcha"></div>
+							<input maxlength="6" data-only-number="true" type="text" name="CAPTCHA_CODE" data-ng-model="RESERVATION.CAPTCHA_CODE" style="width:65px; display:inline-block;" required="required" />
+							<button type="button" class="normal" data-ng-click="captcha.refresh()">새로고침</button>
+						</td>
+					</tr>
+				</table>
+				<div class="btnWrap">
+					<button type="submit">확인</button>
+					<button type="button" data-ng-click="layerReservation.close();">취소</button>
+				</div>
+			</form>
+		</div>
 	</div>
+
+	<div data-kaisa-footer="true"></div>
 </div>
-
-<div data-kaisa-footer="true"></div>
-
 </body>
 </html>

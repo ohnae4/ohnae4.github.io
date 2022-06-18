@@ -94,8 +94,10 @@
 		if(location.protocol == 'https:'){
 			//location.href = 'http://' + location.hostname + location.pathname + location.search; //ssl 사용페이지 없음
 		}
-		
-		Kakao.init('3322a4d2abce512425b96866d9844fd1');
+
+		if(!location.pathname.match('admin')) {
+			Kakao.init('3322a4d2abce512425b96866d9844fd1');
+		}
 
 		/**
 		 * for 어드민
@@ -410,22 +412,28 @@
 				}
 				$scope.theme.name = str;
 				$('body').removeClass().addClass(str);
-				//kaisaStorage.setCookie('theme',str);
+				kaisaStorage.setCookie('theme', str);
 			}
 		};
-		//$scope.theme.click(kaisaStorage.getCookie('theme'));
+		var theme = kaisaStorage.getCookie('theme');
+		if(theme){
+			$scope.theme.click(theme);
+		} else {
+			$scope.theme.click('theme1');
+		}
 		
+		/*
 		var themeIdx = 1;
-
-		setInterval(function() {
+		var themeInterval = setInterval(function() {
 			themeIdx++;
 			if(themeIdx > 5) {
 				themeIdx = 1;
 			}
 			$scope.theme.click('theme' + themeIdx);
 		}, 1000);
-		
-		$scope.theme.click('theme' + 5);
+		*/
+
+		// 
 
 		/**
 		 * 관리자 로그인

@@ -10,13 +10,19 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 #header h1 {width:100%; margin:0 auto;}
 #header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
 
-ul.theme {width:100%; clear:both; text-align:center;}
-ul.theme li {cursor:pointer; border-radius:100%; display:inline-block; background-color:#fff; margin:0 1px; width:20px; height:20px; box-shadow:0 0 3px rgba(0,0,0,0.2);}
-ul.theme li:nth-child(1) {background-color:#ccc;}
-ul.theme li:nth-child(2) {background-color:#e6acef;}
-ul.theme li:nth-child(3) {background-color:#b3efac;}
-ul.theme li:nth-child(4) {background-color:#acc5ef;}
-ul.theme li:nth-child(5) {background-color:#efd0ac;}
+.theme {width:100%; padding:15px 0; clear:both; text-align:center;}
+.theme li {opacity:0.8; cursor:pointer; border-radius:100%; display:inline-block; background-color:#fff; margin:0 5px; width:20px; height:20px; box-shadow:0 0 3px rgba(0,0,0,0.2);}
+.theme li:nth-child(1) {background-color:#ccc;}
+.theme li:nth-child(2) {background-color:#e6acef;}
+.theme li:nth-child(3) {background-color:#b3efac;}
+.theme li:nth-child(4) {background-color:#acc5ef;}
+.theme li:nth-child(5) {background-color:#efd0ac;}
+
+.theme1 .theme li:nth-child(1),
+.theme2 .theme li:nth-child(2),
+.theme3 .theme li:nth-child(3),
+.theme4 .theme li:nth-child(4),
+.theme5 .theme li:nth-child(5) {opacity:1; box-shadow:0 0 5px 3px rgba(255,255,255,0.5);}
 
 /* 회색 */
 .theme1 .rvCalendar .day strong.dayNo {background:#bbb;} 
@@ -80,16 +86,30 @@ ul.theme li:nth-child(5) {background-color:#efd0ac;}
 
 #visual {padding:20px 0;}
 
-#menu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
-#menu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
-#menu a:hover {background:#333; color:#fff;}
-#menu ul.menu {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
-#menu ul.menu li {display:inline-block;}
-#menu ul.menu li.on a {background:#333; color:#fff;}
-#menu ul.menu li span {display:block; height:50px; line-height:50px; font-size:14px;}
-#menu ul.menu li a span.ko {margin-top:-50px;}
-#menu ul.menu li a:hover span.ko {margin-top:0;}
-#menu ul.menu li.on a span.ko {margin-top:0;}
+#topMenu {width:100%; transition:none; height:50px; z-index:100; clear:both; line-height:0; font-size:0; text-align:center; white-space:nowrap;}
+#topMenu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
+#topMenu a:hover {background:#333; color:#fff;}
+#topMenu ul {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
+#topMenu ul li {display:inline-block;}
+#topMenu ul li.on a {background:#333; color:#fff;}
+#topMenu ul li span {display:block; height:50px; line-height:50px; font-size:14px;}
+#topMenu ul li a span.ko {margin-top:-50px;}
+#topMenu ul li a:hover span.ko {margin-top:0;}
+#topMenu ul li.on a span.ko {margin-top:0;}
+.fixed #topMenu {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
+.fixed #topMenu ul {box-shadow:none;}
+
+#leftMenu {width:280px; height:100%; left:0; top:0; z-index:1000; position:fixed; color:#fff; display:none;}
+#leftMenu .box {width:280px; height:100%; background:rgba(0,0,0,0.8); box-shadow:0 0 10px rgb(0,0,0,0.5);}
+#leftMenu ul {width:100%;}
+#leftMenu ul li {width:100%; margin:0; display:block; height:50px; overflow:hidden;}
+#leftMenu ul li a {color:#aaa; display:block; height:50px; padding:0 20px;}
+#leftMenu ul li a:hover {color:#fff;}
+#leftMenu ul li.on a {background:rgba(0,0,0,0.3); color:#fff;}
+#leftMenu ul li span {display:block; height:50px; line-height:50px; font-size:14px;}
+#leftMenu ul li a span.ko {margin-top:-50px;}
+#leftMenu ul li a:hover span.ko {margin-top:0;}
+#leftMenu ul li.on a span.ko {margin-top:0;}
 
 #kakao_ch {width:100%; padding:50px 0; text-align: center;}
 #kakao_ch h5 {padding-bottom:20px; font-size:16px;}
@@ -109,9 +129,6 @@ ul.sns li.twitter {background-position:-300px 0;}
 ul.sns li.instar {background-position:-350px 0;}
 ul.sns li.kakao_ch {background-position:-400px 0;}
 
-.menuWrap {width:100%; height:50px;}
-#menu.fixed {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
-#menu.fixed ul.menu {box-shadow:none;}
 
 .rvCalendar .head {background:#fff; width:100%; z-index:101;}
 .rvCalendar .head.fixed {position:fixed; left:0; top:50px; border-bottom:1px solid #ddd;}
@@ -137,7 +154,7 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 #footer .cs strong,
 #footer .info strong {font-size:16px; display:inline-block; padding:0 5px; color:#333;}
 
-#footer .copy {width:100%; clear:both; padding:30px 0; color:#ccc; background: url(/img/common/bg_footer.jpg) repeat;}
+#footer .copy {width:100%; clear:both; padding:30px 0; color:#ccc; background:#333;}
 #footer .copy p {padding:5px 0;}
 #footer .copy p span {cursor:pointer;}
 #footer .copy p.admin {color:#ff5500;}

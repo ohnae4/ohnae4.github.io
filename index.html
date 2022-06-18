@@ -47,20 +47,22 @@
 <script src="/js/controller/front/main.js"></script>
 </head>
 <body data-ng-controller="BodyController">
-<div data-kaisa-header="true"></div>
-<div data-kaisa-menu="true"></div>
-<div id="content" class="hide" data-ng-class="{on : initLoad}">
-	<div id="visual">
-		<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
-			<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
-			<button type="button" class="btn_next" data-ng-click="visual.next()"></button>
-			<ul>
-				<li data-ng-repeat="i in visualList" data-ng-show="$index == visual.idx"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
-			</ul>
+<div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion}">
+	<div data-kaisa-header="true"></div>
+	<div data-kaisa-menu="true"></div>
+	<div id="content" class="hide" data-ng-class="{on : initLoad}">
+		<div id="visual">
+			<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
+				<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
+				<button type="button" class="btn_next" data-ng-click="visual.next()"></button>
+				<ul>
+					<li data-ng-repeat="i in visualList" data-ng-show="$index == visual.idx"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+				</ul>
+			</div>
+			공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>
 		</div>
-		공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>공사중...<br>
-	</div>
-</div>	
-<div data-kaisa-footer="true"></div>
+	</div>	
+	<div data-kaisa-footer="true"></div>
+</div>
 </body>
 </html>
