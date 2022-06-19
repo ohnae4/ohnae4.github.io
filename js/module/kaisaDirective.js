@@ -98,7 +98,7 @@
 				});
 
 				$scope.sns = function(sns) {
-					const url = 'chloris.kr';
+					const url = 'chlois.co.kr';
 					const text = '클로리스풀빌라';
 					switch(sns){
 						case 'kakao': 
@@ -198,8 +198,9 @@
 		return {
 			scope : false,
 			link: function($scope, el, attrs){
-				if(attrs.ngSrc && attrs.ngSrc.search($scope.image.host) < 0){
-					console.log('%c ' + attrs.ngSrc + ' %c ( {{image.host}} 를 넣어주세요. )','color:#ffc382;','color:#ff9625;');
+				if(attrs.ngSrc && attrs.ngSrc.search($scope.image.host)){
+					attrs.ngSrc = $scope.image.host + attrs.ngSrc;
+					//console.log('%c ' + attrs.ngSrc + ' %c ( {{image.host}} 를 넣어주세요. )','color:#ffc382;','color:#ff9625;');
 				}
 				if(!attrs.loader){
 					return false;

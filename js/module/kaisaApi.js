@@ -12,41 +12,41 @@
 		};
 		// admin
 		this.admin = {
-			getReservationList : apiUrl + '/chloris/reservation/getReservationList' + ext,
-			setReservationList : apiUrl + '/chloris/reservation/setReservationList' + ext,
-			getQnaList : apiUrl + '/chloris/qna/getQnaList' + ext,
-			setQnaList : apiUrl + '/chloris/qna/setQnaList' + ext,
-			setQnaReply : apiUrl + '/chloris/qna/setQnaReply' + ext, // 수정팝업
-			getFaqList : apiUrl + '/chloris/faq/getFaqList' + ext,
-			setFaqList : apiUrl + '/chloris/faq/setFaqList' + ext,
-			setFaq : apiUrl + '/chloris/faq/setFaq' + ext, // 수정팝업
-			getNoticeList : apiUrl + '/chloris/notice/getNoticeList' + ext,
-			setNoticeList : apiUrl + '/chloris/notice/setNoticeList' + ext,
-			setNotice : apiUrl + '/chloris/notice/setNotice' + ext, // 수정팝업
-			getHolidayList : apiUrl + '/chloris/holiday/getHolidayList' + ext,
-			setHolidayList : apiUrl + '/chloris/holiday/setHolidayList' + ext,
-			getRoomList : apiUrl + '/chloris/room/getRoomList' + ext,
-			setRoomList : apiUrl + '/chloris/room/setRoomList' + ext
+			getReservationList : apiUrl + '/chlois/reservation/getReservationList' + ext,
+			setReservationList : apiUrl + '/chlois/reservation/setReservationList' + ext,
+			getQnaList : apiUrl + '/chlois/qna/getQnaList' + ext,
+			setQnaList : apiUrl + '/chlois/qna/setQnaList' + ext,
+			setQnaReply : apiUrl + '/chlois/qna/setQnaReply' + ext, // 수정팝업
+			getFaqList : apiUrl + '/chlois/faq/getFaqList' + ext,
+			setFaqList : apiUrl + '/chlois/faq/setFaqList' + ext,
+			setFaq : apiUrl + '/chlois/faq/setFaq' + ext, // 수정팝업
+			getNoticeList : apiUrl + '/chlois/notice/getNoticeList' + ext,
+			setNoticeList : apiUrl + '/chlois/notice/setNoticeList' + ext,
+			setNotice : apiUrl + '/chlois/notice/setNotice' + ext, // 수정팝업
+			getHolidayList : apiUrl + '/chlois/holiday/getHolidayList' + ext,
+			setHolidayList : apiUrl + '/chlois/holiday/setHolidayList' + ext,
+			getRoomList : apiUrl + '/chlois/room/getRoomList' + ext,
+			setRoomList : apiUrl + '/chlois/room/setRoomList' + ext
 		};
 		// qna
 		this.qna = {
-			getQnaList : apiUrl + '/chloris/qna/getQnaList' + ext,
-			getQnaPwdCheck : apiUrl + '/chloris/qna/getQnaPwdCheck' + ext,
-			getQna : apiUrl + '/chloris/qna/getQna' + ext,
-			setQna : apiUrl + '/chloris/qna/setQna' + ext,
+			getQnaList : apiUrl + '/chlois/qna/getQnaList' + ext,
+			getQnaPwdCheck : apiUrl + '/chlois/qna/getQnaPwdCheck' + ext,
+			getQna : apiUrl + '/chlois/qna/getQna' + ext,
+			setQna : apiUrl + '/chlois/qna/setQna' + ext,
 		};
 		// reservation
 		this.reservation = {
-			getFrontReservationList : apiUrl + '/chloris/reservation/getFrontReservationList' + ext,
-			setReservation : apiUrl + '/chloris/reservation/setReservation' + ext
+			getFrontReservationList : apiUrl + '/chlois/reservation/getFrontReservationList' + ext,
+			setReservation : apiUrl + '/chlois/reservation/setReservation' + ext
 		};
 		// room
 		this.room = {
-			getRoomList : apiUrl + '/chloris/room/getRoomList' + ext
+			getRoomList : apiUrl + '/chlois/room/getRoomList' + ext
 		};
 		// room
 		this.holiday = {
-			getHolidayList : apiUrl + '/chloris/holiday/getHolidayList' + ext,
+			getHolidayList : apiUrl + '/chlois/holiday/getHolidayList' + ext,
 		};
     }]);
 })(window, window.angular);

@@ -101,20 +101,21 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 
 #btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:10px; top:10px; cursor:pointer;}
 #btnMenu ul {width:30px; position:relative;}
-#btnMenu ul li {position:absolute; width:30px; height:6px; background:#333; margin-bottom:5px; border-radius:3px;}
+#btnMenu ul li {position:absolute; width:30px; height:3px; background:#111; margin-bottom:5px; border-radius:3px;}
 #btnMenu ul li:nth-child(1) {left:0; top:0;}
 #btnMenu ul li:nth-child(2) {left:0; top:10px;}
 #btnMenu ul li:nth-child(3) {left:0; top:20px;}
 #btnMenu:hover ul li {background:#000;}
-#btnMenu:hover ul li:nth-child(1) {transform: rotate(45deg); width:20px; left:14px; top:5px;}
-#btnMenu:hover ul li:nth-child(3) {transform: rotate(-45deg); width:20px; left:14px; top:15px;}
-.menuOpen #btnMenu ul li:nth-child(1) {transform: rotate(-45deg); width:20px; left:-4px; top:5px;}
-.menuOpen #btnMenu ul li:nth-child(3) {transform: rotate(45deg); width:20px; left:-4px; top:15px;}
+#btnMenu:hover ul li:nth-child(1) {transform: rotate(45deg); width:20px; left:14px; top:4px;}
+#btnMenu:hover ul li:nth-child(3) {transform: rotate(-45deg); width:20px; left:14px; top:16px;}
+.menuOpen #btnMenu ul li:nth-child(1) {transform: rotate(-45deg); width:20px; left:-4px; top:4px;}
+.menuOpen #btnMenu ul li:nth-child(3) {transform: rotate(45deg); width:20px; left:-4px; top:16px;}
 .menuOpen #btnMenu {left:270px;}
 .menuOpen #leftMenu {left:0px;}
 .menuOpen #leftMenuCover {display:block;}
 .menuOpen #topMenu ul {display:none;} 
-.menuOpen .tab.fixed {display:none;} 
+.menuOpen .tab.fixed {display:none;}
+
 #leftMenuCover {width:100%; height:100%; display:none; position:fixed; z-index:88; left:0; top:0; background:rgba(0,0,0,0.5)}
 #leftMenu {width:260px; height:100%; left:-300px; top:0; z-index:90; position:fixed; color:#fff;}
 #leftMenu .box {width:260px; height:100%; background:rgba(0,0,0,0.8); border-right:1px solid #000; box-shadow:0 0 10px rgb(0,0,0,0.5);}
@@ -156,9 +157,11 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
 
-#content h3 {padding:30px 0 20px 0; font-size:16px; color:#333; clear:both; position:relative;}
+#content h3 {padding:20px 0 10px 0; font-size:16px; color:#333; clear:both; position:relative;}
 #content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
+#mapText {color:#333; padding:10px 0;}
+#mapText strong {font-size:14px;}
 #footer {width:100%; margin:0 auto; clear:both; text-align:center; padding-top:50px;}
 
 #mapCover {width:1340px; position:absolute; left:50%; margin-left:-700px; height:350px; z-index:2;}
