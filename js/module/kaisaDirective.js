@@ -42,8 +42,8 @@
 					'<h2>찾아오시는 길</h2>'+
 					'<div id="map"></div>'+
 				    '<ul>'+
-					'<li><strong>주소:</strong> 경기도 가평군 가평읍 금대리 305-6 클로리스</li>'+
-					'<li><strong>도로명:</strong> 경기도 가평군 가평읍 북한강변로 536 클로리스</li>'+
+					'<li><strong>주소:</strong> 경기도 가평군 가평읍 금대리 305-6 클로이스</li>'+
+					'<li><strong>도로명:</strong> 경기도 가평군 가평읍 북한강변로 536 클로이스</li>'+
 					'<li class="txt_guide"><strong>가평역</strong> 무료 픽업 및 드롭서비스 해드립니다.</li>'+
 					'</ul>'+
 				'</div>'+
@@ -99,7 +99,7 @@
 
 				$scope.sns = function(sns) {
 					const url = 'chlois.co.kr';
-					const text = '클로리스풀빌라';
+					const text = '클로이스풀빌라';
 					switch(sns){
 						case 'kakao': 
 							Kakao.Link.sendCustom({
