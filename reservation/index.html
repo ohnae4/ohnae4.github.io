@@ -70,6 +70,7 @@
 				<div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
 				<div data-ng-class="{done:day.idx <= 0, off: day.off, sat:(day.dayCode == '6') , sun:(day.dayCode == '0') || (day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1)}" class="day" data-ng-repeat="day in rvCalendar.start.day">
 					<div class="box" data-ng-class="{on: day.idx == rvCalendar.start.idx}">
+						<div class="soldout" ng-if="day.reservation.length == 3"></div>
 						<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
 							{{ day.holiday[0].HOLIDAY_NAME }}
 						</span>

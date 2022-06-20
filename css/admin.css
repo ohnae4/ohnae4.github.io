@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-body {background:url(/img/common/bg.png) repeat;} /*bg.jpg*/
+body {background:#fafafa;} /*bg.jpg*/
 
 #adminHeader {width:100%;  margin:0 auto; clear:both;}
 #adminHeader h1 {width:100%;}
@@ -23,7 +23,7 @@ body {background:url(/img/common/bg.png) repeat;} /*bg.jpg*/
 #adminLogin button {position:absolute; right:30px; top:40px; width:70px; height:70px; font-weight: bold; background:#ff5500; color:#fff;}
 #adminLogin input {width:200px; display:block; margin:10px; line-height:30px; height:30px;}
 
-#footer {width:100%; background: url(/img/common/bg_footer.jpg) repeat; margin:50px auto; position:relative; z-index:2; padding:30px 0; text-align:center; clear:both;}
+#footer {width:100%; background:#333; margin:50px auto; position:relative; z-index:2; padding:30px 0; text-align:center; clear:both;}
 #footer p {color:#ccc; padding:5px 0;}
 #footer p span {cursor:pointer;}
 #footer p.admin {color:#ff5500;}

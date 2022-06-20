@@ -16,7 +16,7 @@ span,div,img,body {
 
 /*검색영역*/
 form.search {width:100%; clear:both;}
-form.search fieldset {width:100%; clear:both; overflow:hidden; border:1px solid #eee; border-top-color:#ccc; background:#fdfdfd; padding:10px 0;}
+form.search fieldset {width:100%; clear:both; overflow:hidden; border:1px solid #ddd; border-top-color:#ccc; background:#fdfdfd; padding:10px 0;}
 form.search table {width:100%;}
 form.search table th {width:100px; padding:5px 20px;}
 form.search table th.required:before {content:''; position:absolute; width:2px; height:2px; background:#ff0000; display:block; margin:7px 0 0 -10px;}

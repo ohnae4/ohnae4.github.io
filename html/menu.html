@@ -19,13 +19,13 @@
 		</div>
 		<div id="leftMenu">
 			<div class="box">
-				<ol class="theme">
+				<!-- <ol class="theme">
 					<li data-ng-click="theme.click('theme1')"></li>
 					<li data-ng-click="theme.click('theme2')"></li>
 					<li data-ng-click="theme.click('theme3')"></li>
 					<li data-ng-click="theme.click('theme4')"></li>
 					<li data-ng-click="theme.click('theme5')"></li>
-				</ol>
+				</ol> -->
 				<ul>
 					<li data-ng-repeat="(idx, i)  in menuList" data-ng-class="{on: i.active}">
 						<a data-ng-href="{{commonLink({url:i.url,href:true})}}">
