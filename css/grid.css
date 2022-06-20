@@ -54,7 +54,7 @@ select 되는 부분을 제어함
 .gridWrap input[type="text"],
 .gridWrap input[type="password"],
 .gridWrap input[type="mail"],
-.gridWrap input[type="number"] {display:block; width:100%; margin:0; outline:0; border:0; background:#fff; height:22px; line-height:22px; color:#666; vertical-align:middle;}
+.gridWrap input[type="number"] {display:block; width:100%; margin:0; outline:0; border:0; background:#fff; height:22px; line-height:22px; color:#666;}
 .gridWrap input[type="checkbox"] {display:inline-block;}
 .gridWrap .tc select,
 .gridWrap .tc input {text-align:center;}
