@@ -69,22 +69,23 @@
 			<div class="calendar">
 				<div class="week" data-ng-repeat="o in code.weekArr" data-ng-class="{sun:(o.value == '0')}"><span>{{o.text}}</span></div>
 				<div data-ng-class="{done:day.idx <= 0, off: day.off, sat:(day.dayCode == '6') , sun:(day.dayCode == '0') || (day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1)}" class="day" data-ng-repeat="day in rvCalendar.start.day">
-					<div class="box">
+					<div class="box" data-ng-class="{on: day.idx == rvCalendar.start.idx}">
 						<span class="holiday" data-ng-if="day.holiday[0] && day.holiday[0].HOLIDAY_CODE == 1">
 							{{ day.holiday[0].HOLIDAY_NAME }}
 						</span>
 						<span>
-							<strong class="dayNo" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+							<strong class="dayNo1" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
+							<strong data-ng-click="rvCalendar.start.click(day)" class="dayNo2" data-ng-bind="(day.idx > 0) ? day.idx : ''"></strong>
 							<b class="peakCode" data-ng-if="day.peakCode == 1">비수기</b>
 							<b class="peakCode" data-ng-if="day.peakCode == 2">준성수기</b>
 							<b class="peakCode" data-ng-if="day.peakCode == 3">성수기</b>
 							<b class="peakCode" data-ng-if="day.peakCode == 4">극성수기</b>
 						</span>
 						<p data-ng-repeat="(ridx , room) in day.list">
-							<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room,day)">{{ room.ROOM_NAME }}</span></strong>
+							<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room, day)">{{ room.ROOM_NAME }}</span></strong>
 							<strong class="price" data-ng-if="(!day.price || day.price == '0')">{{ room['PRICE_' + day.priceCode] | toManwon }}</strong>
 							<b data-ng-repeat="(vidx , rv) in day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
-								<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약중</span>
+								<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약</span>
 								<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
 								<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
 							</b>
@@ -98,6 +99,27 @@
 	<!-- 객실정보 -->
 	<div data-kaisa-room-info></div>
 
+	<!-- 객실선택팝업 -->
+	<div class="layerRoom" data-ng-show="layerRoom.active">
+		<form id="formRoom" name="formRoom" data-ng-submit="layerRoom.submit()">
+			<div class="btnClose" data-ng-click="layerRoom.close();">
+				<ul><li></li><li></li></ul>
+			</div>
+			<h5>예약가능한 객실을 선택해주세요.</h5>
+			<div class="box">
+				<p data-ng-repeat="(ridx , room) in layerRoom.day.list">
+					<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room, layerRoom.day); layerRoom.close()">{{ room.ROOM_NAME }}</span></strong>
+					<strong class="price" data-ng-click="rvCalendar.clickRoom(room, layerRoom.day); layerRoom.close()" data-ng-if="(!layerRoom.day.price || layerRoom.day.price == '0')">{{ room['PRICE_' + layerRoom.day.priceCode] | toManwon }}</strong>
+					<b data-ng-repeat="(vidx , rv) in layerRoom.day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
+						<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약</span>
+						<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
+						<span class="dim" data-ng-show="rv.STATUS_CODE == 1 || rv.STATUS_CODE == 2"></span>
+					</b>
+				</p>
+			</div>
+		</form>
+	</div>
+
 	<!-- 예약팝업 -->
 	<div class="layerReservation" data-ng-show="layerReservation.active">
 		<form id="formReservation" name="formReservation" data-ng-submit="layerReservation.submit()">
@@ -110,19 +132,19 @@
 			<table class="readT">
 				<tr>
 					<th class="required">예약일</th>
-					<td><input style="width:140px;" readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" data-ng-model="RESERVATION.RESERVATION_DATE" required="required" /></td>
+					<td><input style="width:140px;" readonly="readonly" maxlength="15" type="text" name="RESERVATION_DATE" data-ng-model="RESERVATION.RESERVATION_DATE" autocomplete="off" required="required" /></td>
 				</tr>
 				<tr>
 					<th class="required">예약자명</th>
-					<td><input style="width:140px;" type="text" maxlength="15" minlength="2" name="MEMBER_NAME" data-ng-model="RESERVATION.MEMBER_NAME" required="required" /></td>
+					<td><input style="width:140px;" type="text" maxlength="15" minlength="2" name="MEMBER_NAME" data-ng-model="RESERVATION.MEMBER_NAME" autocomplete="off" required="required" /></td>
 				</tr>
 				<tr>
 					<th class="required">예약자 휴대폰번호</th>
-					<td><input style="width:140px;" data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" data-ng-model="RESERVATION.MEMBER_PHONE" required="required" /></td>
+					<td><input style="width:140px;" data-only-number="false" type="text" maxlength="13" name="MEMBER_PHONE" data-ng-model="RESERVATION.MEMBER_PHONE" autocomplete="off" required="required" /></td>
 				</tr>
 				<tr>
 					<th class="required">예약자 이메일</th>
-					<td><input type="text" maxlength="30" name="MEMBER_EMAIL" data-ng-model="RESERVATION.MEMBER_EMAIL" required="required" /></td>
+					<td><input type="text" maxlength="30" name="MEMBER_EMAIL" data-ng-model="RESERVATION.MEMBER_EMAIL" autocomplete="off" required="required" /></td>
 				</tr>
 				<tr>
 					<th>인원</th>
@@ -152,7 +174,7 @@
 					</tr>
 					<tr>
 						<th class="required">비밀번호</th>
-						<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="RESERVATION.PASSWORD" required="required" /></td>
+						<td><input maxlength="10" type="password" name="PASSWORD" data-ng-model="RESERVATION.PASSWORD" required="required" autocomplete="off" /></td>
 					</tr>
 					<tr>
 						<th>기타 요청사항</th>

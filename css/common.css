@@ -159,8 +159,8 @@ form.search .btnSearch{display:inline-block; margin-left:27px; min-width:65px; h
 .captcha ol li.lan9 {font-weight:bold; transform:rotate(-10deg);}
 .captcha ol li.lan0 {font-family:arial; transform:rotate(20deg); font-weight:bold;}
 
-.btnClose {width:30px; height:50px; position:absolute; z-index:2; right:-35px; top:-5px; cursor:pointer;}
-.btnClose ul {width:30px; position:relative;}
+.btnClose {width:30px; height:50px; position:absolute; z-index:2; right:-35px; top:-25px; cursor:pointer;}
+.btnClose ul {width:30px; margin-top:20px; position:relative;}
 .btnClose ul li {position:absolute; width:30px; height:3px; background:#fff; margin-bottom:5px; border-radius:3px; box-shadow: 0 0 10px rgb(0,0,0,0.5);}
 .btnClose ul li:nth-child(1) {left:0; top:0; transform: rotate(45deg);}
 .btnClose ul li:nth-child(2) {left:0; top:0; transform: rotate(-45deg);}

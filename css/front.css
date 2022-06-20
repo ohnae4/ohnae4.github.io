@@ -25,7 +25,8 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .theme5 .theme li:nth-child(5) {opacity:1; box-shadow:0 0 5px 3px rgba(255,255,255,0.5);}
 
 /* 회색 */
-.theme1 .rvCalendar .day strong.dayNo {background:#bbb;} 
+.theme1 .rvCalendar .day strong.dayNo1,
+.theme1 .rvCalendar .day strong.dayNo2 {background:#bbb;} 
 .theme1 .rvCalendar .day .box {background:#fdfdfd; border:1px solid #ddd;}
 .theme1 .rvCalendar .day p .dim {background:rgba(253,253,253,0.5);}
 .theme1 .roomT th {border:1px solid #eee; background:#fafafa;}
@@ -35,7 +36,8 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .theme1 .listT tr:nth-child(2n) {background:#fafafa;}
 
 /* 보라 */
-.theme2 .rvCalendar .day strong.dayNo {background:#b0a0b6;} 
+.theme1 .rvCalendar .day strong.dayNo1,
+.theme1 .rvCalendar .day strong.dayNo2 {background:#b0a0b6;} 
 .theme2 .rvCalendar .day .box {background:#fdf8ff; border:1px solid #eadbee;}
 .theme2 .rvCalendar .day p .dim {background:rgba(253,248,250,0.5);}
 .theme2 .roomT th {border:1px solid #eadbee; background:#fdf8ff;}
@@ -45,7 +47,8 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .theme2 .listT tr:nth-child(2n) {background:#fbf8fc;}
 
 /* 그린 */
-.theme3 .rvCalendar .day strong.dayNo {background:#b8cab4;} 
+.theme1 .rvCalendar .day strong.dayNo1,
+.theme1 .rvCalendar .day strong.dayNo2 {background:#b8cab4;} 
 .theme3 .rvCalendar .day .box {background:#f4fff2; border:1px solid #d5e8d1;}
 .theme3 .rvCalendar .day p .dim {background:rgba(244,255,242,0.5);}
 .theme3 .roomT th {border:1px solid #d5e8d1; background:#f4fff2;}
@@ -55,7 +58,8 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .theme3 .listT tr:nth-child(2n) {background:#f7faf6;}
 
 /* 블루 */
-.theme4 .rvCalendar .day strong.dayNo {background:#b4bfca;} 
+.theme1 .rvCalendar .day strong.dayNo1,
+.theme1 .rvCalendar .day strong.dayNo2 {background:#b4bfca;} 
 .theme4 .rvCalendar .day .box {background:#f2f9ff; border:1px solid #d1dde8;}
 .theme4 .rvCalendar .day p .dim {background:rgba(242,249,255,0.5);}
 .theme4 .roomT th {border:1px solid #d1dde8; background:#f2f9ff;}
@@ -65,7 +69,8 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .theme4 .listT tr:nth-child(2n) {background:#fafcfd;}
 
 /* 주황 */
-.theme5 .rvCalendar .day strong.dayNo {background:#cac3b4;} 
+.theme1 .rvCalendar .day strong.dayNo1,
+.theme1 .rvCalendar .day strong.dayNo2 {background:#cac3b4;} 
 .theme5 .rvCalendar .day .box {background:#fffbf2; border:1px solid #e8e0d1;}
 .theme5 .rvCalendar .day p .dim {background:rgba(255,251,242,0.5);}
 .theme5 .roomT th {border:1px solid #e8e0d1; background:#fffbf2;}
@@ -99,7 +104,7 @@ body {background:url(/img/common/bg.png) repeat;} /*background:url(/img/common/b
 .fixed #topMenu {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
 .fixed #topMenu ul {box-shadow:none;}
 
-#btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:10px; top:10px; cursor:pointer;}
+#btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:13px; top:13px; cursor:pointer;}
 #btnMenu ul {width:30px; position:relative;}
 #btnMenu ul li {position:absolute; width:30px; height:3px; background:#111; margin-bottom:5px; border-radius:3px;}
 #btnMenu ul li:nth-child(1) {left:0; top:0;}
@@ -227,34 +232,58 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
-.rvCalendar .calendar {width:1360px; clear:both; overflow:hidden; margin:0 auto; padding:30px 0;}
+.rvCalendar .calendar {width:100%; clear:both; overflow:hidden; margin:0 auto; padding:5px 0;}
 .rvCalendar .headWrap {height:80px; width:100%;}
 
 .rvCalendar .week {display:none; width:14%; float:left; height:50px; line-height:50px; text-align:center;}
-.rvCalendar .day {width:14%; position:relative; padding:5px; background:#fff; float:left; height:120px; overflow:hidden;}
+.rvCalendar .day {width:14%; position:relative; padding:5px; background:#fff; float:left; overflow:hidden;}
 .rvCalendar .day .box {background:#fdfdfd; border:1px solid #ddd; border-radius:10px; padding:5px;}
+.rvCalendar .day .box.on {border:1px solid #ccc;}
 .rvCalendar .week:nth-child(7n),
 .rvCalendar .day:nth-child(7n) {width:16%;}
-.rvCalendar .day strong.dayNo {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#bbb; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
+.rvCalendar .day strong.dayNo1,
+.rvCalendar .day strong.dayNo2 {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#bbb; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
+.rvCalendar .day strong.dayNo2 {display:none;}
 .rvCalendar .day .holiday {display:none; color:#ff0000; position:absolute; left:38px; top:11px; font-size:11px;}
 .rvCalendar .day .peakCode {display:none; position:absolute; right:3px; top:3px; font-size:11px; color:#ddd; font-weight:normal;}
-.rvCalendar .day.off {opacity: 0.7;}
+.rvCalendar .day.off {opacity: 0.5;}
 .rvCalendar .day.done .box {background:#fff; border:1px solid #fff;}
 .rvCalendar .day.done span,
 .rvCalendar .day.done p {display:none}
 .rvCalendar .off:before {background:url(/img/common/mask_white.png) repeat; content:''; width:100%; height:100%; position:absolute; left:0; top:0; z-index:3;}
-.rvCalendar .day.sat strong.dayNo {background-color:#3393ff;}
-.rvCalendar .day.sun strong.dayNo {background-color:#ff6d59;}
-.rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:23px; letter-spacing:-1px;}
+.rvCalendar .day.sat strong.dayNo1,
+.rvCalendar .day.sat strong.dayNo2 {background-color:#3393ff;}
+.rvCalendar .day.sun strong.dayNo1,
+.rvCalendar .day.sun strong.dayNo2 {background-color:#ff6d59;}
+.rvCalendar .day p {position:relative; width:100%; display:block; overflow:hidden; line-height:25px;}
 .rvCalendar .day p .dim {position:absolute; left:0; top:0; width:100%; height:100%; display:block; padding:0; margin:0; background:rgba(253,253,253,0.5)}
-.rvCalendar .day p strong.roomName {cursor:pointer; font-size:11px; font-weight:normal; display:inline-block;}
-.rvCalendar .day p strong.roomName span {color:#999; display:inline-block; border:1px solid #aaa; background:#fff;}
+.rvCalendar .day p strong.roomName {cursor:pointer; margin-right:1px; font-size:11px; font-weight:normal; display:inline-block;}
+.rvCalendar .day p strong.roomName span {color:#555; display:inline-block; border:1px solid #ddd; background:#fff;}
 .rvCalendar .day p strong.price {font-size:11px; font-weight:normal; display:inline-block; color:#aaa;}
 
 .rvCalendar .day p span {font-size:11px; line-height:17px; font-weight:normal; display:inline-block; padding:0 3px; border-radius:2px; color:#fff;}
 .rvCalendar .day p span.ico_1 {background:green;}
 .rvCalendar .day p span.ico_2 {background:#ff5500;}
 .rvCalendar .day p span.ico_3 {background:red;}
+
+
+/* 객실선택팝업 */
+.layerRoom {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
+.layerRoom form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:260px; height:260px; position:fixed; left:50%; margin:-130px 0 0 -130px; top:50%; background:#fff; border:1px solid #aaa;}
+
+.layerRoom h5 {color:#333;}
+.layerRoom {padding-top:15px; color:#333;}
+.layerRoom .box {padding-top:10px;}
+.layerRoom p {line-height:40px; position:relative;}
+.layerRoom p .roomName {cursor:pointer; color:#000; font-size:18px; display:inlie-block;}
+.layerRoom p .price {cursor:pointer; color:#666; padding-left:5px; display:inlie-block;}
+.layerRoom p b {display:inlie-block; }
+.layerRoom p b .dim {background:rgba(255,255,255,0.7); position:absolute; width:100%; height:42px; left:0; top:-1px;}
+.layerRoom p b span {display:inlie-block; padding:0 10px; color:#fff;}
+.layerRoom p span.ico_1 {background:green;}
+.layerRoom p span.ico_2 {background:#ff5500;}
+.layerRoom p span.ico_3 {background:red;}
+
 
 /* 예약팝업 */
 .layerReservation {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
@@ -266,14 +295,13 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .layerMyQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
 .layerMyQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-240px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
 
-
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
 @media (max-width: 360px) {
     #topMenu ul {display:none;}
 }
 @media (max-width: 480px) {
     #topMenu {padding-left:20px;}
-    #topMenu a {padding:0 10px;} 
+    #topMenu a {padding:0 15px;} 
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
@@ -281,9 +309,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     #map {width:1000px}
     #content {width:1000px}
     #mapCover {width:940px; margin-left:-500px;}
-    .rvCalendar .calendar {width:960px;}
 }
-
 @media (max-width: 1000px) {
     .icoScroll {display:block;} 
     #content {width:100%; padding:20px;}
@@ -293,11 +319,25 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     .rvCalendar .day .peakCode {display:none;}
 }
 
+@media (max-width:800px) {
+    #content .rvCalendar .day strong.dayNo1 {display:none;}
+    #content .rvCalendar .day strong.dayNo2 {display:block;}
+}
+@media (max-width:700px) {
+    #content .rvCalendar .box {border:0; background:none;}
+    #content .rvCalendar .day {padding:0;}
+    #content .rvCalendar .day p {display:none;}
+    #content .rvCalendar .day strong.dayNo2 {display:block; line-height:50px; margin:0 auto; width:50px; height:50px;}
+}
+@media (max-width:450px) {
+    #content .rvCalendar .day strong.dayNo2 {line-height:30px; width:30px; height:30px; }
+}
+
+
 @media (max-height: 700px) {
     .layerQna form,
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
-
 /* 객실목록 */
 .reservationList {clear:both; width:100%; overflow:hidden;}
 

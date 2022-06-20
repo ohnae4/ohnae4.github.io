@@ -135,7 +135,7 @@
 		    tomorrowYn: false,
 			isShowPrev: false,
 			isShowNext: true,
-		    clickRoom: function(room,day,price){
+		    clickRoom: function(room, day){
 				var price = day.price;
 				if(!price || price == '0') {
 					price = room['PRICE_' + day.priceCode];
@@ -162,6 +162,11 @@
     			today: function(){
     				return this.now.getDate()
     			},
+				idx: null,
+				click: function(day){
+					this.idx = day.idx;
+					$scope.layerRoom.open(day);
+				},
     			month: null,
     			firstDay : function(){
     				return new Date(this.date.getFullYear(),this.date.getMonth()).getDay();
@@ -405,6 +410,18 @@
 					console.log(e);
 					$scope.loading.active = false;
 				});
+    		}
+    	};
+		// 객실선택팝업 
+    	$scope.layerRoom = {
+    		active: false,
+			day: null,
+    		close: function(){
+    			this.active = false;
+    		},
+			open: function(day){
+    			this.active = true;
+				this.day = day;
     		}
     	};
 	 	$scope.initLoad = $scope.loadComplete();
