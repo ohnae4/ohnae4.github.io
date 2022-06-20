@@ -68,7 +68,9 @@
 			addCount1Arr: [
 				{text: '4명이하', value: '0'},
 				{text: '5명', value: '1'},
-				{text: '6명', value: '2'}
+				{text: '6명', value: '2'},
+				{text: '7명', value: '3'},
+				{text: '8명', value: '4'}
 			],
 			addCount2Arr: [
 				{text: '바베큐 추가안함', value: '0'},
