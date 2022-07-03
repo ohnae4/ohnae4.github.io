@@ -35,6 +35,9 @@
 				,{key:'PRICE_7',		name:'성수기 주중 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'PRICE_8',		name:'성수기 금요일 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'PRICE_9',		name:'성수기 주말 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
+				,{key:'PRICE_10',		name:'극성수기 주중 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
+				,{key:'PRICE_11',		name:'극성수기 금요일 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
+				,{key:'PRICE_12',		name:'극성수기 주말 요금',	type:'Number',    width:130,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'PRICE_ADD_1',	name:'인당추가금액',			type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'PRICE_ADD_2',	name:'바베큐추가금액',		type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'PRICE_ADD_3',	name:'온수추가금액', 		type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}

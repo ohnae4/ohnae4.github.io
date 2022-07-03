@@ -27,6 +27,7 @@
 			dateArr1: {startDate: '01-01', endDate: '12-31'}, // 비수기
 			dateArr2: {startDate: '06-25', endDate: '09-04'}, // 준성수기
 			dateArr3: {startDate: '07-16', endDate: '08-15'}, // 성수기
+			dateArr4: {startDate: '07-23', endDate: '08-06'}, // 극성수기
 			roomType: [
 				{text: '객실1동', value: '1'},
 				{text: '객실2동', value: '2'},
@@ -48,7 +49,8 @@
 			peakCode: [
 				{text: '비수기', value: '1'},
 				{text: '준성수기', value: '2'},
-				{text: '성수기', value: '3'}
+				{text: '성수기', value: '3'},
+				{text: '극성수기', value: '4'}
 			],
 			holidayCode: [
 				{text: '휴일', value: '1'},
@@ -63,7 +65,10 @@
 				{text: '준성수기 주말 요금', value: '6'},
 				{text: '성수기 주중 요금', value: '7'},
 				{text: '성수기 금요일 요금	', value: '8'},
-				{text: '성수기 주말 요금', value: '9'}
+				{text: '성수기 주말 요금', value: '9'},
+				{text: '극성수기 주중 요금', value: '10'},
+				{text: '극성수기 금요일 요금	', value: '11'},
+				{text: '극성수기 주말 요금', value: '12'}
 			],
 			addCount1Arr: [
 				{text: '4명이하', value: '0'},

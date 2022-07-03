@@ -156,6 +156,14 @@
 			}
 		}
 	}]);
+	app.directive('kaisaRoomPrice',[function(){
+		return {
+			templateUrl: '/html/roomPrice.html',
+			replace: true,
+			link: function($scope, el, attrs){
+			}
+		}
+	}]);
 	app.directive('onlyNumber',['kaisaRegex',function(kaisaRegex){ //only-number="false" => '.-'
 	    return {
 	    	require: 'ngModel',

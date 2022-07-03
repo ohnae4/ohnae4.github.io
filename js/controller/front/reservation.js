@@ -231,12 +231,14 @@
 	                	var date = $filter('date')($scope.rvCalendar.start.date,'MM') + '-' + getAddZero(i+1); //MM-dd
 	                	var dayCode = new Date(fullDate).getDay(); //요일 0:일,1:월,2:화,3:수,4:목,5:금,6:토 
 	                	var peakCode = 1; //비수기
-
 						if(date >= $scope.code.dateArr2.startDate && date <= $scope.code.dateArr2.endDate){
 	                		peakCode = 2; //준성수기
 	                	}
 						if(date >= $scope.code.dateArr3.startDate && date <= $scope.code.dateArr3.endDate){
 	                		peakCode = 3; //성수기
+	                	}
+						if(date >= $scope.code.dateArr4.startDate && date <= $scope.code.dateArr4.endDate){
+	                		peakCode = 4; //극성수기
 	                	}
 						var priceCode = $scope.getPriceCode(peakCode, dayCode);
 
