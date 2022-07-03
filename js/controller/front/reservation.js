@@ -290,6 +290,14 @@
 						default: priceCode = 7; break; // 성수기 주중요금 
 					}
 					break;
+				case 4:
+					switch (dayCode) {
+						case 5: priceCode = 11; break; // 성수기 금요일요금 
+						case 6: priceCode = 12; break; // 성수기 주말요금 (토) 
+						case 0: priceCode = 11; break; // 성수기 주말요금 (일) 
+						default: priceCode = 10; break; // 성수기 주중요금 
+					}
+					break;
 				default: break;
 			}
 			return priceCode;
