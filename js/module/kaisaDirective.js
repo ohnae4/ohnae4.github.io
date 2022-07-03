@@ -35,68 +35,19 @@
 			}
 		}
 	}]);
-	app.directive('kaisaMap',[function(){
-		return {
-			template: '<div id="contactUs">'+
-				'<div class="wrap">'+
-					'<h2>찾아오시는 길</h2>'+
-					'<div id="map"></div>'+
-				    '<ul>'+
-					'<li><strong>주소:</strong> 경기도 가평군 가평읍 금대리 305-6 끌로이스</li>'+
-					'<li><strong>도로명:</strong> 경기도 가평군 가평읍 북한강변로 536 끌로이스</li>'+
-					'<li class="txt_guide"><strong>가평역</strong> 무료 픽업 및 드롭서비스 해드립니다.</li>'+
-					'</ul>'+
-				'</div>'+
-			'</div>',
-			replace: true,
-			link: function($scope, el, attrs){
-				window.initMap = function(){
-					var uluru = {
-						lat : 37.774083,
-						lng : 127.535045
-					};
-					var map = new google.maps.Map(document.getElementById('map'), {
-						zoom : 15,
-						gestureHandling: 'cooperative',
-						center : uluru
-					});
-					var marker = new google.maps.Marker({
-						position : uluru,
-						map : map
-					});
-				}
-				angular.element(el).append('<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHJZ33ORPXZyNOAz7M6HKBPjHTZ8n6CLs&callback=initMap"></script>');
-			}
-		}
-	}]);
 	app.directive('kaisaFooter',[function(){
 		return {
 			templateUrl: '/html/footer.html',
 			replace: true,
 			link: function($scope, el, attrs){
-				var container = document.getElementById('map');
-				var options = {
-					center: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688),
-					level: 3,
-					marker: {
-						position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
-					},
-					draggable: false,
-					// mapTypeId: kakao.maps.MapTypeId.HYBRID, // SKYVIEW,
-					disableDoubleClick: false,
-					disableDoubleClickZoom: false,
-					keyboardShortcuts: false
-				};
-				var map = new kakao.maps.Map(container, options); // 경기도 가평군 가평읍 물안산길 25-21
-				var zoomControl = new kakao.maps.ZoomControl();
-				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-				var marker = new kakao.maps.Marker({
-					map: map,
-					title: '경기 가평군 가평읍 마장리 83',
-					position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
-				});
-
+			}
+		}
+	}]);
+	app.directive('kaisaSns',[function(){
+		return {
+			templateUrl: '/html/sns.html',
+			replace: true,
+			link: function($scope, el, attrs){
 				$scope.sns = function(sns) {
 					const url = 'chlois.co.kr';
 					const text = '끌로이스풀빌라';
@@ -128,7 +79,43 @@
 						default: break;
 					}
 				}
-
+			}
+		}
+	}]);
+	app.directive('kaisaCs',[function(){
+		return {
+			templateUrl: '/html/cs.html',
+			replace: true,
+			link: function($scope, el, attrs){
+			}
+		}
+	}]);
+	app.directive('kaisaMap',[function(){
+		return {
+			templateUrl: '/html/map.html',
+			replace: true,
+			link: function($scope, el, attrs){
+				var container = document.getElementById('map');
+				var options = {
+					center: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688),
+					level: 3,
+					marker: {
+						position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
+					},
+					draggable: false,
+					// mapTypeId: kakao.maps.MapTypeId.HYBRID, // SKYVIEW,
+					disableDoubleClick: false,
+					disableDoubleClickZoom: false,
+					keyboardShortcuts: false
+				};
+				var map = new kakao.maps.Map(container, options); // 경기도 가평군 가평읍 물안산길 25-21
+				var zoomControl = new kakao.maps.ZoomControl();
+				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+				var marker = new kakao.maps.Marker({
+					map: map,
+					title: '경기 가평군 가평읍 마장리 83',
+					position: new kakao.maps.LatLng(37.85793516428404, 127.51808523634688)
+				});
 			}
 		}
 	}]);
