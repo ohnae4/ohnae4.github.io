@@ -19,12 +19,23 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .back ul li:nth-child(2) {left:1px; top:7px;}
 .back ul li:nth-child(3) {width:15px; left:-1px; top:11px; transform: rotate(45deg);}
 
-#order {width:100%; clear:both; padding-top:20px}
+#order {width:100%; clear:both;}
 #order .btnClose {position:fixed;}
-#order h2 {padding:20px 0 5px 0; border-bottom:2px solid #333;}
+#content #order h2 {padding:20px 0 5px 0; border-bottom:2px solid #333;}
+#content #order h3 {font-size:14px; width:100%; overflow:hidden; padding:10px 10px; border:1px solid #dedede; margin-bottom:-1px; background:#f2f2f2;}
+#content #order h3 label {width:100%; overflow:hidden; display:block; cursor:pointer; }
+#content #order h3 input {margin-right:5px; margin-top:-1px; vertical-align:middle;}
 #order .left {float:left; width:43%;}
 #order .right {float:right; width:53%;}
-
+#order table {width:100%; margin-bottom:10px;}
+#order th {border:1px solid #ddd; padding:5px; width:100px; background:#eee;}
+#order td {border:1px solid #ddd; padding:5px;}
+#order table.total th {padding:10px;}
+#order table.total td {padding:10px; text-align: right;}
+#order table.total td strong {font-size:20px; font-weight:bold; color:#ff0000;}
+#order .btnOrder {background:#ff0000; border:0; font-size:16px; font-weight: bold; line-height:45px; height:45px; padding:0 20px;}
+#order .btnCancel {background:#ccc; border:0; font-size:16px; font-weight: bold; line-height:45px; height:45px; padding:0 20px;}
+#agree p {font-family: dotum; font-size:12px; padding:10px 0;}
 .theme {width:100%; padding:15px 0; clear:both; text-align:center;}
 .theme li {opacity:0.8; cursor:pointer; border-radius:100%; display:inline-block; background-color:#fff; margin:0 5px; width:20px; height:20px; box-shadow:0 0 3px rgba(0,0,0,0.2);}
 .theme li:nth-child(1) {background-color:#ccc;}
