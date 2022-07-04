@@ -10,6 +10,21 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #header h1 {width:100%; margin:0 auto;}
 #header h1 a {overflow:hidden; text-indent:-900px; display:block; background:url(/img/common/logo.png) no-repeat; width:300px; margin:0 auto; height:150px; text-align:center;}
 
+.header {height:50px; position:relative; background-color: #fff; line-height:50px; width:100%; position:fixed; left:0; top:0; box-shadow:0 0 5px rgb(0,0,0,0.2);} 
+.header h2 {text-align: center;}
+.back {position:relative; width:50px; height:50px; cursor: pointer;}
+.back ul {position:absolute; left:15px; top:15px;}
+.back ul li {background-color:#333; position:absolute; width:30px; height:3px; border-radius:3px; box-shadow: 0 0 10px rgb(0,0,0,0.5);}
+.back ul li:nth-child(1) {width:15px; left:-1px; top:3px; transform: rotate(-45deg);}
+.back ul li:nth-child(2) {left:1px; top:7px;}
+.back ul li:nth-child(3) {width:15px; left:-1px; top:11px; transform: rotate(45deg);}
+
+#order {width:100%; clear:both; padding-top:20px}
+#order .btnClose {position:fixed;}
+#order h2 {padding:20px 0 5px 0; border-bottom:2px solid #333;}
+#order .left {float:left; width:43%;}
+#order .right {float:right; width:53%;}
+
 .theme {width:100%; padding:15px 0; clear:both; text-align:center;}
 .theme li {opacity:0.8; cursor:pointer; border-radius:100%; display:inline-block; background-color:#fff; margin:0 5px; width:20px; height:20px; box-shadow:0 0 3px rgba(0,0,0,0.2);}
 .theme li:nth-child(1) {background-color:#ccc;}
@@ -157,7 +172,7 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 .scrollWrap {width:100%; clear:both; overflow: auto; background:none right top;}
 
-#content {min-height:300px; width:1400px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff;}
+#content {min-height:300px; width:1400px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff; overflow: auto;}
 #content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}

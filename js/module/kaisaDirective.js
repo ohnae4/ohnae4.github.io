@@ -9,6 +9,14 @@
 			}
 		}
 	}]);
+	app.directive('kaisaOrderHeader',[function(){
+		return {
+			templateUrl: '/html/orderHeader.html',
+			replace: true,
+			link: function($scope, el, attrs){
+			}
+		}
+	}]);
 	app.directive('kaisaAdminHeader',[function(){
 		return {
 			template: '<div id="adminHeader">'+

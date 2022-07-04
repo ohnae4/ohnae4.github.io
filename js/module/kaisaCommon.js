@@ -170,6 +170,10 @@
 		if(location.pathname === '/') {
 			$scope.menuList[0].active = true; 
 		}
+		
+		$scope.back = function(){
+			window.history.go(-1);
+		}
 
 		$scope.adminMenuList = [
 			{title:'객실정보', url:'adminRoom', name:'room', active: false},
