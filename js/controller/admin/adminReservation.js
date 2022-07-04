@@ -23,7 +23,6 @@
 				,{key:'MEMBER_NAME',		name:'회원명',		type:'String',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'MEMBER_PHONE',		name:'전화번호',	type:'String',	  width:100,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'MEMBER_EMAIL',		name:'이메일',	 	type:'String',    width:150,  length:300, visible:true,	disabled:false,	align:'left', required:true}
-				,{key:'PASSWORD',			name:'패스워드',	type:'String',    width:100,  length:300, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'DESCRIPTION',		name:'설명',	 	type:'String',    width:100,  length:300, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'ADD_COUNT_1',		name:'추가인원',	type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'ADD_COUNT_2',		name:'바베큐추가수',type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
