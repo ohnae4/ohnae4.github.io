@@ -125,7 +125,7 @@
 	<!-- 예약팝업 -->
 	<div class="layerAgree" data-ng-show="layerAgree.active">
 		<form id="formAgree" name="formReservation" data-ng-submit="layerAgree.submit()">
-			<h2>약관동의</h2>
+			<h2>예약전 약관동의</h2>
 			<div class="scroll">
 				<h3 style="border-bottom:1px solid #eee;"><label><input data-ng-model="layerAgree.agreeAll" data-ng-change="layerAgree.agreeChage()" type="checkbox" /> 전체동의</label></h3>
 				<h3><label><input data-ng-model="layerAgree.agree1" type="checkbox" /> 이용시 유의사항에 동의</label></h3>
@@ -190,10 +190,12 @@
 					결제 취소 금액 환불	은행명, 계좌번호, 예금주명<br /><br />
 				</p>
 				<h3><label><input data-ng-model="layerAgree.agree4" type="checkbox" /> 이용자가 미성년자가 아니며 성인임에 동의</label></h3>
+				<h3 style="border-top:1px solid #eee;"><label><input data-ng-model="layerAgree.agreeAll" data-ng-change="layerAgree.agreeChage()" type="checkbox" /> 전체동의</label></h3>
+				
 			</div>
 			<div class="btnWrap">
-				<button type="submit" data-ng-click="layerAgree.submit()">동의</button>
-				<button data-ng-click="layerAgree.close()">동의안함</button>
+				<button type="submit">동의</button>
+				<button type="button" data-ng-click="layerAgree.close()">동의안함</button>
 			</div>
 		</form>
 	</div>
@@ -203,7 +205,7 @@
 			<div class="btnClose" data-ng-click="layerReservation.close();">
 				<ul><li></li><li></li></ul>
 			</div>
-			<p class="txtGuide">2시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p>
+			<p class="txtGuide">1~2시간 이내에 입금하셔야 합니다. 미입금 시 예약이 자동 취소됩니다.</p>
 			<input type="hidden" readonly="readonly" maxlength="10" name="ROOM_NUMBER" data-ng-model="RESERVATION.ROOM_NUMBER" required="required" />
 			<input type="hidden" readonly="readonly" maxlength="2" name="STATUS_CODE" data-ng-model="RESERVATION.STATUS_CODE" required="required" />
 			<table class="readT">
