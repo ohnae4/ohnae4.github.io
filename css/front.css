@@ -105,7 +105,12 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .theme5 .listT td {border-bottom:1px solid #e8e0d1;}
 .theme5 .listT tr:nth-child(2n) {background:#fbfaf7;}
 
-#visual {width:1360px; margin:0 auto;}
+.font1 {color:#ff5500;}
+
+#visual {width:1360px; margin:0 auto; display:block;}
+#visualMobile {width:100%; display:none;}
+#visualMobile li {padding-bottom:20px;}
+#visualMobile li img {width:100%;}
 
 .slide {width:100%; position:relative; overflow:hidden; clear:both; white-space:nowrap;}
 .slide ul li {width:100%; display:inline-block; padding:0;}
@@ -380,6 +385,10 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     #content .rvCalendar .day strong.dayNo2 {display:block;}
 }
 @media (max-width:700px) {
+
+    #visual {display:none;}
+    #visualMobile {display:block;}
+
     #content .rvCalendar .box {border:0; background:none;}
     #content .rvCalendar .day {padding:0;}
     #content .rvCalendar .day p {display:none;}
