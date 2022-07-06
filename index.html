@@ -56,6 +56,9 @@
 			<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
 				<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
 				<button type="button" class="btn_next" data-ng-click="visual.next()"></button>
+				<ol>
+					<li data-ng-repeat="(idx, i) in visualList" data-ng-class="{on : $index == visual.idx}" data-ng-click="visual.click(idx)"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+				</ol>
 				<ul>
 					<li data-ng-repeat="i in visualList" data-ng-show="$index == visual.idx"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
 				</ul>

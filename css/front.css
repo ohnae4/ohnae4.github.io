@@ -110,6 +110,11 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .slide {width:100%; position:relative; overflow:hidden; clear:both; white-space:nowrap;}
 .slide ul li {width:100%; display:inline-block; padding:0;}
 .slide ul li img {width:100%;}
+.slide ol {position:absolute; right:20px; top:20px;}
+.slide ol li {width:80px; display:inline-block; padding:0; margin-left:3px; opacity: 0.5; cursor:pointer;}
+.slide ol li.on {opacity:1;}
+.slide ol li img {width:100%; border:3px solid #fff;}
+
 .slide .btn_prev,
 .slide .btn_next  {transition:none; position:absolute; border:0; outline:0; z-index:2; top:50%; overflow:hidden; text-indent:-900px; font-size:0; display:block; width:40px; height:40px; margin-top:-20px; background:url(/img/common/sp.png) no-repeat;}
 .slide .btn_prev {left:10px; background-position:0 0;}
@@ -347,6 +352,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     #mapCover {width:940px; margin-left:-500px;}
 }
 @media (max-width: 1000px) {
+    .slide ol {display:none;}
     .icoScroll {display:block;} 
     #content {width:100%; padding:20px;}
     #mapCover {width:82%; left:0; margin:0;}

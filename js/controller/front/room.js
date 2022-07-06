@@ -29,7 +29,7 @@
 			{url : '/img/visual/large/i6.png'},
 			{url : '/img/visual/large/i7.png'},
 			{url : '/img/visual/large/i8.png'},
-			{url : '/img/visual/large/i9.png'},
+			//{url : '/img/visual/large/i9.png'},
 			{url : '/img/visual/large/i10.png'},
 			{url : '/img/visual/large/i11.png'},
 			{url : '/img/visual/large/i12.png'}
