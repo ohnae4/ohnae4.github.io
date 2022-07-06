@@ -71,6 +71,15 @@
 				<div style="padding:50px; text-align:center; background-color:#eee;">풀빌라 정보3</div>
 			</div>
 			-->
+			<div id="visual">
+				<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
+					<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
+					<button type="button" class="btn_next" data-ng-click="visual.next()"></button>
+					<ul>
+						<li data-ng-repeat="i in visualList" data-ng-show="$index == visual.idx"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+					</ul>
+				</div>
+			</div>
 
 			<!-- 객실정보 -->
 			<div data-kaisa-room-info></div>

@@ -105,6 +105,8 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .theme5 .listT td {border-bottom:1px solid #e8e0d1;}
 .theme5 .listT tr:nth-child(2n) {background:#fbfaf7;}
 
+#visual {width:1360px; margin:0 auto;}
+
 .slide {width:100%; position:relative; overflow:hidden; clear:both; white-space:nowrap;}
 .slide ul li {width:100%; display:inline-block; padding:0;}
 .slide ul li img {width:100%;}
@@ -114,8 +116,6 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .slide .btn_next {right:10px; background-position:-40px 0;}
 .slide .btn_prev:hover {background-position:0 -40px;}
 .slide .btn_next:hover {background-position:-40px -40px;}
-
-#visual {position:absolute; left:0; top:0; z-index: 1;}
 
 #topMenu {width:100%; position:relative; height:50px; z-index:88; clear:both; text-align:center; white-space:nowrap;}
 #topMenu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; padding:0 20px; margin-left:-1px;}
@@ -183,6 +183,8 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 .scrollWrap {width:100%; clear:both; overflow: auto; background:none right top;}
 
+#container {width:100%}
+
 #content {min-height:300px; width:1400px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff; overflow: auto;}
 #content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
@@ -215,8 +217,6 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 #login h3 {font-size:20px; line-height:30px; padding:10px 0;}
 #login input {margin-bottom:5px;}
 #login button {display:inlin-block; margin-top:10px;}
-
-#visual {width:100%;}
 
 table.readT {width:100%; white-space:nowrap; border-top:1px solid #ddd;}
 table.readT th {text-align:left; width:120px; border:1px solid #eee; padding:3px; background:#fafafa;}
@@ -335,6 +335,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 }
 @media (max-width: 1400px) {
     #map {width:1000px}
+    #visual {width:960px;}
     #content {width:1000px}
     #mapCover {width:940px; margin-left:-500px;}
 }
@@ -343,6 +344,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     #content {width:100%; padding:20px;}
     #mapCover {width:82%; left:0; margin:0;}
     #map {width:100%;}
+    #visual {width:100%;}
     .rvCalendar .day .holiday,
     .rvCalendar .day .peakCode {display:none;}
 }
