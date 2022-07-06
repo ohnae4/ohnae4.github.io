@@ -375,6 +375,16 @@
     		}
         },true);
 
+		// 동의팝업 
+    	$scope.layerAgree = {
+			active: false,
+    		close: function(){
+    			this.active = false;
+    		},
+			open: function(){
+    			this.active = true;
+    		}
+		}
 		// 예약팝업 
     	$scope.layerReservation = {
     		active: false,
