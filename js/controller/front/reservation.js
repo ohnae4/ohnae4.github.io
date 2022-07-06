@@ -140,6 +140,7 @@
 				if(!price || price == '0') {
 					price = room['PRICE_' + day.priceCode];
 				}
+		    	$scope.RESERVATION.ROOM_NAME = room.ROOM_NAME;
 		    	$scope.RESERVATION.ROOM_NUMBER = room.ROOM_NUMBER;
 		    	$scope.RESERVATION.RESERVATION_DATE = $filter('date')($scope.rvCalendar.start.date,'yyyy-MM-') + day.date;
 		    	this.start.pick(day.idx);
@@ -151,7 +152,8 @@
 		    			$scope.rvCalendar.tomorrowYn = false;
 		    		}
 		    	}
-		    	$scope.layerReservation.open(price);
+		    	//$scope.layerReservation.open(price);
+		    	$scope.layerAgree.open(price);
 		    	this.selectRoom = room;
 		    	this.selectDay = day;
 		    },
@@ -378,12 +380,46 @@
 		// 동의팝업 
     	$scope.layerAgree = {
 			active: false,
+			price: null,
     		close: function(){
     			this.active = false;
     		},
-			open: function(){
+			open: function(price){
+				this.price = price;
     			this.active = true;
-    		}
+    		},
+			submit: function(){
+				if(!this.agreeAll 
+					|| !this.agree1
+					|| !this.agree2
+					|| !this.agree3
+					|| !this.agree4
+					) {
+					alert('약관에 모두 동의하셔야 합니다.')
+					return;
+				} else {
+					$scope.layerReservation.open(this.price);
+					this.close();
+				}
+			},
+			agreeAll: false,
+			agree1: false,
+			agree2: false,
+			agree3: false,
+			agree4: false,
+			agreeChage: function(){
+				if(this.agreeAll){
+					this.agree1 = true;
+					this.agree2 = true;
+					this.agree3 = true;
+					this.agree4 = true;
+				} else {
+					this.agree1 = false;
+					this.agree2 = false;
+					this.agree3 = false;
+					this.agree4 = false;
+				}
+			}
 		}
 		// 예약팝업 
     	$scope.layerReservation = {

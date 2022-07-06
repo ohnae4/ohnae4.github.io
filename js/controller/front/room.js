@@ -21,10 +21,10 @@
 			idx : 0	
 		};
 		$scope.visualList = [
-			{url : '/img/visual/large/i1.png'},
+			//{url : '/img/visual/large/i1.png'},
 			{url : '/img/visual/large/i2.png'},
 			{url : '/img/visual/large/i3.png'},
-			{url : '/img/visual/large/i4.png'},
+			//{url : '/img/visual/large/i4.png'},
 			{url : '/img/visual/large/i5.png'},
 			{url : '/img/visual/large/i6.png'},
 			{url : '/img/visual/large/i7.png'},
