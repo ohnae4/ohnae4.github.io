@@ -105,6 +105,7 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .theme5 .listT td {border-bottom:1px solid #e8e0d1;}
 .theme5 .listT tr:nth-child(2n) {background:#fbfaf7;}
 
+.price1 {color:#ff0000; font-size:16px;}
 .font1 {color:#ff5500;}
 
 #visual {width:1360px; margin:0 auto; display:block;}
@@ -353,6 +354,11 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
 .layerMyQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:480px; position:fixed; left:50%; margin:-240px 0 0 -240px; top:50%; background:#fff; border:1px solid #aaa;}
 
 .icoScroll {display:none; opacity:0.3; width:39px; height:30px; position:absolute; right:20px; margin-top:-40px; background:url(/img/common/ico_scroll.png) no-repeat right top;}
+
+#movie {width:100%; background:#ddd; margin-top:20px; }
+.movie {width:100%; padding-bottom:56.5%; position:relative;}
+.movie iframe {width:100%; height:100%; position:absolute; left:0; top:0;}
+
 @media (max-width: 360px) {
     #topMenu ul {display:none;}
 }
@@ -396,7 +402,7 @@ ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
     .rvCalendar .day .soldout::before {content:''; opacity:0.6; transform:rotate(-45deg); position:absolute; width:100%; height:4px; background:#ff0000; left:0; top:35px; border-radius:2px;}
     .layerAgree form, 
     .layerAgree form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
-    .layerAgree form .scroll {height:330px;}
+    .layerAgree form .scroll {height:400px;}
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
     
 }
