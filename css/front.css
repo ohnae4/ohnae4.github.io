@@ -250,7 +250,7 @@ table.roomT {width:100%; white-space:nowrap; font-size:13px;}
 table.roomT th {text-align:center; border:1px solid #eee; padding:10px; background:#fafafa;}
 table.roomT td {text-align:center; border:1px solid #eee; padding:10px;}
 
-ul.guide {padding:0 10px; font-size:13px; padding-bottom:20px;}
+ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 .paginator {padding:10px 0; text-align: center;}
 
 .txtGuide {font-size:11px; color:#ff5500;}
