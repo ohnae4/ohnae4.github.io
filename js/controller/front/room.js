@@ -23,57 +23,45 @@
 		$scope.visualList1 = [
 			{url : '/img/visual/large/a1.png'},
 			{url : '/img/visual/large/a2.png'},
+			{url : '/img/visual/large/a3.png'},
+			{url : '/img/visual/large/ac4.png'},
+			{url : '/img/visual/large/a5.png'},
+			{url : '/img/visual/large/a6.png'},
 			{url : '/img/visual/large/i2.png'},
 			{url : '/img/visual/large/i3.png'},
 			{url : '/img/visual/large/i4.png'},
 			{url : '/img/visual/large/i5.png'},
-			{url : '/img/visual/large/i6.png'},
 			{url : '/img/visual/large/i7.png'},
-			{url : '/img/visual/large/i8.png'},
-			{url : '/img/visual/large/i9.png'},
-			{url : '/img/visual/large/i10.png'},
-			{url : '/img/visual/large/i11.png'},
-			{url : '/img/visual/large/i12.png'},
 			{url : '/img/visual/large/i13.png'},
-			{url : '/img/visual/large/i14.png'},
-			{url : '/img/visual/large/i15.png'},
-			{url : '/img/visual/large/i16.png'}
+			{url : '/img/visual/large/i6.png'},
+			{url : '/img/visual/large/i14.png'}
 		];
 		$scope.visualList2 = [
 			{url : '/img/visual/large/b1.png'},
+			{url : '/img/visual/large/b2.png'},
+			{url : '/img/visual/large/b3.png'},
+			{url : '/img/visual/large/b4.png'},
+			{url : '/img/visual/large/b5.png'},
 			{url : '/img/visual/large/i2.png'},
+			{url : '/img/visual/large/b7.png'},
 			{url : '/img/visual/large/i3.png'},
 			{url : '/img/visual/large/i4.png'},
-			{url : '/img/visual/large/i5.png'},
-			{url : '/img/visual/large/i6.png'},
-			{url : '/img/visual/large/i7.png'},
-			{url : '/img/visual/large/i8.png'},
-			{url : '/img/visual/large/i9.png'},
-			{url : '/img/visual/large/i10.png'},
-			{url : '/img/visual/large/i11.png'},
-			{url : '/img/visual/large/i12.png'},
 			{url : '/img/visual/large/i13.png'},
-			{url : '/img/visual/large/i14.png'},
-			{url : '/img/visual/large/i15.png'},
-			{url : '/img/visual/large/i16.png'}
+			{url : '/img/visual/large/i16.png'},
+			{url : '/img/visual/large/b6.png'}
 		];
 		$scope.visualList3 = [
 			{url : '/img/visual/large/c1.png'},
+			{url : '/img/visual/large/c2.png'},
+			{url : '/img/visual/large/c3.png'},
+			{url : '/img/visual/large/ac4.png'},
+			{url : '/img/visual/large/c5.png'},
 			{url : '/img/visual/large/i1.png'},
 			{url : '/img/visual/large/i3.png'},
 			{url : '/img/visual/large/i4.png'},
-			{url : '/img/visual/large/i5.png'},
-			{url : '/img/visual/large/i6.png'},
-			{url : '/img/visual/large/i7.png'},
-			{url : '/img/visual/large/i8.png'},
-			{url : '/img/visual/large/i9.png'},
-			{url : '/img/visual/large/i10.png'},
-			{url : '/img/visual/large/i11.png'},
-			{url : '/img/visual/large/i12.png'},
 			{url : '/img/visual/large/i13.png'},
-			{url : '/img/visual/large/i14.png'},
-			{url : '/img/visual/large/i15.png'},
-			{url : '/img/visual/large/i16.png'}
+			{url : '/img/visual/large/i6.png'},
+			{url : '/img/visual/large/i14.png'}
 		];
 
 
