@@ -113,6 +113,10 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
 
+#visualRoom {width:100%; float:left; display:block;}
+#visualRoom li {padding-bottom:20px;}
+#visualRoom li img {width:100%;}
+
 .slide {width:100%; position:relative; overflow:hidden; clear:both; white-space:nowrap;}
 .slide ul li {width:100%; display:inline-block; padding:0;}
 .slide ul li img {width:100%;}
@@ -279,14 +283,14 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 .rvCalendar .headWrap {height:80px; width:100%;}
 
 .rvCalendar .week {display:none; width:14%; float:left; height:50px; line-height:50px; text-align:center;}
-.rvCalendar .day {width:14%; position:relative; padding:5px; background:#fff; float:left; overflow:hidden;}
+.rvCalendar .day {width:14.25%; position:relative; padding:5px; background:#fff; float:left; overflow:hidden;}
 .rvCalendar .day .soldout {width:100%; height:100%; left:0; top:0; z-index:2; background:rgba(255,255,255,0.01); position:absolute;}
 
 .rvCalendar .day .box {background:#fdfdfd; border:1px solid #ddd; border-radius:10px; padding:5px;}
 .rvCalendar .day .box.on {border:1px solid #ccc;}
 .rvCalendar .day .box.off {border:0;}
 .rvCalendar .week:nth-child(7n),
-.rvCalendar .day:nth-child(7n) {width:16%;}
+.rvCalendar .day:nth-child(7n) {width:14.50%;}
 .rvCalendar .day strong.dayNo1,
 .rvCalendar .day strong.dayNo2 {display:block; margin:3px 3px 6px 3px; line-height:24px; width:24px; height:24px; background:#bbb; font-weight:normal; color:#fff; text-align:center; border-radius:100%;}
 .rvCalendar .day strong.dayNo2 {display:none;}

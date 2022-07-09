@@ -15,7 +15,7 @@
 			domain : '',
 			image : {
 				noImage : '/img/common/noImage.png',
-				host : '//gi.esmplus.com/ohnae2/chlois', //location.protocol + '//' + 'kaisa.co.kr' ,
+				host : '', // //gi.esmplus.com/ohnae2/chlois  location.protocol + '//' + 'kaisa.co.kr' ,
 				XL : '_1040',
 				L : '_256',
 				M : '_130',

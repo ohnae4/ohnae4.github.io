@@ -51,7 +51,7 @@
 	<div data-kaisa-menu="true"></div>
 	<div id="content" class="hide" data-ng-class="{on : initLoad}">
 		<div id="room">
-			<!-- <div class="tabWrap">
+			<div class="tabWrap">
 				<div class="tab" data-ng-class="{fixed : window.scrollTop > 200}">
 					<ul>
 						<li data-ng-repeat="(idx, i) in roomList" data-ng-click="tab.click(idx)" data-ng-class="{on : tab.idx == idx}">
@@ -59,35 +59,30 @@
 						</li>
 					</ul>
 				</div>
-			</div> -->
-			<!--
+			</div>
 			<div data-ng-show="tab.idx == 0">
-				<div style="padding:50px; text-align:center; background-color:#eee;">풀빌라 정보1</div>
+				<div id="visualRoom">
+					<ul>
+						<li data-ng-repeat="i in visualList1"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+					</ul>
+				</div>				
 			</div>
 			<div data-ng-show="tab.idx == 1">
-				<div style="padding:50px; text-align:center; background-color:#eee;">풀빌라 정보2</div>
-			</div>
-			<div data-ng-show="tab.idx == 2">
-				<div style="padding:50px; text-align:center; background-color:#eee;">풀빌라 정보3</div>
-			</div>
-			-->
-			<div id="visual">
-				<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
-					<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
-					<button type="button" class="btn_next" data-ng-click="visual.next()"></button>
-					<ol>
-						<li data-ng-repeat="(idx, i) in visualList" data-ng-class="{on : $index == visual.idx}" data-ng-click="visual.click(idx)"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
-					</ol>
+				<div id="visualRoom">
 					<ul>
-						<li data-ng-repeat="i in visualList" data-ng-show="$index == visual.idx"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+						<li data-ng-repeat="i in visualList2"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
 					</ul>
 				</div>
 			</div>
-			<div id="visualMobile">
-				<ul>
-					<li data-ng-repeat="i in visualList"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
-				</ul>
+			<div data-ng-show="tab.idx == 2">
+				<div id="visualRoom">
+					<ul>
+						<li data-ng-repeat="i in visualList3"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+					</ul>
+				</div>
 			</div>
+			
+			
 			<!--a동 노란냉장고 b동 연보라냉장고 c동 핑크냉장고-->
 
 			<!--배너내용

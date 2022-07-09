@@ -208,6 +208,10 @@
 					} else {
 						$scope.rvCalendar.isShowPrev = false;
 					}
+					if($scope.admin.user) {
+						$scope.rvCalendar.isShowNext = true;
+						$scope.rvCalendar.isShowPrev = true;
+					}
 					// 달력 그리기 시작 
 	                this.day = [];
 	                for (var i = 0 ; i < this.firstDay() ; i++) {
