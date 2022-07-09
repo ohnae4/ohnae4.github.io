@@ -113,6 +113,13 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
 
+#visualText {width:100%; padding:50px 0 30px 0; text-align:center;}
+
+#event {width:100%; clear:both; overflow:hidden; margin:10px 0;}
+#event ul {width:100%; text-align:center; white-space: nowrap;}
+#event ul li {display:inline-block; padding:0 5px; width:33%;}
+#event img {width:100%;}
+
 #visualRoom {width:100%; display:block;}
 #visualRoom li {padding-bottom:20px;}
 #visualRoom li img {width:100%;}
@@ -367,6 +374,9 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     #topMenu ul {display:none;}
 }
 @media (max-width: 480px) {
+    #visualText {padding-top:30px;}
+    #visualText img {width:100%;}
+    #event ul li {display:block; padding-bottom:10px; width:100%;}
     #topMenu {padding-left:20px;}
     #topMenu a {padding:0 15px;} 
     .layerQna form,
