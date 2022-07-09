@@ -75,7 +75,7 @@
 							if($scope.holidayList[i].DAY_DATE.substring(8,10) == $scope.rvCalendar.start.day[j].date){
 								// console.log($scope.rvCalendar.start.day[j].peakCode);  //1:비수기, 2:준성수기, 3:성수기, 4:극성수기
 								// console.log($scope.rvCalendar.start.day[j].priceCode); //1:비수기주중요금,2:비수기금요일요금,3:비수기주말요금,4:준성수기주중요금,5:준성수기금요일요금,6:준성수기주말요금,7:성수기주중요금,8:성수기금요일요금,9:성수기주말요금,10:극성수기주중요금,11:극성수기금요일요금,12:극성수기주말요금
-								if($scope.holidayList[i].PRICE){ // 휴일또는 특정일정보에 가격이 있으면 오버라이드...
+								if($scope.holidayList[i].PRICE && parseInt($scope.holidayList[i].PRICE) > 100000){ // 휴일또는 특정일정보에 가격이 있으면 오버라이드...
 									$scope.rvCalendar.start.day[j].price = $scope.holidayList[i].PRICE;
 								}
 								/**
