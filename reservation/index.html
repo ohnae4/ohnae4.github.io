@@ -115,6 +115,7 @@
 				<p data-ng-repeat="(ridx , room) in layerRoom.day.list">
 					<strong class="roomName"><span data-ng-click="rvCalendar.clickRoom(room, layerRoom.day); layerRoom.close()">{{ room.ROOM_NAME }}</span></strong>
 					<strong class="price" data-ng-click="rvCalendar.clickRoom(room, layerRoom.day); layerRoom.close()" data-ng-if="(!layerRoom.day.price || layerRoom.day.price == '0')">{{ room['PRICE_' + layerRoom.day.priceCode] | toManwon }}</strong>
+					<strong class="price" data-ng-click="rvCalendar.clickRoom(room, layerRoom.day); layerRoom.close()" data-ng-if="(layerRoom.day.price || layerRoom.day.price != '0')">{{ layerRoom.day.price | toManwon }}</strong>
 					<b data-ng-repeat="(vidx , rv) in layerRoom.day.reservation" data-ng-if="room.ROOM_NUMBER == rv.ROOM_NUMBER">
 						<span class="ico_2" data-ng-if="rv.STATUS_CODE == 1">예약</span>
 						<span class="ico_3" data-ng-if="rv.STATUS_CODE == 2">완료</span>
