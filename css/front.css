@@ -108,17 +108,23 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 .price1 {color:#ff0000; font-size:16px;}
 .font1 {color:#ff5500;}
 
-#visual {width:1360px; margin:0 auto; display:block;}
+#visual {width:1260px; margin:0 auto; display:block;}
 #visualMobile {width:100%; display:none;}
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
 
-#visualText {width:100%; padding:50px 0 30px 0; text-align:center;}
+#visualText {width:100%; padding:30px 0 30px 0; text-align:center; margin-top:20px; border:1px solid #f5d8ba; background:#fff6ea;}
 
-#event {width:100%; clear:both; overflow:hidden; margin:10px 0;}
-#event ul {width:100%; text-align:center; white-space: nowrap;}
-#event ul li {display:inline-block; padding:0 5px; width:33%;}
+#event {width:100%; clear:both; display:block; overflow:hidden; margin-top:20px;}
+#event table {width:100%; text-align:center; white-space: nowrap;}
+#event td {width:33.3%; border:1px solid #ffdeec; background:#fff;} /*e4d0f2*/
 #event img {width:100%;}
+#event td:nth-child(2) {background:#fff;}
+
+#eventMobile {width:100%; display:none; clear:both; overflow:hidden; margin-top:20px;}
+#eventMobile table {width:100%; text-align:center; white-space: nowrap;}
+#eventMobile td {border:1px solid #ffdeec; background:#fff;}
+#eventMobile img {width:100%;}
 
 #visualRoom {width:100%; display:block;}
 #visualRoom li {padding-bottom:20px;}
@@ -214,7 +220,7 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #container {width:100%}
 
-#content {min-height:300px; width:1400px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff; overflow: auto;}
+#content {min-height:300px; width:1300px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff; overflow: auto;}
 #content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 #content h2 span {font-size:12px; font-weight:normal; color:#999;}
 #content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
@@ -224,8 +230,8 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #mapText {color:#333; padding:10px 0; text-align: center;}
 #mapText strong {font-size:14px;}
-#mapCover {width:1340px; position:absolute; left:50%; margin-left:-700px; height:350px; z-index:2;}
-#map {width:1400px; text-align: center; border:20px solid #fff; z-index:1; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
+#mapCover {width:1240px; position:absolute; left:50%; margin-left:-700px; height:350px; z-index:2;}
+#map {width:1300px; text-align: center; border:20px solid #fff; z-index:1; box-shadow:0 0 3px rgb(0,0,0,0.2); height:350px; margin:0 auto; clear:both; text-align:center;}
 
 #cs {width:100%; clear:both; text-align: center; padding-top:30px;}
 #cs .cs dl {width:100%;}
@@ -373,17 +379,21 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 @media (max-width: 360px) {
     #topMenu ul {display:none;}
 }
+@media (max-width: 600px) {
+    #visualText img {width:60%;}
+}
 @media (max-width: 480px) {
     #visualText {padding-top:30px;}
-    #visualText img {width:100%;}
-    #event ul li {display:block; padding-bottom:10px; width:100%;}
+    #visualText img {width:60%;}
+    #event {display:none;}
+    #eventMobile {display:block;}
     #topMenu {padding-left:20px;}
     #topMenu a {padding:0 15px;} 
     .layerQna form,
     .layerAgree form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
     .layerReservation form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
 }
-@media (max-width: 1400px) {
+@media (max-width: 1300px) {
     #map {width:1000px}
     #visual {width:960px;}
     #content {width:1000px}

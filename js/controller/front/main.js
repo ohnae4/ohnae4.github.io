@@ -8,13 +8,13 @@
 			idx : 0	
 		};
 		$scope.visualList = [
+			{url : '/img/visual/large/o5.png'},
+			{url : '/img/visual/large/o4.png'},
 			{url : '/img/visual/large/o1.png'},
 			//{url : '/img/visual/large/o2.png'},
-			{url : '/img/visual/large/o3.png'},
-			{url : '/img/visual/large/o4.png'},
-			{url : '/img/visual/large/o5.png'},
+			{url : '/img/visual/large/o7.png'},
+			{url : '/img/visual/large/o3.png'}
 			//{url : '/img/visual/large/o6.png'},
-			{url : '/img/visual/large/o7.png'}
 			// {url : '/img/visual/large/o8.png'}
 		];
 		$scope.visual = {
