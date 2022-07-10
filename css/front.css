@@ -113,7 +113,7 @@ body {background:#efefef;} /*efefef background:url(/img/common/bg.png) repeat;*/
 .price1 {color:#ff0000; font-size:16px;}
 .font1 {color:#ff5500;}
 
-#visual {width:1260px; margin:0 auto; display:block;}
+#visual {width:1260px; position:relative; margin:0 auto; display:block;}
 #visualMobile {width:100%; display:none;}
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
@@ -236,7 +236,7 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #container {width:100%}
 
-.content {width:1300px; margin:20px auto 0 auto; box-shadow:0 0 3px rgba(0,0,0,0.2); clear:both; padding:20px; background-color:#fff; overflow: auto;}
+.content {position:relative; width:1300px; margin:20px auto 0 auto; box-shadow:0 0 3px rgba(0,0,0,0.2); clear:both; padding:20px; background-color:#fff; overflow: auto;}
 .content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 .content h2 span {font-size:12px; font-weight:normal; color:#999;}
 .content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
@@ -380,6 +380,20 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 .layerAgree form, 
 .layerReservation form {width:450px; margin:-300px 0 0 -225px;}
 
+.layerMain {position:absolute; display:block; box-shadow:3px 3px 10px rgba(0,0,0,0.3); width:280px; left:40px; top:40px; z-index:10;}
+.layerMain div.box {padding:20px; background:#fff; border:1px solid #aaa;}
+.layerMain h5 {color:#000; font-size:18px;}
+.layerMain p {color:#000; font-size:16px; padding-top:15px; line-height:25px;}
+.layerMain a {color:#ff5500;}
+
+
+.bodyMain {width:100%; display:none; margin-bottom:20px;}
+.bodyMain div.box {padding:20px; background:#fff; border:1px solid #aaa;}
+.bodyMain h5 {color:#000; font-size:18px;}
+.bodyMain p {color:#000; font-size:16px; padding-top:15px; line-height:25px;}
+.bodyMain a {color:#ff5500;}
+
+
 /*Qna*/
 .layerQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
 .layerQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
@@ -396,6 +410,8 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     #topMenu ul {display:none;}
 }
 @media (max-width: 600px) {
+    .layerMain {display:none;}
+    .bodyMain {display:block;}
     .main .box p.en {font-size:12px;}
     #visualText img {width:60%;}
 }

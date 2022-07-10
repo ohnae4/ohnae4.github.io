@@ -7,6 +7,16 @@
 		$scope.page = {
 			idx : 0	
 		};
+		// 메인 
+    	$scope.layerMain = {
+    		active: true,
+    		close: function(){
+    			this.active = false;
+    		},
+			open: function(price){
+    			this.active = true;
+    		}
+		};
 		$scope.visualList = [
 			{url : '/img/visual/large/o5.png'},
 			{url : '/img/visual/large/o4.png'},

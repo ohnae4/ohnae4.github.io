@@ -52,6 +52,31 @@
 	<div data-kaisa-menu="true"></div>
 		
 	<div class="content">
+		<!-- 메인팝업 -->
+		<div class="layerMain" data-ng-show="layerMain.active">
+			<div class="box">
+				<div class="btnClose" data-ng-click="layerMain.close();">
+					<ul><li></li><li></li></ul>
+				</div>
+				<h5>오픈 이벤트</h5>
+				<p>
+					7월11일 오픈!! 특가할인!!<br />
+					<u>전화문의 시 추가할인해드립니다.</u><br />
+					<a href="tel:01071902632">전화 : <strong>010-7190-2632</strong></a>
+				</p>
+			</div>
+		</div>
+		<div class="bodyMain" data-ng-show="layerMain.active">
+			<div class="box">
+				<h5>오픈 이벤트</h5>
+				<p>
+					7월11일 오픈!! 특가할인!!<br />
+					<u>전화문의 시 추가할인해드립니다.</u><br />
+					<a href="tel:01071902632">전화 : <strong>010-7190-2632</strong></a>
+				</p>
+			</div>
+		</div>
+		
 		<div id="visual">
 			<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
 				<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
