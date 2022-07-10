@@ -435,11 +435,10 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     .content .rvCalendar .day strong.dayNo2 {display:block;}
 }
 @media (max-width:700px) {
-
     #visual {display:none;}
     #visualMobile {display:block;}
-
     .content .rvCalendar .box {border:0; background:none;}
+    .content .rvCalendar .box.on {border:0;}
     .content .rvCalendar .day {padding:0;}
     .content .rvCalendar .day p {display:none;}
     .content .rvCalendar .day strong.dayNo2 {display:block; line-height:50px; margin:10px auto; width:50px; height:50px;}
