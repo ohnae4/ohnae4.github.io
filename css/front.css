@@ -22,7 +22,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 /* 회색 */
 .theme1 .rvCalendar .day strong.dayNo1,
 .theme1 .rvCalendar .day strong.dayNo2 {background:#bbb;} 
-.theme1 .rvCalendar .day .box {background:#fdfdfd; border:1px solid #ddd;}
+.theme1 .rvCalendar .day .box {background:#fdfdfd;}
 .theme1 .rvCalendar .day p .dim {background:rgba(253,253,253,0.5);}
 .theme1 .roomT th {border:1px solid #eee; background:#fafafa;}
 .theme1 .roomT td {border:1px solid #eee;}
@@ -33,7 +33,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 /* 보라 */
 .theme1 .rvCalendar .day strong.dayNo1,
 .theme1 .rvCalendar .day strong.dayNo2 {background:#b0a0b6;} 
-.theme2 .rvCalendar .day .box {background:#fdf8ff; border:1px solid #eadbee;}
+.theme2 .rvCalendar .day .box {background:#fdf8ff;}
 .theme2 .rvCalendar .day p .dim {background:rgba(253,248,250,0.5);}
 .theme2 .roomT th {border:1px solid #eadbee; background:#fdf8ff;}
 .theme2 .roomT td {border:1px solid #eadbee;}
@@ -44,7 +44,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 /* 그린 */
 .theme1 .rvCalendar .day strong.dayNo1,
 .theme1 .rvCalendar .day strong.dayNo2 {background:#b8cab4;} 
-.theme3 .rvCalendar .day .box {background:#f4fff2; border:1px solid #d5e8d1;}
+.theme3 .rvCalendar .day .box {background:#f4fff2;}
 .theme3 .rvCalendar .day p .dim {background:rgba(244,255,242,0.5);}
 .theme3 .roomT th {border:1px solid #d5e8d1; background:#f4fff2;}
 .theme3 .roomT td {border:1px solid #d5e8d1;}
@@ -55,7 +55,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
 /* 블루 */
 .theme1 .rvCalendar .day strong.dayNo1,
 .theme1 .rvCalendar .day strong.dayNo2 {background:#b4bfca;} 
-.theme4 .rvCalendar .day .box {background:#f2f9ff; border:1px solid #d1dde8;}
+.theme4 .rvCalendar .day .box {background:#f2f9ff;}
 .theme4 .rvCalendar .day p .dim {background:rgba(242,249,255,0.5);}
 .theme4 .roomT th {border:1px solid #d1dde8; background:#f2f9ff;}
 .theme4 .roomT td {border:1px solid #d1dde8;}
@@ -106,6 +106,9 @@ body {background:#efefef;} /*efefef background:url(/img/common/bg.png) repeat;*/
 #order .btnOrder {background:#ff0000; border:0; font-size:16px; font-weight: bold; line-height:45px; height:45px; padding:0 20px;}
 #order .btnCancel {background:#ccc; border:0; font-size:16px; font-weight: bold; line-height:45px; height:45px; padding:0 20px;}
 #agree p {font-family: dotum; font-size:12px; padding:10px 0;}
+
+#visualInfo {width:100%;}
+#visualInfo p {text-align:right; font-size:11px; padding-top:15px; font-family: 'dotum';}
 
 .price1 {color:#ff0000; font-size:16px;}
 .font1 {color:#ff5500;}
