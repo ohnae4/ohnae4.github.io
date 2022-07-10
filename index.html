@@ -51,7 +51,7 @@
 	<div data-kaisa-header="true"></div>
 	<div data-kaisa-menu="true"></div>
 		
-	<div id="content">
+	<div class="content">
 		<div id="visual">
 			<div class="slide" data-ng-mouseover="visualIntervalStop()" data-ng-mouseout="visualIntervalStart()">
 				<button type="button" class="btn_prev" data-ng-click="visual.prev()"></button>
@@ -69,6 +69,23 @@
 				<li data-ng-repeat="i in visualList"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
 			</ul>
 		</div>
+	</div>
+	<div class="main main1">
+		<div class="box">
+			<ul>
+				<li data-ng-repeat="i in imgList"><img data-ng-src="{{image.host}}{{i.url}}" alt="" /></li>
+			</ul>
+			<p class="en">
+				Comfortable rest in your imagination, Pleasure meeting.<br />
+				It's an auxiliary facility prepared for you.
+			</p>
+			<p class="big">
+				<strong>Private Room For Comfort</strong>
+			</p>
+		</div>
+		<div class="background"></div>
+	</div>
+	<div class="content" style="overflow:inherit;">
 		<div id="visualText">
 			<img data-ng-src="{{image.host}}/img/visual/visual_text01.png" alt="" />
 		</div>
@@ -88,9 +105,9 @@
 				<tr><td><img data-ng-src="{{image.host}}/img/visual/banner_03.png" alt="" /></td></tr>
 			</table>
 		</div>
-		<div id="movie">
+		<!-- <div id="movie">
 			<div class="movie"><iframe src="https://www.youtube.com/embed/hRe-6NwOkQ8" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-		</div>
+		</div> -->
 	</div>
 
 	</div>

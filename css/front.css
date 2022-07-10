@@ -4,7 +4,7 @@ div,a,li,ol,ul,dl,dt,dd,span,strong,p,h1,h2,h3,h4,h5,img,input,button,iframe,tex
     transition:0.2s all linear;
 } /* transition:0.3s all linear; transition:0s background linear; */
 
-body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
+body {background:#efefef;} /*efefef background:url(/img/common/bg.png) repeat;*/
 
 #header {width:100%; margin:0 auto; clear:both; position:relative; z-index:2;}
 #header h1 {width:100%; margin:0 auto;}
@@ -21,10 +21,10 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 
 #order {width:100%; clear:both;}
 #order .btnClose {position:fixed;}
-#content #order h2 {padding:20px 0 5px 0; border-bottom:2px solid #333;}
-#content #order h3 {font-size:14px; width:100%; overflow:hidden; padding:10px 10px; border:1px solid #dedede; margin-bottom:-1px; background:#f2f2f2;}
-#content #order h3 label {width:100%; overflow:hidden; display:block; cursor:pointer; }
-#content #order h3 input {margin-right:5px; margin-top:-1px; vertical-align:middle;}
+.content #order h2 {padding:20px 0 5px 0; border-bottom:2px solid #333;}
+.content #order h3 {font-size:14px; width:100%; overflow:hidden; padding:10px 10px; border:1px solid #dedede; margin-bottom:-1px; background:#f2f2f2;}
+.content #order h3 label {width:100%; overflow:hidden; display:block; cursor:pointer; }
+.content #order h3 input {margin-right:5px; margin-top:-1px; vertical-align:middle;}
 #order .left {float:left; width:43%;}
 #order .right {float:right; width:53%;}
 #order table {width:100%; margin-bottom:10px;}
@@ -113,7 +113,7 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
 
-#visualText {width:100%; padding:30px 0 30px 0; text-align:center; margin-top:20px; border:1px solid #f5d8ba; background:#fff6ea;}
+#visualText {width:100%; padding:30px 0 30px 0; position:relative; z-index:3; text-align:center; margin-top:-70px; border:1px solid #f5d8ba; background:#fff6ea;}
 
 #event {width:100%; clear:both; display:block; overflow:hidden; margin-top:20px;}
 #event table {width:100%; text-align:center; white-space: nowrap;}
@@ -130,13 +130,23 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #visualRoom li {padding-bottom:20px;}
 #visualRoom li img {width:100%;}
 
+.main {width:100%; background-color:#fff; position:relative; padding-bottom:30px; color:#fff;}
+.main .box {position:relative; z-index:2; margin:0 auto; width:1300px; padding:20px;}
+.main .box ul {width:100%; font-size:0; padding-bottom:10px; overflow: hidden;}
+.main .box ul li {width:25%; float:left;}
+.main .box ul li img {width:100%;}
+.main .box p {text-align:right; text-shadow:1px 1px 1px rgba(0,0,0,0.5); padding-top:15px; font-family: 'Alegreya','NanumSquare','Apple SD Gothic Neo', 'Malgun Gothic','Nanum Gothic', 'Noto Sans','sans-serif';}
+.main .box p.en {font-size:14px;}
+.main .box p.big {font-size:18px;}
+.main .background {width:100%; position:absolute; left:0; bottom:0; height:50%; background:#edd6b8; z-index:1;}
+
 .slide {width:100%; position:relative; overflow:hidden; clear:both; white-space:nowrap;}
 .slide ul li {width:100%; display:inline-block; padding:0;}
 .slide ul li img {width:100%;}
-.slide ol {position:absolute; right:20px; top:20px;}
-.slide ol li {width:80px; display:inline-block; padding:0; margin-left:3px; opacity: 0.5; cursor:pointer;}
-.slide ol li.on {opacity:1;}
+.slide ol {position:absolute; left:50%; bottom:20px; margin-left:-100px;}
+.slide ol li {width:80px; display:inline-block; padding:0; margin-left:3px; cursor:pointer;}
 .slide ol li img {width:100%; border:3px solid #fff;}
+.slide ol li.on img {border:3px solid #ff5500;}
 
 .slide .btn_prev,
 .slide .btn_next  {transition:none; position:absolute; border:0; outline:0; z-index:2; top:50%; overflow:hidden; text-indent:-900px; font-size:0; display:block; width:40px; height:40px; margin-top:-20px; background:url(/img/common/sp.png) no-repeat;}
@@ -148,7 +158,8 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #topMenu {width:100%; position:relative; height:50px; z-index:88; clear:both; text-align:center; white-space:nowrap;}
 #topMenu a {color:#333; height:50px; overflow:hidden; background-color:#fff; font-weight:bold; display:block; margin-left:-1px;}
 #topMenu a:hover {background:#333; color:#fff;}
-#topMenu ul {transition:none; height:50px; overflow:hidden; box-shadow:0 0 5px rgb(0,0,0,0.2); display:inline-block;}
+
+#topMenu ul {transition:none; height:50px; overflow:hidden; border:1px solid #ddd; display:inline-block;}
 #topMenu ul li {display:inline-block; text-align: center;}
 #topMenu ul li.on a {background:#333; color:#fff;}
 #topMenu ul li span {display:block; height:50px; line-height:50px; font-size:14px;}
@@ -163,7 +174,7 @@ body {background:#efefef;} /*background:url(/img/common/bg.png) repeat;*/
 #topMenu ul li:nth-child(4) a {width:80px}
 
 .fixed #topMenu {position:fixed; left:0; top:0; background:#fff; box-shadow:0 0 10px rgb(0,0,0,0.5);}
-.fixed #topMenu ul {box-shadow:none;}
+.fixed #topMenu ul {box-shadow:none; border:0;}
 
 #btnMenu {width:30px; height:50px; position:fixed; z-index:91; left:13px; top:13px; cursor:pointer;}
 #btnMenu ul {width:30px; position:relative;}
@@ -220,13 +231,13 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #container {width:100%}
 
-#content {min-height:300px; width:1300px; box-shadow:0 0 3px rgb(0,0,0,0.2); margin:30px auto 0 auto; clear:both; padding:20px; background-color:#fff; overflow: auto;}
-#content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
-#content h2 span {font-size:12px; font-weight:normal; color:#999;}
-#content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
+.content {width:1300px; margin:20px auto 0 auto; box-shadow:0 0 3px rgba(0,0,0,0.2); clear:both; padding:20px; background-color:#fff; overflow: auto;}
+.content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
+.content h2 span {font-size:12px; font-weight:normal; color:#999;}
+.content h2 span.btnArea {position:absolute; right:0; bottom:10px;}
 
-#content h3 {padding:20px 0 10px 0; font-size:16px; color:#333; clear:both; position:relative;}
-#content h3 span {font-size:12px; font-weight:normal; color:#999;}
+.content h3 {padding:20px 0 10px 0; font-size:16px; color:#333; clear:both; position:relative;}
+.content h3 span {font-size:12px; font-weight:normal; color:#999;}
 
 #mapText {color:#333; padding:10px 0; text-align: center;}
 #mapText strong {font-size:14px;}
@@ -287,7 +298,7 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 /*reservation*/
 /* 달력 */
 .rvCalendar {width:100%; clear:both; white-space:nowrap;}
-#content .rvCalendar h2 {font-size:20px; padding:20px 0; text-align:center; line-height:40px; color:#333;}
+.content .rvCalendar h2 {font-size:20px; padding:20px 0; text-align:center; line-height:40px; color:#333;}
 .rvCalendar h2 .prev,
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
@@ -380,6 +391,7 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     #topMenu ul {display:none;}
 }
 @media (max-width: 600px) {
+    .main .box p.en {font-size:12px;}
     #visualText img {width:60%;}
 }
 @media (max-width: 480px) {
@@ -396,13 +408,16 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 @media (max-width: 1300px) {
     #map {width:1000px}
     #visual {width:960px;}
-    #content {width:1000px}
+    .content {width:1000px;}
+    .main .box {width:1000px;}
     #mapCover {width:940px; margin-left:-500px;}
 }
 @media (max-width: 1000px) {
     .slide ol {display:none;}
     .icoScroll {display:block;} 
-    #content {width:100%; padding:20px;}
+    .content {width:100%; padding:20px;} 
+    .main .box {width:100%; padding:20px;}
+    .main .background {height:65%;} 
     #mapCover {width:82%; left:0; margin:0;}
     #map {width:100%;}
     #visual {width:100%;}
@@ -411,18 +426,18 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 }
 
 @media (max-width:800px) {
-    #content .rvCalendar .day strong.dayNo1 {display:none;}
-    #content .rvCalendar .day strong.dayNo2 {display:block;}
+    .content .rvCalendar .day strong.dayNo1 {display:none;}
+    .content .rvCalendar .day strong.dayNo2 {display:block;}
 }
 @media (max-width:700px) {
 
     #visual {display:none;}
     #visualMobile {display:block;}
 
-    #content .rvCalendar .box {border:0; background:none;}
-    #content .rvCalendar .day {padding:0;}
-    #content .rvCalendar .day p {display:none;}
-    #content .rvCalendar .day strong.dayNo2 {display:block; line-height:50px; margin:10px auto; width:50px; height:50px;}
+    .content .rvCalendar .box {border:0; background:none;}
+    .content .rvCalendar .day {padding:0;}
+    .content .rvCalendar .day p {display:none;}
+    .content .rvCalendar .day strong.dayNo2 {display:block; line-height:50px; margin:10px auto; width:50px; height:50px;}
     .rvCalendar .day .soldout::before {content:''; opacity:0.6; transform:rotate(-45deg); position:absolute; width:100%; height:4px; background:#ff0000; left:0; top:35px; border-radius:2px;}
     .layerAgree form, 
     .layerAgree form {width:90%; height:90%; overflow:auto; left:5%; top:5%; margin:0;}
@@ -431,11 +446,11 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     
 }
 @media (max-width:450px) {
-    #content .rvCalendar .day strong.dayNo2 {line-height:40px; width:40px; height:40px; margin:10px auto;}
+    .content .rvCalendar .day strong.dayNo2 {line-height:40px; width:40px; height:40px; margin:10px auto;}
 }
 @media (max-width:355px) {
     .rvCalendar .day .soldout::before {width:110%; top:30px;}
-    #content .rvCalendar .day strong.dayNo2 {line-height:35px; width:35px; height:35px; margin:10px auto;}
+    .content .rvCalendar .day strong.dayNo2 {line-height:35px; width:35px; height:35px; margin:10px auto;}
 }
 
 @media (max-height: 700px) {

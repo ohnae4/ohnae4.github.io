@@ -12,10 +12,24 @@
 			{url : '/img/visual/large/o4.png'},
 			{url : '/img/visual/large/o1.png'},
 			//{url : '/img/visual/large/o2.png'},
-			{url : '/img/visual/large/o7.png'},
-			{url : '/img/visual/large/o3.png'}
+			{url : '/img/visual/large/o7.png'}
+			/* {url : '/img/visual/large/o3.png'} */
 			//{url : '/img/visual/large/o6.png'},
 			// {url : '/img/visual/large/o8.png'}
+		];
+		$scope.imgList = [
+			{url : '/img/visual/large/a1.png'},
+			{url : '/img/visual/large/a6.png'},
+			{url : '/img/visual/large/i2.png'},
+			{url : '/img/visual/large/i3.png'},
+			{url : '/img/visual/large/i4.png'},
+			{url : '/img/visual/large/i5.png'},
+			{url : '/img/visual/large/i7.png'},
+			{url : '/img/visual/large/i13.png'},
+			{url : '/img/visual/large/a3.png'},
+			{url : '/img/visual/large/ac4.png'},
+			{url : '/img/visual/large/a5.png'},
+			{url : '/img/visual/large/i6.png'}
 		];
 		$scope.visual = {
 			idx : 0,

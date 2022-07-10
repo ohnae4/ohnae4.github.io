@@ -40,7 +40,7 @@ ul.loading li:nth-child(3) {animation-delay: .2s;}
 
 .tabWrap {width:100%; height:40px;}
 .tab {width:100%; height:50px; white-space: nowrap; overflow:hidden; border-bottom:1px solid #eee;}
-.tab li {display:inline-block; color:#333; background:#fff; font-size:12px; cursor:pointer; text-align:center; width:100px; height:40px; line-height:40px; border:1px solid #eee; margin-bottom:-1px;}
+.tab li {display:inline-block; color:#333; background:#fff; font-size:12px; cursor:pointer; text-align:center; width:100px; height:40px; line-height:40px; border:1px solid #ddd; margin:0 -1px -1px 0;}
 .tab li a {display:block; color:#333;}
 .tab li.on {background:#333; color:#fff;}
 .tab.fixed {position:fixed; left:0; top:60px; text-align: center; z-index:80; border:0;}
