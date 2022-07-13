@@ -19,14 +19,15 @@
 				,{key:'RESERVATION_NUMBER',	name:'예약번호',	type:'Number',    width:50,  length:90, visible:true,	disabled:true,	align:'right', dateFormat: 'yyyy-MM-dd'}
 				,{key:'RESERVATION_DATE',	name:'예약일',		type:'Date',    width:100,  length:90, visible:true,	disabled:false,	align:'right', dateFormat: 'yyyy-MM-dd'}
 				,{key:'PRICE',				name:'가격',		type:'Number',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
+				,{key:'DISCOUNT',			name:'할인',		type:'Number',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'ROOM_NUMBER',		name:'객실번호',	type:'Combo',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true, options: $scope.code.roomType , default: '1'}
 				,{key:'MEMBER_NAME',		name:'회원명',		type:'String',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'MEMBER_PHONE',		name:'전화번호',	type:'String',	  width:100,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'MEMBER_EMAIL',		name:'이메일',	 	type:'String',    width:150,  length:300, visible:true,	disabled:false,	align:'left', required:true}
-				,{key:'DESCRIPTION',		name:'설명',	 	type:'String',    width:100,  length:300, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'ADD_COUNT_1',		name:'추가인원',	type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'ADD_COUNT_2',		name:'바베큐추가수',type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'ADD_COUNT_3',		name:'온수추가수',	type:'Number',    width:80,  length:30, visible:true,	disabled:false,	align:'left', required:false}
+				,{key:'DESCRIPTION',		name:'설명',	 	type:'String',    width:300,  length:300, visible:true,	disabled:false,	align:'left', required:false}
 				,{key:'CREATE_DATE',		name:'등록일시',  	type:'Date',	  width:120,  length:30, visible:true,	disabled:true,	align:'left', dateFormat: 'yyyy-MM-dd hh:mm'}
 				,{key:'UPDATE_DATE',		name:'수정일시',	type:'Date',	  width:120,  length:30, visible:true,	disabled:true,	align:'left', dateFormat: 'yyyy-MM-dd hh:mm'} // , sort:true yyyy-MM-dd hh:mm:ss
 			],
