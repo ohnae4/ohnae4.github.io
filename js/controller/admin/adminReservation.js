@@ -19,7 +19,7 @@
 				,{key:'RESERVATION_NUMBER',	name:'예약번호',	type:'Number',    width:50,  length:90, visible:true,	disabled:true,	align:'right', dateFormat: 'yyyy-MM-dd'}
 				,{key:'RESERVATION_DATE',	name:'예약일',		type:'Date',    width:100,  length:90, visible:true,	disabled:false,	align:'right', dateFormat: 'yyyy-MM-dd'}
 				,{key:'PRICE',				name:'가격',		type:'Number',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
-				,{key:'DISCOUNT',			name:'할인',		type:'Number',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
+				,{key:'DISCOUNT',			name:'할인',		type:'Number',    width:80,  length:20, visible:true,	disabled:false,	align:'left'}
 				,{key:'ROOM_NUMBER',		name:'객실번호',	type:'Combo',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true, options: $scope.code.roomType , default: '1'}
 				,{key:'MEMBER_NAME',		name:'회원명',		type:'String',    width:80,  length:20, visible:true,	disabled:false,	align:'left', required:true}
 				,{key:'MEMBER_PHONE',		name:'전화번호',	type:'String',	  width:100,  length:20, visible:true,	disabled:false,	align:'left', required:true}

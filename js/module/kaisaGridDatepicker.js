@@ -41,7 +41,7 @@
 		        		this.makeDayArray(obj);
 		        	},
 		        	next : function(obj){
-						obj.date.setMonth(o.date.getMonth() + 1);
+						obj.date.setMonth(obj.date.getMonth() + 1);
 		        		this.makeDayArray(obj);
 		        	},
 		        	close : function(){
