@@ -71,6 +71,18 @@
 								</select>
 							</td>  <!-- data-ng-required="true" -->
 						</tr>
+						<tr>
+							<th>회원명</th>
+							<td>
+								<input type="text" data-ng-model="reservationGrid.searchParam.memberName" placeholder="000" />
+							</td>
+						</tr>
+						<tr>
+							<th>상세날짜</th>
+							<td>
+								<input type="text" data-ng-model="reservationGrid.searchParam.reservationDate" placeholder="YYYY-MM-DD" />
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</fieldset>

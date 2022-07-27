@@ -41,11 +41,12 @@
 			searchParam: {
 				searchYear: $filter('date')(new Date(),'yyyy'),
 				searchMonth: $filter('date')(new Date(),'MM'),
+				memberName: '',
+				reservationDate: '',
 				limitPage: '100',
 				currentPage: '1'
 			}
 		});
 		$scope.reservationGrid.search();
-		
 	}]);
 })(window,window.angular);
