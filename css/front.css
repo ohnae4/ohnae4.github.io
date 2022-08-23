@@ -122,7 +122,7 @@ body {background:#efefef;} /*efefef background:url(/img/common/bg.png) repeat;*/
 
 #event {width:100%; clear:both; display:block; overflow:hidden; margin-top:20px;}
 #event table {width:100%; text-align:center; white-space: nowrap;}
-#event td {width:50%; border:1px solid #ffdeec; background:#fff;} /*e4d0f2*/
+#event td {width:33.3%; border:1px solid #ffdeec; background:#fff;} /*e4d0f2*/
 #event img {width:100%; max-width:438px;}
 #event td:nth-child(2) {background:#fff;}
 
