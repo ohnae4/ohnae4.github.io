@@ -1,8 +1,8 @@
 (function(window, angular, undefined){
 	'use strict';
-	var app = angular.module('layerDatePicker',['common']);
+	var app = angular.module('layerDatepicker',['common']);
 
-	app.directive('layerDatePickerCalendar',['$compile','$filter',function($compile,$filter){
+	app.directive('layerDatepickerCalendar',['$compile','$filter',function($compile,$filter){
     	return {
     		replace : true,
     		link: function($scope, el, attrs){
@@ -28,7 +28,7 @@
     		}
     	}
     }]); 
-	app.directive('layerDatePicker', ['$timeout','$window','$compile','$filter',function($timeout,$window,$compile,$filter) {
+	app.directive('layerDatepicker', ['$timeout','$window','$compile','$filter',function($timeout,$window,$compile,$filter) {
 	    return {
 	        replace:true,
 	        scope : {

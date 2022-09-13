@@ -1,6 +1,6 @@
 (function(window, angular, undefined){
 	'use strict';
-	var app = angular.module('KaisaApp',['common','gridDatepicker','grid','layerDatePicker']);
+	var app = angular.module('KaisaApp',['common','gridDatepicker','grid','layerDatepicker']);
 
 	app.controller('BodyController',[
 			    '$scope','$window','$timeout','$interval','$http','kaisaApi','$filter','kaisaGrid',
