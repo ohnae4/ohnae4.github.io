@@ -83,7 +83,7 @@
 							<th>상세날짜</th>
 							<td>
 								<input type="text" style="background:#eee;" readonly data-ng-model="reservationGrid.searchParam.reservationDate" placeholder="YYYY-MM-DD" />
-								<button data-ng-click="datepicker.toggle({event: $event, target: reservationGrid.searchParam.reservationDate, targetName: 'reservationDate'})">달력</button>
+								<button type="button" data-ng-click="datepicker.toggle({event: $event, target: reservationGrid.searchParam.reservationDate, targetName: 'reservationDate'})">달력</button>
 							</td>
 						</tr>
 					</tbody>
@@ -115,8 +115,8 @@
 </div>
 <div data-kaisa-admin-footer="true"></div>
 
-<div class="datepickerContainer" data-layer-date-picker="true" data-model="datepicker" data-ng-show="datepicker.active">
-	<div class="layerDatepicker" data-layer-date-picker-calendar="true" data-ng-style="datepicker.style"></div>
+<div class="datepickerContainer" data-layer-datepicker="true" data-model="datepicker" data-ng-show="datepicker.active">
+	<div class="layerDatepicker" data-layer-datepicker-calendar="true" data-ng-style="datepicker.style"></div>
     <div class="dimmed" data-ng-click="datepicker.active = false"><div>
 </div>
 
