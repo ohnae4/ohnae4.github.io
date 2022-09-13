@@ -1,6 +1,6 @@
 (function(window, angular, undefined){
 	'use strict';
-	var app = angular.module('KaisaApp',['common','gridDatepicker','grid']);
+	var app = angular.module('KaisaApp',['common','gridDatepicker','grid','layerDatePicker']);
 
 	app.controller('BodyController',[
 			    '$scope','$window','$timeout','$interval','$http','kaisaApi','$filter','kaisaGrid',
@@ -42,11 +42,22 @@
 				searchYear: $filter('date')(new Date(),'yyyy'),
 				searchMonth: $filter('date')(new Date(),'MM'),
 				memberName: '',
-				reservationDate: '',
+				reservationDate: '', // $filter('date')(new Date(),'yyyy-MM-dd')
 				limitPage: '100',
 				currentPage: '1'
 			}
 		});
 		$scope.reservationGrid.search();
+
+		$scope.datepicker = { // 달력
+			target: null,
+			callback: function(o) {
+				switch (o.targetName) {
+					case 'reservationDate': $scope.reservationGrid.searchParam.reservationDate = o.selectDate; break;
+					default: break;
+				}
+				this.active = false;
+			}
+		};
 	}]);
 })(window,window.angular);

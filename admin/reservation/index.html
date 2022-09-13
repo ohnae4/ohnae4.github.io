@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/css/common.css" type="text/css">
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 <link rel="stylesheet" href="/css/grid.css" type="text/css">
+<link rel="stylesheet" href="/css/layerDatePicker.css" type="text/css">
 <!--[if lt IE 10]>
 <link rel="stylesheet" href="/css/old_browser.css" type="text/css" />
 <![endif]-->
@@ -45,6 +46,7 @@
 <script src="/js/module/kaisaCommon.js"></script>
 
 <script src="/js/controller/admin/adminReservation.js"></script>
+<script src="/js/module/kaisaLayerDatePicker.js"></script>
 </head>
 <body data-ng-controller="BodyController">
 <div data-kaisa-admin-header="true"></div>
@@ -74,13 +76,14 @@
 						<tr>
 							<th>회원명</th>
 							<td>
-								<input type="text" data-ng-model="reservationGrid.searchParam.memberName" placeholder="000" />
+								<input type="text" data-ng-model="reservationGrid.searchParam.memberName" placeholder="" />
 							</td>
 						</tr>
 						<tr>
 							<th>상세날짜</th>
 							<td>
-								<input type="text" data-ng-model="reservationGrid.searchParam.reservationDate" placeholder="YYYY-MM-DD" />
+								<input type="text" style="background:#eee;" readonly data-ng-model="reservationGrid.searchParam.reservationDate" placeholder="YYYY-MM-DD" />
+								<button data-ng-click="datepicker.toggle({event: $event, target: reservationGrid.searchParam.reservationDate, targetName: 'reservationDate'})">달력</button>
 							</td>
 						</tr>
 					</tbody>
@@ -111,5 +114,11 @@
 	</div>
 </div>
 <div data-kaisa-admin-footer="true"></div>
+
+<div class="datepickerContainer" data-layer-date-picker="true" data-model="datepicker" data-ng-show="datepicker.active">
+	<div class="layerDatePicker" data-layer-date-picker-calendar="true" data-ng-style="datepicker.style"></div>
+    <div class="dimmed" data-ng-click="datepicker.active = false"><div>
+</div>
+
 </body>
 </html>
