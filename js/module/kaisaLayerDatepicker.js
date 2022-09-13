@@ -27,7 +27,7 @@
     			el.append($compile(strHtml)($scope));
     		}
     	}
-    }]);
+    }]); 
 	app.directive('layerDatePicker', ['$timeout','$window','$compile','$filter',function($timeout,$window,$compile,$filter) {
 	    return {
 	        replace:true,
