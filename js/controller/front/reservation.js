@@ -85,16 +85,22 @@
 									switch ($scope.rvCalendar.start.day[j].peakCode) { //1:비수기,2:준성수기,3:성수기,4:극성수기
 										case 1:
 											// TODO 전날체크...
-											$scope.rvCalendar.start.day[j-1].priceCode = 2 // 3:비수기금요일요금
-											$scope.rvCalendar.start.day[j].priceCode = 3 // 3:비수기주말요금
+											if($scope.rvCalendar.start.day[j-1]){
+												$scope.rvCalendar.start.day[j-1].priceCode = 2 // 3:비수기금요일요금
+												$scope.rvCalendar.start.day[j].priceCode = 3 // 3:비수기주말요금
+											}
 											break;
 										case 2:
-											$scope.rvCalendar.start.day[j-1].priceCode = 5 // 6:준성수기금요일요금
-											$scope.rvCalendar.start.day[j].priceCode = 6 // 6:준성수기주말요금
+											if($scope.rvCalendar.start.day[j-1]){
+												$scope.rvCalendar.start.day[j-1].priceCode = 5 // 6:준성수기금요일요금
+												$scope.rvCalendar.start.day[j].priceCode = 6 // 6:
+											}
 											break;
 										case 3:
-											$scope.rvCalendar.start.day[j-1].priceCode = 8 // 8:성수기금요일요금
-											$scope.rvCalendar.start.day[j].priceCode = 9 // 9:성수기주말요금
+											if($scope.rvCalendar.start.day[j-1]){
+												$scope.rvCalendar.start.day[j-1].priceCode = 8 // 8:성수기금요일요금
+												$scope.rvCalendar.start.day[j].priceCode = 9 // 9:
+											}
 											break;
 										default: break;
 									}
@@ -196,8 +202,9 @@
 	            day: [],
     			makeDays: function(){
 					// 날짜 이동제어 
-					var nowMonth = parseInt($filter('date')($scope.rvCalendar.start.now,'yyyyMM'))
-					var targetMonth = parseInt($filter('date')($scope.rvCalendar.start.date,'yyyyMM'))
+					var nowMonth = parseInt($filter('date')($scope.rvCalendar.start.now,'yyyyMM'));
+					var targetMonth = parseInt($filter('date')($scope.rvCalendar.start.date,'yyyyMM'));
+					
 					if(nowMonth - targetMonth > -3){
 						$scope.rvCalendar.isShowNext = true;
 					} else {
@@ -247,7 +254,6 @@
 	                		peakCode = 4; //극성수기
 	                	}
 						var priceCode = $scope.getPriceCode(peakCode, dayCode);
-
 	                	this.day.push({
 							off: off, 
 							priceCode: priceCode, 
