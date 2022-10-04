@@ -450,7 +450,11 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
     .content .rvCalendar .day strong.dayNo1 {display:none;}
     .content .rvCalendar .day strong.dayNo2 {display:block;}
 }
+
+.guide-landscape {display:none;}
+
 @media (max-width:700px) {
+    .guide-landscape {display:block;}
     #visual {display:none;}
     #visualMobile {display:block;}
     .content .rvCalendar .box {border:0; background:none;}
