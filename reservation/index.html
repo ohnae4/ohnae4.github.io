@@ -71,8 +71,10 @@ gtag('config', 'UA-126527248-1');
 			<div class="head">
 				<h2>
 					<span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
-					<strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
-					<strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
+					<span class="center">
+						<strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
+						<strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
+					</span>
 					<span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span>
 				</h2>
 			</div>

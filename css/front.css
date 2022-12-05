@@ -308,6 +308,7 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 .rvCalendar h2 .next {vertical-align:middle; margin-top:-3px; cursor:pointer; background:url(/img/common/sp.png) no-repeat; width:40px; height:40px; display:inline-block; overflow:hidden; font-size:0; text-indent:-900px;}
 .rvCalendar h2 .prev {background-position:0 -40px;}
 .rvCalendar h2 .next {background-position:-40px -40px;}
+.rvCalendar h2 .center {width:130px; display:inline-block; color:#333; font-size:20px;}
 .rvCalendar .calendar {width:100%; clear:both; overflow:hidden; margin:0 auto; padding:5px 0;}
 .rvCalendar .headWrap {height:80px; width:100%;}
 
