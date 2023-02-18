@@ -70,12 +70,12 @@ gtag('config', 'UA-126527248-1');
 			<!-- data-ng-class="{fixed : window.scrollTop > window.calendarHeadPostion}" -->
 			<div class="head">
 				<h2>
-					<span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span>
+					<span style="display:inline-block; width:40px;"><span class="prev" data-ng-show="rvCalendar.isShowPrev" data-ng-click="rvCalendar.start.datePrev()">Prev</span></span>
 					<span class="center">
 						<strong data-ng-bind="rvCalendar.start.date | date:'yyyy'"></strong> 년
 						<strong data-ng-bind="rvCalendar.start.date | date:'MM'"></strong> 월
 					</span>
-					<span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span>
+					<span style="display:inline-block; width:40px;"><span class="next" data-ng-show="rvCalendar.isShowNext" data-ng-click="rvCalendar.start.dateNext()">Next</span></span>
 				</h2>
 			</div>
 		</div>

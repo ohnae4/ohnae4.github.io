@@ -7,8 +7,18 @@
 		$scope.page = {
 			idx : 0	
 		};
-		// 메인 
-    	$scope.layerMain = {
+		// 메인 오픈이벤트 
+    	$scope.openEvent = {
+    		active: true,
+    		close: function(){
+    			this.active = false;
+    		},
+			open: function(price){
+    			this.active = true;
+    		}
+		};
+		// 메인 조은마트 픽업 
+    	$scope.martPickup = {
     		active: true,
     		close: function(){
     			this.active = false;

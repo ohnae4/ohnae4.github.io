@@ -204,7 +204,7 @@
 					// 날짜 이동제어 
 					var nowMonth = parseInt($filter('date')($scope.rvCalendar.start.now,'yyyyMM'));
 					var targetMonth = parseInt($filter('date')($scope.rvCalendar.start.date,'yyyyMM'));
-					var minus3month = parseInt($filter('date')(new Date().setMonth(new Date().getMonth() + 2),'yyyyMM'));
+					var minus3month = parseInt($filter('date')(new Date().setMonth(new Date().getMonth() + 3),'yyyyMM'));
 					if(targetMonth < minus3month){
 						$scope.rvCalendar.isShowNext = true;
 					} else {
