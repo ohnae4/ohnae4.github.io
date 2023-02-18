@@ -113,7 +113,7 @@ body {background:#efefef;} /*efefef background:url(/img/common/bg.png) repeat;*/
 .price1 {color:#ff0000; font-size:16px;}
 .font1 {color:#ff5500;}
 
-#visual {width:1260px; position:relative; margin:0 auto; display:block;}
+#visual {width:1260px; min-height:200px; position:relative; margin:0 auto; display:block;}
 #visualMobile {width:100%; display:none;}
 #visualMobile li {padding-bottom:20px;}
 #visualMobile li img {width:100%;}
@@ -236,7 +236,9 @@ ul.sns li.kakao_ch {background-position:-400px 0;}
 
 #container {width:100%}
 
-.content {position:relative; width:1300px; margin:20px auto 0 auto; box-shadow:0 0 3px rgba(0,0,0,0.2); clear:both; padding:20px; background-color:#fff; overflow: auto;}
+.headerWrapper {width:100%; min-height:200px;}
+
+.content {position:relative; min-height:200px; width:1300px; margin:20px auto 0 auto; box-shadow:0 0 3px rgba(0,0,0,0.2); clear:both; padding:20px; background-color:#fff; overflow: auto;}
 .content h2 {font-size:16px; padding:10px 0; color:#333; clear:both; position:relative;}
 .content h2 span {font-size:12px; font-weight:normal; color:#999;}
 .content h2 span.btnArea {position:absolute; right:0; bottom:10px;}

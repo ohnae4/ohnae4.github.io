@@ -59,8 +59,11 @@ gtag('config', 'UA-126527248-1');
 </head>
 <body data-ng-controller="BodyController">
 <div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion, menuOpen : menu.open}">
-	<div data-kaisa-header="true"></div>
-	<div data-kaisa-menu="true"></div>
+	<div class="headerWrapper">
+		<div data-kaisa-header="true"></div>
+		<div data-kaisa-menu="true"></div>
+	</div>
+
 	<div id="content" class="content hide" data-ng-class="{on : initLoad}">
 		<div id="room">
 			<div class="tabWrap">
