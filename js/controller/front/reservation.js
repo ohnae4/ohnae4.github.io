@@ -459,7 +459,7 @@
 						STATUS_CODE: $scope.RESERVATION.STATUS_CODE,
 						DESCRIPTION: $scope.RESERVATION.DESCRIPTION,
 						ADD_COUNT_1: $scope.RESERVATION.ADD_COUNT_1, // 추가인원
-						ADD_COUNT_2: $scope.RESERVATION.ADD_COUNT_2, // 바베큐
+						ADD_COUNT_2: '0', // $scope.RESERVATION.ADD_COUNT_2, // 바베큐
 						ADD_COUNT_3: $scope.RESERVATION.ADD_COUNT_3 // 온수
 					}
 					, $scope.postConfig).then(function(resp){

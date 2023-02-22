@@ -262,11 +262,11 @@ gtag('config', 'UA-126527248-1');
 					</td>
 				</tr>
 				<tr>
-					<th>바베큐/온수 추가</th>
+					<th>온수 추가</th>
 					<td>
-						<select data-ng-model="RESERVATION.ADD_COUNT_2">
+						<!--<select data-ng-model="RESERVATION.ADD_COUNT_2">
 							<option data-ng-repeat="i in code.addCount2Arr" value="{{i.value}}">{{i.text}}</option>
-						</select>
+						</select>-->
 						<div style="height:5px; width:100%;"></div>
 						<select data-ng-model="RESERVATION.ADD_COUNT_3">
 							<option data-ng-repeat="i in code.addCount3Arr" value="{{i.value}}">{{i.text}}</option>
@@ -276,8 +276,8 @@ gtag('config', 'UA-126527248-1');
 					<tr>
 						<th>금액</th>
 						<td>
-							<p><b class="price1">{{ RESERVATION.PRICE_SUM }}</b> 원</p>
 							<p class="text1">국민은행 : <b class="font1">807502-04-127894</b><br>예금주 : 최원호</p>
+							<p><b class="price1">{{ RESERVATION.PRICE_SUM }}</b> 원</p>
 						</td>
 					</tr>
 					<tr>

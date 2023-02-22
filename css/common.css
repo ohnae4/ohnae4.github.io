@@ -152,16 +152,16 @@ form.search .btnSearch{display:inline-block; margin-left:27px; min-width:65px; h
 .captcha {width:140px; margin-bottom:5px; position:relative; overflow:hidden; height:53px; line-height:30px; text-align:center; padding-right:5px; padding-top:10px; background:#eee;}
 .captcha .through {transform:rotate(10deg); width:120%; height:1px; background:#888; position:absolute; left:-10%; top:20px;}
 .captcha ol li {display:inline-block; color:#888; font-size:30px; letter-spacing:3px;}
-.captcha ol li.lan1 {font-weight:bold; transform:rotate(-30deg);}
-.captcha ol li.lan2 {font-family:batang; transform:rotate(10deg);}
-.captcha ol li.lan3 {font-weight:bold; transform:rotate(-10deg);}
-.captcha ol li.lan4 {font-family:arial; transform:rotate(20deg); font-weight:bold;}
-.captcha ol li.lan5 {font-family:impact;}
-.captcha ol li.lan6 {font-family:dotum; transform:rotate(-20deg);}
-.captcha ol li.lan7 {font-weight:bold; transform:rotate(-40deg);}
-.captcha ol li.lan8 {font-family:batang; transform:rotate(15deg);}
-.captcha ol li.lan9 {font-weight:bold; transform:rotate(-10deg);}
-.captcha ol li.lan0 {font-family:arial; transform:rotate(20deg); font-weight:bold;}
+.captcha ol li.lan1 {color:#222; font-weight:bold; transform:rotate(-30deg);}
+.captcha ol li.lan2 {color:#888; font-family:batang; transform:rotate(10deg);}
+.captcha ol li.lan3 {color:#444; font-weight:bold; transform:rotate(-10deg);}
+.captcha ol li.lan4 {color:#666; font-family:arial; transform:rotate(20deg); font-weight:bold;}
+.captcha ol li.lan5 {color:#999; font-family:impact;}
+.captcha ol li.lan6 {color:#aaa; font-family:dotum; transform:rotate(-20deg);}
+.captcha ol li.lan7 {color:#999; font-weight:bold; transform:rotate(-40deg);}
+.captcha ol li.lan8 {color:#888; font-family:batang; transform:rotate(15deg);}
+.captcha ol li.lan9 {color:#777; font-weight:bold; transform:rotate(-10deg);}
+.captcha ol li.lan0 {color:#888; font-family:arial; transform:rotate(20deg); font-weight:bold;}
 
 .btnClose {width:30px; height:30px; position:absolute; z-index:2; right:10px; top:3px; cursor:pointer;}
 .btnClose ul {width:20px; margin-top:20px; position:relative;}

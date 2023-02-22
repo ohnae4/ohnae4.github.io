@@ -301,13 +301,22 @@
 				$scope[attrs.ngModel] = {
 					code : null,
 					refresh : function(){
-						var a = Math.floor((Math.random() * 10)),
-							b = Math.floor((Math.random() * 10)),
+						var a = Math.floor((Math.random() * 6)),
+							b = Math.floor((Math.random() * 6)),
 							c = Math.floor((Math.random() * 10)),
 							d = Math.floor((Math.random() * 10)),
-							e = Math.floor((Math.random() * 10)),
+							e = Math.floor((Math.random() * 6)),
 							f = Math.floor((Math.random() * 10));
-						var html = '<div class="through" style="transform:rotate('+a+'deg);"></div><div class="through" style="transform:rotate(-'+c+'deg);"></div><ol><li class="lan'+a+'">'+a+'</li><li class="lan'+b+'">'+b+'</li><li class="lan'+c+'">'+c+'</li class="lan'+d+'"><li>'+d+'</li><li class="lan'+e+'">'+e+'</li><li class="lan'+f+'">'+f+'</li></ol>';
+						if(c == 7) {
+							c = 8;
+						}
+						if(d == 7) {
+							d = 4;
+						}
+						if(f == 7) {
+							f = 2;
+						}
+						var html = '<div class="through" style="transform:rotate('+Math.floor((Math.random() * 10))+'deg);"></div><div class="through" style="transform:rotate(-'+Math.floor((Math.random() * 10))+'deg);"></div><ol><li class="lan'+Math.floor((Math.random() * 10))+'">'+a+'</li><li class="lan'+Math.floor((Math.random() * 10))+'">'+b+'</li><li class="lan'+Math.floor((Math.random() * 10))+'">'+c+'</li class="lan'+Math.floor((Math.random() * 10))+'"><li>'+d+'</li><li class="lan'+Math.floor((Math.random() * 10))+'">'+e+'</li><li class="lan'+Math.floor((Math.random() * 10))+'">'+f+'</li></ol>';
 						this.code = ''+a+''+b+''+c+''+d+''+e+''+f;
 						el.html('').html(html);
 					}
