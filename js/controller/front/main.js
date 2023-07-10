@@ -7,6 +7,16 @@
 		$scope.page = {
 			idx : 0	
 		};
+		// 메인 팝업 
+    	$scope.mainPopup = {
+    		active: true,
+    		close: function(){
+    			this.active = false;
+    		},
+			open: function(price){
+    			this.active = true;
+    		}
+		};
 		// 메인 오픈이벤트 
     	$scope.openEvent = {
     		active: true,

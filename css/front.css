@@ -398,6 +398,14 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 .layerMain.martPickup {left:40px; width:360px;}
 .layerMain.openEvent {left:420px; width:260px;}
 
+body.noscroll {overflow:hidden;}
+#mainDimmed {position:fixed; z-index:900; width:100%; height:100%; background:rgba(0,0,0,0.6); left:0; top:0;}
+
+.mainPopup {z-index:901; position:fixed; left:50%; top:50%; margin:-325px 0 0 -250px; width:500px; height:650px;}
+.mainPopup img {width:100%; box-shadow:3px 3px 10px rgba(0,0,0,0.3);}
+.mainPopup .btnClose ul li {background:#000;}
+.mainPopup .btnClose:hover ul li {background:#ff0000;}
+
 /*Qna*/
 .layerQna {position:fixed; width:100%; height:100%; left:0; top:0; z-index:100; background:url(/img/common/mask.png) repeat;}
 .layerQna form {border-radius:5px; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5); width:380px; position:fixed; left:50%; margin:-240px 0 0 -190px; top:50%; background:#fff; border:1px solid #aaa;}
@@ -412,6 +420,9 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 
 @media (max-width: 360px) {
     #topMenu ul {display:none;}
+}
+@media (max-width: 500px) {
+    .mainPopup {width:100%; height:auto; padding:10px; left:0; top:0; margin:0;}
 }
 @media (max-width: 600px) {
     .layerMain {position:relative; width:100%; left:0; top:0; margin-bottom:20px; box-shadow:none;}

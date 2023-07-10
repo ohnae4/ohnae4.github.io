@@ -58,7 +58,19 @@ gtag('config', 'UA-126527248-1');
 
 <script src="/js/controller/front/main.js"></script>
 </head>
-<body data-ng-controller="BodyController">
+<body data-ng-controller="BodyController" data-ng-class="{ noscroll : mainPopup.active }">
+
+<!-- 메인팝업 -->
+<div class="mainPopup" data-ng-show="mainPopup.active">
+	<div class="box">
+		<div class="btnClose" data-ng-click="mainPopup.close();">
+			<ul><li></li><li></li></ul>
+		</div>
+		<img src="img/visual/mainPopup.png" alt="" />
+	</div>
+</div>
+<div id="mainDimmed" data-ng-click="mainPopup.close();" data-ng-show="mainPopup.active"></div>
+
 <div id="container" data-ng-class="{fixed : window.scrollTop > window.menuPostion, menuOpen : menu.open}">
 	<div class="headerWrapper">
 		<div data-kaisa-header="true"></div>
