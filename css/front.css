@@ -401,7 +401,7 @@ ul.guide {padding:0 0; font-size:13px; padding-bottom:20px;}
 body.noscroll {overflow:hidden;}
 #mainDimmed {position:fixed; z-index:900; width:100%; height:100%; background:rgba(0,0,0,0.6); left:0; top:0;}
 
-.mainPopup {z-index:901; position:fixed; left:50%; top:50%; margin:-325px 0 0 -250px; width:500px; height:650px;}
+.mainPopup {z-index:901; position:fixed; left:50%; top:50%; margin:-325px 0 0 -250px; width:500px; box-shadow:5px 5px 5px rgba(0,0,0,0.3); height:650px; overflow:hidden; border-radius:10px;}
 .mainPopup img {width:100%; box-shadow:3px 3px 10px rgba(0,0,0,0.3);}
 .mainPopup .btnClose ul li {background:#000;}
 .mainPopup .btnClose:hover ul li {background:#ff0000;}
