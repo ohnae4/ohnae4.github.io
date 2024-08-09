@@ -501,9 +501,9 @@ body.noscroll {overflow:hidden;}
 /* 메인  background:url(/img/visual/bg.png) no-repeat; */
 #main {width:100%; overflow:auto; height:100%; background-color:#fff; background-size:100% auto; background-position:0 100px;}
 
-/**C동 감추기*/
+/**C동 감추기
 #content .rvCalendar .day p:last-child {display:none;}
 #content .layerRoom .box p:last-child {display:none;}
 #content .roomT tr:nth-child(5) {display:none;}
 #content .tab li:last-child {display:none;}
-
+*/
