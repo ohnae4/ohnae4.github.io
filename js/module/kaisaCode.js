@@ -82,8 +82,8 @@
 				{text: '바베큐 추가', value: '1'}
 			],
 			addCount3Arr: [
-				{text: '온수 추가안함', value: '0'},
-				{text: '온수 추가', value: '1'}
+				{text: '미온수 추가안함', value: '0'},
+				{text: '미온수 추가', value: '1'}
 			],
 			weekArr: [
 				{text: '일', value: '0'},

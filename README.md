@@ -36,7 +36,5 @@ git push -u --force origin master
 
 ## Node 특정 버전 설치
 - nvm install 6.14.3
-- nvm install 8.17.0
 
 - nvm use 6.14.3
-- nvm use 8.17.0
