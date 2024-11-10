@@ -38,3 +38,11 @@ git push -u --force origin master
 - nvm install 6.14.3
 
 - nvm use 6.14.3
+
+brew install gh
+gh auth login
+
+[애래는 최초에만]
+ssh-keygen -t ed25519 -C "kaisaohnae@gmail.com"
+pbcopy < ~/.ssh/id_ed25519.pub
+git config --global credential.helper osxkeychain
